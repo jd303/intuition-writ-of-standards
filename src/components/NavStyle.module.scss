@@ -1,0 +1,45 @@
+ol {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 0;
+  text-align: center;
+  font-family: trattatello;
+
+  li {
+    color: black;
+    text-transform: uppercase;
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+ol.home {
+  opacity: 0.5;
+  font-size: 2rem;
+}
+
+ol.regular {
+  display: flex;
+  margin-left: 20px;
+  gap: 20px;
+
+  li {
+    a {
+      &.active {
+        opacity: 0.5;
+        color: red;
+      }
+    }
+  }
+}
+
+.activeLink {
+  color: red;
+}

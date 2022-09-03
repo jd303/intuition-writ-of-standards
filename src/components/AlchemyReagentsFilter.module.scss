@@ -1,0 +1,16 @@
+.filterOptions {
+  display: flex;
+  gap: var(--standard-padding);
+  padding: 20px;
+
+  background-image: url(/assets/images/bg.banner.svg);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.contains {
+}
