@@ -1,43 +1,49 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import AlchemyReagentList from "../components/AlchemyReagentList";
-import AlchemyRecipes from "../components/AlchemyRecipes";
+import AlchemyRecipesList from "../components/AlchemyRecipesList";
 import AlchemyReagentsFilter from "../components/AlchemyReagentsFilter";
 
 function AlchemyPage() {
-  const [filter, setFilters] = useState({ contains: "all", rarity: "all", type: "all" });
+  const baseFilters = { contains: "all", rarity: "all", type: "all" };
+  const [filterValues, setFilters] = useState(baseFilters);
 
   /**
    * If a user changes a filter
    * */
   const onFilterChange = (event) => {
-    console.log("CHANGE");
     const target = event.target;
     const targetProperty = target.getAttribute("name");
     const targetValue = target.value;
     setFilters(() => {
       switch (targetProperty) {
         case "contains":
-          return { ...filter, contains: targetValue };
+          return { ...filterValues, contains: targetValue };
 
         case "rarity":
-          return { ...filter, rarity: targetValue };
+          return { ...filterValues, rarity: targetValue };
 
         case "reagenttype":
-          return { ...filter, type: targetValue };
+          return { ...filterValues, type: targetValue };
 
         default:
-          return filter;
+          return filterValues;
       }
+    });
+  };
+
+  const onFilterClear = (event) => {
+    setFilters(() => {
+      return baseFilters;
     });
   };
 
   return (
     <React.Fragment>
-      <Header />
-      <AlchemyReagentsFilter onFilterChangeProp={onFilterChange} />
-      <AlchemyReagentList filterProp={filter} />
-      <AlchemyRecipes />
+      <Header titleProp="Alchemy Recipes and Reagents" />
+      <AlchemyReagentsFilter onFilterChangeProp={onFilterChange} onFilterClear={onFilterClear} filterValuesProp={filterValues} />
+      <AlchemyReagentList filterProp={filterValues} />
+      <AlchemyRecipesList />
     </React.Fragment>
   );
 }

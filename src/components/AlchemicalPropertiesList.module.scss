@@ -1,6 +1,10 @@
 .properties {
   display: flex;
   gap: 5px;
+
+  &.card-view {
+    flex-direction: column;
+  }
 }
 
 .property {
@@ -10,6 +14,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   user-select: none;
+  text-align: center;
 }
 
 .hyd {
