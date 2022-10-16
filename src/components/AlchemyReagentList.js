@@ -81,15 +81,15 @@ function AlchemyReagentList(props) {
   /**
    * View Mode States
    * */
-  const [viewMode, setToggleMode] = useState({ mode: "list-view", label: "Card View" });
+  const [viewMode, setViewMode] = useState({ mode: "list-view", label: "Card View" });
   const toggleMode = () => {
     if (viewMode.mode == "list-view") {
-      setToggleMode({
+      setViewMode({
         mode: "card-view",
         label: "List View",
       });
     } else {
-      setToggleMode({
+      setViewMode({
         mode: "list-view",
         label: "Card View",
       });

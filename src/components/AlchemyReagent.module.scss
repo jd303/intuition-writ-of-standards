@@ -1,8 +1,6 @@
 .reagent {
   --text-width: 250px;
   --vitals-width: 110px;
-  --title-height: 30px;
-  --title-line-height: 20px;
 
   background-color: rgba(black, 0.1);
   border-radius: 15px;
@@ -19,8 +17,6 @@
       max-width: 250px;
 
       .name {
-        height: var(--title-height);
-        line-height: var(--title-line-height);
       }
 
       .description {
@@ -50,7 +46,8 @@
     display: flex;
     gap: var(--standard-padding);
     align-items: center;
-    width: 630px;
+    min-width: 750px;
+    max-width: 750px;
     padding: calc(var(--standard-padding) / 2) var(--standard-padding);
     line-height: 15px;
 
@@ -61,6 +58,7 @@
       .name {
         flex: none;
         width: 200px;
+        height: auto;
       }
 
       .description {

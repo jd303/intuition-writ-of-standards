@@ -13,7 +13,7 @@ function AlchemyReagent(props) {
   return (
     <li className={styles.reagent + " " + styles[viewModeProp]}>
       <div className={styles.text}>
-        <div className={styles.name}>{reagentProp.name}</div>
+        <div className={styles.name + " card-title"}>{reagentProp.name}</div>
         <div className={styles.description}>{reagentProp.desc}</div>
       </div>
       <div className={styles.vitals}>

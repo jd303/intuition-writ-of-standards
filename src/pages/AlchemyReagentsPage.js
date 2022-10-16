@@ -4,7 +4,7 @@ import AlchemyReagentList from "../components/AlchemyReagentList";
 import AlchemyRecipesList from "../components/AlchemyRecipesList";
 import AlchemyReagentsFilter from "../components/AlchemyReagentsFilter";
 
-function AlchemyPage() {
+function AlchemyReagentsPage() {
   const baseFilters = { contains: "all", rarity: "all", type: "all" };
   const [filterValues, setFilters] = useState(baseFilters);
 
@@ -43,9 +43,8 @@ function AlchemyPage() {
       <Header titleProp="Alchemy Recipes and Reagents" />
       <AlchemyReagentsFilter onFilterChangeProp={onFilterChange} onFilterClear={onFilterClear} filterValuesProp={filterValues} />
       <AlchemyReagentList filterProp={filterValues} />
-      <AlchemyRecipesList />
     </React.Fragment>
   );
 }
 
-export default AlchemyPage;
+export default AlchemyReagentsPage;

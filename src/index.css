@@ -20,3 +20,8 @@ h5 {
   font-family: "trattatello";
   text-transform: uppercase;
 }
+
+.card-title {
+  height: 30px;
+  line-height: 20px;
+}

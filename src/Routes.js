@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AlchemyPage from "./pages/AlchemyPage";
+import AlchemyReagentsPage from "./pages/AlchemyReagentsPage";
+import AlchemyRecipesPage from "./pages/AlchemyRecipesPage";
 
 function RouteDefinitions() {
   return [
@@ -10,9 +11,14 @@ function RouteDefinitions() {
       element: <Route key="0" path="/" element={<HomePage />} />,
     },
     {
-      navLabel: "Alchemy",
-      path: "/alchemy",
-      element: <Route key="0" path="/alchemy" element={<AlchemyPage />} />,
+      navLabel: "Alchemy Reagents",
+      path: "/alchemyreagents",
+      element: <Route key="0" path="/alchemyreagents" element={<AlchemyReagentsPage />} />,
+    },
+    {
+      navLabel: "Alchemy Recipes",
+      path: "/alchemyrecipes",
+      element: <Route key="0" path="/alchemyrecipes" element={<AlchemyRecipesPage />} />,
     },
   ];
 }
