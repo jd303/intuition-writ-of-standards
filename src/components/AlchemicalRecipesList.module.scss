@@ -1,4 +1,4 @@
 ul {
   display: flex;
-  gap: var(--standard-padding);
+  gap: calc(var(--standard-padding) / 2);
 }

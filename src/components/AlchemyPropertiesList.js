@@ -1,4 +1,5 @@
 import styles from "./AlchemicalPropertiesList.module.scss";
+import colourStyles from "./_SharedStyles.module.scss";
 
 function AlchemyPropertiesList(props) {
   const { viewModeProp } = props;
@@ -6,7 +7,7 @@ function AlchemyPropertiesList(props) {
   return (
     <div className={styles.properties + " " + styles[viewModeProp]}>
       {props.propertiesProp.map((property, index) => (
-        <span key={index} className={styles[property.code.toLowerCase()] + " " + styles.property}>
+        <span key={index} className={colourStyles[property.code.toLowerCase()] + " " + styles.property}>
           {property.name}
         </span>
       ))}

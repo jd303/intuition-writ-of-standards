@@ -3,24 +3,19 @@ import { recipesData } from "../assets/data/recipes_data.js";
 import AlchemicalRecipe from "./AlchemicalRecipe";
 import styles from "./AlchemicalRecipesList.module.scss";
 
-function AlchemyRecipesList() {
-  let [viewMode, setViewMode] = useState({ label: "Card View", mode: "list-view" });
+function AlchemyRecipesList(props) {
+  const { filterValuesProp, viewModeProp, onViewModeChangeProp } = props;
 
-  const toggleViewMode = () => {
-    if (viewMode.mode == "list-view") {
-      setViewMode({ label: "List View", mode: "card-view" });
-    } else {
-      setViewMode({ label: "Card View", mode: "list-view" });
-    }
+  const filterByType = (recipe) => {
+    if (filterValuesProp.type == "all") return true;
+    else return recipe.type == filterValuesProp.type;
   };
 
   return (
     <React.Fragment>
-      <h2>Alchemy Recipes</h2>
-      <button onClick={toggleViewMode}>{viewMode.label}</button>
       <ul>
-        {recipesData.map((recipe, index) => {
-          return <AlchemicalRecipe key={index} recipeProp={recipe} viewModeProp={viewMode.mode} />;
+        {recipesData.filter(filterByType).map((recipe, index) => {
+          return <AlchemicalRecipe key={index} recipeProp={recipe} viewModeProp={viewModeProp.mode} />;
         })}
       </ul>
     </React.Fragment>

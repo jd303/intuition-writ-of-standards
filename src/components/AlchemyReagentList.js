@@ -6,6 +6,11 @@ import styles from "./AlchemyReagentList.scss";
 
 function AlchemyReagentList(props) {
   /**
+   * Deconstruct properties
+   * */
+  const { filterProp, viewProp } = props;
+
+  /**
    * Applies state to data
    * */
   const applyStateToData = (reagentData) => {
@@ -14,6 +19,9 @@ function AlchemyReagentList(props) {
     });
   };
 
+  /**
+   * Set State
+   * */
   const [reagents, setReagents] = useState(applyStateToData(reagentData));
 
   /**
@@ -78,35 +86,15 @@ function AlchemyReagentList(props) {
     }
   };
 
-  /**
-   * View Mode States
-   * */
-  const [viewMode, setViewMode] = useState({ mode: "list-view", label: "Card View" });
-  const toggleMode = () => {
-    if (viewMode.mode == "list-view") {
-      setViewMode({
-        mode: "card-view",
-        label: "List View",
-      });
-    } else {
-      setViewMode({
-        mode: "list-view",
-        label: "Card View",
-      });
-    }
-  };
-
   return (
     <React.Fragment>
-      <h2>Reagents</h2>
-      <button onClick={toggleMode}>{viewMode.label}</button>
       <ul>
         {reagents
           .filter(filterContainsCallback)
           .filter(filterRarityCallback)
           .filter(filterTypeCallback)
           .map((reagent, index) => {
-            return <AlchemyReagent key={index} reagentProp={reagent} updateSelectionProp={updateSelection} viewModeProp={viewMode.mode} />;
+            return <AlchemyReagent key={index} reagentProp={reagent} updateSelectionProp={updateSelection} viewModeProp={viewProp.mode} />;
           })}
       </ul>
     </React.Fragment>

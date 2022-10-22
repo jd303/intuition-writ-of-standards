@@ -4,12 +4,13 @@ import { Rarity, ReagentProperties, AlchemicalTypes } from "../assets/data/reage
 import styles from "./AlchemyReagentsFilter.module.scss";
 
 function AlchemyReagentsFilter(props) {
-  const { onFilterChangeProp, onFilterClear, filterValuesProp } = props;
+  const { onFilterChangeProp, onFilterClear, filterValuesProp, startingViewModeProp, onViewModeChangeProp } = props;
 
   // References to elements
   const containsRef = React.useRef(null);
   const rarityRef = React.useRef(null);
   const reagentTypeRef = React.useRef(null);
+  const viewRef = React.useRef(null);
 
   const onFilterChange = (event) => {
     onFilterChangeProp(event);
@@ -22,9 +23,38 @@ function AlchemyReagentsFilter(props) {
     onFilterClear();
   };
 
+  /**
+   * View Mode States
+   * */
+  const [viewMode, setViewMode] = useState(startingViewModeProp || { mode: "list-view", label: "Card View" });
+
+  /**
+   * A user toggles the view mode
+   * */
+  const toggleMode = () => {
+    let newViewMode;
+    if (viewMode.mode == "list-view") {
+      newViewMode = {
+        mode: "card-view",
+        label: "List View",
+      };
+    } else {
+      newViewMode = {
+        mode: "list-view",
+        label: "Card View",
+      };
+    }
+
+    localStorage.setItem("reagents-view", JSON.stringify(newViewMode));
+    setViewMode(newViewMode);
+    onViewModeChangeProp(newViewMode);
+  };
+
+  /**
+   * Component
+   * */
   return (
     <div className="">
-      <h2>Filters</h2>
       <div className={styles.filterOptions}>
         <div className={styles.contains}>
           <h3>Contains</h3>
@@ -62,6 +92,11 @@ function AlchemyReagentsFilter(props) {
         <button className={styles.btClear} onClick={clearFilter}>
           Clear
         </button>
+        <div className={styles.divider}></div>
+        <div className={styles.view}>
+          <h3>View</h3>
+          <button onClick={toggleMode}>{viewMode.label}</button>
+        </div>
       </div>
     </div>
   );

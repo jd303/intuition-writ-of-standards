@@ -1,5 +1,13 @@
 import { ReagentProperties } from "./reagents_data";
 
+export const RecipeTypes = {
+  Potion: "Potion",
+  Bomb: "Bomb",
+  Poison: "Poison",
+  Salve: "Salve",
+  Misc: "Misc",
+};
+
 export const recipesData = [
   {
     type: "Potion",
