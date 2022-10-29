@@ -1,5 +1,6 @@
 :root {
   --standard-padding: 20px;
+  --standard-black-transparent-background: rgba(0, 0, 0, 0.1);
 }
 
 @font-face {

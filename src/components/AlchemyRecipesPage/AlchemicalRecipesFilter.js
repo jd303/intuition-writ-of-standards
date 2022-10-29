@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { RecipeTypes } from "../assets/data/recipes_data";
-import styles from "./AlchemyReagentsFilter.module.scss";
+import { RecipeTypes } from "../../assets/data/recipes_data";
+import styles from "../FilterShared.module.scss";
 
 function AlcehmicalRecipesFilter(props) {
   /**

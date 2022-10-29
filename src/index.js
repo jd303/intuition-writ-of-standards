@@ -1,15 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes } from "react-router-dom";
-import RouteDefinitions from "./Routes";
+import { RouteDefinitions } from "./Routes";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const allRouteDefinitions = [];
+RouteDefinitions().forEach((routeDef) => {
+  allRouteDefinitions.push(routeDef);
+  routeDef.subRoutes?.forEach((subRouteDef) => allRouteDefinitions.push(subRouteDef));
+});
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>{RouteDefinitions().map((rt) => rt.element)}</Routes>
+      <Routes>{allRouteDefinitions.map((rt) => rt.element)}</Routes>
     </BrowserRouter>
   </React.StrictMode>
 );

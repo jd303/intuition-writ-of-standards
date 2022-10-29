@@ -1,0 +1,13 @@
+.recipeList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(var(--standard-padding) / 2);
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+}

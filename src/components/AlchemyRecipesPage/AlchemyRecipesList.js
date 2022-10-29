@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { recipesData } from "../assets/data/recipes_data.js";
+import { recipesData } from "../../assets/data/recipes_data.js";
 import AlchemicalRecipe from "./AlchemicalRecipe";
-import styles from "./AlchemicalRecipesList.module.scss";
+import styles from "./AlchemyRecipesList.module.scss";
 
 function AlchemyRecipesList(props) {
   const { filterValuesProp, viewModeProp, onViewModeChangeProp } = props;
@@ -13,7 +13,7 @@ function AlchemyRecipesList(props) {
 
   return (
     <React.Fragment>
-      <ul>
+      <ul className={styles.recipeList}>
         {recipesData.filter(filterByType).map((recipe, index) => {
           return <AlchemicalRecipe key={index} recipeProp={recipe} viewModeProp={viewModeProp.mode} />;
         })}

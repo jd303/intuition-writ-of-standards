@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import AlchemyReagentList from "../components/AlchemyReagentList";
-import AlchemyReagentsFilter from "../components/AlchemyReagentsFilter";
+import Header from "../Header";
+import AlchemyReagentList from "../AlchemyReagentsPage/AlchemyReagentList";
+import AlchemyReagentsFilter from "../AlchemyReagentsPage/AlchemyReagentsFilter";
+
+// Styles and images
+import styles from "./AlchemyReagentsPage.module.scss";
+import bronzeMedal from "../../assets/images/icons/ico.medal.bronze.svg";
+import silverMedal from "../../assets/images/icons/ico.medal.silver.svg";
+import goldMedal from "../../assets/images/icons/ico.medal.gold.svg";
 
 function AlchemyReagentsPage() {
   const baseFilters = { contains: "all", rarity: "all", type: "all" };
@@ -59,6 +65,18 @@ function AlchemyReagentsPage() {
     <React.Fragment>
       <Header titleProp="Alchemy Recipes and Reagents" />
       <h2>Reagents</h2>
+      <div className={styles.costs}>
+        <h3>Costs</h3>
+        <div className={styles.cost + " " + styles.common}>
+          <img src={bronzeMedal} /> 1 Coin
+        </div>
+        <div className={styles.cost + " " + styles.uncommon}>
+          <img src={silverMedal} /> 3 Coin
+        </div>
+        <div className={styles.cost + " " + styles.rare}>
+          <img src={goldMedal} /> 6 Coin
+        </div>
+      </div>
       <AlchemyReagentsFilter
         onFilterChangeProp={onFilterChange}
         onFilterClear={onFilterClear}

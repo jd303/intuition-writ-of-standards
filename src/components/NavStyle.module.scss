@@ -1,6 +1,11 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
 ol {
   list-style-type: none;
-  margin: 20px 0;
+  margin: 0;
   padding: 0;
   text-align: center;
   font-family: trattatello;
@@ -42,4 +47,12 @@ ol.regular {
 
 .activeLink {
   color: red;
+}
+
+.routeLink {
+  font-size: 1.5rem;
+}
+
+.subRouteLink {
+  font-size: 1.1rem;
 }

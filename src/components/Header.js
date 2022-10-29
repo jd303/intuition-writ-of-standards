@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Nav from "./Nav";
 import styles from "./HeaderStyle.module.scss";
 import logo from "../assets/images/lg.intuition.svg";
@@ -8,7 +9,9 @@ function Header(props) {
     <React.Fragment>
       <div className={styles.header}>
         <div className={styles.site}>
-          <img className={styles.logo} src={logo} />
+          <NavLink to="/">
+            <img className={styles.logo} src={logo} />
+          </NavLink>
         </div>
         <Nav styleProp="regular" />
       </div>

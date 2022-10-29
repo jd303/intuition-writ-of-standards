@@ -1,0 +1,36 @@
+.columns {
+  display: flex;
+  gap: var(--standard-padding);
+
+  .column {
+    display: inline-block;
+    width: 45%;
+  }
+}
+
+.category {
+  padding: calc(var(--standard-padding) / 2) var(--standard-padding);
+  margin-bottom: calc(var(--standard-padding) / 2);
+  background-color: var(--standard-black-transparent-background);
+
+  .name {
+    font-family: "trattatello";
+    font-size: 1.5rem;
+  }
+
+  .costList {
+    padding-left: 0;
+
+    li {
+      display: flex;
+      gap: var(--standard-padding);
+      justify-content: space-between;
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+      padding-bottom: 4px;
+      margin-bottom: calc(var(--standard-padding) / 2);
+
+      span {
+      }
+    }
+  }
+}

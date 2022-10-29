@@ -1,10 +1,8 @@
 .recipe {
   position: relative;
-  min-width: 750px;
-  max-width: 750px;
   padding: calc(var(--standard-padding) * 3 / 4);
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--standard-black-transparent-background);
 
   // LIST VIEW
   &.list-view {
@@ -12,6 +10,8 @@
     gap: var(--standard-padding);
     justify-content: space-between;
     align-items: center;
+    min-width: 750px;
+    max-width: 750px;
 
     .name,
     .type,
@@ -42,11 +42,20 @@
         flex-direction: column;
         justify-content: center;
       }
+
+      .requirements {
+        .reagent {
+          width: 110px;
+        }
+      }
     }
   }
 
   // CARD VIEW
   &.card-view {
+    min-width: 550px;
+    max-width: 550px;
+
     .effects {
       margin-top: calc(var(--standard-padding) / 2);
     }
@@ -59,11 +68,18 @@
 
     .name {
       margin-bottom: 6px;
+      margin-top: 4px;
     }
 
     .creation {
       line-height: 30px;
       margin-top: calc(var(--standard-padding) / 2);
+
+      .requirements {
+        .reagent {
+          padding: 2px 6px;
+        }
+      }
     }
   }
 
@@ -126,6 +142,7 @@
 
   .requirements {
     gap: 6px;
+
     .reagent {
       padding: 3px;
       border-radius: 3px;

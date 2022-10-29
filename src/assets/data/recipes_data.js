@@ -248,7 +248,8 @@ export const recipesData = [
     name: "Unscent",
     desc: "A small fist-sized cage made from wood that contains a selection of herbs that give off an unnerring yet not distasteful scent.",
     time: "30m",
-    effects: "Animals are less likely to approach within 250m of this scent, unless desperate.  Lasts 8 hours.",
+    effects:
+      "When you create this, name an animal and perform an Animal Handling Move.  If you do not fail the Move, your named animals are less likely to approach within 250m of this scent.  Lasts 6 hours.",
     reagents: [ReagentProperties.Sce, ReagentProperties.Poi],
     dc: 3,
   },
@@ -258,7 +259,7 @@ export const recipesData = [
     desc: "A small fist-sized cage made from wood that contains a selection of herbs that give off a smell not unlike wet animal.",
     time: "30m",
     effects:
-      "When you create this, name an animal and perform an Animal Handling Move.  If you do not fail the Move, yournamed animals are attracted from 1km.  Lasts 8 hours.",
+      "When you create this, name an animal and perform an Animal Handling Move.  If you do not fail the Move, your named animals may be attracted from 1km.  Lasts 6 hours.",
     reagents: [ReagentProperties.Vig],
     dc: 2,
   },

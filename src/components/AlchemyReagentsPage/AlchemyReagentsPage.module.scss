@@ -1,0 +1,16 @@
+.costs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 30px;
+  margin-bottom: 10px;
+
+  .cost {
+    line-height: 25px;
+
+    img {
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+  }
+}

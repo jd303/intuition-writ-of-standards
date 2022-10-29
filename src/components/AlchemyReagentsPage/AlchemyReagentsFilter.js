@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { Rarity, ReagentProperties, AlchemicalTypes } from "../assets/data/reagents_data.js";
-import styles from "./AlchemyReagentsFilter.module.scss";
+import { Rarity, ReagentProperties, AlchemicalTypes } from "../../assets/data/reagents_data.js";
+import styles from "../FilterShared.module.scss";
 
 function AlchemyReagentsFilter(props) {
   const { onFilterChangeProp, onFilterClear, filterValuesProp, startingViewModeProp, onViewModeChangeProp } = props;

@@ -1,7 +1,7 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 
-import logo from "../assets/images/lg.intuition.svg";
+import logo from "../../assets/images/lg.intuition.svg";
 import styles from "./HomePageStyle.module.scss";
 
 function HomePage() {

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import SelectionCheckbox from "./SelectionCheckbox";
-import AlchemyType from "./AlchemyType";
-import AlchemyRarity from "./AlchemyRarity";
-import AlchemyPropertiesList from "./AlchemyPropertiesList";
+import AlchemyType from "../AlchemyType";
+import AlchemyRarity from "../AlchemyRarity";
+import AlchemyPropertiesList from "../AlchemyPropertiesList";
 
 import styles from "./AlchemyReagent.module.scss";
 

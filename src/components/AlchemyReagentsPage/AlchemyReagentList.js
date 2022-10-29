@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { reagentData } from "../assets/data/reagents_data.js";
+import { reagentData } from "../../assets/data/reagents_data.js";
 import AlchemyReagent from "./AlchemyReagent.js";
-
-import styles from "./AlchemyReagentList.scss";
+import styles from "./AlchemyReagentList.module.scss";
 
 function AlchemyReagentList(props) {
   /**
@@ -88,7 +87,7 @@ function AlchemyReagentList(props) {
 
   return (
     <React.Fragment>
-      <ul>
+      <ul className={styles.reagentList}>
         {reagents
           .filter(filterContainsCallback)
           .filter(filterRarityCallback)

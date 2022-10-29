@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import AlchemyRecipesList from "../components/AlchemyRecipesList";
-import AlchemicalRecipesFilter from "../components/AlchemicalRecipesFilter";
+import Header from "../../components/Header";
+import AlchemyRecipesList from "../AlchemyRecipesPage/AlchemyRecipesList";
+import AlchemicalRecipesFilter from "../AlchemyRecipesPage/AlchemicalRecipesFilter";
 
 function AlchemyRecipesPage() {
   /**
