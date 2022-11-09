@@ -1,5 +1,4 @@
 import styles from "./AlchemicalRecipe.module.scss";
-import colourStyles from "../_SharedStyles.module.scss";
 import dcIcon from "../../assets/images/icons/ico.dc.svg";
 import timeIcon from "../../assets/images/icons/ico.clock.svg";
 
@@ -42,7 +41,7 @@ function AlchemicalRecipe(props) {
         <div className={styles.requirements}>
           {collateReagents(recipeProp.reagents).map((reagent, index) => {
             return (
-              <div key={index} className={styles.reagent + " " + colourStyles[reagent.code.toLowerCase()]}>
+              <div key={index} className={styles.reagent + " " + reagent.code.toLowerCase()}>
                 {reagent.name} {reagent.count > 1 && ` (${reagent.count})`}
               </div>
             );

@@ -1,0 +1,89 @@
+:root {
+  --standard-padding: 20px;
+  --standard-black-transparent-background: rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+  font-family: "trattatello";
+  src: url("assets/fonts/trattatello/trattatello.woff2") format("woff2"), url("assets/fonts/trattatello/trattatello.woff") format("woff");
+}
+
+body {
+  padding: var(--standard-padding);
+  background-image: url(assets/images/bg.paper.jpg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "trattatello";
+  text-transform: uppercase;
+}
+
+/* Alchemy Colours */
+.hyd {
+  background-color: #3c78d8;
+}
+
+.for {
+  background-color: #888;
+}
+
+.the {
+  background-color: #e69138;
+}
+
+.vig {
+  background-color: #6aa84f;
+}
+
+.soo {
+  background-color: #a64d79;
+}
+
+.exc {
+  background-color: #f1c232;
+}
+
+.con {
+  background-color: #674ea7;
+}
+
+.cor {
+  background-color: #b6d7a8;
+}
+
+.poi {
+  background-color: #cc0000;
+}
+
+.oil {
+  background-color: #111;
+}
+
+.sce {
+  background-color: #e2a2de;
+}
+
+.card-title {
+  height: 30px;
+  line-height: 20px;
+}
+
+/* Generic Listing for all pages */
+.listing {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--standard-padding) / 2);
+  width: 250px;
+  padding: calc(var(--standard-padding) * 0.75);
+  border-radius: 5px;
+  background-color: #efe7d5;
+  box-shadow: 2px 2px 6px var(--standard-black-transparent-background);
+
+  .listing-title {
+    font-family: trattatello;
+  }
+}

@@ -6,6 +6,8 @@ import MagicSpellsPage from "./components/Magic/MagicSpellsPage";
 import MagicPotionsPage from "./components/Magic/MagicPotionsPage";
 import MagicEnchantingPage from "./components/Magic/MagicEnchantingPage";
 import CostsPage from "./components/CostsPage/CostsPage";
+import AnimalCompanionsPage from "./components/Animals and Gadgets/AnimalCompanionsPage";
+import GadgetsPage from "./components/Animals and Gadgets/GadgetsPage";
 
 const allRoutes = [
   {
@@ -58,6 +60,23 @@ const allRoutes = [
     navLabel: "Costs",
     path: "/costs",
     element: <Route key="0" path="/costs" element={<CostsPage />} />,
+  },
+  {
+    navLabel: "Animals & Gadgets",
+    path: "/animal-companions",
+    element: <Route key="0" path="/animal-companions" element={<AnimalCompanionsPage />} />,
+  },
+  {
+    navLabel: "Animal Companions",
+    path: "/animal-companions",
+    element: <Route key="0" path="/animal-companions" element={<AnimalCompanionsPage />} />,
+    subRouteOf: ["/animal-companions", "/gadgets"],
+  },
+  {
+    navLabel: "Gadgets",
+    path: "/gadgets",
+    element: <Route key="0" path="/gadgets" element={<GadgetsPage />} />,
+    subRouteOf: ["/animal-companions", "/gadgets"],
   },
 ];
 

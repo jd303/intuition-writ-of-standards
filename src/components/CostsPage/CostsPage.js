@@ -15,7 +15,7 @@ function CostsPage() {
         </strong>
         , a coin which is accepted in most nations of the world. The coin has developed a number of colloquial names, such as Stans and Newies.
       </p>
-      <p>These costs are indicative of standards across the Civil Holds. Market forces may apply pressure to these prices.</p>
+      <p>The below are indicative of typical prices across the Civil Holds. Market forces may apply pressure to prices.</p>
       <CostsList costsListProp={Costs} />
     </React.Fragment>
   );
