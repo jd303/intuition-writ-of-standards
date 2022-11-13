@@ -4,7 +4,7 @@ import styles from "./HeaderStyle.module.scss";
 import logo from "../../assets/images/lg.intuition.svg";
 import React from "react";
 
-function Header(props) {
+function Header() {
   return (
     <React.Fragment>
       <div className={styles.header}>
@@ -13,7 +13,7 @@ function Header(props) {
             <img className={styles.logo} src={logo} />
           </NavLink>
         </div>
-        <Nav styleProp="regular" />
+        <Nav style="regular" />
       </div>
     </React.Fragment>
   );

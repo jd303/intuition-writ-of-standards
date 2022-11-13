@@ -1,8 +1,13 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import styles from "./CostsListStyles.module.scss";
 
+CostsList.propTypes = {
+  costsList: PropTypes.array.isRequired,
+};
+
 function CostsList(props) {
-  const { costsListProp } = props;
+  const { costsList } = props;
 
   /**
    * Returns an object with 2 arrays: basics and luxuries
@@ -33,11 +38,11 @@ function CostsList(props) {
       <div className={styles.columns}>
         <div className={styles.column}>
           <h3>Basics</h3>
-          {filterCategories(costsListProp, "basic").map(categoryJSX)}
+          {filterCategories(costsList, "basic").map(categoryJSX)}
         </div>
         <div className={styles.column}>
           <h3>Luxuries</h3>
-          {filterCategories(costsListProp, "luxury").map(categoryJSX)}
+          {filterCategories(costsList, "luxury").map(categoryJSX)}
         </div>
       </div>
     </React.Fragment>

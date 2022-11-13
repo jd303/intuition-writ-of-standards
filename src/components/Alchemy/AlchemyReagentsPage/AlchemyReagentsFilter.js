@@ -1,19 +1,26 @@
 import React, { useState } from "react";
-
+import { PropTypes } from "prop-types";
 import { Rarity, ReagentProperties, AlchemicalTypes } from "../../../assets/data/reagents_data.js";
 import styles from "../../FilterShared.module.scss";
 
+AlchemyReagentsFilter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  onFilterClear: PropTypes.func.isRequired,
+  onViewModeChange: PropTypes.func.isRequired,
+  filterValues: PropTypes.object.isRequired,
+  startingViewMode: PropTypes.object.isRequired,
+};
+
 function AlchemyReagentsFilter(props) {
-  const { onFilterChangeProp, onFilterClear, filterValuesProp, startingViewModeProp, onViewModeChangeProp } = props;
+  const { onFilterChange, onFilterClear, filterValues, startingViewMode, onViewModeChange } = props;
 
   // References to elements
   const containsRef = React.useRef(null);
   const rarityRef = React.useRef(null);
   const reagentTypeRef = React.useRef(null);
-  const viewRef = React.useRef(null);
 
-  const onFilterChange = (event) => {
-    onFilterChangeProp(event);
+  const onFilterChangeHandler = (event) => {
+    onFilterChange(event);
   };
 
   const clearFilter = () => {
@@ -26,7 +33,7 @@ function AlchemyReagentsFilter(props) {
   /**
    * View Mode States
    * */
-  const [viewMode, setViewMode] = useState(startingViewModeProp || { mode: "list-view", label: "Card View" });
+  const [viewMode, setViewMode] = useState(startingViewMode || { mode: "list-view", label: "Card View" });
 
   /**
    * A user toggles the view mode
@@ -47,7 +54,7 @@ function AlchemyReagentsFilter(props) {
 
     localStorage.setItem("reagents-view", JSON.stringify(newViewMode));
     setViewMode(newViewMode);
-    onViewModeChangeProp(newViewMode);
+    onViewModeChange(newViewMode);
   };
 
   /**
@@ -58,7 +65,7 @@ function AlchemyReagentsFilter(props) {
       <div className={styles.filterOptions}>
         <div className={styles.contains}>
           <h3>Contains</h3>
-          <select name="contains" value={filterValuesProp.contains} ref={containsRef} onChange={onFilterChange}>
+          <select name="contains" value={filterValues.contains} ref={containsRef} onChange={onFilterChangeHandler}>
             <option value="all">All</option>
             {Object.keys(ReagentProperties).map((key) => (
               <option key={key} value={key}>
@@ -69,7 +76,7 @@ function AlchemyReagentsFilter(props) {
         </div>
         <div className={styles.rarity}>
           <h3>Rarity</h3>
-          <select name="rarity" value={filterValuesProp.rarity} ref={rarityRef} onChange={onFilterChange}>
+          <select name="rarity" value={filterValues.rarity} ref={rarityRef} onChange={onFilterChangeHandler}>
             <option value="all">All</option>
             {Object.keys(Rarity).map((key) => (
               <option key={key} value={Rarity[key]}>
@@ -80,7 +87,7 @@ function AlchemyReagentsFilter(props) {
         </div>
         <div className={styles.type}>
           <h3>Type</h3>
-          <select name="reagenttype" value={filterValuesProp.type} ref={reagentTypeRef} onChange={onFilterChange}>
+          <select name="reagenttype" value={filterValues.type} ref={reagentTypeRef} onChange={onFilterChangeHandler}>
             <option value="all">All</option>
             {Object.keys(AlchemicalTypes).map((key) => (
               <option key={key} value={AlchemicalTypes[key]}>

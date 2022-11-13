@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import { reagentData } from "../../../assets/data/reagents_data.js";
 import AlchemyReagent from "./AlchemyReagent.js";
 import styles from "./AlchemyReagentList.module.scss";
+
+AlchemyReagentList.propTypes = {
+  filter: PropTypes.object.isRequired,
+  view: PropTypes.object.isRequired,
+};
 
 function AlchemyReagentList(props) {
   /**
    * Deconstruct properties
    * */
-  const { filterProp, viewProp } = props;
+  const { filter, view } = props;
 
   /**
    * Applies state to data
@@ -27,7 +33,7 @@ function AlchemyReagentList(props) {
    * Sets whether a reagent is selected
    * */
   const updateSelection = (id) => {
-    setReagents((prevState) => {
+    setReagents((/*prevState*/) => {
       return reagents.map((reagent) => {
         if (reagent.id === id) {
           return {
@@ -45,9 +51,8 @@ function AlchemyReagentList(props) {
    * */
   const filterContainsCallback = (reagent) => {
     switch (true) {
-      case props.filterProp.contains !== "all":
-        return reagent.properties.find((prop) => prop.code == props.filterProp.contains);
-        break;
+      case filter.contains !== "all":
+        return reagent.properties.find((prop) => prop.code == filter.contains);
 
       case "all":
       default:
@@ -60,9 +65,8 @@ function AlchemyReagentList(props) {
    * */
   const filterRarityCallback = (reagent) => {
     switch (true) {
-      case props.filterProp.rarity !== "all":
-        return reagent.rarity == props.filterProp.rarity;
-        break;
+      case filter.rarity !== "all":
+        return reagent.rarity == filter.rarity;
 
       case "all":
       default:
@@ -75,9 +79,8 @@ function AlchemyReagentList(props) {
    * */
   const filterTypeCallback = (reagent) => {
     switch (true) {
-      case props.filterProp.type !== "all":
-        return reagent.type == props.filterProp.type;
-        break;
+      case filter.type !== "all":
+        return reagent.type == filter.type;
 
       case "all":
       default:
@@ -93,7 +96,7 @@ function AlchemyReagentList(props) {
           .filter(filterRarityCallback)
           .filter(filterTypeCallback)
           .map((reagent, index) => {
-            return <AlchemyReagent key={index} reagentProp={reagent} updateSelectionProp={updateSelection} viewModeProp={viewProp.mode} />;
+            return <AlchemyReagent key={index} reagent={reagent} updateSelection={updateSelection} viewMode={view.mode} />;
           })}
       </ul>
     </React.Fragment>

@@ -11,12 +11,12 @@ import mapPinIcon from "../../assets/images/icons/ico.map_pin.svg";
 // Data
 import { spells } from "../../assets/data/spells_data.js";
 
-function MagicSpellsPage(props) {
+function MagicSpellsPage() {
   /**
    * Filter State
    * */
   const filters = { school: "all" };
-  const [filterValues, setFilter] = React.useState(filters);
+  const [filterValues] = React.useState(filters);
 
   const onFilterChange = () => {
     console.log("FILTER CHANGE");
@@ -29,7 +29,7 @@ function MagicSpellsPage(props) {
     <React.Fragment>
       <Header />
       <h2>Spells</h2>
-      <MagicSpellsFilter filterValuesProp={filterValues} onFilterChangeProp={onFilterChange} />
+      <MagicSpellsFilter filterValues={filterValues} onFilterChange={onFilterChange} />
       <div className={styles.spells}>
         {spells.map((spell, index) => (
           <div key={index} className={styles.spell}>

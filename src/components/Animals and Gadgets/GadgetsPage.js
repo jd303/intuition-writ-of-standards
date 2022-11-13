@@ -11,8 +11,8 @@ function GadgetsPage() {
       <Header />
       <h2>Gadgets</h2>
       <ListingWrapper>
-        {gadgets.map((gadget) => {
-          return <Listing>{gadget.name}</Listing>;
+        {gadgets.map((gadget, index) => {
+          return <Listing key={index}>{gadget.name}</Listing>;
         })}
       </ListingWrapper>
     </React.Fragment>

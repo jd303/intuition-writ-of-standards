@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { PropTypes } from "prop-types";
 import styles from "./Listings.module.scss";
 
+ListingWrapper.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
+
 function ListingWrapper(props) {
+  const { children } = props;
   const [viewMode, setViewMode] = useState({ mode: "list" });
 
   const toggleViewMode = () => {
@@ -18,7 +24,7 @@ function ListingWrapper(props) {
       <button className={styles.listingSwitcher} onClick={toggleViewMode}>
         Swtich
       </button>
-      <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode.mode}`]}`}>{props.children}</div>
+      <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode.mode}`]}`}>{children}</div>
     </section>
   );
 }

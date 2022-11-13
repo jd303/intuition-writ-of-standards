@@ -1,8 +1,14 @@
-import React from "react";
+import { PropTypes } from "prop-types";
 import styles from "./Listings.module.scss";
 
+Listing.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
+
 function Listing(props) {
-  return <div className={styles.listing}>{props.children}</div>;
+  const { children } = props;
+
+  return <div className={styles.listing}>{children}</div>;
 }
 
 export default Listing;

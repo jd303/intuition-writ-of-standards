@@ -10,7 +10,7 @@ function HomePage() {
       <div className={styles.header}>
         <img className={styles.logo} src={logo} />
       </div>
-      <Nav styleProp="home"></Nav>
+      <Nav style="home"></Nav>
     </React.Fragment>
   );
 }

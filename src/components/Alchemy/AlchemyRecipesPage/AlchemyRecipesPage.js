@@ -57,16 +57,16 @@ function AlchemyRecipesPage() {
    * */
   return (
     <React.Fragment>
-      <Header titleProp="Alchemy Recipes and Reagents" />
+      <Header title="Alchemy Recipes and Reagents" />
       <h2>Alchemy Recipes</h2>
       <AlchemicalRecipesFilter
-        onFilterChangeProp={onFilterChange}
-        onFilterClearProp={onFilterClear}
-        filterValuesProp={filterValues}
-        viewModeProp={viewMode}
-        onViewModeChangeProp={onViewModeChange}
+        onFilterChange={onFilterChange}
+        onFilterClear={onFilterClear}
+        filterValues={filterValues}
+        viewMode={viewMode}
+        onViewModeChange={onViewModeChange}
       />
-      <AlchemyRecipesList viewModeProp={viewMode} filterValuesProp={filterValues} />
+      <AlchemyRecipesList viewMode={viewMode} filterValues={filterValues} />
     </React.Fragment>
   );
 }

@@ -1,29 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
+import { PropTypes } from "prop-types";
 import { RecipeTypes } from "../../../assets/data/recipes_data";
 import styles from "../../FilterShared.module.scss";
+
+AlcehmicalRecipesFilter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  onFilterClear: PropTypes.func.isRequired,
+  onViewModeChange: PropTypes.func.isRequired,
+  filterValues: PropTypes.object.isRequired,
+  viewMode: PropTypes.object.isRequired,
+};
 
 function AlcehmicalRecipesFilter(props) {
   /**
    * Destructure Properties
    * */
-  const { onFilterChangeProp, onFilterClearProp, filterValuesProp, viewModeProp, onViewModeChangeProp } = props;
-
-  console.log("VMP", viewModeProp);
+  const { onFilterChange, onFilterClear, filterValues, viewMode, onViewModeChange } = props;
 
   // References to elements
   const typeRef = React.useRef(null);
-  const viewRef = React.useRef(null);
 
   /**
    * Filter change callbacks
    * */
-  const onFilterChange = (event) => {
-    onFilterChangeProp(event);
+  const onFilterChangeHandler = (event) => {
+    onFilterChange(event);
   };
 
   const clearFilter = () => {
     typeRef.value = "all";
-    onFilterClearProp();
+    onFilterClear();
   };
 
   /**
@@ -34,7 +40,7 @@ function AlcehmicalRecipesFilter(props) {
       <div className={styles.filterOptions}>
         <div className={styles.contains}>
           <h3>Type</h3>
-          <select name="type" value={filterValuesProp.contains} ref={typeRef} onChange={onFilterChange}>
+          <select name="type" value={filterValues.contains} ref={typeRef} onChange={onFilterChangeHandler}>
             <option value="all">All</option>
             {Object.keys(RecipeTypes).map((key) => (
               <option key={key} value={key}>
@@ -49,7 +55,7 @@ function AlcehmicalRecipesFilter(props) {
         <div className={styles.divider}></div>
         <div className={styles.view}>
           <h3>View</h3>
-          <button onClick={onViewModeChangeProp}>{viewModeProp.label}</button>
+          <button onClick={onViewModeChange}>{viewMode.label}</button>
         </div>
       </div>
     </div>

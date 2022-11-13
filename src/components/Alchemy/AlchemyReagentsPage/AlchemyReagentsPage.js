@@ -43,7 +43,7 @@ function AlchemyReagentsPage() {
   /**
    * A user clears a filter
    * */
-  const onFilterClear = (event) => {
+  const onFilterClear = () => {
     setFilters(() => {
       return baseFilters;
     });
@@ -63,7 +63,7 @@ function AlchemyReagentsPage() {
    * */
   return (
     <React.Fragment>
-      <Header titleProp="Alchemy Recipes and Reagents" />
+      <Header title="Alchemy Recipes and Reagents" />
       <h2>Reagents</h2>
       <div className={styles.costs}>
         <h3>Costs</h3>
@@ -78,13 +78,13 @@ function AlchemyReagentsPage() {
         </div>
       </div>
       <AlchemyReagentsFilter
-        onFilterChangeProp={onFilterChange}
+        onFilterChange={onFilterChange}
         onFilterClear={onFilterClear}
-        filterValuesProp={filterValues}
-        startingViewModeProp={startingView}
-        onViewModeChangeProp={onChangeView}
+        filterValues={filterValues}
+        startingViewMode={startingView}
+        onViewModeChange={onChangeView}
       />
-      <AlchemyReagentList filterProp={filterValues} viewProp={viewValue} />
+      <AlchemyReagentList filter={filterValues} view={viewValue} />
     </React.Fragment>
   );
 }

@@ -11,9 +11,9 @@ function AnimalCompanionsPage() {
       <Header />
       <h2>Animal Companions</h2>
       <ListingWrapper>
-        {animal_companion_moves.map((move) => {
+        {animal_companion_moves.map((move, index) => {
           return (
-            <Listing>
+            <Listing key={index}>
               <ListingTitle>{move.name}</ListingTitle>
               <div className="effect">{move.type}</div>
               <div className="effect">{move.effect}</div>
