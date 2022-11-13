@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header";
-import ListingWrapper from "../_Listings/ListingWrapper";
-import Listing from "../_Listings/Listing";
+import Header from "../Header/Header";
+import ListingWrapper from "../Listings/ListingWrapper";
+import Listing from "../Listings/Listing";
 
 import { gadgets } from "../../assets/data/gadgets";
 

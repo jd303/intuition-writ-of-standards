@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../../components/Header";
+import Header from "../../Header/Header";
 import AlchemyRecipesList from "../AlchemyRecipesPage/AlchemyRecipesList";
 import AlchemicalRecipesFilter from "../AlchemyRecipesPage/AlchemicalRecipesFilter";
 

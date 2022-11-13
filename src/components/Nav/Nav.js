@@ -1,4 +1,4 @@
-import { RouteDefinitions, MainNavRouteDefinitions } from "../Routes";
+import { RouteDefinitions, MainNavRouteDefinitions } from "../../Routes";
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./NavStyle.module.scss";
 

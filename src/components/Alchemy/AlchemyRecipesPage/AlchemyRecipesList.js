@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { recipesData } from "../../assets/data/recipes_data.js";
+import { recipesData } from "../../../assets/data/recipes_data.js";
 import AlchemicalRecipe from "./AlchemicalRecipe";
 import styles from "./AlchemyRecipesList.module.scss";
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Header from "../Header";
+import Header from "../../Header/Header";
 import AlchemyReagentList from "../AlchemyReagentsPage/AlchemyReagentList";
 import AlchemyReagentsFilter from "../AlchemyReagentsPage/AlchemyReagentsFilter";
 
 // Styles and images
 import styles from "./AlchemyReagentsPage.module.scss";
-import bronzeMedal from "../../assets/images/icons/ico.medal.bronze.svg";
-import silverMedal from "../../assets/images/icons/ico.medal.silver.svg";
-import goldMedal from "../../assets/images/icons/ico.medal.gold.svg";
+import bronzeMedal from "../../../assets/images/icons/ico.medal.bronze.svg";
+import silverMedal from "../../../assets/images/icons/ico.medal.silver.svg";
+import goldMedal from "../../../assets/images/icons/ico.medal.gold.svg";
 
 function AlchemyReagentsPage() {
   const baseFilters = { contains: "all", rarity: "all", type: "all" };

@@ -1,4 +1,4 @@
-import styles from "./AlchemicalPropertiesList.module.scss";
+import styles from "./AlchemyPropertiesList.module.scss";
 
 function AlchemyPropertiesList(props) {
   const { viewModeProp } = props;

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import Nav from "./Nav";
+import Nav from "../Nav/Nav";
 import styles from "./HeaderStyle.module.scss";
-import logo from "../assets/images/lg.intuition.svg";
+import logo from "../../assets/images/lg.intuition.svg";
 import React from "react";
 
 function Header(props) {

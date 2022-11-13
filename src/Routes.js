@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage/HomePage";
-import AlchemyReagentsPage from "./components/AlchemyReagentsPage/AlchemyReagentsPage";
-import AlchemyRecipesPage from "./components/AlchemyRecipesPage/AlchemyRecipesPage";
+import HomePage from "./components/Home/HomePage";
+import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/AlchemyReagentsPage";
+import AlchemyRecipesPage from "./components/Alchemy/AlchemyRecipesPage/AlchemyRecipesPage";
 import MagicSpellsPage from "./components/Magic/MagicSpellsPage";
 import MagicPotionsPage from "./components/Magic/MagicPotionsPage";
 import MagicEnchantingPage from "./components/Magic/MagicEnchantingPage";
-import CostsPage from "./components/CostsPage/CostsPage";
+import CostsPage from "./components/Costs/CostsPage";
 import AnimalCompanionsPage from "./components/Animals and Gadgets/AnimalCompanionsPage";
 import GadgetsPage from "./components/Animals and Gadgets/GadgetsPage";
 

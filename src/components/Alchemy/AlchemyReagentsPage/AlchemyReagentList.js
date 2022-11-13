@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { reagentData } from "../../assets/data/reagents_data.js";
+import { reagentData } from "../../../assets/data/reagents_data.js";
 import AlchemyReagent from "./AlchemyReagent.js";
 import styles from "./AlchemyReagentList.module.scss";
 

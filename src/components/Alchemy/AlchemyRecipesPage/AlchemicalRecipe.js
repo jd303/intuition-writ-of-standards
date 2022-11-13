@@ -1,6 +1,6 @@
 import styles from "./AlchemicalRecipe.module.scss";
-import dcIcon from "../../assets/images/icons/ico.dc.svg";
-import timeIcon from "../../assets/images/icons/ico.clock.svg";
+import dcIcon from "../../../assets/images/icons/ico.dc.svg";
+import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 
 function AlchemicalRecipe(props) {
   const { recipeProp, viewModeProp } = props;

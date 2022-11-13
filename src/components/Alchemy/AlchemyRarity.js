@@ -1,6 +1,6 @@
-import bronzeMedal from "../assets/images/icons/ico.medal.bronze.svg";
-import silverMedal from "../assets/images/icons/ico.medal.silver.svg";
-import goldMedal from "../assets/images/icons/ico.medal.gold.svg";
+import bronzeMedal from "../../assets/images/icons/ico.medal.bronze.svg";
+import silverMedal from "../../assets/images/icons/ico.medal.silver.svg";
+import goldMedal from "../../assets/images/icons/ico.medal.gold.svg";
 
 import { styles } from "./AlchemyRarityStyle.scss";
 

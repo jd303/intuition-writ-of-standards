@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Header/Header";
 import { animal_companion_moves } from "../../assets/data/animal_companion_moves";
-import Listing from "../_Listings/Listing";
-import ListingTitle from "../_Listings/ListingTitle";
-import ListingWrapper from "../_Listings/ListingWrapper";
+import Listing from "../Listings/Listing";
+import ListingTitle from "../Listings/ListingTitle";
+import ListingWrapper from "../Listings/ListingWrapper";
 
 function AnimalCompanionsPage() {
   return (
