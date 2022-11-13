@@ -3,6 +3,11 @@ image: node
 pipelines:
   default:
     - step:
+        name: Test
+        script:
+          - npm install && npm test
+
+    - step:
         name: Build
         script:
           - npm install && npm run build
