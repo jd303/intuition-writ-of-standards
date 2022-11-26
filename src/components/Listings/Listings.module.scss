@@ -13,10 +13,11 @@
   border-radius: 5px;
   background-color: #efe7d5;
   box-shadow: 2px 2px 6px var(--standard-black-transparent-background);
+}
 
-  .listingTitle {
-    font-family: trattatello;
-  }
+.title {
+  font-family: trattatello;
+  font-size: 1.35rem;
 }
 
 // View Mode Styles

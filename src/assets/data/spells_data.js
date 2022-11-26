@@ -31,6 +31,8 @@ const MagicRanges = {
 
 const MagicDurations = {
   Instant: "Instant",
+  Short: "3 Rounds",
+  Medium: "1 Minute",
 };
 
 /**
@@ -63,5 +65,15 @@ export const spells = [
     challenge_type: MagicChallengeTypes.None,
     range: MagicRanges.Touch,
     duration: MagicDurations.Instant,
+  },
+  {
+    name: "Invisibility",
+    cost: 2,
+    school: MagicSchools.Illusion,
+    effect_cantrip: `You give someone 1 Cloak.  This can only happen once per 5 minutes.`,
+    effect_full: `A willing target becomes invisible.`,
+    challenge_type: MagicChallengeTypes.None,
+    range: MagicRanges.Short,
+    duration: MagicDurations.Medium,
   },
 ];

@@ -1,6 +1,28 @@
 :root {
   --standard-padding: 20px;
   --standard-black-transparent-background: rgba(0, 0, 0, 0.1);
+  --bevel-size: 7px;
+
+  /* prettier-ignore */
+  --shape-bevelled: polygon(
+	0 var(--bevel-size),
+	calc(var(--bevel-size) / 2) var(--bevel-size),
+	var(--bevel-size) calc(var(--bevel-size) / 2),
+	var(--bevel-size) 0px,
+	calc(100% - var(--bevel-size)) 0,
+	calc(100% - var(--bevel-size)) calc(var(--bevel-size) / 2),
+	calc(100% - var(--bevel-size) / 2) var(--bevel-size),
+	100% var(--bevel-size),
+	100% calc(100% - var(--bevel-size)),
+	calc(100% - var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
+	calc(100% - var(--bevel-size)) calc(100% - var(--bevel-size) / 2),
+	calc(100% - var(--bevel-size)) 100%,
+	var(--bevel-size) 100%,
+	var(--bevel-size) calc(100% - var(--bevel-size) / 2),
+	calc(var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
+	0 calc(100% - var(--bevel-size)),
+	0 100%
+  );
 }
 
 @font-face {
