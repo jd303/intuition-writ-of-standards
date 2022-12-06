@@ -25,7 +25,7 @@ function ListingWrapper(props) {
 
   return (
     <section className={styles.listingsSection}>
-      <header>
+      <header className={styles.header}>
         <StatusBar filters={filters} viewMode={viewMode} onViewModeChange={toggleViewMode} />
       </header>
       <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode.mode}`]}`}>{children}</div>

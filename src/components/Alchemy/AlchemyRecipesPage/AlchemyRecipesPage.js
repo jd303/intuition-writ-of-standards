@@ -80,27 +80,28 @@ function AlchemyRecipesPage() {
         {recipesData.filter(filterByType).map((recipe, index) => (
           <Listing key={index} className={styles.recipe}>
             <div className={styles.recipe}>
-              <div className={styles.type} data-type={recipe.type}></div>
-              <div className={styles.name + " card-title"}>{recipe.name}</div>
+              <div className={styles.title}>
+                <div className={styles.type} data-type={recipe.type}></div>
+                <div className={styles.name + " card-title"}>{recipe.name}</div>
+              </div>
               <div className={styles.description}>{recipe.desc}</div>
               <div className={styles.effects}>{recipe.effects}</div>
-              <div className={styles.creation}>
-                <div className={styles.dc}>
-                  <img src={dcIcon} />
-                  {recipe.dc}
-                </div>
-                <div className={styles.time}>
-                  <img src={timeIcon} /> {recipe.time}
-                </div>
-                <div className={styles.requirements}>
-                  {collateReagents(recipe.reagents).map((reagent, index) => {
-                    return (
-                      <div key={index} className={styles.reagent + " " + reagent.code.toLowerCase()}>
-                        {reagent.name} {reagent.count > 1 && ` (${reagent.count})`}
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className={styles.dc}>
+                <img src={dcIcon} />
+                {recipe.dc}
+              </div>
+              <div className={styles.time}>
+                <img src={timeIcon} /> {recipe.time}
+              </div>
+
+              <div className={styles.requirements}>
+                {collateReagents(recipe.reagents).map((reagent, index) => {
+                  return (
+                    <div key={index} className={styles.reagent + " " + reagent.code.toLowerCase()}>
+                      {reagent.name} {reagent.count > 1 && ` (${reagent.count})`}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </Listing>
