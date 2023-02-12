@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Header from "../../Header/Header";
+import Header from "../../Components/Header/Header";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
 import { recipesData, RecipeTypes } from "../../../assets/data/recipes_data.js";
 import dcIcon from "../../../assets/images/icons/ico.dc.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import styles from "./AlchemicalRecipe.module.scss";
+import ls from "../../Listings/Listings.module.scss";
 
 function AlchemyRecipesPage() {
   /**
@@ -80,7 +81,7 @@ function AlchemyRecipesPage() {
         {recipesData.filter(filterByType).map((recipe, index) => (
           <Listing key={index} className={styles.recipe}>
             <div className={styles.recipe}>
-              <div className={styles.title}>
+              <div className={ls["item-title"]}>
                 <div className={styles.type} data-type={recipe.type}></div>
                 <div className={styles.name + " card-title"}>{recipe.name}</div>
               </div>

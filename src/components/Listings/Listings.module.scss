@@ -9,43 +9,58 @@
   --card-columns: 1fr 1fr;
 
   display: grid;
-  gap: calc(var(--standard-padding) / 2);
+  gap: calc(var(--standard-padding) / 3);
 
-  @media (min-width: 768px) {
-    --card-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    --card-columns: repeat(4, 1fr);
-  }
-
+  // VIEWS
   &.view_ {
+    // LIST VIEW
     &list {
-      grid-template-columns: 100%;
+      grid-template-columns: 1fr;
+      border-radius: 12px;
+
+      .listing {
+        padding: calc(var(--standard-padding) * 0.25);
+      }
     }
 
+    // CARD VIEW
     &card {
       grid-template-columns: var(--card-columns);
+
+      --card-columns: repeat(1, 1fr);
+
+      @media (min-width: 800px) {
+        --card-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1200px) {
+        --card-columns: repeat(3, 1fr);
+      }
+
+      @media (min-width: 1600px) {
+        --card-columns: repeat(4, 1fr);
+      }
+
+      .listing {
+        padding: calc(var(--standard-padding) * 0.5);
+        border-radius: 12px;
+        box-shadow: 2px 2px 6px var(--standard-black-transparent-background);
+      }
     }
   }
 }
 
 .listing {
   width: 100%;
-  padding: calc(var(--standard-padding) * 0.75);
   border-radius: 5px;
-  background-color: #efe7d5;
-  box-shadow: 2px 2px 6px var(--standard-black-transparent-background);
   box-sizing: border-box;
+  background-color: #efe7d5;
 }
 
 // View Mode Styles
-.view_ {
-  &list {
-    // styles
-  }
 
-  &card {
-    // styles
-  }
+.item-title {
+  font-family: "trattatello";
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 }

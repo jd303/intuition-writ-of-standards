@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "../Components/Header/Header";
 import { animal_companion_moves } from "../../assets/data/animal_companion_moves";
 import Listing from "../Listings/Listing";
 import ListingTitle from "../Listings/ListingTitle";
@@ -10,7 +10,7 @@ function AnimalCompanionsPage() {
     <React.Fragment>
       <Header />
       <h2>Animal Companions</h2>
-      <ListingWrapper>
+      <ListingWrapper filter={false}>
         {animal_companion_moves.map((move, index) => {
           return (
             <Listing key={index}>

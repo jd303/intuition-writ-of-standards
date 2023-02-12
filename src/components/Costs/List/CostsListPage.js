@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "../../Components/Header/Header";
 import CostsList from "./CostsList";
-import { Costs } from "../../assets/data/costs_data";
+import { Costs } from "../../../assets/data/costs_data";
 
-function CostsPage() {
+function CostsListPage() {
   return (
     <React.Fragment>
       <Header />
@@ -21,4 +21,4 @@ function CostsPage() {
   );
 }
 
-export default CostsPage;
+export default CostsListPage;

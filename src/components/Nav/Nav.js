@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import { RouteDefinitions, MainNavRouteDefinitions } from "../../Routes";
+import { routeSections, RouteDefinitions } from "../../Routes";
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./NavStyle.module.scss";
 
@@ -7,24 +7,27 @@ Nav.propTypes = {
   style: PropTypes.string.isRequired,
 };
 
-function Nav(props) {
+export function Nav(props) {
   const { style } = props;
   const location = useLocation();
-  const subRoutes = RouteDefinitions().filter((route) => route.subRouteOf?.includes(location.pathname));
+  const allRoutes = RouteDefinitions();
+  const currentRoute = allRoutes.find((rt) => rt.path == location.pathname);
+  const currentRouteSection = routeSections.find((rt) => rt.navLabel == currentRoute.parent);
+  const childRoutes = allRoutes.filter((rt) => rt.parent == currentRouteSection.navLabel);
 
   return (
     <div className={styles.nav}>
       <ol className={styles[style]}>
-        {MainNavRouteDefinitions().map((rt, index) => (
+        {routeSections.map((rt, index) => (
           <li key={index} className={styles.routeLink}>
-            <NavLink to={rt.path} className={({ isActive }) => (isActive ? styles.activeLink : "")}>
+            <NavLink to={rt.path} className={currentRouteSection.navLabel == rt.navLabel ? styles.activeLink : ""}>
               {rt.navLabel}
             </NavLink>
           </li>
         ))}
       </ol>
       <ol className={styles[style]}>
-        {subRoutes?.map((rt, index) => (
+        {childRoutes?.map((rt, index) => (
           <li key={index} className={styles.subRouteLink}>
             <NavLink to={rt.path} className={({ isActive }) => (isActive ? styles.activeLink : "")}>
               {rt.navLabel}
@@ -36,4 +39,14 @@ function Nav(props) {
   );
 }
 
-export default Nav;
+export function NavHome() {
+  return (
+    <ol className="home">
+      {routeSections.map((rt, index) => (
+        <li key={index} className={styles.routeLink}>
+          <NavLink to={rt.path}>{rt.navLabel}</NavLink>
+        </li>
+      ))}
+    </ol>
+  );
+}

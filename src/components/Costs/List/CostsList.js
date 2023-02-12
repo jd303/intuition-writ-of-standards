@@ -1,6 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import styles from "./CostsListStyles.module.scss";
+import ls from "../../Listings/Listings.module.scss";
 
 CostsList.propTypes = {
   costsList: PropTypes.array.isRequired,
@@ -19,7 +20,7 @@ function CostsList(props) {
   const categoryJSX = (cost, index) => {
     return (
       <div key={index} className={styles.category}>
-        <div className={styles.name}>{cost.name}</div>
+        <div className={ls["item-title"]}>{cost.name}</div>
         <ul className={styles.costList}>
           {cost.costs.map((costing, index2) => {
             return (

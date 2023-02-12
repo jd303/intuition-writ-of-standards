@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "../Components/Header/Header";
 import ListingWrapper from "../Listings/ListingWrapper";
 import Listing from "../Listings/Listing";
 

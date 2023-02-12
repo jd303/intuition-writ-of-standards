@@ -1,5 +1,5 @@
 import * as React from "react";
-import Header from "../Header/Header";
+import Header from "../../Components/Header/Header";
 
 function MagicPotionsPage() {
   return (

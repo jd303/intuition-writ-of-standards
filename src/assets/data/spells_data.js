@@ -32,7 +32,7 @@ const MagicRanges = {
 const MagicDurations = {
   Instant: "Instant",
   Short: "3 Rounds",
-  Medium: "1 Minute",
+  Medium: "1 Min",
 };
 
 /**
