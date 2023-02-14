@@ -4,30 +4,31 @@
   align-items: center;
 
   // Update when in list view
-  &.view-list {
-    padding: calc(var(--standard-padding) / 2);
-    padding-top: calc(var(--standard-padding) / 40);
+  &.view- {
+    &list {
+      .effects {
+        flex-direction: row;
 
-    .effects {
-      flex-direction: row;
+        .effect {
+          min-width: 40%;
+        }
+      }
 
-      .effect {
-        min-width: 40%;
+      .mechanics {
+        grid-row: 1;
+        grid-column: 3;
+        margin-top: 0;
+        margin-right: var(--standard-padding);
+        justify-content: flex-end;
       }
     }
 
-    .mechanics {
-      grid-row: 1;
-      grid-column: 3;
-      margin-top: 0;
-      margin-right: var(--standard-padding);
-      justify-content: flex-end;
+    &card {
+      .effects,
+      .mechanics {
+        padding: 8px 0;
+      }
     }
-  }
-
-  &.view-card {
-    padding: var(--standard-padding);
-    padding-top: calc(var(--standard-padding) / 2.5);
   }
 
   .name,
@@ -36,18 +37,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    min-height: 50px;
-    border-bottom: 1px solid rgba(38, 27, 13, 0.2);
-  }
-
-  .name {
-    grid-row: 1;
-    grid-column: 1 / 4;
-    font-family: "trattatello";
-    font-size: 1.5rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    min-height: 40px;
   }
 
   .cost {
@@ -69,9 +59,8 @@
   .effects,
   .mechanics {
     padding: 8px 0;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 0;
-    border-radius: 8px;
   }
 
   .effects {
@@ -80,6 +69,7 @@
     grid-row: 3;
     grid-column: 1 / 6;
     flex-direction: column;
+    border-top: var(--standard-divider);
 
     .effect {
       display: flex;
@@ -111,5 +101,11 @@
         height: 20px;
       }
     }
+  }
+}
+
+@media print {
+  .effects {
+    border-top: none !important;
   }
 }

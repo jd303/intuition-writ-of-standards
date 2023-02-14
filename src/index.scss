@@ -2,6 +2,11 @@
   --standard-padding: 20px;
   --standard-black-transparent-background: rgba(0, 0, 0, 0.1);
   --bevel-size: 7px;
+  --font-large: 24px;
+  --font-regular: 14px;
+  --font-small: 10px;
+
+  --standard-divider: 1px solid rgba(38, 27, 13, 0.2);
 
   /* prettier-ignore */
   --shape-bevelled: polygon(
@@ -31,6 +36,7 @@
 }
 
 body {
+  font-size: var(--font-regular);
   padding: var(--standard-padding);
   background-image: url(assets/images/bg.paper.jpg);
 }
@@ -100,4 +106,24 @@ button {
 
 .sce {
   background-color: #e2a2de;
+}
+
+@media print {
+  :root {
+    --font-large: 18px;
+    --font-regular: 10px;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+
+  h2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 100%;
+  }
 }

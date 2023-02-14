@@ -1,11 +1,12 @@
 .container {
   display: block;
-  min-width: 25px;
-  min-height: 25px;
+  min-width: 22px;
+  min-height: 22px;
   padding: 4px;
   color: #fff;
   text-align: center;
-  line-height: 25px;
+  line-height: 22px;
+  font-size: 15px;
   background-color: rgba(78, 32, 96, 0.75);
   border-radius: 50%;
 }

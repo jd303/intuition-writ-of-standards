@@ -1,0 +1,10 @@
+.move {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.type {
+  grid-row: 1;
+  grid-column: 2;
+}

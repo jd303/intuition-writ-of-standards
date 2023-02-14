@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Header from "../../Components/Header/Header";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
+import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
 import Medal from "../../Components/Medal/Medal";
 import CircledText from "../../Components/CircledText/CircledText";
 
 // Styles
 import st from "./MagicSpellsPage.module.scss";
-import ls from "../../Listings/Listings.module.scss";
 import target from "../../../assets/images/icons/ico.target.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
@@ -87,7 +87,7 @@ function MagicSpellsPage() {
         {spells.filter(filterBySchool).map((spell, index) => (
           <Listing key={index}>
             <div className={st.spell + " " + st["view-" + viewMode.mode]}>
-              <div className={ls["item-title"] + " " + st.name}>{spell.name}</div>
+              <ListingTitle bottomborder>{spell.name}</ListingTitle>
               <div className={st.cost}>
                 <CircledText text={spell.cost.toString()} />
               </div>

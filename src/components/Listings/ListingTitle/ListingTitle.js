@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import styles from "./Listings.module.scss";
+import styles from "./ListingTitle.module.scss";
 
 ListingTitle.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
@@ -8,7 +8,13 @@ ListingTitle.propTypes = {
 function ListingTitle(props) {
   const { children } = props;
 
-  return <div className={styles.listingTitle}>{children}</div>;
+  const style = () => {
+    let combinedStyles = "";
+    combinedStyles += " " + styles.listingTitle;
+    return combinedStyles;
+  };
+
+  return <div className={style()}>{children}</div>;
 }
 
 export default ListingTitle;

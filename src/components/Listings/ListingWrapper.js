@@ -16,7 +16,7 @@ ListingWrapper.propTypes = {
 function ListingWrapper(props) {
   console.log(props);
   const { children, filter, filters, onViewModeChange = () => {} } = props;
-  const [viewMode, setViewMode] = useState({ mode: "list", switchLabel: "Card" });
+  const [viewMode, setViewMode] = useState({ mode: "card", switchLabel: "List" });
 
   const toggleViewMode = () => {
     let newViewMode;

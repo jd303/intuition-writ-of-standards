@@ -78,3 +78,9 @@
   border-right: 1px solid #261b0d;
   opacity: 0.3;
 }
+
+@media print {
+	.statusBar {
+		display: none;
+	}
+}
