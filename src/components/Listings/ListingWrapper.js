@@ -23,7 +23,6 @@ function ListingWrapper(props) {
     if (viewMode.mode == "list") newViewMode = { ...viewMode, mode: "card", switchLabel: "List" };
     else newViewMode = { ...viewMode, mode: "list", switchLabel: "Card" };
 
-    console.log("SETTING", newViewMode);
     setViewMode(newViewMode);
     onViewModeChange(newViewMode);
   };

@@ -13,7 +13,8 @@ import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
 
 // Data
-import { spells, MagicSchools } from "../../../assets/data/spells_data.js";
+import { MagicSchools } from "../../../interfaces/magic_interfaces";
+import { spells } from "../../../assets/data/spells_data.js";
 
 /**
  * Renders the Magic Spells page
@@ -69,7 +70,7 @@ function MagicSpellsPage() {
   /**
    * Watch view state
    * */
-  const [viewMode, setTheViewMode] = useState({ mode: "list" });
+  const [viewMode, setTheViewMode] = useState({ mode: "card" });
   const updateViewMode = (update) => {
     setTheViewMode(() => {
       return update;
