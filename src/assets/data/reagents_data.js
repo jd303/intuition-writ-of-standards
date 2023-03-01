@@ -16,9 +16,9 @@ class ReagentProperty {
   name;
   colour;
 
-  constructor(code, effect, colour) {
+  constructor(code, name, colour) {
     this.code = code;
-    this.name = effect;
+    this.name = name;
     this.colour = colour;
   }
   get info() {
@@ -40,12 +40,20 @@ export const ReagentProperties = {
   Sce: new ReagentProperty("Sce", "Scent", "#e2a2de").info,
 };
 
+export const ReagentConsumeEffects = {
+	Non: "None",
+	Hea: "Heal 1 HP",
+	Int: "Intoxication",
+	Sea: "Seasoning",
+}
+
 export const reagentData = [
   {
     name: "Pure Water",
     desc: "Water purified through careful manipulation.",
     type: AlchemicalTypes.C,
     properties: [ReagentProperties.Hyd],
+	consume_effect: [ReagentConsumeEffects.Non],
     rarity: Rarity.C,
   },
   {
@@ -53,6 +61,7 @@ export const reagentData = [
     desc: "Purified alcohol, used to fortify and enhance alchemical recipes.",
     type: AlchemicalTypes.C,
     properties: [ReagentProperties.For],
+	consume_effect: [ReagentConsumeEffects.Int],
     rarity: Rarity.C,
   },
   {
@@ -60,6 +69,7 @@ export const reagentData = [
     desc: "Long thin shoots that clumb in large numbers.  Older shoots die at the base, and can be collected and crushed into flakes.  Grows in grassy areas.",
     type: AlchemicalTypes.Fl,
     properties: [ReagentProperties.The],
+	consume_effect: [ReagentConsumeEffects.Non],
     rarity: Rarity.C,
   },
   {
@@ -130,6 +140,7 @@ export const reagentData = [
     desc: "Verole is a succulent plant rich in moist sap and with thick, strong fibrous stalks ending in a mild barb.  Grows in forested areas.",
     type: AlchemicalTypes.Fl,
     properties: [ReagentProperties.Vig, ReagentProperties.Vig],
+	consume_effect: [ReagentConsumeEffects.Hea],
     rarity: Rarity.C,
   },
   {
@@ -319,6 +330,7 @@ export const reagentData = [
     desc: "A rich, yellow and red, hammer-shaped orchid that releases a pheremone that attracts and confuses insects.",
     type: AlchemicalTypes.Fl,
     properties: [ReagentProperties.Vig, ReagentProperties.Vig],
+	consume_effect: [ReagentConsumeEffects.Hea],
     rarity: Rarity.R,
   },
   {

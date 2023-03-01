@@ -26,6 +26,7 @@ function AlchemyReagent(props) {
         <div className={styles.core}>
           <AlchemyType type={reagent.type} />
           <Medal className="rarity" rarity={reagent.rarity} />
+          <div>{reagent.consume_effect}</div>
         </div>
         <AlchemyPropertiesList properties={reagent.properties} viewMode={viewMode} />
       </div>
