@@ -10,7 +10,7 @@ function AnimalCompanionsPage() {
   return (
     <React.Fragment>
       <Header />
-      <h2>Animal Companions</h2>
+      <h1>Animal Companions</h1>
       <ListingWrapper filter={false}>
         {animal_companion_moves.map((move, index) => {
           return (

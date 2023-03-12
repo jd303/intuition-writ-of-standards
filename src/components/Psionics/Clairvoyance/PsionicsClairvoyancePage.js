@@ -5,7 +5,8 @@ function PsionicsClairvoyancePage() {
   return (
     <React.Fragment>
       <Header />
-      Psionics Telepathy
+      <h1>Psionics &gt; Clairvoyance</h1>
+      <section>Content</section>
     </React.Fragment>
   );
 }

@@ -5,7 +5,8 @@ function MagicEnchantingPage() {
   return (
     <React.Fragment>
       <Header />
-      <h2>Enchanting</h2>
+      <h1>Enchanting</h1>
+      <section>Content</section>
     </React.Fragment>
   );
 }

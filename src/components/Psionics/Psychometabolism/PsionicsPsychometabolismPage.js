@@ -5,7 +5,8 @@ function PsionicsPsychometabolismPage() {
   return (
     <React.Fragment>
       <Header />
-      Psionics Telepathy
+      <h1>Psionics &gt; Psychometabolism</h1>
+      <section>Psionics Psychometabolism</section>
     </React.Fragment>
   );
 }

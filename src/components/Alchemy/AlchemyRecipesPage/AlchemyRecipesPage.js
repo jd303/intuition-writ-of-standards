@@ -76,7 +76,7 @@ function AlchemyRecipesPage() {
   return (
     <React.Fragment>
       <Header title="Alchemy Recipes and Reagents" />
-      <h2>Alchemy Recipes</h2>
+      <h1>Alchemy Recipes</h1>
       <ListingWrapper filter={true} filters={filters}>
         {recipesData.filter(filterByType).map((recipe, index) => (
           <Listing key={index} className={styles.recipe}>

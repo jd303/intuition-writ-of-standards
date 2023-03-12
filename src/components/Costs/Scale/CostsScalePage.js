@@ -5,7 +5,8 @@ function CostsScalePage() {
   return (
     <React.Fragment>
       <Header />
-      <div>Costs Scale Page</div>
+      <h1>Costs &gt; Scale</h1>
+      <section>Content</section>
     </React.Fragment>
   );
 }

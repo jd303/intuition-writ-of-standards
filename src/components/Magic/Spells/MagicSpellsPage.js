@@ -83,12 +83,12 @@ function MagicSpellsPage() {
   return (
     <React.Fragment>
       <Header />
-      <h2>Spells</h2>
+      <h1>Spells</h1>
       <ListingWrapper filter={true} filters={filters} onViewModeChange={updateViewMode}>
         {spells.filter(filterBySchool).map((spell, index) => (
           <Listing key={index}>
             <div className={st.spell + " " + st["view-" + viewMode.mode]}>
-              <ListingTitle bottomborder>{spell.name}</ListingTitle>
+              <ListingTitle>{spell.name}</ListingTitle>
               <div className={st.cost}>
                 <CircledText text={spell.cost.toString()} />
               </div>

@@ -1,0 +1,35 @@
+.container {
+  --size: 12px;
+
+  display: inline-block;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  text-align: center;
+  line-height: var(--size);
+  font-size: var(--size);
+
+  transform: translate(-8px, -1px);
+}
+
+.true:before {
+  content: "S";
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  padding: 2px;
+  color: #fff;
+  background-color: #222;
+  border-radius: 50%;
+}
+
+.false:before {
+  content: "/";
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  padding: 2px;
+  color: #ccc;
+  background-color: #ddd;
+  border-radius: 50%;
+}

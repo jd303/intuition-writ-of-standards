@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
+import MovesAndModsPage from "./components/MovesMods/MovesAndModsPage";
 import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/AlchemyReagentsPage";
 import AlchemyRecipesPage from "./components/Alchemy/AlchemyRecipesPage/AlchemyRecipesPage";
 import MagicSpellsPage from "./components/Magic/Spells/MagicSpellsPage";
@@ -17,6 +18,10 @@ import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
 
 export const routeSections = [
+  {
+    navLabel: "Moves & Mods",
+    path: "/moves-and-mods",
+  },
   {
     navLabel: "Magic",
     path: "/magic-spells",
@@ -51,23 +56,31 @@ const routes = [
   },
 
   {
-    navLabel: "Alchemy Guide",
+    navLabel: "Moves & Mods",
+    path: "/moves-and-mods",
+    element: <Route key="0" path="/moves-and-mods" element={<MovesAndModsPage />} />,
+    parent: "Moves & Mods",
+  },
+
+  {
+    navLabel: "Guide",
     path: "/alchemy-guide",
     element: <Route key="0" path="/alchemy-guide" element={<AlchemyGuidePage />} />,
     parent: "Alchemy",
   },
   {
-    navLabel: "Alchemy Recipes",
+    navLabel: "Recipes",
     path: "/alchemy-recipes",
     element: <Route key="0" path="/alchemy-recipes" element={<AlchemyRecipesPage />} />,
     parent: "Alchemy",
   },
   {
-    navLabel: "Alchemy Reagents",
+    navLabel: "Reagents",
     path: "/alchemy-reagents",
     element: <Route key="0" path="/alchemy-reagents" element={<AlchemyReagentsPage />} />,
     parent: "Alchemy",
   },
+
   {
     navLabel: "Spells",
     path: "/magic-spells",
@@ -140,13 +153,6 @@ const routes = [
 
   {
     navLabel: "Gadgets",
-    path: "/gadgetry-guide",
-    element: <Route key="0" path="/gadgetry-guide" element={<GadgetsPage />} />,
-    parent: "Gadgetry",
-  },
-
-  {
-    navLabel: "Perks",
     path: "/gadgetry-guide",
     element: <Route key="0" path="/gadgetry-guide" element={<GadgetsPage />} />,
     parent: "Gadgetry",

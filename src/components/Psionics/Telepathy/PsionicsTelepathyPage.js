@@ -5,7 +5,8 @@ function PsionicsTelepathyPage() {
   return (
     <React.Fragment>
       <Header />
-      Psionics Telepathy
+      <h1>Psionics &gt; Telepathy</h1>
+      <section>Psionics Telepathy</section>
     </React.Fragment>
   );
 }

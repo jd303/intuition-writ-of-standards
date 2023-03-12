@@ -5,7 +5,8 @@ function PsionicsGuidePage() {
   return (
     <React.Fragment>
       <Header />
-      <div>Psionics Guide</div>
+      <h1>Psionics Guide</h1>
+      <section>Content</section>
     </React.Fragment>
   );
 }

@@ -6,7 +6,9 @@ import styles from "./Listings.module.scss";
 ListingWrapper.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   filter: PropTypes.bool,
+  viewModeButton: PropTypes.bool,
   filters: PropTypes.object,
+  startingView: PropTypes.object,
   onViewModeChange: PropTypes.func,
 };
 
@@ -14,9 +16,8 @@ ListingWrapper.propTypes = {
  * Renders a listing of items
  * */
 function ListingWrapper(props) {
-  console.log(props);
-  const { children, filter, filters, onViewModeChange = () => {} } = props;
-  const [viewMode, setViewMode] = useState({ mode: "card", switchLabel: "List" });
+  const { children, filter, viewModeButton, filters, startingView = { mode: "card", switchLabel: "List" }, onViewModeChange = () => {} } = props;
+  const [viewMode, setViewMode] = useState(startingView);
 
   const toggleViewMode = () => {
     let newViewMode;
@@ -29,9 +30,11 @@ function ListingWrapper(props) {
 
   return (
     <section className={styles.listingsSection}>
-      <header className={styles.header}>
-        <StatusBar filter={filter} filters={filters} viewMode={viewMode} onViewModeChange={toggleViewMode} />
-      </header>
+      {(filter || viewModeButton) && (
+        <header className={styles.header}>
+          <StatusBar filter={filter} filters={filters} viewMode={viewMode} onViewModeChange={toggleViewMode} />
+        </header>
+      )}
       <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode.mode}`]}`}>{children}</div>
     </section>
   );

@@ -71,12 +71,12 @@ function MagicPotionsPage() {
   return (
     <React.Fragment>
       <Header />
-      <h2>Potions</h2>
+      <h1>Potions</h1>
       <ListingWrapper filter={true} filters={filters} onViewModeChange={updateViewMode}>
         {potions.filter(filterBySchool).map((potion, index) => (
           <Listing key={index}>
             <div className={st.potion + " " + st["view-" + viewMode.mode]}>
-              <ListingTitle bottomborder>{potion.name}</ListingTitle>
+              <ListingTitle>{potion.name}</ListingTitle>
               <div className={st.potion}>
                 <CircledText text={potion.cost.toString()} />
               </div>

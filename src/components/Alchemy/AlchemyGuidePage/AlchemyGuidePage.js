@@ -5,7 +5,8 @@ function AlchemyGuidePage() {
   return (
     <React.Fragment>
       <Header />
-      Alchemy Guide
+      <h1>Alchemy</h1>
+      <section>Alchemy Guide</section>
     </React.Fragment>
   );
 }

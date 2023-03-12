@@ -5,7 +5,8 @@ function PsionicsKineticsPage() {
   return (
     <React.Fragment>
       <Header />
-      Psionics Kinetics
+      <h1>Psionics &gt; Kinetics</h1>
+      <section>Psionics Kinetics</section>
     </React.Fragment>
   );
 }

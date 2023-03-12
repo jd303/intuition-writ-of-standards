@@ -34,14 +34,17 @@ ol.regular {
     a {
       &.active {
         opacity: 0.5;
-        color: red;
+        color: var(--colour-brown);
       }
     }
   }
 }
 
 .activeLink {
-  color: red;
+  color: var(--colour-brown);
+  background: -webkit-linear-gradient(var(--colour-brown), purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .routeLink {
@@ -53,7 +56,7 @@ ol.regular {
 }
 
 @media print {
-	.nav {
-		display:none;
-	}
+  .nav {
+    display: none;
+  }
 }

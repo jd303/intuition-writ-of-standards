@@ -62,27 +62,29 @@ function AlchemyReagentsPage() {
   return (
     <React.Fragment>
       <Header title="Alchemy Recipes and Reagents" />
-      <h2>Reagents</h2>
-      <div className={styles.costs}>
-        <h3>Costs</h3>
-        <div className={styles.cost + " " + styles.common}>
-          <Medal rarity="bronze" /> 1 Coin
+      <h1>Alchemy &gt; Reagents</h1>
+      <section>
+        <div className={styles.costs}>
+          <h3>Costs</h3>
+          <div className={styles.cost + " " + styles.common}>
+            <Medal rarity="bronze" /> 1 Coin
+          </div>
+          <div className={styles.cost + " " + styles.uncommon}>
+            <Medal rarity="silver" /> 3 Coin
+          </div>
+          <div className={styles.cost + " " + styles.rare}>
+            <Medal rarity="gold" /> 6 Coin
+          </div>
         </div>
-        <div className={styles.cost + " " + styles.uncommon}>
-          <Medal rarity="silver" /> 3 Coin
-        </div>
-        <div className={styles.cost + " " + styles.rare}>
-          <Medal rarity="gold" /> 6 Coin
-        </div>
-      </div>
-      <AlchemyReagentsFilter
-        onFilterChange={onFilterChange}
-        onFilterClear={onFilterClear}
-        filterValues={filterValues}
-        startingViewMode={startingView}
-        onViewModeChange={onChangeView}
-      />
-      <AlchemyReagentList filter={filterValues} view={viewValue} />
+        <AlchemyReagentsFilter
+          onFilterChange={onFilterChange}
+          onFilterClear={onFilterClear}
+          filterValues={filterValues}
+          startingViewMode={startingView}
+          onViewModeChange={onChangeView}
+        />
+        <AlchemyReagentList filter={filterValues} view={viewValue} />
+      </section>
     </React.Fragment>
   );
 }
