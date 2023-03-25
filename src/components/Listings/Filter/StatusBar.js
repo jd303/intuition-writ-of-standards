@@ -1,23 +1,30 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { PropTypes } from "prop-types";
 import styles from "./StatusBar.module.scss";
 import icoClear from "../../../assets/images/icons/ico.clear.svg";
 
+// State
+import { toggleViewMode, selectViewMode } from "../../../features/viewMode/viewModeSlice";
+
 StatusBar.propTypes = {
   filter: PropTypes.bool,
   filters: PropTypes.object,
-  onViewModeChange: PropTypes.func.isRequired,
-  viewMode: PropTypes.object.isRequired,
 };
 
 function StatusBar(props) {
   /**
    * Destructure Properties
    * */
-  const { filter, filters, viewMode, onViewModeChange } = props;
+  const { filter, filters } = props;
 
   // References to elements
   const dropdownRef = React.useRef(null);
+
+  // State
+  const viewMode = useSelector(selectViewMode);
+  const dispatch = useDispatch();
+  const toggleView = () => dispatch(toggleViewMode());
 
   /**
    * Component
@@ -27,8 +34,8 @@ function StatusBar(props) {
       <div className={styles.statusBarContainer}>
         {filter && addFilters(filters, dropdownRef)}
         <div className={styles.view}>
-          <h3>View: {viewMode.mode}</h3>
-          <button onClick={onViewModeChange}>Switch to {viewMode.switchLabel}</button>
+          <h3>View: {viewMode}</h3>
+          <button onClick={toggleView}>Switch View</button>
         </div>
       </div>
     </div>

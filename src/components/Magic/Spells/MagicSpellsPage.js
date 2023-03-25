@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../../Components/Header/Header";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
@@ -8,6 +9,7 @@ import CircledText from "../../Components/CircledText/CircledText";
 
 // Styles
 import st from "./MagicSpellsPage.module.scss";
+import stlist from "../../ListItem.module.scss";
 import target from "../../../assets/images/icons/ico.target.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
@@ -16,10 +18,16 @@ import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
 import { MagicSchools } from "../../../interfaces/magic_interfaces";
 import { spells } from "../../../assets/data/spells_data.js";
 
+// State
+import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
+
 /**
  * Renders the Magic Spells page
  * */
 function MagicSpellsPage() {
+  // State
+  const viewMode = useSelector(selectViewMode);
+
   /**
    * Filter State
    * */
@@ -68,51 +76,44 @@ function MagicSpellsPage() {
   };
 
   /**
-   * Watch view state
-   * */
-  const [viewMode, setTheViewMode] = useState({ mode: "card" });
-  const updateViewMode = (update) => {
-    setTheViewMode(() => {
-      return update;
-    });
-  };
-
-  /**
    * Component
    * */
   return (
     <React.Fragment>
       <Header />
       <h1>Spells</h1>
-      <ListingWrapper filter={true} filters={filters} onViewModeChange={updateViewMode}>
+      <ListingWrapper filter={true} filters={filters}>
         {spells.filter(filterBySchool).map((spell, index) => (
           <Listing key={index}>
-            <div className={st.spell + " " + st["view-" + viewMode.mode]}>
+            <div className={stlist.listitem + " " + st["view-" + viewMode]}>
               <ListingTitle>{spell.name}</ListingTitle>
-              <div className={st.cost}>
+              <div className={stlist.cost}>
                 <CircledText text={spell.cost.toString()} />
               </div>
-              <div className={st.school}>{spell.school}</div>
-              <div className={st.mechanics}>
-                <div className={st.challengeType}>
+              <div className={stlist.school}>{spell.school}</div>
+              <div className={stlist.mechanics}>
+                <div className={stlist.challengeType}>
                   <img src={target} />
                   {spell.challenge_type}
                 </div>
-                <div className={st.range}>
+                <div className={stlist.range}>
                   <img src={mapPinIcon} />
                   {spell.range}
                 </div>
-                <div className={st.duration}>
+                <div className={stlist.duration}>
                   <img src={timeIcon} />
                   {spell.duration}
                 </div>
               </div>
-              <ul className={st.effects}>
-                <li className={st.effect}>
+              <ul className={stlist.effects}>
+                <li className={stlist.effect}>
                   <Medal size="small" rarity="bronze" /> {spell.effect_cantrip}
                 </li>
-                <li className={st.effect}>
-                  <Medal size="small" rarity="gold" /> {spell.effect_full}
+                <li className={stlist.effect}>
+                  <Medal size="small" rarity="silver" /> {spell.effect_channeled}
+                </li>
+                <li className={stlist.effect}>
+                  <Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
                 </li>
               </ul>
             </div>

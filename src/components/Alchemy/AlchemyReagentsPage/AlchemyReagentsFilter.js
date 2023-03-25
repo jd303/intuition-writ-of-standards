@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import { Rarity, ReagentProperties, AlchemicalTypes } from "../../../assets/data/reagents_data.js";
 import styles from "../../FilterShared.module.scss";
+import { useDispatch } from "react-redux";
+import { toggleViewMode } from "../../../features/viewMode/viewModeSlice.js";
 
 AlchemyReagentsFilter.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
   onFilterClear: PropTypes.func.isRequired,
-  onViewModeChange: PropTypes.func.isRequired,
   filterValues: PropTypes.object.isRequired,
   startingViewMode: PropTypes.object.isRequired,
 };
 
 function AlchemyReagentsFilter(props) {
-  const { onFilterChange, onFilterClear, filterValues, startingViewMode, onViewModeChange } = props;
+  const { onFilterChange, onFilterClear, filterValues } = props;
 
   // References to elements
   const containsRef = React.useRef(null);
@@ -31,31 +32,10 @@ function AlchemyReagentsFilter(props) {
   };
 
   /**
-   * View Mode States
+   * Redux Store: viewMode
    * */
-  const [viewMode, setViewMode] = useState(startingViewMode || { mode: "list-view", label: "Card View" });
-
-  /**
-   * A user toggles the view mode
-   * */
-  const toggleMode = () => {
-    let newViewMode;
-    if (viewMode.mode == "list-view") {
-      newViewMode = {
-        mode: "card-view",
-        label: "List View",
-      };
-    } else {
-      newViewMode = {
-        mode: "list-view",
-        label: "Card View",
-      };
-    }
-
-    localStorage.setItem("reagents-view", JSON.stringify(newViewMode));
-    setViewMode(newViewMode);
-    onViewModeChange(newViewMode);
-  };
+  const dispatch = useDispatch();
+  const toggleView = () => dispatch(toggleViewMode());
 
   /**
    * Component
@@ -102,7 +82,7 @@ function AlchemyReagentsFilter(props) {
         <div className={styles.divider}></div>
         <div className={styles.view}>
           <h3>View</h3>
-          <button onClick={toggleMode}>{viewMode.label}</button>
+          <button onClick={toggleView}>Switch View Mode</button>
         </div>
       </div>
     </div>

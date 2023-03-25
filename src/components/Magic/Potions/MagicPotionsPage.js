@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../Components/Header/Header";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
@@ -9,8 +9,15 @@ import { MagicSchools } from "../../../interfaces/magic_interfaces";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 
 import { potions } from "../../../assets/data/potions_data";
+import { useSelector } from "react-redux";
+import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
 
 function MagicPotionsPage() {
+  /**
+   * Redux State: ViewMode
+   * */
+  const viewMode = useSelector(selectViewMode);
+
   /**
    * Filter State
    * */
@@ -58,24 +65,14 @@ function MagicPotionsPage() {
     clear: onFilterClear,
   };
 
-  /**
-   * Watch view state
-   * */
-  const [viewMode, setTheViewMode] = useState({ mode: "card" });
-  const updateViewMode = (update) => {
-    setTheViewMode(() => {
-      return update;
-    });
-  };
-
   return (
     <React.Fragment>
       <Header />
       <h1>Potions</h1>
-      <ListingWrapper filter={true} filters={filters} onViewModeChange={updateViewMode}>
+      <ListingWrapper filter={true} filters={filters}>
         {potions.filter(filterBySchool).map((potion, index) => (
           <Listing key={index}>
-            <div className={st.potion + " " + st["view-" + viewMode.mode]}>
+            <div className={st.potion + " " + st["view-" + viewMode]}>
               <ListingTitle>{potion.name}</ListingTitle>
               <div className={st.potion}>
                 <CircledText text={potion.cost.toString()} />

@@ -1,4 +1,5 @@
 import { PropTypes } from "prop-types";
+import { useSelector } from "react-redux";
 
 import AlchemyType from "../AlchemyType";
 //import AlchemyRarity from "../AlchemyRarity";
@@ -8,13 +9,17 @@ import Medal from "../../Components/Medal/Medal";
 import styles from "./AlchemyReagent.module.scss";
 import ls from "../../Listings/Listings.module.scss";
 
+// State
+import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
+
 AlchemyReagent.propTypes = {
   reagent: PropTypes.object.isRequired,
-  viewMode: PropTypes.string.isRequired,
 };
 
 function AlchemyReagent(props) {
-  const { reagent, viewMode } = props;
+  const { reagent } = props;
+
+  const viewMode = useSelector(selectViewMode);
 
   return (
     <li className={styles.reagent + " " + styles[viewMode]}>
@@ -28,7 +33,7 @@ function AlchemyReagent(props) {
           <Medal className="rarity" rarity={reagent.rarity} />
           <div>{reagent.consume_effect}</div>
         </div>
-        <AlchemyPropertiesList properties={reagent.properties} viewMode={viewMode} />
+        <AlchemyPropertiesList properties={reagent.properties} />
       </div>
     </li>
   );

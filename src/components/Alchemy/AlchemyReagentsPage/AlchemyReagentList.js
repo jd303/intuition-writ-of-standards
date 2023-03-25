@@ -6,14 +6,13 @@ import styles from "./AlchemyReagentList.module.scss";
 
 AlchemyReagentList.propTypes = {
   filter: PropTypes.object.isRequired,
-  view: PropTypes.object.isRequired,
 };
 
 function AlchemyReagentList(props) {
   /**
    * Deconstruct properties
    * */
-  const { filter, view } = props;
+  const { filter } = props;
 
   /**
    * Applies state to data
@@ -96,7 +95,7 @@ function AlchemyReagentList(props) {
           .filter(filterRarityCallback)
           .filter(filterTypeCallback)
           .map((reagent, index) => {
-            return <AlchemyReagent key={index} reagent={reagent} updateSelection={updateSelection} viewMode={view.mode} />;
+            return <AlchemyReagent key={index} reagent={reagent} updateSelection={updateSelection} />;
           })}
       </ul>
     </React.Fragment>

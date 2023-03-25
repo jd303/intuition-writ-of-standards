@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { selectViewMode } from "../../features/viewMode/viewModeSlice";
 import styles from "./AlchemyPropertiesList.module.scss";
 
 AlchemyPropertiesList.propTypes = {
-  viewMode: PropTypes.string.isRequired,
   properties: PropTypes.array.isRequired,
 };
 
 function AlchemyPropertiesList(props) {
-  const { viewMode, properties } = props;
+  const { properties } = props;
+
+  const viewMode = useSelector(selectViewMode);
 
   return (
     <div className={styles.properties + " " + styles[viewMode]}>

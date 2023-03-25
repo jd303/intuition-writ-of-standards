@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import st from "./StaminaIcon.module.scss";
 
 StaminaIcon.propTypes = {
-  on: PropTypes.string.isRequired,
+  on: PropTypes.bool.isRequired,
 };
 
 function StaminaIcon(props) {

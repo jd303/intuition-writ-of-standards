@@ -12,15 +12,18 @@ MoveCategoryComponent.propTypes = {
 function MoveCategoryComponent(props) {
   let { move } = props;
 
+  const rankSort = (a, b) => (a.rank < b.rank && -1) || 1;
+
   return (
     <div className={st.move}>
       <ListingTitle>{move.name}</ListingTitle>
       <div className={st.moveDesc}>{move.description}</div>
       <ul className={st.modsList}>
-        {move.mods.map((mod, index3) => {
+        {move.mods.sort(rankSort).map((mod, index3) => {
           return (
-            <li key={index3}>
-              {(mod.stamina && <StaminaIcon on={true} />) || <StaminaIcon on={false} />} {mod.name}
+            <li key={index3} className={st.moveMod + " " + st[mod.rank]}>
+              {(mod.stamina && <StaminaIcon on={true} />) || <StaminaIcon on={false} />} <div className={st.modName}>{mod.name}</div>{" "}
+              {mod.description}
             </li>
           );
         })}

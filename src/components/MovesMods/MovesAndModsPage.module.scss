@@ -29,20 +29,40 @@
   padding: var(--standard-padding) 0 0 0;
   border-top: 1px solid black;
 
-  & li {
+  .moveMod {
+    --padding: 3px;
+
     position: relative;
-    padding-left: 30px;
+    display: flex;
+    gap: 10px;
+    padding: var(--padding);
+    padding-left: 35px;
+    border-radius: 8px;
+
+    &.rank1 {
+      background-color: rgba(#a97142, 0.2);
+    }
+
+    &.rank2 {
+      background-color: rgba(#bcc6cc, 0.2);
+    }
+
+    &.rank3 {
+      background-color: rgba(#d4af37, 0.2);
+    }
 
     &:before {
       content: "";
       display: block;
       position: absolute;
-      left: 0;
-      top: 1px;
+      left: calc(var(--padding) * 2);
+      top: 50%;
       width: 9px;
       height: 9px;
       border: 2px solid black;
       background: white;
+
+      transform: translateY(-50%);
     }
   }
 }

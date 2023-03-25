@@ -1,4 +1,5 @@
-import { MagicSchools, DamageStandards, MagicRanges, MagicDurations } from "../../interfaces/magic_interfaces";
+import { MagicSchools, MagicRanges, MagicDurations } from "../../interfaces/magic_interfaces";
+import { DamageStandards } from "./standards_data";
 
 /**
  * Potions:

@@ -10,5 +10,8 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": {
+    // rules configuration here <-----
+    "no-unused-vars": "off"
+  }
 }
