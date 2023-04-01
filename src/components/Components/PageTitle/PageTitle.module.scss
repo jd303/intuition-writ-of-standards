@@ -1,6 +1,35 @@
 .title {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: var(--standard-padding);
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	padding: var(--standard-padding);
+	box-shadow: inset 0px 3px 0px rgba(0, 0, 0, 0.25);
+
+	&.black {
+		background-color: black;
+	}
+
+	&.orange {
+		background-color: var(--colour-orange);
+	}
+
+	&.purple {
+		background-color: var(--colour-purple);
+	}
+
+	&.cyan {
+		background-color: var(--colour-cyan);
+	}
+
+	&.scarlet {
+		background-color: var(--colour-scarlet);
+	}
+
+	&.mustard {
+		background-color: var(--colour-mustard);
+	}
+
+	&.silver {
+		background-image: var(--colour-silver-gradient);
+	}
 }

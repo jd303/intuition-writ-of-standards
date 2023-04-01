@@ -1,83 +1,106 @@
 :root {
-  --standard-padding: 20px;
-  --standard-black-transparent-background: rgba(0, 0, 0, 0.1);
-  --bevel-size: 7px;
-  --font-large: 24px;
-  --font-regular: 14px;
-  --font-small: 10px;
+	--standard-padding: 20px;
+	--standard-black-transparent-background: rgba(0, 0, 0, 0.1);
+	--bevel-size: 7px;
+	--font-large: 24px;
+	--font-regular: 14px;
+	--font-small: 10px;
 
-  --standard-divider: 1px solid rgba(38, 27, 13, 0.2);
+	--standard-divider: 1px solid rgba(38, 27, 13, 0.2);
 
-  --colour-brown: #594726;
-  --colour-purple: rgba(91, 95, 151);
-  --colour-cream: #f0e9d9;
-  --colour-cream-light: #f3f0ea;
+	--colour-brown: #594726;
+	//--colour-purple: rgba(91, 95, 151);
+	--colour-purple: rgba(37, 63, 155);
+	--colour-cream: #f0e9d9;
+	--colour-cream-light: #f3f0ea;
 
-  // Temp test colour
-  --colour-magic-1: rgba(91, 95, 151);
-  --colour-magic-1-light: #9194b4;
+	// Colour Palette
+	--colour-orange: rgba(177, 110, 11);
+	--colour-purple: rgba(71, 30, 185);
+	--colour-purple-light: #9194b4;
+	--colour-cyan: rgba(11, 177, 140);
+	--colour-scarlet: rgba(177, 11, 91);
+	--colour-mustard: rgba(130, 177, 11);
+	--colour-silver: #666;
+	--colour-silver-gradient: linear-gradient(-72deg,
+			#dedede,
+			#ffffff 16%,
+			#dedede 21%,
+			#ffffff 24%,
+			#454545 27%,
+			#dedede 36%,
+			#ffffff 45%,
+			#ffffff 60%,
+			#dedede 72%,
+			#ffffff 80%,
+			#dedede 84%,
+			#a1a1a1);
 
-  /* prettier-ignore */
-  --shape-bevelled: polygon(
-	0 var(--bevel-size),
-	calc(var(--bevel-size) / 2) var(--bevel-size),
-	var(--bevel-size) calc(var(--bevel-size) / 2),
-	var(--bevel-size) 0px,
-	calc(100% - var(--bevel-size)) 0,
-	calc(100% - var(--bevel-size)) calc(var(--bevel-size) / 2),
-	calc(100% - var(--bevel-size) / 2) var(--bevel-size),
-	100% var(--bevel-size),
-	100% calc(100% - var(--bevel-size)),
-	calc(100% - var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
-	calc(100% - var(--bevel-size)) calc(100% - var(--bevel-size) / 2),
-	calc(100% - var(--bevel-size)) 100%,
-	var(--bevel-size) 100%,
-	var(--bevel-size) calc(100% - var(--bevel-size) / 2),
-	calc(var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
-	0 calc(100% - var(--bevel-size)),
-	0 100%
-  );
+	/* prettier-ignore */
+	--shape-bevelled: polygon(0 var(--bevel-size),
+			calc(var(--bevel-size) / 2) var(--bevel-size),
+			var(--bevel-size) calc(var(--bevel-size) / 2),
+			var(--bevel-size) 0px,
+			calc(100% - var(--bevel-size)) 0,
+			calc(100% - var(--bevel-size)) calc(var(--bevel-size) / 2),
+			calc(100% - var(--bevel-size) / 2) var(--bevel-size),
+			100% var(--bevel-size),
+			100% calc(100% - var(--bevel-size)),
+			calc(100% - var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
+			calc(100% - var(--bevel-size)) calc(100% - var(--bevel-size) / 2),
+			calc(100% - var(--bevel-size)) 100%,
+			var(--bevel-size) 100%,
+			var(--bevel-size) calc(100% - var(--bevel-size) / 2),
+			calc(var(--bevel-size) / 2) calc(100% - var(--bevel-size)),
+			0 calc(100% - var(--bevel-size)),
+			0 100%);
 }
 
 @font-face {
-  font-family: "trattatello";
-  src: url("assets/fonts/trattatello/trattatello.woff2") format("woff2"), url("assets/fonts/trattatello/trattatello.woff") format("woff");
+	font-family: "trattatello";
+	src: url("assets/fonts/trattatello/trattatello.woff2") format("woff2"), url("assets/fonts/trattatello/trattatello.woff") format("woff");
+}
+
+@font-face {
+	font-family: "OpenSans";
+	src: url("assets/fonts/opensans/OpenSans-VariableFont_wdth,wght.ttf");
 }
 
 body,
 html {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
+	font-family: 'OpenSans';
 }
 
 body {
-  font-size: var(--font-regular);
-  padding: 0;
-  margin: 0;
-  background-image: url(assets/images/white-texture.webp);
-  background-size: 35%;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
+	font-size: var(--font-regular);
+	padding: 0;
+	margin: 0;
+	background-image: url(assets/images/white-texture.webp);
+	background-size: 35%;
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 #root {
-  display: grid;
-  grid-template-columns: var(--standard-padding) auto var(--standard-padding);
+	display: grid;
+	grid-template-columns: var(--standard-padding) auto var(--standard-padding);
 }
 
 h1 {
-  font-size: 24px;
-  grid-row: 2;
-  grid-column: 1/4;
-  color: #fff;
-  margin-top: 0;
-  padding: var(--standard-padding) 0 var(--standard-padding) var(--standard-padding);
-  background-color: var(--colour-magic-1);
+	font-size: 24px;
+	grid-row: 2;
+	grid-column: 1/4;
+	color: #fff;
+	margin-top: 0;
+	padding: var(--standard-padding) 0 var(--standard-padding) var(--standard-padding);
+	background-color: var(--colour-magic-1);
 }
 
 section {
-  grid-row: 3;
-  grid-column: 2/3;
+	grid-row: 3;
+	grid-column: 2/3;
 }
 
 h1,
@@ -85,93 +108,93 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "trattatello";
-  text-transform: uppercase;
+	font-family: "trattatello";
+	text-transform: uppercase;
 }
 
 p:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 p:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 select,
 button {
-  padding: 4px;
-  border-radius: 4px;
-  outline: none;
-  background-color: var(--colour-cream);
+	padding: 4px;
+	border-radius: 4px;
+	outline: none;
+	background-color: var(--colour-cream);
 }
 
 button {
-  padding: 8px;
-  border: none;
+	padding: 8px;
+	border: none;
 }
 
 /* Alchemy Colours */
 .hyd {
-  background-color: #3c78d8;
+	background-color: #3c78d8;
 }
 
 .for {
-  background-color: #888;
+	background-color: #888;
 }
 
 .the {
-  background-color: #e69138;
+	background-color: #e69138;
 }
 
 .vig {
-  background-color: #6aa84f;
+	background-color: #6aa84f;
 }
 
 .soo {
-  background-color: #a64d79;
+	background-color: #a64d79;
 }
 
 .exc {
-  background-color: #f1c232;
+	background-color: #f1c232;
 }
 
 .con {
-  background-color: #674ea7;
+	background-color: #674ea7;
 }
 
 .cor {
-  background-color: #b6d7a8;
+	background-color: #b6d7a8;
 }
 
 .poi {
-  background-color: #cc0000;
+	background-color: #cc0000;
 }
 
 .oil {
-  background-color: #111;
+	background-color: #111;
 }
 
 .sce {
-  background-color: #e2a2de;
+	background-color: #e2a2de;
 }
 
 @media print {
-  :root {
-    --font-large: 18px;
-    --font-regular: 10px;
-    --standard-padding: 10px;
-  }
+	:root {
+		--font-large: 18px;
+		--font-regular: 10px;
+		--standard-padding: 10px;
+	}
 
-  body {
-    padding: 0;
-    margin: 0;
-    background: transparent;
-  }
+	body {
+		padding: 0;
+		margin: 0;
+		background: transparent;
+	}
 
-  h2 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    line-height: 100%;
-  }
+	h2 {
+		position: absolute;
+		top: 0;
+		right: 0;
+		line-height: 100%;
+	}
 }

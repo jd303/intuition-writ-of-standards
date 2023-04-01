@@ -20,108 +20,109 @@ import { spells } from "../../../assets/data/spells_data.js";
 
 // State
 import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
+import { PageTitle } from "../../Components/PageTitle/PageTitle";
 
 /**
  * Renders the Magic Spells page
  * */
 function MagicSpellsPage() {
-  // State
-  const viewMode = useSelector(selectViewMode);
+	// State
+	const viewMode = useSelector(selectViewMode);
 
-  /**
-   * Filter State
-   * */
-  const schoolFilterValues = { all: "All", ...MagicSchools };
-  const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
+	/**
+	 * Filter State
+	 * */
+	const schoolFilterValues = { all: "All", ...MagicSchools };
+	const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
 
-  /**
-   * When a filter is changed
-   * */
-  const onFilterChange = (filterChangeEvent) => {
-    const filterName = filterChangeEvent.target.name;
-    const filterValue = filterChangeEvent.target.value;
+	/**
+	 * When a filter is changed
+	 * */
+	const onFilterChange = (filterChangeEvent) => {
+		const filterName = filterChangeEvent.target.name;
+		const filterValue = filterChangeEvent.target.value;
 
-    if (filterName == "school") {
-      setSchoolFilterValue(filterValue);
-    }
-  };
+		if (filterName == "school") {
+			setSchoolFilterValue(filterValue);
+		}
+	};
 
-  /**
-   * When filters are cleared
-   * */
-  const onFilterClear = () => {
-    setSchoolFilterValue("all");
-  };
+	/**
+	 * When filters are cleared
+	 * */
+	const onFilterClear = () => {
+		setSchoolFilterValue("all");
+	};
 
-  /**
-   * Fiter results by school
-   * */
-  const filterBySchool = (spell) => {
-    if (schoolFilterValue == "all") return true;
-    else return spell.school == schoolFilterValue;
-  };
+	/**
+	 * Fiter results by school
+	 * */
+	const filterBySchool = (spell) => {
+		if (schoolFilterValue == "all") return true;
+		else return spell.school == schoolFilterValue;
+	};
 
-  /**
-   * Define filters
-   * */
-  const filters = {
-    dropdowns: [
-      {
-        name: "school",
-        values: schoolFilterValues,
-      },
-    ],
-    change: onFilterChange,
-    clear: onFilterClear,
-  };
+	/**
+	 * Define filters
+	 * */
+	const filters = {
+		dropdowns: [
+			{
+				name: "school",
+				values: schoolFilterValues,
+			},
+		],
+		change: onFilterChange,
+		clear: onFilterClear,
+	};
 
-  /**
-   * Component
-   * */
-  return (
-    <React.Fragment>
-      <Header />
-      <h1>Spells</h1>
-      <ListingWrapper filter={true} filters={filters}>
-        {spells.filter(filterBySchool).map((spell, index) => (
-          <Listing key={index}>
-            <div className={stlist.listitem + " " + st["view-" + viewMode]}>
-              <ListingTitle>{spell.name}</ListingTitle>
-              <div className={stlist.cost}>
-                <CircledText text={spell.cost.toString()} />
-              </div>
-              <div className={stlist.school}>{spell.school}</div>
-              <div className={stlist.mechanics}>
-                <div className={stlist.challengeType}>
-                  <img src={target} />
-                  {spell.challenge_type}
-                </div>
-                <div className={stlist.range}>
-                  <img src={mapPinIcon} />
-                  {spell.range}
-                </div>
-                <div className={stlist.duration}>
-                  <img src={timeIcon} />
-                  {spell.duration}
-                </div>
-              </div>
-              <ul className={stlist.effects}>
-                <li className={stlist.effect}>
-                  <Medal size="small" rarity="bronze" /> {spell.effect_cantrip}
-                </li>
-                <li className={stlist.effect}>
-                  <Medal size="small" rarity="silver" /> {spell.effect_channeled}
-                </li>
-                <li className={stlist.effect}>
-                  <Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
-                </li>
-              </ul>
-            </div>
-          </Listing>
-        ))}
-      </ListingWrapper>
-    </React.Fragment>
-  );
+	/**
+	 * Component
+	 * */
+	return (
+		<React.Fragment>
+			<Header colour="purple" />
+			<PageTitle colour="purple">Spells</PageTitle>
+			<ListingWrapper filter={true} filters={filters}>
+				{spells.filter(filterBySchool).map((spell, index) => (
+					<Listing key={index}>
+						<div className={stlist.listitem + " " + st["view-" + viewMode]}>
+							<ListingTitle>{spell.name}</ListingTitle>
+							<div className={stlist.cost}>
+								<CircledText text={spell.cost.toString()} />
+							</div>
+							<div className={stlist.school}>{spell.school}</div>
+							<div className={stlist.mechanics}>
+								<div className={stlist.challengeType}>
+									<img src={target} />
+									{spell.challenge_type}
+								</div>
+								<div className={stlist.range}>
+									<img src={mapPinIcon} />
+									{spell.range}
+								</div>
+								<div className={stlist.duration}>
+									<img src={timeIcon} />
+									{spell.duration}
+								</div>
+							</div>
+							<ul className={stlist.effects}>
+								<li className={stlist.effect}>
+									<Medal size="small" rarity="bronze" /> {spell.effect_cantrip}
+								</li>
+								<li className={stlist.effect}>
+									<Medal size="small" rarity="silver" /> {spell.effect_channeled}
+								</li>
+								<li className={stlist.effect}>
+									<Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
+								</li>
+							</ul>
+						</div>
+					</Listing>
+				))}
+			</ListingWrapper>
+		</React.Fragment>
+	);
 }
 
 export default MagicSpellsPage;

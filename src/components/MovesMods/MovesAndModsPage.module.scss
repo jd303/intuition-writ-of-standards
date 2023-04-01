@@ -1,68 +1,64 @@
 .categoryContainer {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--standard-padding) / 2);
-  max-width: 1024px;
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--standard-padding) / 2);
+	max-width: 1024px;
 }
 
 .categoryTitle {
-  grid-row: 1;
-  grid-column: 1 / 5;
-  margin: 0;
+	grid-row: 1;
+	grid-column: 1 / 5;
+	margin: 0;
 }
 
 .move {
-  padding: calc(var(--standard-padding) / 2);
-  border-radius: 8px;
-  background-color: var(--colour-cream-light);
+	padding: calc(var(--standard-padding) / 2);
+	border-radius: 8px;
+	background-color: var(--colour-cream-light);
 }
 
 .moveDesc {
-  padding-top: calc(var(--standard-padding) / 2);
+	padding-top: calc(var(--standard-padding) / 2);
 }
 
 .modsList {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--standard-padding) / 3);
-  list-style-type: none;
-  padding: var(--standard-padding) 0 0 0;
-  border-top: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--standard-padding) / 20);
+	list-style-type: none;
+	padding: var(--standard-padding) 0 0 0;
+	border-top: 1px solid black;
 
-  .moveMod {
-    --padding: 3px;
+	.moveMod {
+		--padding: 3px;
 
-    position: relative;
-    display: flex;
-    gap: 10px;
-    padding: var(--padding);
-    padding-left: 35px;
-    border-radius: 8px;
+		position: relative;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		padding: var(--padding);
+		border-radius: 8px;
 
-    &.rank1 {
-      background-color: rgba(#a97142, 0.2);
-    }
+		.rankDetails {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			min-width: 120px;
+			font-weight: bold;
+			padding: 4px 8px;
+			border-radius: 6px;
 
-    &.rank2 {
-      background-color: rgba(#bcc6cc, 0.2);
-    }
+			&.rank1 {
+				background-color: rgba(#a97142, 0.2);
+			}
 
-    &.rank3 {
-      background-color: rgba(#d4af37, 0.2);
-    }
+			&.rank2 {
+				background-color: rgba(#bcc6cc, 0.2);
+			}
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      left: calc(var(--padding) * 2);
-      top: 50%;
-      width: 9px;
-      height: 9px;
-      border: 2px solid black;
-      background: white;
-
-      transform: translateY(-50%);
-    }
-  }
+			&.rank3 {
+				background-color: rgba(#d4af37, 0.2);
+			}
+		}
+	}
 }

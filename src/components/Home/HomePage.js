@@ -3,16 +3,19 @@ import { NavHome } from "../Nav/Nav";
 
 import logo from "../../assets/images/lg.intuition.svg";
 import styles from "./HomePageStyle.module.scss";
+import { IntuitionLogo } from "../Components/IntuitionLogo/IntuitionLogo";
 
 function HomePage() {
-  return (
-    <React.Fragment>
-      <div className={styles.header}>
-        <img className={styles.logo} src={logo} />
-      </div>
-      <NavHome style="home"></NavHome>
-    </React.Fragment>
-  );
+	return (
+		<div className={styles.container}>
+			<div className={styles.header}>
+				<IntuitionLogo colour="white" />
+			</div>
+			<div className={styles.nav}>
+				<NavHome style="home"></NavHome>
+			</div>
+		</div>
+	);
 }
 
 export default HomePage;

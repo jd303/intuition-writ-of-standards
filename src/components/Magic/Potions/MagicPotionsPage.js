@@ -11,88 +11,89 @@ import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import { potions } from "../../../assets/data/potions_data";
 import { useSelector } from "react-redux";
 import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
+import { PageTitle } from "../../Components/PageTitle/PageTitle";
 
 function MagicPotionsPage() {
-  /**
-   * Redux State: ViewMode
-   * */
-  const viewMode = useSelector(selectViewMode);
+	/**
+	 * Redux State: ViewMode
+	 * */
+	const viewMode = useSelector(selectViewMode);
 
-  /**
-   * Filter State
-   * */
-  const schoolFilterValues = { all: "All", ...MagicSchools };
-  const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
+	/**
+	 * Filter State
+	 * */
+	const schoolFilterValues = { all: "All", ...MagicSchools };
+	const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
 
-  /**
-   * When a filter is changed
-   * */
-  const onFilterChange = (filterChangeEvent) => {
-    const filterName = filterChangeEvent.target.name;
-    const filterValue = filterChangeEvent.target.value;
+	/**
+	 * When a filter is changed
+	 * */
+	const onFilterChange = (filterChangeEvent) => {
+		const filterName = filterChangeEvent.target.name;
+		const filterValue = filterChangeEvent.target.value;
 
-    if (filterName == "school") {
-      setSchoolFilterValue(filterValue);
-    }
-  };
+		if (filterName == "school") {
+			setSchoolFilterValue(filterValue);
+		}
+	};
 
-  /**
-   * When filters are cleared
-   * */
-  const onFilterClear = () => {
-    setSchoolFilterValue("all");
-  };
+	/**
+	 * When filters are cleared
+	 * */
+	const onFilterClear = () => {
+		setSchoolFilterValue("all");
+	};
 
-  /**
-   * Fiter results by school
-   * */
-  const filterBySchool = (potion) => {
-    if (schoolFilterValue == "all") return true;
-    else return potion.school == schoolFilterValue;
-  };
+	/**
+	 * Fiter results by school
+	 * */
+	const filterBySchool = (potion) => {
+		if (schoolFilterValue == "all") return true;
+		else return potion.school == schoolFilterValue;
+	};
 
-  /**
-   * Define filters
-   * */
-  const filters = {
-    dropdowns: [
-      {
-        name: "school",
-        values: schoolFilterValues,
-      },
-    ],
-    change: onFilterChange,
-    clear: onFilterClear,
-  };
+	/**
+	 * Define filters
+	 * */
+	const filters = {
+		dropdowns: [
+			{
+				name: "school",
+				values: schoolFilterValues,
+			},
+		],
+		change: onFilterChange,
+		clear: onFilterClear,
+	};
 
-  return (
-    <React.Fragment>
-      <Header />
-      <h1>Potions</h1>
-      <ListingWrapper filter={true} filters={filters}>
-        {potions.filter(filterBySchool).map((potion, index) => (
-          <Listing key={index}>
-            <div className={st.potion + " " + st["view-" + viewMode]}>
-              <ListingTitle>{potion.name}</ListingTitle>
-              <div className={st.potion}>
-                <CircledText text={potion.cost.toString()} />
-              </div>
-              <div className={st.school}>{potion.school}</div>
-              <div className={st.mechanics}>
-                <div className={st.duration}>
-                  <img src={timeIcon} />
-                  {potion.duration}
-                </div>
-              </div>
-              <ul className={st.effects}>
-                <li className={st.effect}>{potion.effect}</li>
-              </ul>
-            </div>
-          </Listing>
-        ))}
-      </ListingWrapper>
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			<Header colour="purple" />
+			<PageTitle colour="purple">Potions</PageTitle>
+			<ListingWrapper filter={true} filters={filters}>
+				{potions.filter(filterBySchool).map((potion, index) => (
+					<Listing key={index}>
+						<div className={st.potion + " " + st["view-" + viewMode]}>
+							<ListingTitle>{potion.name}</ListingTitle>
+							<div className={st.potion}>
+								<CircledText text={potion.cost.toString()} />
+							</div>
+							<div className={st.school}>{potion.school}</div>
+							<div className={st.mechanics}>
+								<div className={st.duration}>
+									<img src={timeIcon} />
+									{potion.duration}
+								</div>
+							</div>
+							<ul className={st.effects}>
+								<li className={st.effect}>{potion.effect}</li>
+							</ul>
+						</div>
+					</Listing>
+				))}
+			</ListingWrapper>
+		</React.Fragment>
+	);
 }
 
 export default MagicPotionsPage;

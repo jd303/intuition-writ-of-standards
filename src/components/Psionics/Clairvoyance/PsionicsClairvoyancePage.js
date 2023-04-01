@@ -20,59 +20,59 @@ import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
 import { powers, PsionicTalents } from "../../../assets/data/psionics_data";
 
 function PsionicsTelepathyPage() {
-  /**
-   * Redux State: viewMode
-   * */
-  const viewMode = useSelector(selectViewMode);
+	/**
+	 * Redux State: viewMode
+	 * */
+	const viewMode = useSelector(selectViewMode);
 
-  /**
-   * Filter: Only Clairvoyance
-   * */
-  const filterByClairvoyance = (power) => power.talent == PsionicTalents.Clairvoyance;
+	/**
+	 * Filter: Only Clairvoyance
+	 * */
+	const filterByClairvoyance = (power) => power.talent == PsionicTalents.Clairvoyance;
 
-  /**
-   * Component
-   * */
-  return (
-    <React.Fragment>
-      <Header />
-      <PageTitle>
-        Psionics &gt; Clairvoyance <ViewModeToggler></ViewModeToggler>
-      </PageTitle>
-      <ListingWrapper>
-        {powers.filter(filterByClairvoyance).map((power, index) => (
-          <Listing key={index}>
-            <div className={stlist.listitem + " " + stsh["view-" + viewMode]}>
-              <ListingTitle>{power.name}</ListingTitle>
-              <div className={stlist.cost}>
-                <CircledText text={power.cost.toString()} />
-              </div>
-              <div className={stlist.school}>{power.school}</div>
-              <div className={stlist.mechanics}>
-                <div className={stlist.challengeType}>
-                  <img src={target} />
-                  {power.challenge_type}
-                </div>
-                <div className={stlist.range}>
-                  <img src={mapPinIcon} />
-                  {power.range}
-                </div>
-                <div className={stlist.duration}>
-                  <img src={timeIcon} />
-                  {power.duration}
-                </div>
-              </div>
-              <ul className={stlist.effects}>
-                <li className={stlist.effect}>{power.description}</li>
-                <li className={stlist.effect}>{power.effect_channeled}</li>
-                <li className={stlist.effect}>{power.effect_overchanneled}</li>
-              </ul>
-            </div>
-          </Listing>
-        ))}
-      </ListingWrapper>
-    </React.Fragment>
-  );
+	/**
+	 * Component
+	 * */
+	return (
+		<React.Fragment>
+			<Header colour="scarlet" />
+			<PageTitle colour="scarlet">
+				Psionics &gt; Clairvoyance <ViewModeToggler></ViewModeToggler>
+			</PageTitle>
+			<ListingWrapper>
+				{powers.filter(filterByClairvoyance).map((power, index) => (
+					<Listing key={index}>
+						<div className={stlist.listitem + " " + stsh["view-" + viewMode]}>
+							<ListingTitle>{power.name}</ListingTitle>
+							<div className={stlist.cost}>
+								<CircledText text={power.cost.toString()} />
+							</div>
+							<div className={stlist.school}>{power.school}</div>
+							<div className={stlist.mechanics}>
+								<div className={stlist.challengeType}>
+									<img src={target} />
+									{power.challenge_type}
+								</div>
+								<div className={stlist.range}>
+									<img src={mapPinIcon} />
+									{power.range}
+								</div>
+								<div className={stlist.duration}>
+									<img src={timeIcon} />
+									{power.duration}
+								</div>
+							</div>
+							<ul className={stlist.effects}>
+								<li className={stlist.effect}>{power.description}</li>
+								<li className={stlist.effect}>{power.effect_channeled}</li>
+								<li className={stlist.effect}>{power.effect_overchanneled}</li>
+							</ul>
+						</div>
+					</Listing>
+				))}
+			</ListingWrapper>
+		</React.Fragment>
+	);
 }
 
 export default PsionicsTelepathyPage;

@@ -1,23 +1,23 @@
 .header {
-  grid-row: 1;
-  grid-column: 1/4;
+	grid-row: 1;
+	grid-column: 1/4;
 
-  display: flex;
-  align-items: center;
-  padding: var(--standard-padding);
-  border-bottom: 4px solid var(--colour-purple);
-  background-image: url(../../../assets/images/bg.paper.v2.jpg);
+	display: flex;
+	align-items: center;
+	padding: var(--standard-padding);
+	background-image: url(../../../assets/images/bg.paper.v2.jpg);
 }
 
 .site {
+	width: 40px;
 }
 
 .logo {
-  width: 50px;
+	width: 50px;
 }
 
 @media print {
-  .logo {
-    height: 50px;
-  }
+	.logo {
+		height: 50px;
+	}
 }
