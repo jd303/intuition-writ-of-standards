@@ -2,10 +2,13 @@ import React from "react";
 import Header from "../Components/Header/Header";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import MoveCategoryComponent from "./MoveCategory";
-
-import { moves_and_mods } from "../../assets/data/moves_and_mods";
+import { useSelector } from "react-redux";
+import { selectMovesData } from "../../features/firebase/movesDataSlice";
 
 function MovesAndModsPage() {
+	const moves_and_mods = useSelector(selectMovesData);
+	console.log("MAM", moves_and_mods);
+
 	return (
 		<React.Fragment>
 			<Header colour='orange' />

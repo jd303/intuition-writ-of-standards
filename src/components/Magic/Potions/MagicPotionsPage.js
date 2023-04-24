@@ -7,17 +7,19 @@ import CircledText from "../../Components/CircledText/CircledText";
 import st from "./MagicPotionsPage.module.scss";
 import { MagicSchools } from "../../../interfaces/magic_interfaces";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
-
-import { potions } from "../../../assets/data/potions_data";
 import { useSelector } from "react-redux";
+
+//import { potions } from "../../../assets/data/potions_data";
 import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
+import { selectPotionsData } from "../../../features/firebase/potionsDataSlice";
 
 function MagicPotionsPage() {
 	/**
 	 * Redux State: ViewMode
 	 * */
 	const viewMode = useSelector(selectViewMode);
+	const potions = useSelector(selectPotionsData);
 
 	/**
 	 * Filter State

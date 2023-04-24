@@ -11,15 +11,14 @@ MoveCategoryComponent.propTypes = {
 
 function MoveCategoryComponent(props) {
 	let { move } = props;
-
-	const rankSort = (a, b) => (a.rank < b.rank && -1) || 1;
+	console.log("MOVE", move);
 
 	return (
 		<div className={st.move}>
 			<ListingTitle>{move.name}</ListingTitle>
 			<div className={st.moveDesc}>{move.description}</div>
 			<ul className={st.modsList}>
-				{move.mods.sort(rankSort).map((mod, index3) => {
+				{move.mods?.map((mod, index3) => {
 					return (
 						<li key={index3} className={st.moveMod}>
 							<div className={st.rankDetails + ' ' + st[mod.rank]}>

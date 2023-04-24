@@ -16,11 +16,12 @@ import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
 
 // Data
 import { MagicSchools } from "../../../interfaces/magic_interfaces";
-import { spells } from "../../../assets/data/spells_data.js";
+//import { spells } from "../../../assets/data/spells_data.js";
 
 // State
 import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
+import { selectSpellsData } from "../../../features/firebase/spellsDataSlice";
 
 /**
  * Renders the Magic Spells page
@@ -28,6 +29,8 @@ import { PageTitle } from "../../Components/PageTitle/PageTitle";
 function MagicSpellsPage() {
 	// State
 	const viewMode = useSelector(selectViewMode);
+
+	let spells = useSelector(selectSpellsData);
 
 	/**
 	 * Filter State

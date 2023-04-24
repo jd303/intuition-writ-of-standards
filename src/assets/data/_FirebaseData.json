@@ -1,0 +1,142 @@
+{
+	"data_standards": {
+		"DamageStandards-DR1": "d4",
+		"DamageStandards-DR2": "d6",
+		"DamageStandards-DR3": "d8",
+		"DamageStandards-DR4": "d10",
+		"DamageStandards-DR5": "d12",
+		"DamageStandards-DR6": "2d8",
+	
+		"MoveModRanks-Rank1": "Rank1",
+		"MoveModRanks-Rank2": "Rank2",
+		"MoveModRanks-Rank3": "Rank3",
+	
+		"MagicSchools-Evocation": "Evocation",
+		"MagicSchools-Necromancy": "Necromancy",
+		"MagicSchools-Illusion": "Illusion",
+		"MagicSchools-Enchantment": "Enchantment",
+		"MagicSchools-Restoration": "Restoration",
+	
+		"MagicCosts-CR1": 2,
+		"MagicCosts-CR2": 4,
+		"MagicCosts-CR3": 6,
+		"MagicCosts-CR4": 8,
+		"MagicCosts-CR5": 10,
+	
+		"MagicChallengeTypes-None": "None",
+		"MagicChallengeTypes-Targeted": "Targeted",
+		"MagicChallengeTypes-Resist_will": "Resist_will",
+	
+		"MagicRanges-Self": "Self",
+		"MagicRanges-Touch": "Touch",
+		"MagicRanges-Short": "10sq",
+	
+		"MagicDurations-Instant": "Instant",
+		"MagicDurations-Short": "3 Rounds",
+		"MagicDurations-Medium": "1 Min"
+	},
+
+	"move_categories": [
+		{
+			"name": "Combat",
+			"moves": [
+				{
+					"name": "Attack",
+					"description": "Hitty-bashy",
+					"mods": [
+						{
+							"rank": "#MoveModRanks-Rank1",
+							"name": "Hitty Good",
+							"description": "You hit really good",
+							"stamina": false
+						},
+						{
+							"rank": "#MoveModRanks-Rank3",
+							"name": "Brick Attack",
+							"description": "Construction materials",
+							"stamina": true
+						},
+						{
+							"rank": "#MoveModRanks-Rank1",
+							"name": "Trippy man",
+							"description": "Whoopsy now on the floor!",
+							"stamina": true
+						},
+						{
+							"rank": "#MoveModRanks-Rank2",
+							"name": "Runny chargy",
+							"description": "+2 Dam if you can do the thing",
+							"stamina": false
+						}
+					]
+				},
+				{
+					"name": "Attack but different",
+					"description": "Hitty-bashy-in-a-different-way",
+					"mods": [
+						{
+							"rank": "#MoveModRanks-Rank1",
+							"name": "Whooshy man",
+							"description": "Whoopsy now on the floor!",
+							"stamina": false
+						}
+					]
+				}
+			]
+		}
+	],
+  "spells": [
+	{
+	  "name": "Arcane Shards",
+	  "cost": "#MagicCosts-CR1",
+	  "school": "#MagicSchools-Evocation",
+	  "effect_cantrip": "A small shard is fired at a single target, dealing #DamageStandards-DR1 damage to it.",
+	  "effect_channeled": "Fires 3 shards at up to 3 targets within 3 squares of each other; each dealing #DamageStandards-DR1 damage.",
+	  "effect_overchanneled": "Fires 6 shards at up to 6 targets within 6 squares of each other; each dealing #DamageStandards-DR1 damage.",
+	  "challenge_type": "#MagicChallengeTypes-None",
+	  "range": "#MagicRanges-Short",
+	  "duration": "#MagicDurations-Instant"
+	},
+	{
+	  "name": "Healing",
+	  "cost": "#MagicCosts-CR1",
+	  "school": "#MagicSchools-Evocation",
+	  "effect_cantrip": "You heal a willing target by 3 Life.  Recipients can only be healed this way once per Short Rest.",
+	  "effect_channeled": "You heal a willing target by #DamageStandards-DR1 Life.",
+	  "effect_overchanneled": "",
+	  "challenge_type": "#MagicChallengeTypes-None",
+	  "range": "#MagicRanges-Touch",
+	  "duration": "#MagicDurations-Instant"
+	},
+	{
+	  "name": "Invisibility",
+	  "cost": "#MagicCosts-CR2",
+	  "school": "#MagicSchools-Illusion",
+	  "effect_cantrip": "You give someone 1 Cloak.  This can only happen once per 5 minutes.",
+	  "effect_channeled": "A willing target becomes invisible. Using any Move offensively breaks this effect.",
+	  "effect_overchanneled": "A willing target becomes invisible.",
+	  "challenge_type": "#MagicChallengeTypes-None",
+	  "range": "#MagicRanges-Short",
+	  "duration": "#MagicDurations-Medium"
+	}	
+ ],
+
+ "potions": [
+	{
+	  "name": "Healing Potion",
+	  "cost": 50,
+	  "school": "#MagicSchools-Restoration",
+	  "effect": "The imbiber immediately heals for #DamageStandards-DR2.",
+	  "range": "#MagicRanges-Self",
+	  "duration": "#MagicDurations-Instant"
+	},
+	{
+	  "name": "Greater Healing Potion",
+	  "cost": 100,
+	  "school": "#MagicSchools-Restoration",
+	  "effect": "The imbiber immediately heals for #DamageStandards-DR6",
+	  "range": "#MagicRanges-Self",
+	  "duration": "#MagicDurations-Instant"
+	}
+  ]
+}
