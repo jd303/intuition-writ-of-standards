@@ -39,7 +39,6 @@
  * Converts strings in payloads according to Data Standards
  * */
 export const convertDataStandards = function (payload, standards) {
-	console.log(payload, "STAN", standards);
 	let data = JSON.stringify(payload);
 
 	Object.keys(standards).forEach(standard => {

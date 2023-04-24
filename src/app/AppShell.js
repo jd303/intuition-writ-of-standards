@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { updateMovesData } from "../features/firebase/movesDataSlice";
 import { updateSpellsData } from "../features/firebase/spellsDataSlice";
 import { updatePotionsData } from "../features/firebase/potionsDataSlice";
+import { updateAnimalCompanionsData } from "../features/firebase/animalCompanionsDataSlice";
 
 export const AppShell = function ({ children }) {
 
@@ -18,6 +19,7 @@ export const AppShell = function ({ children }) {
 		dispatch(updateMovesData({ data: data.move_categories, standards: data.data_standards }));
 		dispatch(updateSpellsData({ data: data.spells, standards: data.data_standards }));
 		dispatch(updatePotionsData({ data: data.potions, standards: data.data_standards }));
+		dispatch(updateAnimalCompanionsData({ data: data.animal_companion_moves, standards: data.data_standards }));
 	});
 
 	return (
