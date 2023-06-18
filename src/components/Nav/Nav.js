@@ -18,7 +18,7 @@ export function Nav({ style, colour = "black" }) {
 
 	return (
 		<div className={styles.nav}>
-			<ol className={styles[style] + ' ' + styles[colour]}>
+			<ol className={styles[style] + ' ' + styles[colour] + ' ' + styles.navitem}>
 				{routeSections.map((rt, index) => (
 					<li key={index} className={styles.routeLink}>
 						<NavLink to={rt.path} className={currentRouteSection.navLabel == rt.navLabel ? styles.activeLink : ""}>
@@ -27,7 +27,7 @@ export function Nav({ style, colour = "black" }) {
 					</li>
 				))}
 			</ol>
-			<ol className={styles[style] + ' ' + styles[colour]}>
+			<ol className={styles[style] + ' ' + styles[colour] + ' ' + styles.navitem}>
 				{childRoutes?.map((rt, index) => (
 					<li key={index} className={styles.subRouteLink}>
 						<NavLink to={rt.path} className={({ isActive }) => (isActive ? styles.activeLink : "")}>

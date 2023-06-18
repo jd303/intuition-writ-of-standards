@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
+import RulesPage from "./components/Rules/RulesPage";
 import MovesAndModsPage from "./components/MovesMods/MovesAndModsPage";
 import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/AlchemyReagentsPage";
 import AlchemyRecipesPage from "./components/Alchemy/AlchemyRecipesPage/AlchemyRecipesPage";
@@ -18,6 +19,10 @@ import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
 
 export const routeSections = [
+	{
+		navLabel: "Overview",
+		path: "/overview",
+	},
 	{
 		navLabel: "Moves & Mods",
 		path: "/moves-and-mods",
@@ -53,6 +58,13 @@ const routes = [
 		navLabel: "Home",
 		path: "/",
 		element: <Route key="0" path="/" element={<HomePage />} />,
+	},
+
+	{
+		navLabel: "Overview",
+		path: "/overview",
+		element: <Route key="0" path="/overview" element={<RulesPage />} />,
+		parent: "Overview",
 	},
 
 	{
