@@ -17,6 +17,7 @@ import CostsScalePage from "./components/Costs/Scale/CostsScalePage";
 import AnimalCompanionsPage from "./components/Companions/AnimalCompanionsPage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
+import MenageriePage from "./components/Menagerie/MengeriePage";
 
 export const routeSections = [
 	{
@@ -50,6 +51,10 @@ export const routeSections = [
 	{
 		navLabel: "Gadgetry",
 		path: "/gadgetry-guide",
+	},
+	{
+		navLabel: "Menagerie",
+		path: "/menagerie",
 	},
 ];
 
@@ -168,6 +173,13 @@ const routes = [
 		path: "/costs-scale",
 		element: <Route key="0" path="/costs-scale" element={<CostsScalePage />} />,
 		parent: "Costs",
+	},
+
+	{
+		navLabel: "Menagerie",
+		path: "/menagerie",
+		element: <Route key="0" path="/menagerie" element={<MenageriePage />} />,
+		parent: "Menagerie",
 	},
 ];
 

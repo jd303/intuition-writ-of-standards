@@ -5,6 +5,7 @@ import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
 import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
 import Medal from "../../Components/Medal/Medal";
+import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import CircledText from "../../Components/CircledText/CircledText";
 
 // Styles
@@ -20,7 +21,6 @@ import { MagicSchools } from "../../../interfaces/magic_interfaces";
 
 // State
 import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
-import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import { selectSpellsData } from "../../../features/firebase/spellsDataSlice";
 
 /**
@@ -29,7 +29,6 @@ import { selectSpellsData } from "../../../features/firebase/spellsDataSlice";
 function MagicSpellsPage() {
 	// State
 	const viewMode = useSelector(selectViewMode);
-
 	let spells = useSelector(selectSpellsData);
 
 	/**
@@ -89,34 +88,34 @@ function MagicSpellsPage() {
 			<ListingWrapper filter={true} filters={filters}>
 				{spells.filter(filterBySchool).map((spell, index) => (
 					<Listing key={index}>
-						<div className={stlist.listitem + " " + st["view-" + viewMode]}>
+						<div className={stlist.listitem + ' ' + st.spellLayout}>
 							<ListingTitle>{spell.name}</ListingTitle>
-							<div className={stlist.cost}>
+							<div className={st.cost}>
 								<CircledText text={spell.cost.toString()} />
 							</div>
-							<div className={stlist.school}>{spell.school}</div>
-							<div className={stlist.mechanics}>
-								<div className={stlist.challengeType}>
+							<div className={st.school}>{spell.school}</div>
+							<div className={st.mechanics}>
+								<div className={st.challengeType}>
 									<img src={target} />
 									{spell.challenge_type}
 								</div>
-								<div className={stlist.range}>
+								<div className={st.range}>
 									<img src={mapPinIcon} />
 									{spell.range}
 								</div>
-								<div className={stlist.duration}>
+								<div className={st.duration}>
 									<img src={timeIcon} />
 									{spell.duration}
 								</div>
 							</div>
-							<ul className={stlist.effects}>
-								<li className={stlist.effect}>
+							<ul className={st.effects}>
+								<li className={st.effect}>
 									<Medal size="small" rarity="bronze" /> {spell.effect_cantrip}
 								</li>
-								<li className={stlist.effect}>
+								<li className={st.effect}>
 									<Medal size="small" rarity="silver" /> {spell.effect_channeled}
 								</li>
-								<li className={stlist.effect}>
+								<li className={st.effect}>
 									<Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
 								</li>
 							</ul>
