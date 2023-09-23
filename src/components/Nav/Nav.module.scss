@@ -26,7 +26,7 @@ ol.navitem {
 
 	/* Colours */
 	&.black li a.activeLink {
-		color: black;
+		color: var(--colour-black);
 	}
 
 	&.orange li a.activeLink {
@@ -43,6 +43,12 @@ ol.navitem {
 
 	&.cyan li a.activeLink {
 		background: var(--colour-cyan);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	&.cobalt li a.activeLink {
+		background: var(--colour-cobalt);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}

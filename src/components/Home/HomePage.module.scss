@@ -32,6 +32,7 @@
 }
 
 .sectionItem {
+	position: relative;
 	width: 100%;
 	min-width: 100%;
 	height: 100%;
@@ -56,31 +57,85 @@
 		text-align: center;
 	}
 
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		mix-blend-mode: color;
+		opacity: 0.5;
+		transition: all 0.5s;
+		pointer-events: none;
+	}
+
+	&:hover {
+		&:before { opacity: 0.1; }
+	}
+
 	&.rules {
 		background-image: url(../../assets/images/gr.home.rules.png);
+
+		&:before {
+			background-color: var(--colour-silver);
+		}
 	}
 	&.moves {
 		background-image: url(../../assets/images/gr.home.moves.png);
+
+		&:before {
+			background-color: var(--colour-orange);
+		}
 	}
 	&.magic {
 		background-image: url(../../assets/images/gr.home.magic.png);
+
+		&:before {
+			background-color: var(--colour-purple);
+		}
 	}
 	&.psionics {
 		background-image: url(../../assets/images/gr.home.psionics.png);
+
+		&:before {
+			background-color: var(--colour-scarlet);
+		}
 	}
 	&.alchemy {
 		background-image: url(../../assets/images/gr.home.alchemy.png);
+
+		&:before {
+			background-color: var(--colour-cyan);
+		}
 	}
-	&.costs {
+	&.equipment {
 		background-image: url(../../assets/images/gr.home.costs.png);
+
+		&:before {
+			background-color: var(--colour-silver);
+		}
 	}
 	&.companions {
 		background-image: url(../../assets/images/gr.home.companions.png);
+
+		&:before {
+			background-color: var(--colour-mustard);
+		}
 	}
 	&.gadgetry {
 		background-image: url(../../assets/images/gr.home.gadgetry.png);
+
+		&:before {
+			background-color: var(--colour-cobalt);
+		}
 	}
 	&.menagerie {
 		background-image: url(../../assets/images/gr.home.menagerie.png);
+
+		&:before {
+			background-color: var(--colour-silver);
+		}
 	}
 }

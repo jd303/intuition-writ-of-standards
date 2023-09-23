@@ -6,8 +6,8 @@ import { PageTitle } from "../Components/PageTitle/PageTitle";
 function GadgetsGuidePage() {
 	return (
 		<React.Fragment>
-			<Header colour="black" />
-			<PageTitle colour="black">Gadgets</PageTitle>
+			<Header colour="cobalt" />
+			<PageTitle colour="cobalt">Gadgets</PageTitle>
 			<ListingWrapper>
 				Coming soon
 			</ListingWrapper>

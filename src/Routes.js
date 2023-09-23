@@ -14,8 +14,8 @@ import PsionicsKineticsPage from "./components/Psionics/Kinetics/PsionicsKinetic
 import PsionicsTelepathyPage from "./components/Psionics/Telepathy/PsionicsTelepathyPage";
 import PsionicsClairvoyancePage from "./components/Psionics/Clairvoyance/PsionicsClairvoyancePage";
 import PsionicsPsychometabolismPage from "./components/Psionics/Psychometabolism/PsionicsPsychometabolismPage";
-import CostsListPage from "./components/Costs/List/CostsListPage";
-import CostsScalePage from "./components/Costs/Scale/CostsScalePage";
+import EquipmentPage from "./components/Equipment/EquipmentPage";
+import CostsListPage from "./components/Equipment/CostsListPage";
 import AnimalCompanionsGuidePage from "./components/Companions/AnimalCompanionsGuidePage";
 import AnimalCompanionsPage from "./components/Companions/AnimalCompanionsPage";
 import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
@@ -65,9 +65,9 @@ export const routeSections = [
 		path: "/menagerie",
 	},
 	{
-		id: "costs",
-		navLabel: "Costs",
-		path: "/costs-list",
+		id: "equipment",
+		navLabel: "Equipment",
+		path: "/equipment",
 	},
 ];
 
@@ -200,16 +200,16 @@ const routes = [
 	},
 
 	{
+		navLabel: "Equipment",
+		path: "/equipment",
+		element: <Route key="0" path="/equipment" element={<EquipmentPage />} />,
+		parent: "Equipment",
+	},
+	{
 		navLabel: "Costs List",
 		path: "/costs-list",
 		element: <Route key="0" path="/costs-list" element={<CostsListPage />} />,
-		parent: "Costs",
-	},
-	{
-		navLabel: "Costs Scale",
-		path: "/costs-scale",
-		element: <Route key="0" path="/costs-scale" element={<CostsScalePage />} />,
-		parent: "Costs",
+		parent: "Equipment",
 	},
 
 	{

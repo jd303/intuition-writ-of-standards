@@ -10,7 +10,7 @@ function HomePage() {
 
 	useEffect(() => {
 		document.querySelectorAll(`.${styles.sectionItem}`).forEach(el => {
-			el.setAttribute('data-multiplier', Math.floor(Math.random() * 8 + 7));
+			el.setAttribute('data-multiplier', Math.floor(Math.random() * 5 + 5));
 		});
 	}, []);
 

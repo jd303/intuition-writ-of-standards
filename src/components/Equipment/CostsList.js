@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import styles from "./CostsListStyles.module.scss";
-import ls from "../../Listings/Listings.module.scss";
+import ls from "../Listings/Listings.module.scss";
 
 CostsList.propTypes = {
   costsList: PropTypes.array.isRequired,

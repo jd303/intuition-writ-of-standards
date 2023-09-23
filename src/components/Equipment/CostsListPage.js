@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../../Components/Header/Header";
+import Header from "../Components/Header/Header";
 import CostsList from "./CostsList";
-import { Costs } from "../../../assets/data/costs_data";
-import { PageTitle } from "../../Components/PageTitle/PageTitle";
+import { Costs } from "../../assets/data/costs_data";
+import { PageTitle } from "../Components/PageTitle/PageTitle";
 
 function CostsListPage() {
 	return (
