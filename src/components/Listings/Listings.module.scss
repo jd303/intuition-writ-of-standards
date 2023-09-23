@@ -1,7 +1,7 @@
 // Default styles
 .listingsSection {
   header {
-    margin-bottom: var(--standard-padding);
+    margin-bottom: var(--padding-standard);
   }
 }
 
@@ -9,7 +9,7 @@
   --card-columns: 1fr 1fr;
 
   display: grid;
-  gap: calc(var(--standard-padding) / 3);
+  gap: calc(var(--padding-standard) / 3);
 
   // VIEWS
   &.view_ {
@@ -20,7 +20,7 @@
       border-radius: 12px;
 
       .listing {
-        padding: calc(var(--standard-padding) * 0.5);
+        padding: calc(var(--padding-standard) * 0.5);
       }
     }
 
@@ -43,7 +43,7 @@
       }
 
       .listing {
-        padding: calc(var(--standard-padding) * 0.75);
+        padding: calc(var(--padding-standard) * 0.75);
         border-radius: 12px;
         box-shadow: 2px 2px 6px var(--standard-black-transparent-background);
       }

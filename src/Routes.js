@@ -1,9 +1,11 @@
 import { Route } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
 import RulesPage from "./components/Rules/RulesPage";
+import MovesAndModsGuidePage from "./components/MovesMods/MovesAndModsGuidePage";
 import MovesAndModsPage from "./components/MovesMods/MovesAndModsPage";
 import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/AlchemyReagentsPage";
 import AlchemyRecipesPage from "./components/Alchemy/AlchemyRecipesPage/AlchemyRecipesPage";
+import MagicGuidePage from "./components/Magic/Guide/MagicGuidePage";
 import MagicSpellsPage from "./components/Magic/Spells/MagicSpellsPage";
 import MagicPotionsPage from "./components/Magic/Potions/MagicPotionsPage";
 import MagicEnchantingPage from "./components/Magic/Enchanting/MagicEnchantingPage";
@@ -14,47 +16,58 @@ import PsionicsClairvoyancePage from "./components/Psionics/Clairvoyance/Psionic
 import PsionicsPsychometabolismPage from "./components/Psionics/Psychometabolism/PsionicsPsychometabolismPage";
 import CostsListPage from "./components/Costs/List/CostsListPage";
 import CostsScalePage from "./components/Costs/Scale/CostsScalePage";
+import AnimalCompanionsGuidePage from "./components/Companions/AnimalCompanionsGuidePage";
 import AnimalCompanionsPage from "./components/Companions/AnimalCompanionsPage";
+import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
 import MenageriePage from "./components/Menagerie/MengeriePage";
 
 export const routeSections = [
 	{
-		navLabel: "Overview",
-		path: "/overview",
+		id: "rules",
+		navLabel: "Rules",
+		path: "/rules",
 	},
 	{
+		id: "moves",
 		navLabel: "Moves & Mods",
-		path: "/moves-and-mods",
+		path: "/moves-and-mods-guide",
 	},
 	{
+		id: "magic",
 		navLabel: "Magic",
-		path: "/magic-spells",
+		path: "/magic-guide",
 	},
 	{
+		id: "psionics",
 		navLabel: "Psionics",
 		path: "/psionics-guide",
 	},
 	{
+		id: "alchemy",
 		navLabel: "Alchemy",
 		path: "/alchemy-guide",
 	},
 	{
-		navLabel: "Costs",
-		path: "/costs-list",
-	},
-	{
-		navLabel: "Companions",
-		path: "/companion-guide",
-	},
-	{
+		id: "gadgetry",
 		navLabel: "Gadgetry",
 		path: "/gadgetry-guide",
 	},
 	{
+		id: "companions",
+		navLabel: "Companions",
+		path: "/companion-guide",
+	},
+	{
+		id: "menagerie",
 		navLabel: "Menagerie",
 		path: "/menagerie",
+	},
+	{
+		id: "costs",
+		navLabel: "Costs",
+		path: "/costs-list",
 	},
 ];
 
@@ -66,12 +79,18 @@ const routes = [
 	},
 
 	{
-		navLabel: "Overview",
-		path: "/overview",
-		element: <Route key="0" path="/overview" element={<RulesPage />} />,
-		parent: "Overview",
+		navLabel: "Rules",
+		path: "/rules",
+		element: <Route key="0" path="/rules" element={<RulesPage />} />,
+		parent: "Rules",
 	},
 
+	{
+		navLabel: "Guide",
+		path: "/moves-and-mods-guide",
+		element: <Route key="0" path="/moves-and-mods-guide" element={<MovesAndModsGuidePage />} />,
+		parent: "Moves & Mods",
+	},
 	{
 		navLabel: "Moves & Mods",
 		path: "/moves-and-mods",
@@ -98,6 +117,12 @@ const routes = [
 		parent: "Alchemy",
 	},
 
+	{
+		navLabel: "Guide",
+		path: "/magic-guide",
+		element: <Route key="0" path="/magic-guide" element={<MagicGuidePage />} />,
+		parent: "Magic",
+	},
 	{
 		navLabel: "Spells",
 		path: "/magic-spells",
@@ -142,23 +167,35 @@ const routes = [
 		parent: "Psionics",
 	},
 	{
-		navLabel: "Psychmetabolism",
+		navLabel: "Psychometabolism",
 		path: "/psionics-psychometabolism",
 		element: <Route key="0" path="/psionics-psychometabolism" element={<PsionicsPsychometabolismPage />} />,
 		parent: "Psionics",
 	},
 
 	{
-		navLabel: "Animal Companions",
+		navLabel: "Guide",
 		path: "/companion-guide",
-		element: <Route key="0" path="/companion-guide" element={<AnimalCompanionsPage />} />,
+		element: <Route key="0" path="/companion-guide" element={<AnimalCompanionsGuidePage />} />,
+		parent: "Companions",
+	},
+	{
+		navLabel: "Animal Companions",
+		path: "/companions",
+		element: <Route key="0" path="/companions" element={<AnimalCompanionsPage />} />,
 		parent: "Companions",
 	},
 
 	{
-		navLabel: "Gadgets",
+		navLabel: "Guide",
 		path: "/gadgetry-guide",
-		element: <Route key="0" path="/gadgetry-guide" element={<GadgetsPage />} />,
+		element: <Route key="0" path="/gadgetry-guide" element={<GadgetsGuidePage />} />,
+		parent: "Gadgetry",
+	},
+	{
+		navLabel: "Gadgets",
+		path: "/gadgetry",
+		element: <Route key="0" path="/gadgetry" element={<GadgetsPage />} />,
 		parent: "Gadgetry",
 	},
 

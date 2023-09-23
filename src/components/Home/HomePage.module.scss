@@ -1,0 +1,86 @@
+@import '../../AppSassVars.scss';
+
+.container {
+	--grid-template-columns: 1fr 1fr;
+
+	@media (min-width: $desktopBreakpoint) {
+		--grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+
+	width: 100vw;
+	min-height: 100vh;
+	background-color: #000;
+	padding: var(--padding-standard);
+	box-sizing: border-box;
+	text-align: center;
+
+	.grid {
+		display: inline-grid;
+		grid-template-columns: var(--grid-template-columns);
+		align-items: center;
+		gap: var(--padding-standard);
+		width: 100%;
+		max-width: 1800px;
+		min-height: 100%;
+	}
+}
+
+.header {
+	height: 60%;
+	max-height: 200px;
+	text-align: center;
+}
+
+.sectionItem {
+	width: 100%;
+	min-width: 100%;
+	height: 100%;
+	padding: var(--padding-standard);
+	box-sizing: border-box;
+	border-radius: 15px;
+
+	background-size: cover;
+	background-position: 50% 100%;
+	background-repeat: no-repeat;
+
+	.link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		font-size: min(35px, max(20px, 2.5vw));
+		color: white;
+		text-decoration: none;
+		text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+		text-align: center;
+	}
+
+	&.rules {
+		background-image: url(../../assets/images/gr.home.rules.png);
+	}
+	&.moves {
+		background-image: url(../../assets/images/gr.home.moves.png);
+	}
+	&.magic {
+		background-image: url(../../assets/images/gr.home.magic.png);
+	}
+	&.psionics {
+		background-image: url(../../assets/images/gr.home.psionics.png);
+	}
+	&.alchemy {
+		background-image: url(../../assets/images/gr.home.alchemy.png);
+	}
+	&.costs {
+		background-image: url(../../assets/images/gr.home.costs.png);
+	}
+	&.companions {
+		background-image: url(../../assets/images/gr.home.companions.png);
+	}
+	&.gadgetry {
+		background-image: url(../../assets/images/gr.home.gadgetry.png);
+	}
+	&.menagerie {
+		background-image: url(../../assets/images/gr.home.menagerie.png);
+	}
+}

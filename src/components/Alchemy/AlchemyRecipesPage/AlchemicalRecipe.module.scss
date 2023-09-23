@@ -1,7 +1,7 @@
 .recipe {
   display: grid;
   grid-template-columns: 2fr 2fr minmax(150px, 1fr);
-  gap: calc(var(--standard-padding) / 2);
+  gap: calc(var(--padding-standard) / 2);
   justify-content: space-between;
   position: relative;
   height: 100%;
@@ -71,7 +71,7 @@
       vertical-align: middle;
       height: 30px;
       line-height: 30px;
-      margin-right: calc(var(--standard-padding) / 2);
+      margin-right: calc(var(--padding-standard) / 2);
       margin-top: -3px;
     }
   }

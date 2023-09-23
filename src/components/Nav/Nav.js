@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 import { routeSections, RouteDefinitions } from "../../Routes";
 import { NavLink, useLocation } from "react-router-dom";
 
-import styles from "./NavStyle.module.scss";
+import styles from "./Nav.module.scss";
 
 Nav.propTypes = {
 	style: PropTypes.string.isRequired,
@@ -37,17 +37,5 @@ export function Nav({ style, colour = "black" }) {
 				))}
 			</ol>
 		</div>
-	);
-}
-
-export function NavHome() {
-	return (
-		<ol className={styles.home}>
-			{routeSections.map((rt, index) => (
-				<li key={index} className={styles.routeLink}>
-					<NavLink to={rt.path}>{rt.navLabel}</NavLink>
-				</li>
-			))}
-		</ol>
 	);
 }

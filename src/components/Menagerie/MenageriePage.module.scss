@@ -3,10 +3,10 @@
 	.details {
 		display:grid;
 		grid-template-columns: 3fr 3fr 4fr;
-		gap: var(--standard-padding);
+		gap: var(--padding-standard);
 
-		padding-top: var(--standard-padding);
-		margin-top: var(--standard-padding);
+		padding-top: var(--padding-standard);
+		margin-top: var(--padding-standard);
 		border-top: var(--standard-divider);
 
 		.image {
@@ -21,7 +21,7 @@
 		.vitae {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: var(--standard-padding);
+			gap: var(--padding-standard);
 		}
 
 		.stats {
@@ -29,7 +29,7 @@
 			grid-column: 1 / 4;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: var(--standard-padding);
+			gap: var(--padding-standard);
 		}
 
 		.title {

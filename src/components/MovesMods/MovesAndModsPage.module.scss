@@ -1,7 +1,7 @@
 .categoryContainer {
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--standard-padding) / 2);
+	gap: calc(var(--padding-standard) / 2);
 	max-width: 1024px;
 }
 
@@ -12,21 +12,21 @@
 }
 
 .move {
-	padding: calc(var(--standard-padding) / 2);
+	padding: calc(var(--padding-standard) / 2);
 	border-radius: 8px;
 	background-color: var(--colour-cream-light);
 }
 
 .moveDesc {
-	padding-top: calc(var(--standard-padding) / 2);
+	padding-top: calc(var(--padding-standard) / 2);
 }
 
 .modsList {
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--standard-padding) / 20);
+	gap: calc(var(--padding-standard) / 20);
 	list-style-type: none;
-	padding: var(--standard-padding) 0 0 0;
+	padding: var(--padding-standard) 0 0 0;
 	border-top: 1px solid black;
 
 	.moveMod {

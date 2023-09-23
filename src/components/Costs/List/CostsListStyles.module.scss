@@ -1,6 +1,6 @@
 .columns {
   display: flex;
-  gap: var(--standard-padding);
+  gap: var(--padding-standard);
 
   .column {
     display: inline-block;
@@ -9,8 +9,8 @@
 }
 
 .category {
-  padding: calc(var(--standard-padding) / 2) var(--standard-padding);
-  margin-bottom: calc(var(--standard-padding) / 2);
+  padding: calc(var(--padding-standard) / 2) var(--padding-standard);
+  margin-bottom: calc(var(--padding-standard) / 2);
   background-color: var(--standard-black-transparent-background);
 
   .costList {
@@ -18,11 +18,11 @@
 
     li {
       display: flex;
-      gap: var(--standard-padding);
+      gap: var(--padding-standard);
       justify-content: space-between;
       border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
       padding-bottom: 4px;
-      margin-bottom: calc(var(--standard-padding) / 2);
+      margin-bottom: calc(var(--padding-standard) / 2);
 
       span {
       }

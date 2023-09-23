@@ -8,9 +8,9 @@
   &.card-view {
     display: flex;
     justify-content: space-between;
-    gap: var(--standard-padding);
+    gap: var(--padding-standard);
     max-width: calc(var(--text-width) + var(--vitals-width));
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
 
     .text {
       flex: auto;
@@ -29,7 +29,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: calc(var(--standard-padding) / 2);
+        gap: calc(var(--padding-standard) / 2);
         flex: auto;
         height: var(--title-height);
         line-height: var(--title-line-height);
@@ -41,14 +41,14 @@
 
   &.list-view {
     display: flex;
-    gap: var(--standard-padding);
+    gap: var(--padding-standard);
     align-items: center;
-    padding: calc(var(--standard-padding) / 2) var(--standard-padding);
+    padding: calc(var(--padding-standard) / 2) var(--padding-standard);
     line-height: 15px;
 
     .text {
       display: flex;
-      gap: var(--standard-padding);
+      gap: var(--padding-standard);
 
       .name {
         flex: none;
@@ -63,7 +63,7 @@
 
     .vitals {
       display: flex;
-      gap: var(--standard-padding);
+      gap: var(--padding-standard);
       flex-direction: row-reverse;
       justify-content: space-between;
       flex-grow: 1;
@@ -71,7 +71,7 @@
       .core {
         display: flex;
         align-items: center;
-        gap: calc(var(--standard-padding) / 2);
+        gap: calc(var(--padding-standard) / 2);
       }
     }
   }

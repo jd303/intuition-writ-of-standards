@@ -1,5 +1,5 @@
 :root {
-	--standard-padding: 20px;
+	--padding-standard: 20px;
 	--standard-black-transparent-background: rgba(0, 0, 0, 0.1);
 	--bevel-size: 7px;
 	--font-large: 24px;
@@ -85,7 +85,7 @@ body {
 
 #root {
 	display: grid;
-	grid-template-columns: var(--standard-padding) auto var(--standard-padding);
+	grid-template-columns: var(--padding-standard) auto var(--padding-standard);
 }
 
 h1 {
@@ -94,7 +94,7 @@ h1 {
 	grid-column: 1/4;
 	color: #fff;
 	margin-top: 0;
-	padding: var(--standard-padding) 0 var(--standard-padding) var(--standard-padding);
+	padding: var(--padding-standard) 0 var(--padding-standard) var(--padding-standard);
 	background-color: var(--colour-magic-1);
 }
 
@@ -182,7 +182,7 @@ button {
 	:root {
 		--font-large: 18px;
 		--font-regular: 10px;
-		--standard-padding: 10px;
+		--padding-standard: 10px;
 	}
 
 	body {
