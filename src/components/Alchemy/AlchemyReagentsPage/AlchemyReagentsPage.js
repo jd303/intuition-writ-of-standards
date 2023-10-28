@@ -4,6 +4,7 @@ import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import AlchemyReagentList from "../AlchemyReagentsPage/AlchemyReagentList";
 import AlchemyReagentsFilter from "../AlchemyReagentsPage/AlchemyReagentsFilter";
 import Medal from "../../Components/Medal/Medal";
+import { Footer } from "../../../components/Components/Footer/Footer";
 
 // Styles and images
 import styles from "./AlchemyReagentsPage.module.scss";
@@ -86,6 +87,7 @@ function AlchemyReagentsPage() {
 				/>
 				<AlchemyReagentList filter={filterValues} view={viewValue} />
 			</section>
+			<Footer />
 		</React.Fragment>
 	);
 }

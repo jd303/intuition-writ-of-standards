@@ -7,6 +7,7 @@ import CircledText from "../../Components/CircledText/CircledText";
 import st from "./MagicPotionsPage.module.scss";
 import { MagicSchools } from "../../../interfaces/magic_interfaces";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
+import { Footer } from "../../../components/Components/Footer/Footer";
 import { useSelector } from "react-redux";
 
 //import { potions } from "../../../assets/data/potions_data";
@@ -94,6 +95,7 @@ function MagicPotionsPage() {
 					</Listing>
 				))}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

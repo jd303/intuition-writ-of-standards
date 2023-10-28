@@ -7,6 +7,7 @@ import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
 import Medal from "../../Components/Medal/Medal";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import CircledText from "../../Components/CircledText/CircledText";
+import { Footer } from "../../../components/Components/Footer/Footer";
 
 // Styles
 import st from "./MagicSpellsPage.module.scss";
@@ -123,6 +124,7 @@ function MagicSpellsPage() {
 					</Listing>
 				))}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

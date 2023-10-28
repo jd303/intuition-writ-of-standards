@@ -8,6 +8,7 @@ import dcIcon from "../../../assets/images/icons/ico.dc.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import styles from "./AlchemicalRecipe.module.scss";
 import ls from "../../Listings/Listings.module.scss";
+import { Footer } from "../../../components/Components/Footer/Footer";
 
 function AlchemyRecipesPage() {
 	/**
@@ -109,6 +110,7 @@ function AlchemyRecipesPage() {
 					</Listing>
 				))}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

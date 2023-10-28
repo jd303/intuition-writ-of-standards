@@ -5,6 +5,7 @@ import Listing from "../Listings/Listing";
 
 import { gadgets } from "../../assets/data/gadgets";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 function GadgetsPage() {
 	return (
@@ -16,6 +17,7 @@ function GadgetsPage() {
 					return <Listing key={index}>{gadget.name}</Listing>;
 				})}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

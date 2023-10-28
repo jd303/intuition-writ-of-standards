@@ -5,7 +5,7 @@ import { PageTitle } from "../Components/PageTitle/PageTitle";
 import ListingWrapper from "../Listings/ListingWrapper";
 import Listing from "../Listings/Listing";
 import ListingTitle from "../Listings/ListingTitle/ListingTitle";
-//import CircledText from "../../Components/CircledText/CircledText";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 // Styles
 import st from './MenageriePage.module.scss';
@@ -110,6 +110,7 @@ function MenageriePage() {
 					))}
 				</ListingWrapper>
 			</section>
+			<Footer />
 		</React.Fragment>
 	);
 }

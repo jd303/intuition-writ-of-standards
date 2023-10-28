@@ -3,6 +3,7 @@ import Header from "../Components/Header/Header";
 import CostsList from "./CostsList";
 import { Costs } from "../../assets/data/costs_data";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 function CostsListPage() {
 	return (
@@ -20,6 +21,7 @@ function CostsListPage() {
 				<p>The below are indicative of typical prices across the Civil Holds. Market forces may apply pressure to prices.</p>
 				<CostsList costsList={Costs} />
 			</section>
+			<Footer />
 		</React.Fragment>
 	);
 }

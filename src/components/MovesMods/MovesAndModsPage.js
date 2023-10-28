@@ -4,6 +4,7 @@ import { PageTitle } from "../Components/PageTitle/PageTitle";
 import MoveCategoryComponent from "./MoveCategory";
 import { useSelector } from "react-redux";
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 function MovesAndModsPage() {
 	const moves_and_mods = useSelector(selectMovesData);
@@ -18,6 +19,7 @@ function MovesAndModsPage() {
 					return <MoveCategoryComponent key={index} category={category} />;
 				})}
 			</section>
+			<Footer />
 		</React.Fragment>
 	);
 }

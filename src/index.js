@@ -1,7 +1,7 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { AppShell } from "./app/AppShell";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes } from "react-router-dom";
 import { RouteDefinitions } from "./Routes";
 import './firebase.js';

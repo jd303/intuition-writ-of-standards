@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Components/Header/Header";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 import styles from "./RulesPage.module.scss";
 
@@ -28,6 +29,7 @@ function RulesPage() {
 					<li><strong>Quick Action</strong>: You use a Move Mod which resolves as a Quick Action instead of a Primary Action.</li>
 				</ol>
 			</section>
+			<Footer />
 		</React.Fragment>
 	);
 }

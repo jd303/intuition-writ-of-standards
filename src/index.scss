@@ -6,6 +6,9 @@
 	--font-regular: 14px;
 	--font-small: 10px;
 
+	--max-width: 1500px;
+	--logo-width: 100px;
+
 	--standard-divider: 1px solid rgba(38, 27, 13, 0.2);
 
 	--colour-brown: #594726;
@@ -29,14 +32,13 @@
 			#ffffff 16%,
 			#dedede 21%,
 			#ffffff 24%,
-			#454545 27%,
 			#dedede 36%,
 			#ffffff 45%,
 			#ffffff 60%,
 			#dedede 72%,
 			#ffffff 80%,
 			#dedede 84%,
-			#a1a1a1);
+			#cccccc);
 
 	/* prettier-ignore */
 	--shape-bevelled: polygon(0 var(--bevel-size),
@@ -79,10 +81,9 @@ body {
 	font-size: var(--font-regular);
 	padding: 0;
 	margin: 0;
-	background-image: url(assets/images/white-texture.webp);
-	background-size: 35%;
+	background-image: url(assets/images/bg.paper.texture.webp);
 	background-position: 100% 100%;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 }
 
 #root {
@@ -103,6 +104,13 @@ h1 {
 section {
 	grid-row: 3;
 	grid-column: 2/3;
+
+	position:relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: var(--max-width);
+	margin-top: calc(2 * var(--padding-standard));
 }
 
 h1,

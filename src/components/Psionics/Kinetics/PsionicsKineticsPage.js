@@ -8,6 +8,7 @@ import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
 import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
 import CircledText from "../../Components/CircledText/CircledText";
+import { Footer } from "../../../components/Components/Footer/Footer";
 
 // Styles
 import stsh from "../PsionicsShared.module.scss";
@@ -74,6 +75,7 @@ function PsionicsKineticsPage() {
 					</Listing>
 				))}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

@@ -7,6 +7,7 @@ import st from "./AnimalCompanionsPage.module.scss";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { useSelector } from "react-redux";
 import { selectAnimalCompanionsData } from "../../features/firebase/animalCompanionsDataSlice";
+import { Footer } from "../../components/Components/Footer/Footer";
 
 function AnimalCompanionsPage() {
 	const animal_companion_moves = useSelector(selectAnimalCompanionsData);
@@ -28,6 +29,7 @@ function AnimalCompanionsPage() {
 					);
 				})}
 			</ListingWrapper>
+			<Footer />
 		</React.Fragment>
 	);
 }

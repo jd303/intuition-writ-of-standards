@@ -26,7 +26,7 @@ function HomePage() {
 		<div className={styles.container}>
 			<div className={styles.grid}>
 				<div className={styles.header}>
-					<IntuitionLogo colour="white" />
+					<IntuitionLogo colour="black" />
 				</div>
 				{routeSections.map((rt, index) => (
 					<div key={index} className={styles.sectionItem + ' ' + styles[rt.id]}>

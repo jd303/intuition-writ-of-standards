@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../Components/Header/Header";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
+import { Footer } from "../../../components/Components/Footer/Footer";
 
 function PsionicsGuidePage() {
 	return (
@@ -8,6 +9,7 @@ function PsionicsGuidePage() {
 			<Header colour="scarlet" />
 			<PageTitle colour="scarlet">Psionics &gt; Guide</PageTitle>
 			<section>Content</section>
+			<Footer />
 		</React.Fragment>
 	);
 }
