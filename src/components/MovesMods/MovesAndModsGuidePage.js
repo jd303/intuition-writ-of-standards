@@ -8,9 +8,11 @@ function MovesAndModsGuidePage() {
 		<React.Fragment>
 			<Header colour='orange' />
 			<PageTitle colour='orange'>Guide</PageTitle>
-			<section>
-				Coming soon
-			</section>
+			<div className="mainContent">
+				<section>
+					Coming soon
+				</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

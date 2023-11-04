@@ -11,7 +11,6 @@ import { Footer } from "../../../components/Components/Footer/Footer";
 
 // Styles
 import st from "./MagicSpellsPage.module.scss";
-import stlist from "../../ListItem.module.scss";
 import target from "../../../assets/images/icons/ico.target.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
@@ -86,11 +85,11 @@ function MagicSpellsPage() {
 		<React.Fragment>
 			<Header colour="purple" />
 			<PageTitle colour="purple">Spells</PageTitle>
-			<ListingWrapper filter={true} filters={filters}>
-				{spells.filter(filterBySchool).map((spell, index) => (
-					<Listing key={index}>
-						<div className={stlist.listitem + ' ' + st.spellLayout}>
-							<ListingTitle>{spell.name}</ListingTitle>
+			<div className="mainContent">
+				<ListingWrapper filter={true} filters={filters}>
+					{spells.filter(filterBySchool).map((spell, index) => (
+						<Listing key={index} className={st.spellLayout}>
+							<div className={st.name}><ListingTitle>{spell.name}</ListingTitle></div>
 							<div className={st.cost}>
 								<CircledText text={spell.cost.toString()} />
 							</div>
@@ -120,10 +119,10 @@ function MagicSpellsPage() {
 									<Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
 								</li>
 							</ul>
-						</div>
-					</Listing>
-				))}
-			</ListingWrapper>
+						</Listing>
+					))}
+				</ListingWrapper>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

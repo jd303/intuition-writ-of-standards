@@ -8,7 +8,9 @@ function MagicEnchantingPage() {
 		<React.Fragment>
 			<Header colour="purple" />
 			<PageTitle colour="purple">Enchanting</PageTitle>
-			<section>Rules to be decided</section>
+			<div className="mainContent">
+				<section>Rules to be decided</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

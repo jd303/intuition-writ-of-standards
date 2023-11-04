@@ -9,7 +9,6 @@ import { Footer } from "../../components/Components/Footer/Footer";
 
 // Styles
 import st from './MenageriePage.module.scss';
-import stlist from "../ListItem.module.scss";
 
 // State
 import { selectViewMode } from "../../features/viewMode/viewModeSlice";
@@ -81,35 +80,31 @@ function MenageriePage() {
 		<React.Fragment>
 			<Header colour="silver" />
 			<PageTitle colour="silver">Managerie</PageTitle>
-			<section>
+			<div className="mainContent">
 				<ListingWrapper filter={true} filters={filters}>
 					{menagerie.filter(filterByType).map((monster, index) => (
-						<Listing key={index}>
-							<div className={stlist.listitem + ' ' + st.menagerieLayout}>
-								<ListingTitle>{monster.name}</ListingTitle>
-								<div className={st.details}>
-									<div className={st.image}>
-										<img src={'images/creatures/'+monster.image} alt={monster.name} />
-									</div>
-									<div className={st.vitae}>
-										<div><div className={st.title}>Type</div><div className={st.value}>{monster.type}</div></div>
-										<div><div className={st.title}>CR</div><div className={st.value}>{monster.cr}</div></div>
-										<div><div className={st.title}>Movement (sq)</div><div className={st.value}>{monster.movement}</div></div>
-									</div>
-									<div className={st.stats}>
-										<div className={st.fullStat}><div className={st.title}>Resistances</div><div className={st.value}><ul>{monster.resistances.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
-										<div className={st.fullStat}><div className={st.title}>Weaknesses</div><div className={st.value}><ul>{monster.weaknesses_basic.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
-										<div className={st.fullStat}><div className={st.title}>Special Weaknesses</div><div className={st.value}><ul>{monster.weaknesses_special.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
-										<div className={st.fullStat}><div className={st.title}>Basic Attacks</div><div className={st.value}><ul>{monster.attacks_basic.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
-										<div className={st.fullStat}><div className={st.title}>Special Attacks</div><div className={st.value}><ul>{monster.attacks_special.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
-										<div className={st.fullStat}><div className={st.title}>Description</div><div className={st.value}>{monster.description}</div></div>
-									</div>
-								</div>
+						<Listing key={index} className={st.menagerieLayout}>
+							<ListingTitle>{monster.name}</ListingTitle>
+							<div className={st.image}>
+								<img src={'images/creatures/'+monster.image} alt={monster.name} />
+							</div>
+							<div className={st.vitae}>
+								<div><div className={st.title}>Type</div><div className={st.value}>{monster.type}</div></div>
+								<div><div className={st.title}>CR</div><div className={st.value}>{monster.cr}</div></div>
+								<div><div className={st.title}>Movement (sq)</div><div className={st.value}>{monster.movement}</div></div>
+							</div>
+							<div className={st.stats}>
+								<div className={st.fullStat}><div className={st.title}>Resistances</div><div className={st.value}><ul>{monster.resistances.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
+								<div className={st.fullStat}><div className={st.title}>Weaknesses</div><div className={st.value}><ul>{monster.weaknesses_basic.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
+								<div className={st.fullStat}><div className={st.title}>Special Weaknesses</div><div className={st.value}><ul>{monster.weaknesses_special.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
+								<div className={st.fullStat}><div className={st.title}>Basic Attacks</div><div className={st.value}><ul>{monster.attacks_basic.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
+								<div className={st.fullStat}><div className={st.title}>Special Attacks</div><div className={st.value}><ul>{monster.attacks_special.map((x, resIndex) => ( <li key={resIndex}>{x}</li> ))}</ul></div></div>
+								<div className={st.fullStat}><div className={st.title}>Description</div><div className={st.value}>{monster.description}</div></div>
 							</div>
 						</Listing>
 					))}
 				</ListingWrapper>
-			</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

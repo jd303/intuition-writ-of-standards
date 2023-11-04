@@ -3,12 +3,13 @@ import styles from "./CircledText.module.scss";
 
 CircledText.propTypes = {
   text: PropTypes.string.isRequired,
+  colour: PropTypes.string,
 };
 
 function CircledText(props) {
-  const { text } = props;
+  const { text, colour } = props;
 
-  return <div className={styles.container}>{text}</div>;
+  return <div className={styles.container + ' ' + styles[colour]}>{text}</div>;
 }
 
 export default CircledText;

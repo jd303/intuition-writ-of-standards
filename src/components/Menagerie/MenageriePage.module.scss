@@ -1,4 +1,37 @@
+@import "../../index.scss";
+
 .menagerieLayout {
+	@extend .gridLayoutStandard;
+
+	.image {
+		grid-column: 3;
+		grid-row: 1;
+		
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.vitae {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--padding-standard);
+	}
+
+	.stats {
+		grid-row: 2;
+		grid-column: 1 / 4;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--padding-standard);
+	}
+
+	.title {
+		font-weight: bold;
+	}
+
+	.value {
+	}
 	
 	.details {
 		display:grid;

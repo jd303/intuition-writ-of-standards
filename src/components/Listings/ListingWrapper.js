@@ -8,6 +8,7 @@ import { selectViewMode } from "../../features/viewMode/viewModeSlice";
 
 ListingWrapper.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  statusBarChildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   filter: PropTypes.bool,
   viewModeButton: PropTypes.bool,
   filters: PropTypes.object,
@@ -18,7 +19,7 @@ ListingWrapper.propTypes = {
  * Renders a listing of items
  * */
 function ListingWrapper(props) {
-  const { children, filter, viewModeButton, filters } = props;
+  const { children, filter, viewModeButton, filters, statusBarChildren } = props;
 
   // State
   const viewMode = useSelector(selectViewMode);
@@ -27,7 +28,7 @@ function ListingWrapper(props) {
     <section className={styles.listingsSection}>
       {(filter || viewModeButton) && (
         <header className={styles.header}>
-          <StatusBar filter={filter} filters={filters} />
+          <StatusBar filter={filter} filters={filters}>{statusBarChildren}</StatusBar>
         </header>
       )}
       <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode}`]}`}>{children}</div>

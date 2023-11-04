@@ -10,9 +10,11 @@ function EquipmentPage(props) {
 	<React.Fragment>
 		<Header colour="silver" />
 		<PageTitle colour="silver">Equipment List</PageTitle>
-		<ListingWrapper filter={false}>
-			Coming soon
-		</ListingWrapper>
+		<div className="mainContent">
+			<ListingWrapper filter={false}>
+				Coming soon
+			</ListingWrapper>
+		</div>
 		<Footer />
 	</React.Fragment>
   );

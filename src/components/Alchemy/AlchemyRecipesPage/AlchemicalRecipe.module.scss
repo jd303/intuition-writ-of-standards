@@ -1,100 +1,102 @@
+@import "../../../index.scss";
+
 .recipe {
-  display: grid;
-  grid-template-columns: 2fr 2fr minmax(150px, 1fr);
-  gap: calc(var(--padding-standard) / 2);
-  justify-content: space-between;
-  position: relative;
-  height: 100%;
-  border-radius: 20px;
+	@extend .gridLayoutStandard;
+	justify-content: space-between;
+	position: relative;
+	height: 100%;
+	border-radius: 20px;
 
-  // GENERIC
-  .title {
-    display: flex;
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
+	// GENERIC
+	.recipeTitle {
+		display: flex;
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
 
-  .name {
-    font-family: "trattatello";
-    font-size: 1.5rem;
-  }
+	.name {}
 
-  .effects {
-    grid-row: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
+	.effects {
+		grid-row: 2;
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
 
-  .description {
-    grid-row: 3;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    font-style: italic;
-  }
+	.description {
+		grid-row: 3;
+		grid-column-start: 1;
+		grid-column-end: 4;
+		font-style: italic;
+	}
 
-  .type {
-    &:after {
-      content: "";
-      display: block;
-      width: 30px;
-      height: 30px;
-      background-size: contain;
-    }
+	.type {
+		&:after {
+			content: "";
+			display: block;
+			width: 30px;
+			height: 30px;
+			background-size: contain;
+		}
 
-    &[data-type="Potion"]:after {
-      background-image: url("/assets/images/icons/ico.potion.svg");
-    }
+		&[data-type="Potion"]:after {
+			background-image: url("/assets/images/icons/ico.potion.svg");
+		}
 
-    &[data-type="Bomb"]:after {
-      background-image: url("/assets/images/icons/ico.bomb.svg");
-    }
+		&[data-type="Bomb"]:after {
+			background-image: url("/assets/images/icons/ico.bomb.svg");
+		}
 
-    &[data-type="Poison"]:after {
-      background-image: url("/assets/images/icons/ico.poison.svg");
-    }
+		&[data-type="Poison"]:after {
+			background-image: url("/assets/images/icons/ico.poison.svg");
+		}
 
-    &[data-type="Salve"]:after {
-      background-image: url("/assets/images/icons/ico.salve.svg");
-    }
+		&[data-type="Salve"]:after {
+			background-image: url("/assets/images/icons/ico.salve.svg");
+		}
 
-    &[data-type="Misc"]:after {
-      background-image: url("/assets/images/icons/ico.misc.svg");
-    }
-  }
+		&[data-type="Misc"]:after {
+			background-image: url("/assets/images/icons/ico.misc.svg");
+		}
+	}
 
-  .dc,
-  .time {
-    grid-row: 1;
-    grid-column: 3;
+	.dc,
+	.time {
+		grid-row: 1;
+		grid-column: 3;
 
-    img {
-      vertical-align: middle;
-      height: 30px;
-      line-height: 30px;
-      margin-right: calc(var(--padding-standard) / 2);
-      margin-top: -3px;
-    }
-  }
+		img {
+			vertical-align: middle;
+			height: 30px;
+			line-height: 30px;
+			margin-right: calc(var(--padding-standard) / 2);
+			margin-top: -3px;
+		}
+	}
 
-  .time {
-    justify-self: flex-end;
-  }
+	.time {
+		justify-self: flex-end;
+	}
 
-  .requirements {
-    grid-row: 2;
-    grid-column: 3;
-    text-align: right;
+	.requirements {
+		grid-row: 2;
+		grid-column: 3;
 
-    .reagent {
-      width: 95px;
-      padding: 3px;
-      border-radius: 3px;
-      color: #fff;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      -webkit-user-select: none;
-      user-select: none;
-      text-align: center;
-    }
-  }
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		text-align: right;
+		gap: 5px;
+
+		.reagent {
+			width: 95px;
+			padding: 3px;
+			border-radius: 3px;
+			color: #fff;
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			-webkit-user-select: none;
+			user-select: none;
+			text-align: center;
+		}
+	}
 }

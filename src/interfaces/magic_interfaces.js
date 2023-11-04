@@ -3,6 +3,7 @@ export const MagicSchools = {
   Necromancy: "Necromancy",
   Illusion: "Illusion",
   Enchantment: "Enchantment",
+  Restoration: "Restoration",
 };
 
 export const MagicCosts = {

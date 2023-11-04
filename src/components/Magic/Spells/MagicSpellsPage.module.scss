@@ -1,42 +1,13 @@
+@import "../../../index.scss";
+
 // When the list item is in Spell Format
 .spellLayout {
-	grid-template-columns: 2fr 1fr 1fr auto auto;
-
-	// Update when in list view
-	&.view- {
-		&list {
-			.effects {
-			flex-direction: row;
-
-			.effect {
-				min-width: 40%;
-			}
-			}
-
-			.mechanics {
-			grid-row: 1;
-			grid-column: 3;
-			margin-top: 0;
-			margin-right: var(--padding-standard);
-			justify-content: flex-end;
-			}
-		}
-
-		&card {
-			.effects,
-			.mechanics {
-			padding: 8px 0;
-			}
-		}
-	}
+	@extend .gridLayoutStandard;
 
 	.name,
 	.cost,
 	.school {
-		display: flex;
-		align-items: center;
-		height: 100%;
-		min-height: 40px;
+		align-self: center;
 	}
 
 	.cost {
@@ -49,8 +20,6 @@
 
 	.school {
 		width: 100%;
-		grid-row: 1;
-		grid-column: -3;
 		justify-content: flex-end;
 		font-style: italic;
 	}

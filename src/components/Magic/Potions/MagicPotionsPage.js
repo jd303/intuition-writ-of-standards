@@ -10,8 +10,6 @@ import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import { Footer } from "../../../components/Components/Footer/Footer";
 import { useSelector } from "react-redux";
 
-//import { potions } from "../../../assets/data/potions_data";
-import { selectViewMode } from "../../../features/viewMode/viewModeSlice";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import { selectPotionsData } from "../../../features/firebase/potionsDataSlice";
 
@@ -19,7 +17,6 @@ function MagicPotionsPage() {
 	/**
 	 * Redux State: ViewMode
 	 * */
-	const viewMode = useSelector(selectViewMode);
 	const potions = useSelector(selectPotionsData);
 
 	/**
@@ -73,13 +70,13 @@ function MagicPotionsPage() {
 		<React.Fragment>
 			<Header colour="purple" />
 			<PageTitle colour="purple">Potions</PageTitle>
-			<ListingWrapper filter={true} filters={filters}>
-				{potions.filter(filterBySchool).map((potion, index) => (
-					<Listing key={index}>
-						<div className={st.potion + " " + st["view-" + viewMode]}>
+			<div className="mainContent">
+				<ListingWrapper filter={true} filters={filters}>
+					{potions.filter(filterBySchool).map((potion, index) => (
+						<Listing key={index} className={st.potionLayout}>
 							<ListingTitle>{potion.name}</ListingTitle>
-							<div className={st.potion}>
-								<CircledText text={potion.cost.toString()} />
+							<div className={st.potionCost}>
+								<CircledText text={potion.cost.toString()} colour="bronze" />
 							</div>
 							<div className={st.school}>{potion.school}</div>
 							<div className={st.mechanics}>
@@ -91,10 +88,10 @@ function MagicPotionsPage() {
 							<ul className={st.effects}>
 								<li className={st.effect}>{potion.effect}</li>
 							</ul>
-						</div>
-					</Listing>
-				))}
-			</ListingWrapper>
+						</Listing>
+					))}
+				</ListingWrapper>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

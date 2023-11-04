@@ -3,11 +3,11 @@ import Header from "../../Components/Header/Header";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
+import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
 import { recipesData, RecipeTypes } from "../../../assets/data/recipes_data.js";
 import dcIcon from "../../../assets/images/icons/ico.dc.svg";
 import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import styles from "./AlchemicalRecipe.module.scss";
-import ls from "../../Listings/Listings.module.scss";
 import { Footer } from "../../../components/Components/Footer/Footer";
 
 function AlchemyRecipesPage() {
@@ -79,13 +79,13 @@ function AlchemyRecipesPage() {
 		<React.Fragment>
 			<Header colour="cyan" title="Alchemy Recipes and Reagents" />
 			<PageTitle colour="cyan">Alchemy &gt; Recipes</PageTitle>
-			<ListingWrapper filter={true} filters={filters}>
-				{recipesData.filter(filterByType).map((recipe, index) => (
-					<Listing key={index} className={styles.recipe}>
-						<div className={styles.recipe}>
-							<div className={ls["item-title"]}>
+			<div className="mainContent">
+				<ListingWrapper filter={true} filters={filters}>
+					{recipesData.filter(filterByType).map((recipe, index) => (
+						<Listing key={index} className={styles.recipe}>
+							<div className={styles.recipeTitle}>
 								<div className={styles.type} data-type={recipe.type}></div>
-								<div className={styles.name + " card-title"}>{recipe.name}</div>
+								<div className={styles.name}><ListingTitle>{recipe.name}</ListingTitle></div>
 							</div>
 							<div className={styles.description}>{recipe.desc}</div>
 							<div className={styles.effects}>{recipe.effects}</div>
@@ -106,10 +106,10 @@ function AlchemyRecipesPage() {
 									);
 								})}
 							</div>
-						</div>
-					</Listing>
-				))}
-			</ListingWrapper>
+						</Listing>
+					))}
+				</ListingWrapper>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

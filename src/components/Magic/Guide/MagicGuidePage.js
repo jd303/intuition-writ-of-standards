@@ -14,9 +14,11 @@ function MagicGuidePage() {
 		<React.Fragment>
 			<Header colour="purple" />
 			<PageTitle colour="purple">Guide</PageTitle>
-			<section>
-				Coming soon
-			</section>
+			<div className="mainContent">
+				<section>
+					Coming soon
+				</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

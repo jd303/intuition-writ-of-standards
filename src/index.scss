@@ -27,6 +27,8 @@
 	--colour-mustard: rgba(130, 177, 11);
 	--colour-black: #000;
 	--colour-silver: #666;
+	--colour-bronze: #D29769;
+	--colour-bronze-gradient: linear-gradient(142deg, rgba(241,200,169,1) 0%, rgba(212,154,109,1) 20%, rgba(210,151,105,1) 60%, rgba(240,213,192,1) 75%, rgba(210,151,105,1) 86%);
 	--colour-silver-gradient: linear-gradient(-72deg,
 			#dedede,
 			#ffffff 16%,
@@ -39,6 +41,8 @@
 			#ffffff 80%,
 			#dedede 84%,
 			#cccccc);
+
+	--box-shadow-divider-standard: 0px 3px 2px rgba(0, 0, 0, 0.1);
 
 	/* prettier-ignore */
 	--shape-bevelled: polygon(0 var(--bevel-size),
@@ -101,7 +105,7 @@ h1 {
 	background-color: var(--colour-magic-1);
 }
 
-section {
+.mainContent {
 	grid-row: 3;
 	grid-column: 2/3;
 
@@ -110,7 +114,7 @@ section {
 	transform: translateX(-50%);
 	width: 100%;
 	max-width: var(--max-width);
-	margin-top: calc(2 * var(--padding-standard));
+	margin-top: var(--padding-standard);
 }
 
 h1,
@@ -141,6 +145,13 @@ button {
 button {
 	padding: 8px;
 	border: none;
+}
+
+.gridLayoutStandard {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: minmax(30px, max-content) auto;
+	gap: var(--padding-standard);
 }
 
 /* Alchemy Colours */

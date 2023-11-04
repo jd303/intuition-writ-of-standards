@@ -10,17 +10,21 @@ function CostsListPage() {
 		<React.Fragment>
 			<Header colour="silver" />
 			<PageTitle colour="silver">Costs</PageTitle>
-			<section>
-				<p>
-					Costs are in
-					<strong>
-						<em> Standards</em>
-					</strong>
-					, a coin which is accepted in most nations of the world. The coin has developed a number of colloquial names, such as Stans and Newies.
-				</p>
-				<p>The below are indicative of typical prices across the Civil Holds. Market forces may apply pressure to prices.</p>
-				<CostsList costsList={Costs} />
-			</section>
+			<div className="mainContent">
+				<section>
+					<p>
+						Costs are in
+						<strong>
+							<em> Standards</em>
+						</strong>
+						, a coin which is accepted in most nations of the world. The coin has developed a number of colloquial names, such as Stans and Newies.
+					</p>
+					<p>The below are indicative of typical prices across the Civil Holds. Market forces may apply pressure to prices.</p>
+				</section>
+				<section>
+					<CostsList costsList={Costs} />
+				</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

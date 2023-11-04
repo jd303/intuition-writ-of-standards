@@ -4,9 +4,12 @@
 
 	display: flex;
 	justify-content: center;
-	margin-top: calc(3 * var(--padding-standard));
+	margin-top: calc(2 * var(--padding-standard));
 	padding: calc(3 * var(--padding-standard)) var(--padding-standard);
-	border-top: 1px solid black;
+	box-shadow: inset var(--box-shadow-divider-standard);
+	background-image: url(../../../assets/images/bg.page.webp);
+	background-size: cover;
+	background-position: 50% 80%;
 
 	.logo {
 		width: 50px;

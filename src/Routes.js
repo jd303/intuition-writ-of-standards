@@ -18,6 +18,7 @@ import EquipmentPage from "./components/Equipment/EquipmentPage";
 import CostsListPage from "./components/Equipment/CostsListPage";
 import AnimalCompanionsGuidePage from "./components/Companions/AnimalCompanionsGuidePage";
 import AnimalCompanionsPage from "./components/Companions/AnimalCompanionsPage";
+import AnimalCompanionMovesPage from "./components/Companions/AnimalCompanionMovesPage";
 import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
@@ -183,6 +184,12 @@ const routes = [
 		navLabel: "Animal Companions",
 		path: "/companions",
 		element: <Route key="0" path="/companions" element={<AnimalCompanionsPage />} />,
+		parent: "Companions",
+	},
+	{
+		navLabel: "Companion Moves",
+		path: "/companion-moves",
+		element: <Route key="0" path="/companion-moves" element={<AnimalCompanionMovesPage />} />,
 		parent: "Companions",
 	},
 

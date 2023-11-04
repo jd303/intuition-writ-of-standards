@@ -8,7 +8,9 @@ function AlchemyGuidePage() {
 		<React.Fragment>
 			<Header colour="cyan" />
 			<PageTitle colour="cyan">Alchemy</PageTitle>
-			<section>Alchemy Guide</section>
+			<div className="mainContent">
+				<section>Alchemy Guide</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

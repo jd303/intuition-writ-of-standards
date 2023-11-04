@@ -8,7 +8,9 @@ function PsionicsGuidePage() {
 		<React.Fragment>
 			<Header colour="scarlet" />
 			<PageTitle colour="scarlet">Psionics &gt; Guide</PageTitle>
-			<section>Content</section>
+			<div className="mainContent">
+				<section>Content</section>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);

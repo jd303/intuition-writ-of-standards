@@ -9,26 +9,37 @@ import { useSelector } from "react-redux";
 import { selectAnimalCompanionsData } from "../../features/firebase/animalCompanionsDataSlice";
 import { Footer } from "../../components/Components/Footer/Footer";
 
+import styles from './AnimalCompanionsPage.module.scss';
+
+import { animal_companions } from '../../assets/data/animal_companions_data';
+
 function AnimalCompanionsPage() {
-	const animal_companion_moves = useSelector(selectAnimalCompanionsData);
+	//const animal_companions = useSelector(selectAnimalCompanionsData);
+	console.log(animal_companions);
 
 	return (
 		<React.Fragment>
 			<Header colour="mustard" />
 			<PageTitle colour="mustard">Animal Companions (incomplete)</PageTitle>
-			<ListingWrapper filter={false}>
-				{animal_companion_moves.map((move, index) => {
-					return (
-						<Listing key={index}>
-							<div className={st.move}>
-								<ListingTitle>{move.name}</ListingTitle>
-								<div className={st.type}>{move.type}</div>
-								<div className="effect">{move.effect}</div>
-							</div>
-						</Listing>
-					);
-				})}
-			</ListingWrapper>
+			<div className="mainContent">
+				<ListingWrapper filter={false}>
+					{animal_companions.map((companion, index) => {
+						return (
+							<Listing key={index} className={styles.animalCompanionLayout}>
+								<div className={st.name}><ListingTitle>{companion.name}</ListingTitle></div>
+								<div className={st.type}>{companion.type}</div>
+								<div className={st.description}>{companion.description}</div>
+								<div className={st.abilities}>
+									<ListingTitle>Abilities</ListingTitle>
+									{companion.abilities.map((ability, index) => (
+										<div key={index} className={st.ability}>{ability}</div>
+									))}
+								</div>
+							</Listing>
+						);
+					})}
+				</ListingWrapper>
+			</div>
 			<Footer />
 		</React.Fragment>
 	);
