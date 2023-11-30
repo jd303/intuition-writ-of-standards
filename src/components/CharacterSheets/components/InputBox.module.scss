@@ -1,0 +1,21 @@
+.el {
+	--padding: 4px;
+
+	position: relative;
+	width: 100%;
+	min-width: 100px;
+	height: 30px;
+	padding: var(--padding);
+	border-radius: 8px;
+	background-color: #ddd;
+
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: calc(2 * var(--padding));
+		left: calc(2 * var(--padding));
+		width: calc(100% - 4 * var(--padding));
+		border-bottom: 1px solid black;
+	}
+}

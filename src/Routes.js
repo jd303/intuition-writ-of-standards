@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 import HomePage from "./components/Home/HomePage";
 import RulesPage from "./components/Rules/RulesPage";
+import GlossaryPage from "./components/Rules/GlossaryPage";
 import MovesAndModsGuidePage from "./components/MovesMods/MovesAndModsGuidePage";
 import MovesAndModsPage from "./components/MovesMods/MovesAndModsPage";
 import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/AlchemyReagentsPage";
@@ -23,6 +24,7 @@ import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
 import MenageriePage from "./components/Menagerie/MengeriePage";
+import CharacterSheetPage from "./components/CharacterSheets/CharacterSheetPage";
 
 export const routeSections = [
 	{
@@ -70,6 +72,11 @@ export const routeSections = [
 		navLabel: "Equipment",
 		path: "/equipment",
 	},
+	{
+		id: "characters",
+		navLabel: "Character Sheets",
+		path: "/characters",
+	},
 ];
 
 const routes = [
@@ -83,6 +90,12 @@ const routes = [
 		navLabel: "Rules",
 		path: "/rules",
 		element: <Route key="0" path="/rules" element={<RulesPage />} />,
+		parent: "Rules",
+	},
+	{
+		navLabel: "Glossary",
+		path: "/glossary",
+		element: <Route key="0" path="/glossary" element={<GlossaryPage />} />,
 		parent: "Rules",
 	},
 
@@ -224,6 +237,13 @@ const routes = [
 		path: "/menagerie",
 		element: <Route key="0" path="/menagerie" element={<MenageriePage />} />,
 		parent: "Menagerie",
+	},
+
+	{
+		navLabel: "Character Sheets",
+		path: "/characters",
+		element: <Route key="0" path="/characters" element={<CharacterSheetPage />} />,
+		parent: "Character Sheets",
 	},
 ];
 

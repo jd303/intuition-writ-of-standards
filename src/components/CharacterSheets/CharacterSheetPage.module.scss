@@ -1,0 +1,89 @@
+section {
+	margin-bottom: var(--padding-standard);
+
+	h1, h2, h3 {
+		margin: 0;
+	}
+}
+
+.vitae {
+	--vitae-flex-direction: row;
+	--row1-flex-direction: row;
+
+	@media (max-width: 768px) {
+		--vitae-flex-direction: column;
+		--row1-flex-direction: column;
+	}
+
+	display: flex;
+	flex-direction: var(--vitae-flex-direction);
+	grid-template-columns: auto 1fr;
+	gap: var(--padding-standard);
+
+	.profileImage {
+		max-width: 300px;
+		border-radius: 14px;
+	}
+
+	.details {
+		width: 100%;
+
+		.row1 {
+			display: flex;
+			flex-direction: var(--row1-flex-direction);
+			gap: var(--padding-standard);
+			justify-content: space-between;
+			align-items: flex-start;
+
+			.name {
+				display: flex;
+				flex-direction: column;
+				gap: var(--padding-standard);
+				flex-wrap: wrap;
+			}
+
+			.sessionCount {
+				display: flex;
+				gap: var(--padding-standard);
+				align-items: center;
+				max-width: 200px;
+			}
+		}
+	}
+}
+
+.abilities {
+	display: flex;
+	gap: var(--padding-standard);
+
+	.stats,
+	.health {
+		width: 50%;
+	}
+
+	.stats {
+		.stat {
+			display: grid;
+			grid-template-columns: 30px 120px 25px 100px;
+			gap: calc(0.5 * var(--padding-standard));
+			align-items: center;
+
+			img {
+				height: 22px;
+			}
+
+			.statValue {
+				font-weight: bold;
+			}
+
+			.statPurchases {
+				display: flex;
+				gap: 2px;
+			}
+		}
+	}
+
+	.health {
+		display: grid;
+	}
+}
