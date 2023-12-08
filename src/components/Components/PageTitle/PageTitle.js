@@ -13,5 +13,5 @@ PageTitle.propTypes = {
  * */
 
 export function PageTitle({ children, colour = 'black' }) {
-	return <h1 className={st.title + ' ' + st[colour]}>{children}</h1>;
+	return <h1 className={st.title + ' ' + st[colour] + ' printTitle'}>{children}</h1>;
 }

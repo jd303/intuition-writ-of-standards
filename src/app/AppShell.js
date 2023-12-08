@@ -28,7 +28,7 @@ export const AppShell = function ({ children }) {
 			});
 
 			// Collect moves data
-			const movesRef = ref(database, '/move_categories');
+			const movesRef = ref(database, '/moves');
 			onValue(movesRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateMovesData({ data: data, standards: standards }));

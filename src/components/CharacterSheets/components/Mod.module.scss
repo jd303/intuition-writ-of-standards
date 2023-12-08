@@ -1,0 +1,23 @@
+.el {
+	position: relative;
+	display: grid;
+	grid-template-columns: 16px 15px auto;
+	gap: calc(0.5 * var(--padding-standard));
+	align-items: center;
+	width: 100%;
+	overflow: visible;
+
+	.staminaIcon {
+		width: 15px;
+	}
+
+	.name {
+		grid-row: 1;
+		grid-column: 3;
+
+		&:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}

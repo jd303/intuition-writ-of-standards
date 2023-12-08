@@ -39,7 +39,7 @@
 		"AnimalCompanionMoveTypes-Advanced": "Advanced"
 	},
 
-	"move_categories": [
+	"moves": [
 		{
 			"name": "Combat",
 			"moves": [

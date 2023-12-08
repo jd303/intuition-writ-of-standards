@@ -1,0 +1,61 @@
+.el {
+	display: grid;
+	grid-template-columns: auto 1fr 50px 50px;
+	gap: calc(0.5 * var(--padding-standard));
+	width: 100%;
+
+	.title {
+		font-size: 18px;
+		line-height: 125%;
+		font-family: "trattatello";
+		text-transform: uppercase;
+		word-wrap: break-word;
+	}
+
+	.pointTrack {
+		grid-row: 1;
+		grid-column: 2;
+
+		width: 170px;
+	}
+
+	.bonuses {
+		grid-row: 1;
+		grid-column: 3;
+
+		font-weight: bold;
+	}
+
+	.buttons {
+		grid-row: 1;
+		grid-column: 4;
+
+		button {
+			height: 30px;
+		}
+		.diceRoll {
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+	.description {
+		grid-row: 2;
+		grid-column: 1 / 5;
+	}
+
+	.mods {
+		grid-row: 3;
+		grid-column: 1 / 5;
+	}
+}
+
+@media print {
+	.description {
+		grid-column: 2 / 3;
+	}
+
+	.buttons {
+		display: none;
+	}
+}

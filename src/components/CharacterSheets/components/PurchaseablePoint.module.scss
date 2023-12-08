@@ -3,4 +3,12 @@
 	height: 10px;
 	border: 2px solid black;
 	background: #fff;
+
+	&.automatic {
+		background-color: #666;
+	}
+
+	&.purchased {
+		background-color: #999;
+	}
 }

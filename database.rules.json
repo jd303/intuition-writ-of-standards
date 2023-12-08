@@ -8,7 +8,7 @@
 			".read": true,
 			".write": false
 		},
-		"move_categories": {
+		"moves": {
 			".read": true,
 			".write": false
 		},

@@ -1,0 +1,11 @@
+.el {
+	width: 13px;
+	height: 13px;
+	border-radius: 100%;
+	border: 2px solid black;
+	background: #fff;
+
+	&.selected {
+		background-color: #888;
+	}
+}
