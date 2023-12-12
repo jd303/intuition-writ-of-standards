@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
 import { PurchaseablePointGroup } from "./components/PurchaseablePointGroup";
-import { CircleStatus } from './components/CircleStatus';
+import { CircleStatusGroup } from "./components/CircleStatusGroup";
 import { Move } from './components/Move';
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { Footer } from "../../components/Components/Footer/Footer";
@@ -11,8 +11,6 @@ import { Footer } from "../../components/Components/Footer/Footer";
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
-import bronzeMedal from "../../assets/images/icons/ico.medal.bronze.svg";
-import st from './CharacterSheetPage.module.scss';
 import icoPoison from '../../assets/images/icons/ico.poison.svg';
 import isoShield from '../../assets/images/icons/ico.shield.svg';
 import icoWellness from '../../assets/images/icons/ico.wellness.svg';
@@ -21,7 +19,15 @@ import icoMagic from '../../assets/images/icons/ico.magic.svg';
 import icoCircles from '../../assets/images/icons/ico.circles.svg';
 import icoSpiral from '../../assets/images/icons/ico.spiral.svg';
 import icoChevronDown from '../../assets/images/icons/ico.chevron.down.svg';
-import { CircleStatusGroup } from "./components/CircleStatusGroup";
+import icoFist from '../../assets/images/icons/ico.fist.svg';
+import icoHeartbeat from '../../assets/images/icons/ico.heartbeat.svg';
+import icoThumbsup from '../../assets/images/icons/ico.thumbsup.svg';
+import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
+import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
+import icoBrain from '../../assets/images/icons/ico.brain.svg';
+import icoDice from '../../assets/images/ico.dice.svg';
+import st from './CharacterSheetPage.module.scss';
+import { CircleStatus } from "./components/CircleStatus";
 
 function CharacterSheetPage() {
 	const moves_and_mods = useSelector(selectMovesData);
@@ -34,10 +40,13 @@ function CharacterSheetPage() {
 		setSheets(characters);
 	}, []);
 
-	const [ stats, setStats ] = useState(['Strength', 'Constitution', 'Dexterity', 'Intelligence', 'Wisdom', 'Charisma']);
+	const [ stats, setStats ] = useState([ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }]);
+
+	// Icons
+	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Section expanders
-	const sections = ['Abilities', 'Wellness', 'Defenses', 'Combat', 'Moves', 'Magic', 'Psionics'];
+	const sections = ['Core', 'Wellness', 'Defenses', 'Combat', 'Moves', 'Magic', 'Psionics'];
 	const sectionRefs = {};
 	sections.forEach(section => sectionRefs[section] = useRef(null));
 
@@ -52,21 +61,50 @@ function CharacterSheetPage() {
 		else return null;
 	}
 
+	// Move Description Popup
 	const descriptionPopup = useRef(null);
-	const [popupShowing, setPopupShowing] = useState(false);
+	const [descriptionPopupShowing, setDescriptionPopupShowing] = useState(false);
 	const descriptionPopupToggle = (mod, target) => {
 		descriptionPopup.current.querySelector('.'+st.content).innerHTML = mod.description;
-		setPopupShowing(true);
+		setDescriptionPopupShowing(true);
 
 		//const targetLocation = target.getBoundingClientRect();
-		const offsetParent = target.closest('section');
-		descriptionPopup.current.style.top = `${offsetParent.offsetTop + target.offsetTop}px`;
+		const offsetParent = target.offsetParent;
+		const offsetParent2 = offsetParent.offsetParent;
+		descriptionPopup.current.style.top = `${offsetParent.offsetTop + offsetParent2.offsetTop + target.offsetTop + target.offsetHeight + 5}px`;
+		descriptionPopup.current.style.left = "50%";
 	}
 
 	const closeDescriptionPopup = () => {
-		setPopupShowing(false);
+		setDescriptionPopupShowing(false);
 	}
 
+	// Rolling Popup
+	const [rollBonus, setRollBonus] = useState(0);
+	const rollPopup = useRef(null);
+	const [rollPopupShowing, setRollPopupShowing] = useState(false);
+	const rollPopupToggle = (bonus) => {
+		const resultContainer = rollPopup.current.querySelector(`.${st.result}`);
+		resultContainer.innerHTML = '';
+		setRollBonus(bonus);
+		setRollPopupShowing(true);
+	}
+	const closeRollPopup = () => { setRollPopupShowing(false); }
+
+	const performRoll = () => {
+		const random = Math.ceil(Math.random() * 20);
+		const resultContainer = rollPopup.current.querySelector(`.${st.result}`);
+		console.log(rollPopup, `.${st.result}`);
+		resultContainer.innerHTML = random + rollBonus;
+		console.log(`Base: ${random}, bonus: ${rollBonus}`);
+	}
+
+	const closePopup = () => {
+		closeDescriptionPopup()
+		closeRollPopup()
+	}
+
+	// Section togglers
 	const openAllSections = () => {
 		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.add(st.open));
 	}
@@ -80,8 +118,16 @@ function CharacterSheetPage() {
 		<React.Fragment>
 			<Header colour="silver" />
 			<PageTitle colour="silver">Character Sheets</PageTitle>
+			<div className={st.rollPopup + ' ' + (rollPopupShowing && st.open || '')} ref={rollPopup}>
+				<button className={st.closer} onClick={closeRollPopup}>Close</button>
+				<div className={st.hider} onClick={closePopup}></div>
+				<div className={st.content + ' ' + st.rollContent}>
+					<h2>Roll for Move:</h2>
+					<button onClick={performRoll}><img className={st.diceRollImage} src={icoDice} alt="Roll this Move" /></button> <div className={st.fonted}>Bonus: {rollBonus}</div> <div className={st.fonted}>=</div> <div className={st.result + ' ' + st.fonted}>Total: </div>					
+				</div>
+			</div>
 			<div className="mainContent">
-				<div className={st.descriptionPopup + ' ' + (popupShowing && st.open || '')} ref={descriptionPopup}><div className={st.hider} onClick={closeDescriptionPopup}></div><div className={st.content}></div></div>
+				<div className={st.descriptionPopup + ' ' + (descriptionPopupShowing && st.open || '')} ref={descriptionPopup}><div className={st.hider} onClick={closeDescriptionPopup}></div><div className={st.content}></div></div>
 
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
@@ -102,16 +148,17 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Abilities']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoPoison} alt="" /> Abilities</h1></div>
+				<section ref={sectionRefs['Core']} className={st.open}>
+					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoPoison} alt="" /> Core</h1></div>
 					<div  className={st.collapsable + ' ' + st.abilitiesLayout}>
 						<div className={st.stats}>
-							<div className={st.standardFlex}><h2>Statistics</h2> <div className={st.littleNote}>(Max 15 points)</div></div>
+							<div className={st.standardFlex}><h2>Abilities</h2> <div className={st.littleNote}>(Max 15 points)</div></div>
 							<div className={st.list}>
 								{stats.map((stat, index) => (
 									<div className={st.stat} key={index}>
-										<img src={bronzeMedal} alt="Icon" />
-										<div className={st.statName}><h3>{stat}</h3></div>
+										<img src={abilityIcons[index]} alt="Icon" />
+										<div className={st.statName + ' ' + st.fullName}><h3>{stat.full}</h3></div>
+										<div className={st.statName + ' ' + st.shortName}><h3>{stat.short}</h3></div>
 										<div className={st.statValue}>+3</div>
 										<div className={st.statPurchases}>
 											<PurchaseablePointGroup count={7} columns={7} purchased={2} />
@@ -121,13 +168,11 @@ function CharacterSheetPage() {
 							</div>
 						</div>
 						<div className={st.buffs}>
-							<h2>Buffs</h2>
-							<div className={st.list}>
-								<div className={st.flex}><InputBox value="STR Moves" /> <InputBox value='+2' /></div>
-								<div className={st.flex}><InputBox value="Combat" /> <InputBox value='+1' /></div>
-								<div className={st.flex}><InputBox value="" /> <InputBox value='' /></div>
-								<div className={st.flex}><InputBox value="" /> <InputBox value='' /></div>
-							</div>
+							<h2>Buffs</h2> <h3>Source</h3>
+							<InputBox value="STR Moves +2" /> <InputBox value='Belt' />
+							<InputBox value="Combat Move +1" /> <InputBox value='Brooch' />
+							<InputBox value="UDR 1" /> <InputBox value='Spell' />
+							<InputBox value="" /> <InputBox value='' />
 						</div>
 					</div>
 				</section>
@@ -198,31 +243,37 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Defenses']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={isoShield} alt="" /> Defenses</h1></div>
 					<div className={st.collapsable + ' ' + st.defensesLayout}>
-						<div className={st.moveListMeta}>
-							<div>
-								<div className={st.defenseType}><h2>Armour Class </h2><InputBox value="3" /></div>
+						<div className={st.sectionMeta}>
+							<h2>Armour Class </h2>
+							<div className={st.tabledData + ' ' + st.armourClassTable}>
+								<h2 className={st.headName}>Armour</h2> <div className={st.fonted + ' ' + st.headLabel}>Block</div> <div className={st.fonted + ' ' + st.headLabel}>Dodge</div> <div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
+								<PurchaseablePointGroup count={1} /> <h3>None</h3> <InputBox value={2} /> <InputBox value={4} /> <InputBox value="" />
+								<PurchaseablePointGroup count={1} /> <h3>Light</h3> <InputBox value={3} /> <InputBox value={3} /> <InputBox value="" />
+								<PurchaseablePointGroup count={1} /> <h3>Heavy</h3> <InputBox value={4} /> <InputBox value={2} /> <InputBox value="-1sq , -2 Dex Moves" />
+								<PurchaseablePointGroup count={1} /> <h3>Shield</h3> <InputBox value={1} /> <InputBox value={0} /> <InputBox value="-3 Cast" />
 							</div>
-							<div>
-								<h2>Universal Resistances</h2>
-								<div className={st.defenseType}><h3>Universal (UDR): </h3><InputBox value="3" /></div>
-								<div className={st.defenseType}><h3>Physical / Sonic (PDR): </h3><InputBox value="3" /></div>
-								<div className={st.defenseType}><h3>Magic (MDR): </h3><InputBox value="3" /></div>
+
+							<div className={st.tabledData + ' ' + st.resistanceTable}>
+								<h2 className={st.headName}>Resistances</h2>  <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+								<h3>Universal (UDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Physical (PDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Magic (PDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Soul (SDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
 							</div>
-							<div>
-								<h2>Elemental Resistances</h2>
-								<div className={st.defenseType}><h3>Fire (FDR): </h3><InputBox value="3" /></div>
-								<div className={st.defenseType}><h3>Cold (CDR): </h3><InputBox value="3" /></div>
-								<div className={st.defenseType}><h3>Lightning (LDR): </h3><InputBox value="3" /></div>
-								<div className={st.defenseType}><h3>Acid / Poison (ADR): </h3><InputBox value="3" /></div>
+
+							<div className={st.resistanceTable}>
+							<h2 className={st.headName}>Resistances</h2> <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+								<h3>Fire (FDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Cold (CDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Lightning (LDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<h3>Poisons (PoDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
 							</div>
 						</div>
-						<h2>Moves</h2>
+						<h2 className={st.movesHeader}>Moves</h2>
 						<div className={st.moveList}>
 						{
 							moves_and_mods.find(item => item.category == 'Defenses')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle}>
-									Max block calc
-								</Move>
+								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
@@ -232,26 +283,21 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Combat']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</h1></div>
 					<div className={st.collapsable + ' ' + st.combatLayout}>
-						<div className={st.moveListMeta}>
-							<div>
-								<h2>Melee Damage</h2>
-								<div className={st.damageType}><h3>Base: </h3><InputBox value="3" /></div>
-								<div className={st.damageType}><h3>Resolved: </h3><InputBox value="5" /></div>
-							</div>
-							<div>
-								<h2>Ranged Damage</h2>
-								<div className={st.damageType}><h3>Base: </h3><InputBox value="3" /></div>
-								<div className={st.damageType}><h3>Resolved: </h3><InputBox value="5" /></div>
+						<div className={st.sectionMeta}>
+							<h2>Weapon Damage</h2>
+							<div className={st.tabledData + ' ' + st.weaponTable}>
+								<h2 className={st.headName}>Weapon</h2> <div className={st.fonted + ' ' + st.headLabel}>Resolved Dam.</div>
+								<InputBox value="Sword" /> <InputBox value="d6 + 0" />
+								<InputBox value="Throw. Knife" /> <InputBox value="d4 + 1" />
+								<InputBox value="" /> <InputBox value="" />
 							</div>
 						</div>
-						<h2>Moves</h2>
+						<h2 className={st.movesHeader}>Moves</h2>
 						<div className={st.moveList}>
 						{
 							moves_and_mods.filter(item => item.category == 'Combat')?.map((category, index) => (
 								category.moves.map((move, index) => (
-									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle}>
-										Max block calc
-									</Move>
+									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
 								))
 							))
 						}
@@ -262,14 +308,12 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Moves']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoCircles} alt="" /> General</h1></div>
 					<div className={st.collapsable + ' ' + st.movesLayout}>
-						<h2>Moves</h2>
+						<h2 className={st.movesHeader}>Moves</h2>
 						<div className={st.moveList}>
 						{
 							moves_and_mods.filter(item => ['Defenses', 'Magic', 'Combat'].includes(item.category) == 0)?.map((category, index) => (
 								category.moves.map((move, index) => (
-									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle}>
-										Max block calc
-									</Move>
+									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
 								))
 							))
 						}
@@ -280,12 +324,12 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Magic']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoMagic} alt="" /> Magic</h1></div>
 					<div className={st.collapsable + ' ' + st.magicLayout}>
-						<div className={st.moveListMeta}>
+						<div className={st.sectionMeta}>
 							<div className={st.damageType}><h2>Mana: </h2><PurchaseablePointGroup count={30} columns={10} /></div>
 							<div className={st.damageType}><h2>Total: </h2><InputBox /></div>
 							<div className={st.damageType}><h2>Current: </h2><InputBox /></div>
 						</div>
-						<div className={st.spellListMeta + ' ' + st.vertical}>
+						<div className={st.sectionMeta + ' ' + st.vertical}>
 							<div className={st.damageType}><h2>Spells: </h2></div>
 							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
 							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
@@ -293,13 +337,11 @@ function CharacterSheetPage() {
 							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
 							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
 						</div>
-						<h2>Moves</h2>
+						<h2 className={st.movesHeader}>Moves</h2>
 						<div className={st.moveList}>
 						{
 							moves_and_mods.find(item => item.category == 'Magic')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle}>
-									Additional rule
-								</Move>
+								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
@@ -309,13 +351,11 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Psionics']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</h1></div>
 					<div className={st.collapsable + ' ' + st.psionics}>
-						<h2>Moves</h2>
+						<h2 className={st.movesHeader}>Moves</h2>
 						<div className={st.moveList}>
 						{
 							moves_and_mods.find(item => item.category == 'Psionics')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle}>
-									Additional rule
-								</Move>
+								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>

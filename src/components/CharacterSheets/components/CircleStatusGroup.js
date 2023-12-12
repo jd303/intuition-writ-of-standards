@@ -4,7 +4,7 @@ import { CircleStatus } from "./CircleStatus";
 
 import st from './CircleStatusGroup.module.scss';
 
-export function CircleStatusGroup( { columns = 10, count = 1 } ) {
+export function CircleStatusGroup( { columns = 10, count = 1, gap = 0 } ) {
 
 	const generatePoints = () => {
 		const response = [];
@@ -21,7 +21,7 @@ export function CircleStatusGroup( { columns = 10, count = 1 } ) {
 
 	return (
 		<React.Fragment>
-			<div className={st.el}>
+			<div className={st.el} style={{ gap: `${gap}px` }}>
 				{generatePoints()}
 			</div>
 		</React.Fragment>
@@ -30,5 +30,6 @@ export function CircleStatusGroup( { columns = 10, count = 1 } ) {
 
 CircleStatusGroup.propTypes = {
 	columns: PropTypes.number,
-	count: PropTypes.number
+	count: PropTypes.number,
+	gap: PropTypes.number,
 };
