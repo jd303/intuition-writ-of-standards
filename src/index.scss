@@ -205,7 +205,29 @@ button {
 	background-color: #e2a2de;
 }
 
+.characterSheetLevelUpMode {
+	opacity: 0.9;
+}
+
+@media screen {
+	.forPrint {
+		display: none;
+	}
+	.notForPrint {
+		display: block;
+	}
+}
+
 @media print {
+	@page { margin: 0.5cm; } // Drops header / footer
+
+	.forPrint {
+		display: block;
+	}
+	.notForPrint {
+		display: none;
+	}
+
 	:root {
 		--font-large: 18px;
 		--font-regular: 10px;

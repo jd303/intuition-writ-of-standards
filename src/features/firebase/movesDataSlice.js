@@ -10,13 +10,13 @@ export const movesDataSlice = createSlice({
 		updateMovesData: (state, data) => {
 			const payload = convertDataStandards(data.payload.data, data.payload.standards);
 
-			const sortByRank = (a, b) => (a.rank < b.rank && -1) || 1;
+			/*const sortByRank = (a, b) => (a.rank < b.rank && -1) || 1;
 
 			payload.forEach(category => {
 				category.moves.forEach(move => {
 					move.mods = move.mods.sort(sortByRank);
 				});
-			});
+			});*/
 
 			state.value = payload;
 		},

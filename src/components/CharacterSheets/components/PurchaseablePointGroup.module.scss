@@ -1,7 +1,39 @@
 .el {
-	display: flex;
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
 	flex-wrap: wrap;
 	gap: 3px;
+
+	&:hover,
+	&:active {
+
+		&[data-count]:after {
+			content: attr(data-count);
+			display: block;
+			white-space: nowrap;
+			position: absolute;
+			z-index: 2;
+			bottom: calc(100% + 6px);
+			left: 50%;
+			padding: 6px 8px;
+			border-radius: 6px;
+			background-color: var(--colour-cream);
+			transform: translateX(-50%);
+
+			&:empty {
+				display: none;
+			}
+		}
+	}
+}
+
+:global(.characterSheetLevelUpMode) {
+	.el:after { display: none !important; }
+	.el:not(.complete) {
+		pointer-events: all;
+		box-shadow: 0 0 12px rgba(220, 160, 0, 0.85);
+	}
 }
 
 .wrapper {

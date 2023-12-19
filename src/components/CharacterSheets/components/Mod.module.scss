@@ -1,24 +1,37 @@
 .el {
 	position: relative;
 	display: grid;
-	grid-template-columns: 16px 15px auto;
+	grid-template-columns: 16px 15px 15px auto;
 	gap: calc(0.5 * var(--padding-standard));
 	align-items: center;
 	width: 100%;
 	padding: 2px 0;
 	overflow: visible;
 
-	.staminaIcon {
+	.staminaIcon,
+	.quickIcon {
 		width: 15px;
 	}
 
 	.name {
 		grid-row: 1;
-		grid-column: 3;
+		grid-column: 4;
 
 		&:hover {
 			text-decoration: underline;
 			cursor: pointer;
+		}
+	}
+
+	.description {
+		grid-row: 2;
+		grid-column: 1 / 5;
+
+		display: none;
+		margin-bottom: calc(0.5 * var(--padding-standard));
+
+		&.visible {
+			display: block;
 		}
 	}
 }

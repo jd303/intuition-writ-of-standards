@@ -9,6 +9,7 @@ import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { Footer } from "../../components/Components/Footer/Footer";
 
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
+import { selectStatusData } from "../../features/firebase/statusDataSlice";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
 import icoPoison from '../../assets/images/icons/ico.poison.svg';
@@ -26,11 +27,14 @@ import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
 import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDice from '../../assets/images/ico.dice.svg';
+import icoDocument from '../../assets/images/icons/ico.document.svg';
+import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 import st from './CharacterSheetPage.module.scss';
-import { CircleStatus } from "./components/CircleStatus";
+import { StatusEffect } from "./components/StatusEffect";
 
 function CharacterSheetPage() {
 	const moves_and_mods = useSelector(selectMovesData);
+	const status_data = useSelector(selectStatusData);
 
 	const [ sheets, setSheets ] = useState([]);
 
@@ -46,7 +50,7 @@ function CharacterSheetPage() {
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Section expanders
-	const sections = ['Core', 'Wellness', 'Defenses', 'Combat', 'Moves', 'Magic', 'Psionics'];
+	const sections = ['Core', 'Wellness', 'Defenses', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
 	const sectionRefs = {};
 	sections.forEach(section => sectionRefs[section] = useRef(null));
 
@@ -59,24 +63,6 @@ function CharacterSheetPage() {
 		if (source.tagName == "SECTION") return source;
 		else if (source.parentElement) return getSectionParent(source.parentElement);
 		else return null;
-	}
-
-	// Move Description Popup
-	const descriptionPopup = useRef(null);
-	const [descriptionPopupShowing, setDescriptionPopupShowing] = useState(false);
-	const descriptionPopupToggle = (mod, target) => {
-		descriptionPopup.current.querySelector('.'+st.content).innerHTML = mod.description;
-		setDescriptionPopupShowing(true);
-
-		//const targetLocation = target.getBoundingClientRect();
-		const offsetParent = target.offsetParent;
-		const offsetParent2 = offsetParent.offsetParent;
-		descriptionPopup.current.style.top = `${offsetParent.offsetTop + offsetParent2.offsetTop + target.offsetTop + target.offsetHeight + 5}px`;
-		descriptionPopup.current.style.left = "50%";
-	}
-
-	const closeDescriptionPopup = () => {
-		setDescriptionPopupShowing(false);
 	}
 
 	// Rolling Popup
@@ -100,7 +86,6 @@ function CharacterSheetPage() {
 	}
 
 	const closePopup = () => {
-		closeDescriptionPopup()
 		closeRollPopup()
 	}
 
@@ -113,6 +98,33 @@ function CharacterSheetPage() {
 		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.remove(st.open));
 	}
 
+	const [levelUpMode, setLevelUpMode] = useState(false);
+	const toggleLevelUpMode = () => {
+		setLevelUpMode(!levelUpMode);
+	}
+	
+	let movesAndMods = {};
+	movesAndMods = prepareMovesAndMods(moves_and_mods);
+
+	const getUntrainedMoves = () => {
+		let response = [];
+		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
+		if (movesAndMods['athletics']) response = response.concat(movesAndMods['athletics'].moves);
+		if (movesAndMods['perception']) response = response.concat(movesAndMods['perception'].moves);
+		if (movesAndMods['knowledge']) response = response.concat(movesAndMods['knowledge'].moves);
+		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
+		if (movesAndMods['deception']) response = response.concat(movesAndMods['deception'].moves);
+		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
+		return response;
+	}
+
+	const getTrainedMoves = () => {
+		let response = [];
+		if (movesAndMods['engineering']) response = response.concat(movesAndMods['engineering'].moves);
+		if (movesAndMods['alchemy']) response = response.concat(movesAndMods['alchemy'].moves);
+		return response;
+	}
+
 	// JSX
 	return (
 		<React.Fragment>
@@ -122,24 +134,27 @@ function CharacterSheetPage() {
 				<button className={st.closer} onClick={closeRollPopup}>Close</button>
 				<div className={st.hider} onClick={closePopup}></div>
 				<div className={st.content + ' ' + st.rollContent}>
-					<h2>Roll for Move:</h2>
+					<div className={st.headingMedium}>Roll for Move:</div>
 					<button onClick={performRoll}><img className={st.diceRollImage} src={icoDice} alt="Roll this Move" /></button> <div className={st.fonted}>Bonus: {rollBonus}</div> <div className={st.fonted}>=</div> <div className={st.result + ' ' + st.fonted}>Total: </div>					
 				</div>
 			</div>
-			<div className="mainContent">
-				<div className={st.descriptionPopup + ' ' + (descriptionPopupShowing && st.open || '')} ref={descriptionPopup}><div className={st.hider} onClick={closeDescriptionPopup}></div><div className={st.content}></div></div>
-
+			<div className={"mainContent " + (levelUpMode && 'characterSheetLevelUpMode' || '')}>
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
 						<img className={st.profileImage} src={GenericProfile} alt="Character Image" />
 						<div className={st.about}>
-							<div className={st.row1}>
-								<h2>Name: </h2> <InputBox value="Juniper The Red" />
-								<h2>Sessions:</h2> <div className={st.sessionBox}><InputBox /></div>
+							<div className={st.standardFlex}>
+								<div className={st.headingMedium}>Name</div> <InputBox value="Juniper The Red" />
 							</div>
-							<div className={st.standardFlex}><h2>Race: </h2> <InputBox value="Human" /></div>
+							<div className={st.standardFlex}>
+								<div className={st.headingMedium}>Sessions</div> <InputBox value="20" />
+							</div>
+							<div className={st.standardFlex}>
+								<div className={st.headingMedium}>Points</div> <InputBox value="40" /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
+							</div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox value="Human" /></div>
 							<div className={st.racialBonuses}>
-								<h2>Racial Bonuses:</h2>
+								<div className={st.headingMedium}>Racial Bonuses</div>
 								<InputBox />
 								<InputBox />
 								<InputBox />
@@ -149,131 +164,109 @@ function CharacterSheetPage() {
 				</section>
 
 				<section ref={sectionRefs['Core']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoPoison} alt="" /> Core</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoPoison} alt="" /> Core</div></div>
 					<div  className={st.collapsable + ' ' + st.abilitiesLayout}>
-						<div className={st.stats}>
-							<div className={st.standardFlex}><h2>Abilities</h2> <div className={st.littleNote}>(Max 15 points)</div></div>
-							<div className={st.list}>
-								{stats.map((stat, index) => (
-									<div className={st.stat} key={index}>
-										<img src={abilityIcons[index]} alt="Icon" />
-										<div className={st.statName + ' ' + st.fullName}><h3>{stat.full}</h3></div>
-										<div className={st.statName + ' ' + st.shortName}><h3>{stat.short}</h3></div>
-										<div className={st.statValue}>+3</div>
-										<div className={st.statPurchases}>
-											<PurchaseablePointGroup count={7} columns={7} purchased={2} />
+						<div className={st.sectionMeta}>
+							<div className={st.stats + ' ' + st.sectionMetaInner}>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 15 points)</div></div>
+								<div className={st.list}>
+									{stats.map((stat, index) => (
+										<div className={st.stat} key={index}>
+											<img src={abilityIcons[index]} alt="Icon" />
+											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
+											<div className={st.statPurchases}>
+												<PurchaseablePointGroup count={7} columns={7} purchased={2} />
+											</div>
 										</div>
-									</div>
-								))}
+									))}
+								</div>
 							</div>
-						</div>
-						<div className={st.buffs}>
-							<h2>Buffs</h2> <h3>Source</h3>
-							<InputBox value="STR Moves +2" /> <InputBox value='Belt' />
-							<InputBox value="Combat Move +1" /> <InputBox value='Brooch' />
-							<InputBox value="UDR 1" /> <InputBox value='Spell' />
-							<InputBox value="" /> <InputBox value='' />
+							<div className={st.buffs + ' ' + st.sectionMetaInner}>
+								<div className={st.headingMedium}>Buffs</div> <div className={st.headingSmall}>Source</div>
+								<InputBox value="STR Moves +2" /> <InputBox value='Belt' />
+								<InputBox value="Combat Move +1" /> <InputBox value='Brooch' />
+								<InputBox value="UDR 1" /> <InputBox value='Spell' />
+								<InputBox value="" /> <InputBox value='' />
+							</div>
 						</div>
 					</div>
 				</section>
 
 				<section ref={sectionRefs['Wellness']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoWellness} alt="" /> Wellness</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoWellness} alt="" /> Wellness</div></div>
 					<div className={st.collapsable + ' ' + st.wellnessLayout}>
-						<div className={st.verve}>
-							<h2>Verve</h2>
-							<div className={st.healthPurchases}>
-								<PurchaseablePointGroup count={40} columns={10} />
+						<div className={st.sectionMeta}>
+							<div className={st.sectionMetaInner}>
+								<div className={st.verve}>
+									<div className={st.titleAndPoints}>
+										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>3/point</div></div>
+										<div className={st.healthPurchases}>
+											<PurchaseablePointGroup count={45} columns={15} />
+										</div>
+									</div>
+									<div className={st.totalAndCurrent}>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox /></div>
+									</div>
+								</div>
 							</div>
-							<div className={st.standardFlex}><h3>Total</h3> <InputBox /></div>
-							<div className={st.standardFlex}><h3>Current</h3> <InputBox /></div>
-						</div>
-						<div className={st.debilities}>
-							<h2>Debilities</h2>
-							<div className={st.debilityTrack}>
-								<h3>Exhaust</h3>
-								<CircleStatusGroup count={6} />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Daze</h3>
-								<CircleStatusGroup count={6} />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Stagger</h3>
-								<CircleStatusGroup count={6} />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Other</h3>
-								<InputBox value="Confused" />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Other</h3>
-								<InputBox value="Wounded" />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Other</h3>
-								<InputBox value="Cursed" />
-							</div>
-							<div className={st.debilityTrack}>
-								<h3>Other</h3>
-								<InputBox value="Weakened" />
+							<div className={st.sectionMetaInner}>
+								<div className={st.status}>
+									<div className={st.headingMedium}>Statuses</div>
+									{
+										status_data.filter((item) => item.type == "short (1)").map((status, index) => (
+											<StatusEffect key={index} status={status} />
+										))
+									}
+									{
+										status_data.filter((item) => item.type == "standard (3)").map((status, index) => (
+											<StatusEffect key={index} status={status} />
+										))
+									}
+									{
+										status_data.filter((item) => item.type == "long (∞)").map((status, index) => (
+											<StatusEffect key={index} status={status} />
+										))
+									}
+								</div>
 							</div>
 						</div>
-						{/*<div className={st.wounds}>
-							<h2>Wounds</h2>
-							<div className={st.woundTrack}>
-								<div className={st.standardFlex}><h3>Null Wound</h3> <PurchaseablePointGroup count={1} /> <CircleStatus /></div>
-							</div>
-							<div className={st.woundTrack}>
-								<div className={st.standardFlex}><h3>Head Wound</h3> <CircleStatus /> You cannot concentrate on spells, and [other]</div>
-							</div>
-							<div className={st.woundTrack}>
-								<div className={st.standardFlex}><h3>Chest Wound</h3> <CircleStatus /> [effect]</div>
-							</div>
-							<div className={st.woundTrack}>
-								<div className={st.standardFlex}><h3>Arm Wound</h3> <CircleStatus /> [combat and defense loss]</div>
-							</div>
-							<div className={st.woundTrack}>
-								<div className={st.standardFlex}><h3>Leg Wound</h3> <CircleStatus /> [combat and defense loss]</div>
-							</div>
-						</div>*/}
 					</div>
 				</section>
 
 				<section ref={sectionRefs['Defenses']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={isoShield} alt="" /> Defenses</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={isoShield} alt="" /> Defenses</div></div>
 					<div className={st.collapsable + ' ' + st.defensesLayout}>
 						<div className={st.sectionMeta}>
-							<h2>Armour Class </h2>
-							<div className={st.tabledData + ' ' + st.armourClassTable}>
-								<h2 className={st.headName}>Armour</h2> <div className={st.fonted + ' ' + st.headLabel}>Block</div> <div className={st.fonted + ' ' + st.headLabel}>Dodge</div> <div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
-								<PurchaseablePointGroup count={1} /> <h3>None</h3> <InputBox value={2} /> <InputBox value={4} /> <InputBox value="" />
-								<PurchaseablePointGroup count={1} /> <h3>Light</h3> <InputBox value={3} /> <InputBox value={3} /> <InputBox value="" />
-								<PurchaseablePointGroup count={1} /> <h3>Heavy</h3> <InputBox value={4} /> <InputBox value={2} /> <InputBox value="-1sq , -2 Dex Moves" />
-								<PurchaseablePointGroup count={1} /> <h3>Shield</h3> <InputBox value={1} /> <InputBox value={0} /> <InputBox value="-3 Cast" />
+							<div className={st.sectionMetaInner + ' ' + st.armourClassTable}>
+								<div className={st.headingMedium + ' ' + st.headName}>Armour</div> <div className={st.fonted + ' ' + st.headLabel}>Block</div> <div className={st.fonted + ' ' + st.headLabel}>Dodge</div> <div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
+								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>None</div> <InputBox value="2" /> <InputBox value="4" /> <InputBox value="" />
+								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Light</div> <InputBox value="3" /> <InputBox value="3" /> <InputBox value="" />
+								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Heavy</div> <InputBox value="4" /> <InputBox value="2" /> <InputBox value="-1sq , -2 Dex Moves" />
+								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Shield</div> <InputBox value="1" /> <InputBox value="0" /> <InputBox value="-3 Cast" />
 							</div>
 
-							<div className={st.tabledData + ' ' + st.resistanceTable}>
-								<h2 className={st.headName}>Resistances</h2>  <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
-								<h3>Universal (UDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Physical (PDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Magic (PDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Soul (SDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+							<div className={st.sectionMetaInner + ' ' + st.resistanceTable}>
+								<div className={st.headingMedium + ' ' + st.headName}>Resistances</div>  <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+								<div className={st.headingSmall}>Universal (UDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Physical (PDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Magic (PDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Soul (SDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
 							</div>
 
 							<div className={st.resistanceTable}>
-							<h2 className={st.headName}>Resistances</h2> <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
-								<h3>Fire (FDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Cold (CDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Lightning (LDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<h3>Poisons (PoDR)</h3> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+							<div className={st.headingMedium + ' ' + st.headName}>Resistances</div> <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+								<div className={st.headingSmall}>Fire (FDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Cold (CDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Lightning (LDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingSmall}>Poisons (PoDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
 							</div>
 						</div>
-						<h2 className={st.movesHeader}>Moves</h2>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							moves_and_mods.find(item => item.category == 'Defenses')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
+							movesAndMods['defenses']?.moves?.map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
@@ -281,24 +274,21 @@ function CharacterSheetPage() {
 				</section>
 
 				<section ref={sectionRefs['Combat']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</div></div>
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
-							<h2>Weapon Damage</h2>
-							<div className={st.tabledData + ' ' + st.weaponTable}>
-								<h2 className={st.headName}>Weapon</h2> <div className={st.fonted + ' ' + st.headLabel}>Resolved Dam.</div>
-								<InputBox value="Sword" /> <InputBox value="d6 + 0" />
-								<InputBox value="Throw. Knife" /> <InputBox value="d4 + 1" />
-								<InputBox value="" /> <InputBox value="" />
+							<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
+								<div className={st.headingMedium + ' ' + st.headName}>Weapon</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Bonus</div> <div className={st.fonted + ' ' + st.headLabel}>STR</div>
+								<InputBox value="Sword" /> <InputBox value="d6" /> <InputBox value="1" /> <InputBox value="3" />
+								<InputBox value="Throw. Knife" /> <InputBox value="d4" /> <InputBox value="+1" /> <InputBox value="2" />
+								<InputBox value="" /> <InputBox value="" /> <InputBox value="" /> <InputBox value="" />
 							</div>
 						</div>
-						<h2 className={st.movesHeader}>Moves</h2>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							moves_and_mods.filter(item => item.category == 'Combat')?.map((category, index) => (
-								category.moves.map((move, index) => (
-									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
-								))
+							movesAndMods['combat']?.moves.map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7}></Move>
 							))
 						}
 						</div>
@@ -306,15 +296,21 @@ function CharacterSheetPage() {
 				</section>
 
 				<section ref={sectionRefs['Moves']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoCircles} alt="" /> General</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Moves</div></div>
 					<div className={st.collapsable + ' ' + st.movesLayout}>
-						<h2 className={st.movesHeader}>Moves</h2>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Untrained Moves</div>
 						<div className={st.moveList}>
 						{
-							moves_and_mods.filter(item => ['Defenses', 'Magic', 'Combat'].includes(item.category) == 0)?.map((category, index) => (
-								category.moves.map((move, index) => (
-									<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
-								))
+							getUntrainedMoves().map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+							))
+						}
+						</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Trained Moves</div>
+						<div className={st.moveList}>
+						{
+							getTrainedMoves().map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
@@ -322,26 +318,35 @@ function CharacterSheetPage() {
 				</section>
 
 				<section ref={sectionRefs['Magic']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoMagic} alt="" /> Magic</h1></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoMagic} alt="" /> Magic</div></div>
 					<div className={st.collapsable + ' ' + st.magicLayout}>
-						<div className={st.sectionMeta}>
-							<div className={st.damageType}><h2>Mana: </h2><PurchaseablePointGroup count={30} columns={10} /></div>
-							<div className={st.damageType}><h2>Total: </h2><InputBox /></div>
-							<div className={st.damageType}><h2>Current: </h2><InputBox /></div>
+						<div className={st.sectionMeta + ' ' + st.section1}>
+							<div className={st.sectionMetaInner}>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><InputBox /></div>
+							</div>
+							<div className={st.sectionMetaInner}>
+								<div className={st.manaContainer}>
+									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} /></div>
+									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox /></div>
+									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox /></div>
+								</div>
+							</div>
 						</div>
-						<div className={st.sectionMeta + ' ' + st.vertical}>
-							<div className={st.damageType}><h2>Spells: </h2></div>
-							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-							<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+						<div className={st.sectionMeta + ' ' + st.section2}>
+							<div className={st.sectionMetaInner}>
+								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+							</div>
 						</div>
-						<h2 className={st.movesHeader}>Moves</h2>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							moves_and_mods.find(item => item.category == 'Magic')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
+							movesAndMods['magic']?.moves?.map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
@@ -349,22 +354,78 @@ function CharacterSheetPage() {
 				</section>
 				
 				<section ref={sectionRefs['Psionics']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><h1><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</h1></div>
-					<div className={st.collapsable + ' ' + st.psionics}>
-						<h2 className={st.movesHeader}>Moves</h2>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</div></div>
+					<div className={st.collapsable + ' ' + st.psionicsLayout}>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							moves_and_mods.find(item => item.category == 'Psionics')?.moves?.map((move, index) => (
-								<Move key={index} move={move} descriptionPopupToggle={descriptionPopupToggle} rollPopupToggle={rollPopupToggle}></Move>
+							movesAndMods['psonics']?.moves?.map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
 							))
 						}
 						</div>
 					</div>
 				</section>
+				
+				<section ref={sectionRefs['Inventory']} className={st.open}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
+					<div className={st.collapsable + ' ' + st.inventoryLayout}>
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+						<InputBox /> <InputBox />
+					</div>
+				</section>
+
+				<section ref={sectionRefs['Notes']} className={st.open}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Notes</div></div>
+					<div className={st.collapsable + ' ' + st.notesLayout}>
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+						<InputBox />
+					</div>
+				</section>
 			</div>
-			<nav className={st.sheetNav}>
-			<button onClick={closeAllSections}><img src={icoChevronDown} /></button>
-			<button onClick={openAllSections}><img src={icoChevronDown} className={st.flipY} /></button>
+			
+			<nav className={st.controlBar}>
+				<button onClick={closeAllSections}><img src={icoChevronDown} /></button>
+				<button onClick={openAllSections}><img src={icoChevronDown} className={st.flipY} /></button>
+				<button onClick={toggleLevelUpMode}>Spend Points</button>
 			</nav>
 			<Footer />
 		</React.Fragment>

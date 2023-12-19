@@ -1,0 +1,59 @@
+.el {
+	width: 100%;
+	margin: calc(0.5 * var(--padding-standard)) 0;
+
+	--description-display: none;
+
+	&.descriptionVisible {
+		--description-display: block;
+	}
+
+	.mainBlock {
+		display: flex;
+		gap: calc(0.5 * var(--padding-standard));
+		flex-wrap: wrap;
+		align-items: center;
+		width: 100%;
+
+		.title {
+			flex-grow: auto;
+			color: var(--color-reduced);
+			font-size: 18px;
+			line-height: 100%;
+			font-family: "trattatello";
+			text-transform: uppercase;
+			word-wrap: break-word;
+			margin-left: var(--padding-standard);
+			cursor: pointer;
+
+			&:hover {
+				opacity: 0.65;
+			}
+		}
+
+		.spacer {
+			flex-grow: 5;
+		}
+
+		.description {
+			display: var(--description-display);
+			flex-basis: 100%;
+			margin-left: var(--padding-standard);
+
+			.type {
+				position: relative;
+				bottom: 1px;
+				font-family: 'trattatello';
+				text-transform: uppercase;
+				line-height: 100%;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+@media print {
+	.description {
+		grid-column: 2 / 3;
+	}
+}

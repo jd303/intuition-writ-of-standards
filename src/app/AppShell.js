@@ -4,6 +4,7 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDataStandardsData, selectDataStandardsData } from "../features/firebase/dataStandardsDataSlice";
 import { updateMovesData } from "../features/firebase/movesDataSlice";
+import { updateStatusData } from "../features/firebase/statusDataSlice";
 import { updateSpellsData } from "../features/firebase/spellsDataSlice";
 import { updatePotionsData } from "../features/firebase/potionsDataSlice";
 import { updateAnimalCompanionsData } from "../features/firebase/animalCompanionsDataSlice";
@@ -11,7 +12,6 @@ import { updateAnimalCompanionsData } from "../features/firebase/animalCompanion
 export const AppShell = function ({ children }) {
 
 	const dispatch = useDispatch();
-
 
 	useEffect(() => {
 		async function collectData() {
@@ -32,6 +32,13 @@ export const AppShell = function ({ children }) {
 			onValue(movesRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateMovesData({ data: data, standards: standards }));
+			});
+
+			// Collect status data
+			const statusRef = ref(database, '/statuses');
+			onValue(statusRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateStatusData({ data: data, standards: standards }));
 			});
 
 			// Collect spells data

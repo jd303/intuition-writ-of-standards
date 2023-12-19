@@ -22,9 +22,15 @@ export function PurchaseablePointGroup( { columns = 10, count = 1, purchased = 0
 
 	return (
 		<React.Fragment>
-			<div className={st.el}>
-				{generatePoints()}
-			</div>
+			{ count > 7 ? (
+				<div className={st.el + ' ' + (purchased >= count && st.complete || '')} data-count={`${purchased} purchased`}>
+					{generatePoints()}
+				</div>
+			) : (
+				<div className={st.el + ' ' + (purchased >= count && st.complete || '')}>
+					{generatePoints()}
+				</div>
+			)}
 		</React.Fragment>
 	);
 }
