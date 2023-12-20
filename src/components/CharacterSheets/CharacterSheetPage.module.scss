@@ -370,9 +370,13 @@ section {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 			gap: calc(0.5 * var(--padding-standard));
 
-			@media (max-width: 949px) {
-				grid-template-columns: 1fr 1fr;
+			@media (max-width: 999px) {
+				grid-template-columns: 1fr 1fr 1fr;
 				min-width: auto;
+			}
+
+			@media (max-width: 649px) {
+				grid-template-columns: 1fr 1fr;
 
 				.headingMedium {
 					grid-column: 1/3;
