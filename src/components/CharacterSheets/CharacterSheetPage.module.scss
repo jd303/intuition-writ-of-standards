@@ -247,6 +247,19 @@ section {
 			grid-template-rows: 30px auto;
 			gap: 5px;
 		}
+
+		.statLabels {
+			display: flex;
+			justify-content: flex-end;
+			gap: 8px;
+
+			div {
+				width: 9.5px;
+				font-size: 10px;
+				font-style: italic;
+				color: #999;
+			}
+		}
 	
 		.stats {
 			.standardFlex {
@@ -318,17 +331,19 @@ section {
 		.verve {
 			display: grid;
 			grid-template-columns: auto;
-			gap: var(--padding-standard);
+			gap: 0;
 			width: 255px;
 			min-width: 170px;
 
 			@media (max-width: 950px) {
 				grid-template-columns: 1fr 2fr;
+				gap: var(--padding-standard);
 				width: 100%;
 			}
 
 			@media (max-width: 665px) {
 				grid-template-columns: auto;
+				gap: calc(0.5 * var(--padding-standard));
 				width: 100%;
 			}
 
@@ -360,6 +375,23 @@ section {
 				margin-bottom: calc(0.5 * var(--padding-standard));
 			}
 		}
+
+		.stamina {
+			display: flex;
+			gap: calc(0.5 * var(--padding-standard));
+			margin-top: var(--padding-standard);
+
+			.staminaPurchases {
+				display: grid;
+				grid-template-columns: 17px 17px 17px;
+				gap: calc(0.25 * var(--padding-standard));
+
+				.staminaPointGroup {
+					grid-row: 2;
+					grid-column: 1 / 4;
+				}
+			}
+		}
 	
 		.status {
 			width: auto;
@@ -389,7 +421,7 @@ section {
 		}
 	}
 
-	.defensesLayout {
+	.defencesLayout {
 		.sectionMeta {
 			--armourclasstable-width: 375px;
 			--resistancetable-width: 260px;

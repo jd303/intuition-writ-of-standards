@@ -8,7 +8,6 @@ export const statusDataSlice = createSlice({
 	},
 	reducers: {
 		updateStatusData: (state, data) => {
-			console.log(state, data);
 			const payload = convertDataStandards(data.payload.data, data.payload.standards);
 			state.value = payload;
 		},

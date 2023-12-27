@@ -8,6 +8,7 @@ import { updateStatusData } from "../features/firebase/statusDataSlice";
 import { updateSpellsData } from "../features/firebase/spellsDataSlice";
 import { updatePotionsData } from "../features/firebase/potionsDataSlice";
 import { updateAnimalCompanionsData } from "../features/firebase/animalCompanionsDataSlice";
+import { updateCharactersData } from "../features/firebase/charactersDataSlice";
 
 export const AppShell = function ({ children }) {
 
@@ -60,6 +61,13 @@ export const AppShell = function ({ children }) {
 			onValue(animalCompanionsRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateAnimalCompanionsData({ data: data, standards: standards }));
+			});
+
+			// Collect characters data
+			const charactersRef = ref(database, '/characters');
+			onValue(charactersRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateCharactersData({ data: data, standards: standards }));
 			});
 		}
 

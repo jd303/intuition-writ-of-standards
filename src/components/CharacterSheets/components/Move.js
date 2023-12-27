@@ -8,7 +8,7 @@ import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 
-export function Move( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, printableModsCount = 4 }) {
+export function Move( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, printableModsCount = 4, purchaseDetails, clickCallback }) {
 
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
@@ -39,7 +39,7 @@ export function Move( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, p
 	const generateInputBoxes = () => {
 		let response = [];
 		for (let x=0; x < printableModsCount; x++) {
-			response.push(<InputBox />);
+			response.push(<InputBox key={x} />);
 		}
 		return response;
 	}
@@ -48,7 +48,7 @@ export function Move( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, p
 		<div className={st.el + ' ' + (move.type == "Move" && st.moveCategory || '') + ' ' + (descriptionVisible && st.descriptionVisible || '')}>
 			<div className={st.mainBlock}>
 				<div className={st.title + ' ' + (move.type == "Move" && st.moveCategory || '')} onClick={toggleDescriptionVisible}>{move.name}</div>
-				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} /></div>
+				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.name}`} /></div>
 				<div className={st.bonuses + ' forPrint'}><InputBox value={`+${pointsSpent+statBonus}`} /></div>
 				<div className={st.buttons + ' notForPrint'}><button className={st.diceRoll} onClick={rollPopupToggle.bind(null, pointsSpent+statBonus)}><img src={icoDice} alt="Roll this Move" /></button></div>
 				<div className={st.description}>{ move.type !== "Move" && <span className={st.type}>{move.type}</span>} {move.description}</div>
@@ -67,14 +67,14 @@ export function Move( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, p
 					<div className={st.allMods + ' ' +(purchasedVisible && st.visible || '')}>
 						<div className={st.mods + ' notForPrint'}>
 							{move.mods.filter(isPurchased).map((mod, index) => (
-								<Mod key={index} mod={mod} />
+								<Mod key={index} mod={mod} moveName={move.name} clickCallback={clickCallback} />
 							))}
 						</div>
 						{unpurchasedMods.length > 0 && ( <>
 							<div className={st.headingMedium + ' ' + st.unpurchasedExpander} onClick={toggleUnpurchasedVisible}>Unpurchased Mods</div>
 							<div className={st.unpurchasedMods + ' notForPrint ' + (unpurchasedVisible && st.visible || '')}>
 								{move.mods.filter(isNotPurchased).map((mod, index) => (
-									<Mod key={index} mod={mod} />
+									<Mod key={index} mod={mod} moveName={move.name} clickCallback={clickCallback} />
 								))}
 							</div>
 						</> )}
@@ -90,5 +90,7 @@ Move.propTypes = {
 	pointsSpent: PropTypes.number,
 	statBonus: PropTypes.number,
 	rollPopupToggle: PropTypes.func,
-	printableModsCount: PropTypes.number
+	printableModsCount: PropTypes.number,
+	purchaseDetails: PropTypes.object,
+	clickCallback: PropTypes.func.isRequired
 };

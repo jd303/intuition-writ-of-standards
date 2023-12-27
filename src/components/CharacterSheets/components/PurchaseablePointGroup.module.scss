@@ -1,13 +1,10 @@
-.el {
+.container {
 	position: relative;
 	z-index: 1;
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: 3px;
+	display: inline-block;
 
 	&:hover,
 	&:active {
-
 		&[data-count]:after {
 			content: attr(data-count);
 			display: block;
@@ -26,13 +23,27 @@
 			}
 		}
 	}
+
+	.el {
+		display: inline-flex;
+		flex-wrap: wrap;
+		pointer-events: none;
+	}
 }
 
 :global(.characterSheetLevelUpMode) {
-	.el:after { display: none !important; }
-	.el:not(.complete) {
+	.container .el:after { display: none !important; }
+	.container .el:not(.complete) {
 		pointer-events: all;
 		box-shadow: 0 0 12px rgba(220, 160, 0, 0.85);
+	}
+}
+
+:global(.characterSheetLevelDownMode) {
+	.container .el:after { display: none !important; }
+	.container .el:not(.empty) {
+		pointer-events: all;
+		box-shadow: 0 0 12px rgba(255, 70, 0, 0.85);
 	}
 }
 

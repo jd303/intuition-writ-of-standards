@@ -7,6 +7,10 @@ import { CircleStatusGroup } from "./components/CircleStatusGroup";
 import { Move } from './components/Move';
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { Footer } from "../../components/Components/Footer/Footer";
+import { StatusEffect } from "./components/StatusEffect";
+
+import Character from "./CharacterHandler";
+import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 import { selectStatusData } from "../../features/firebase/statusDataSlice";
@@ -28,11 +32,14 @@ import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDice from '../../assets/images/ico.dice.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
-import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
+
 import st from './CharacterSheetPage.module.scss';
-import { StatusEffect } from "./components/StatusEffect";
+import { CircleStatus } from "./components/CircleStatus";
 
 function CharacterSheetPage() {
+	const getMaxPoints = () => 20 + numSessions;
+	const getAvailablePoints = (manualMaxPoints) => (manualMaxPoints || maxPoints) - character.purchases.spentPoints;
+
 	const moves_and_mods = useSelector(selectMovesData);
 	const status_data = useSelector(selectStatusData);
 
@@ -50,7 +57,7 @@ function CharacterSheetPage() {
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Section expanders
-	const sections = ['Core', 'Wellness', 'Defenses', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
+	const sections = ['Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
 	const sectionRefs = {};
 	sections.forEach(section => sectionRefs[section] = useRef(null));
 
@@ -101,6 +108,12 @@ function CharacterSheetPage() {
 	const [levelUpMode, setLevelUpMode] = useState(false);
 	const toggleLevelUpMode = () => {
 		setLevelUpMode(!levelUpMode);
+		setLevelDownMode(false);
+	}
+	const [levelDownMode, setLevelDownMode] = useState(false);
+	const toggleLeveDownMode = () => {
+		setLevelDownMode(!levelDownMode);
+		setLevelUpMode(false);
 	}
 	
 	let movesAndMods = {};
@@ -125,6 +138,44 @@ function CharacterSheetPage() {
 		return response;
 	}
 
+	// Character Data
+	const characterInitial = new Character();
+	const [numSessions, setNumSessions] = useState(20);
+	const [maxPoints, setMaxPoints] = useState(getMaxPoints());
+	const [character, setCharacter] = useState(characterInitial.loadCharacter());
+	const [availablePoints, setAvailablePoints] = useState(getAvailablePoints());
+
+	const adjustPoints = (purchaseKey) => {
+		let addingMode = levelUpMode ? true : false;
+		if (addingMode && availablePoints < 1) return false;
+
+		const purchaseArray = purchaseKey.split(".");
+		character.adjustPoint(addingMode, ...purchaseArray);
+		const purchasesCopy = character.purchases;
+		const newCharacter = new Character(purchasesCopy);
+		setCharacter(newCharacter);
+		setAvailablePoints(getAvailablePoints());
+		
+		if (addingMode && getAvailablePoints() < 1) {
+			setLevelUpMode(false);
+		} else if (!addingMode && getAvailablePoints() == maxPoints) {
+			setLevelDownMode(false);
+		}
+	}
+
+	const updateInputCharacterName = (value) => {
+		console.log("UPDATE NAME: DO SOMETHING WITH THIS", value);
+	}
+
+	const updateInputSessionCount = (value) => {
+		const asNum = Number(value);
+		setNumSessions(asNum);
+		setMaxPoints(20 + asNum);
+	}
+	useEffect(() => {
+		setAvailablePoints(getAvailablePoints());
+	}, [maxPoints]);
+
 	// JSX
 	return (
 		<React.Fragment>
@@ -138,21 +189,21 @@ function CharacterSheetPage() {
 					<button onClick={performRoll}><img className={st.diceRollImage} src={icoDice} alt="Roll this Move" /></button> <div className={st.fonted}>Bonus: {rollBonus}</div> <div className={st.fonted}>=</div> <div className={st.result + ' ' + st.fonted}>Total: </div>					
 				</div>
 			</div>
-			<div className={"mainContent " + (levelUpMode && 'characterSheetLevelUpMode' || '')}>
+			<div className={"mainContent " + (levelUpMode && ' characterSheetLevelUpMode ' || '') + (levelDownMode && ' characterSheetLevelDownMode ' || '')}>
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
 						<img className={st.profileImage} src={GenericProfile} alt="Character Image" />
 						<div className={st.about}>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Name</div> <InputBox value="Juniper The Red" />
+								<div className={st.headingMedium}>Name</div> <InputBox val="Juniper The Red" onUpdate={updateInputCharacterName} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Sessions</div> <InputBox value="20" />
+								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={numSessions} onUpdate={updateInputSessionCount} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Points</div> <InputBox value="40" /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
+								<div className={st.headingMedium}>Points</div> <InputBox val={`${character.purchases.spentPoints} / ${maxPoints.toString()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
 							</div>
-							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox value="Human" /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val="Human" /></div>
 							<div className={st.racialBonuses}>
 								<div className={st.headingMedium}>Racial Bonuses</div>
 								<InputBox />
@@ -168,25 +219,28 @@ function CharacterSheetPage() {
 					<div  className={st.collapsable + ' ' + st.abilitiesLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.stats + ' ' + st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 15 points)</div></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 18 points)</div></div>
 								<div className={st.list}>
 									{stats.map((stat, index) => (
 										<div className={st.stat} key={index}>
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={7} columns={7} purchased={2} />
+												<PurchaseablePointGroup count={7} columns={7} purchased={1 + character.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
 											</div>
 										</div>
 									))}
+									<div className={st.statLabels}>
+										<div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+									</div>
 								</div>
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
 								<div className={st.headingMedium}>Buffs</div> <div className={st.headingSmall}>Source</div>
-								<InputBox value="STR Moves +2" /> <InputBox value='Belt' />
-								<InputBox value="Combat Move +1" /> <InputBox value='Brooch' />
-								<InputBox value="UDR 1" /> <InputBox value='Spell' />
-								<InputBox value="" /> <InputBox value='' />
+								<InputBox val="STR Moves +2" /> <InputBox val='Belt' />
+								<InputBox val="Combat Move +1" /> <InputBox val='Brooch' />
+								<InputBox val="UDR 1" /> <InputBox val='Spell' />
+								<InputBox val="" /> <InputBox val='' />
 							</div>
 						</div>
 					</div>
@@ -201,12 +255,19 @@ function CharacterSheetPage() {
 									<div className={st.titleAndPoints}>
 										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>3/point</div></div>
 										<div className={st.healthPurchases}>
-											<PurchaseablePointGroup count={45} columns={15} />
+											<PurchaseablePointGroup count={45} columns={15} purchased={character.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox /></div>
+									</div>
+								</div>
+								<div className={st.stamina}>
+									<div className={st.headingMedium}>Stamina</div>
+									<div className={st.staminaPurchases}>
+										<CircleStatus /> <CircleStatus /> <CircleStatus />
+										<div className={st.staminaPointGroup}><PurchaseablePointGroup count={3} purchased={character.purchases.stamina} gap={7} clickCallback={adjustPoints} purchaseKey='stamina' /></div>
 									</div>
 								</div>
 							</div>
@@ -234,16 +295,16 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Defenses']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={isoShield} alt="" /> Defenses</div></div>
-					<div className={st.collapsable + ' ' + st.defensesLayout}>
+				<section ref={sectionRefs['Defences']} className={st.open}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={isoShield} alt="" /> Defences</div></div>
+					<div className={st.collapsable + ' ' + st.defencesLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.sectionMetaInner + ' ' + st.armourClassTable}>
 								<div className={st.headingMedium + ' ' + st.headName}>Armour</div> <div className={st.fonted + ' ' + st.headLabel}>Block</div> <div className={st.fonted + ' ' + st.headLabel}>Dodge</div> <div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
-								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>None</div> <InputBox value="2" /> <InputBox value="4" /> <InputBox value="" />
-								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Light</div> <InputBox value="3" /> <InputBox value="3" /> <InputBox value="" />
-								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Heavy</div> <InputBox value="4" /> <InputBox value="2" /> <InputBox value="-1sq , -2 Dex Moves" />
-								<PurchaseablePointGroup count={1} /> <div className={st.headingSmall}>Shield</div> <InputBox value="1" /> <InputBox value="0" /> <InputBox value="-3 Cast" />
+								<PurchaseablePointGroup count={1} purchased={1} clickCallback={adjustPoints} purchaseKey={'armour.none'} /> <div className={st.headingSmall}>None</div> <InputBox val="2" /> <InputBox val="4" /> <InputBox val="" />
+								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.light'} /> <div className={st.headingSmall}>Light</div> <InputBox val="3" /> <InputBox val="3" /> <InputBox val="" />
+								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.heavy'} /> <div className={st.headingSmall}>Heavy</div> <InputBox val="4" /> <InputBox val="2" /> <InputBox val="-1sq , -2 Dex Moves" />
+								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.shield'} /> <div className={st.headingSmall}>Shield</div> <InputBox val="1" /> <InputBox val="0" /> <InputBox val="-3 Cast" />
 							</div>
 
 							<div className={st.sectionMetaInner + ' ' + st.resistanceTable}>
@@ -265,8 +326,8 @@ function CharacterSheetPage() {
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							movesAndMods['defenses']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+							movesAndMods['defences']?.moves?.map((move, index) => (
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -279,16 +340,16 @@ function CharacterSheetPage() {
 						<div className={st.sectionMeta}>
 							<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
 								<div className={st.headingMedium + ' ' + st.headName}>Weapon</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Bonus</div> <div className={st.fonted + ' ' + st.headLabel}>STR</div>
-								<InputBox value="Sword" /> <InputBox value="d6" /> <InputBox value="1" /> <InputBox value="3" />
-								<InputBox value="Throw. Knife" /> <InputBox value="d4" /> <InputBox value="+1" /> <InputBox value="2" />
-								<InputBox value="" /> <InputBox value="" /> <InputBox value="" /> <InputBox value="" />
+								<InputBox val="Sword" /> <InputBox val="d6" /> <InputBox val="1" /> <InputBox val="3" />
+								<InputBox val="Throw. Knife" /> <InputBox val="d4" /> <InputBox val="+1" /> <InputBox val="2" />
+								<InputBox val="" /> <InputBox val="" /> <InputBox val="" /> <InputBox val="" />
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -302,7 +363,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getUntrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -310,7 +371,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getTrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -326,7 +387,7 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>
-									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} /></div>
+									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchaseKey={'mana'} /></div>
 									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox /></div>
 									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox /></div>
 								</div>
@@ -335,18 +396,18 @@ function CharacterSheetPage() {
 						<div className={st.sectionMeta + ' ' + st.section2}>
 							<div className={st.sectionMetaInner}>
 								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
+								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -360,7 +421,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['psonics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -425,7 +486,8 @@ function CharacterSheetPage() {
 			<nav className={st.controlBar}>
 				<button onClick={closeAllSections}><img src={icoChevronDown} /></button>
 				<button onClick={openAllSections}><img src={icoChevronDown} className={st.flipY} /></button>
-				<button onClick={toggleLevelUpMode}>Spend Points</button>
+				<button onClick={toggleLevelUpMode} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend {availablePoints} Points</button>
+				<button onClick={toggleLeveDownMode}>Remove Points</button>
 			</nav>
 			<Footer />
 		</React.Fragment>
