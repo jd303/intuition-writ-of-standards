@@ -6,6 +6,7 @@ import movesDataReducer from "../features/firebase/movesDataSlice";
 import statusDataReducer from "../features/firebase/statusDataSlice";
 import potionsDataReducer from "../features/firebase/potionsDataSlice";
 import animalCompanionsDataReducer from "../features/firebase/animalCompanionsDataSlice";
+import charactersData from "../features/firebase/charactersDataSlice";
 
 export default configureStore({
 	reducer: {
@@ -15,6 +16,7 @@ export default configureStore({
 		movesData: movesDataReducer,
 		statusData: statusDataReducer,
 		potionsData: potionsDataReducer,
-		animalCompanionsData: animalCompanionsDataReducer
+		animalCompanionsData: animalCompanionsDataReducer,
+		charactersData: charactersData
 	},
 });

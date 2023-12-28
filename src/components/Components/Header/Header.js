@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { Nav } from "../../Nav/Nav";
 
 import styles from "./Header.module.scss";
@@ -10,6 +9,7 @@ Header.propTypes = {
 }
 
 function Header({ colour = 'black' }) {
+
 	return (
 		<div className={styles.container + ' printHeader'}>
 			<div className={styles.header}>

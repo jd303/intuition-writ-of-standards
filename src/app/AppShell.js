@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
+import { app, AuthContextProvider, useAuthState } from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDataStandardsData, selectDataStandardsData } from "../features/firebase/dataStandardsDataSlice";
 import { updateMovesData } from "../features/firebase/movesDataSlice";
@@ -13,11 +15,11 @@ import { updateCharactersData } from "../features/firebase/charactersDataSlice";
 export const AppShell = function ({ children }) {
 
 	const dispatch = useDispatch();
+	const database = getDatabase(window.firebaseApp);
 
 	useEffect(() => {
 		async function collectData() {
 			// Use firebase to listen for data changes
-			const database = getDatabase(window.firebaseApp);
 			let standards;
 
 			// Collect data standards
@@ -62,22 +64,33 @@ export const AppShell = function ({ children }) {
 				const data = snapshot.val();
 				dispatch(updateAnimalCompanionsData({ data: data, standards: standards }));
 			});
-
-			// Collect characters data
-			const charactersRef = ref(database, '/characters');
-			onValue(charactersRef, (snapshot) => {
-				const data = snapshot.val();
-				dispatch(updateCharactersData({ data: data, standards: standards }));
-			});
 		}
 
 		collectData();
 	}, []);
 
+	// Authenticated Data
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(getAuth(app), 
+		(user) => {
+			if (user && user.uid) {
+				const charactersRef = ref(database, `/characters/${user.uid}`);
+				onValue(charactersRef, (snapshot) => {
+					const data = snapshot.val();
+					dispatch(updateCharactersData({ data: data }));
+				});
+			}
+		}, (error) => {
+			console.log("No user");
+		})
+		return () => unsubscribe()
+	}, []);
+
+	// JSX
 	return (
-		<React.Fragment>
+		<AuthContextProvider>
 			{children}
-		</React.Fragment>
+		</AuthContextProvider>
 	);
 }
 

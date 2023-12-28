@@ -172,6 +172,10 @@
 			}
 		}
 	}
+
+	.authDisabled {
+		display: none !important;
+	}
 }
 	
 @media print {

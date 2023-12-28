@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { convertDataStandards } from "./dataStandards";
 
 export const charactersDataSlice = createSlice({
 	name: "charactersData",
@@ -8,8 +7,7 @@ export const charactersDataSlice = createSlice({
 	},
 	reducers: {
 		updateCharactersData: (state, data) => {
-			const payload = convertDataStandards(data.payload.data, data.payload.standards);
-			state.value = payload;
+			state.value = data.payload.data;
 		},
 	},
 });

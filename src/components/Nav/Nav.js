@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { PropTypes } from "prop-types";
 import { routeSections, RouteDefinitions } from "../../Routes";
 import { NavLink, useLocation } from "react-router-dom";
-import { IntuitionLogo } from "../Components/IntuitionLogo/IntuitionLogo";
-
 import styles from "./Nav.module.scss";
 
 Nav.propTypes = {
@@ -14,9 +12,12 @@ Nav.propTypes = {
 export function Nav({ colour = "black" }) {
 	const location = useLocation();
 	const allRoutes = RouteDefinitions();
-	const currentRoute = allRoutes.find((rt) => rt.path == location.pathname);
+	const currentRoute = allRoutes.find((rt) => {
+		if (rt.path == "/characters/:name") return /^\/characters\/([a-zA-Z0-9_-]+)$/.test(location.pathname);
+		else return rt.path == location.pathname;
+	});
 	const currentRouteSection = routeSections.find((rt) => rt.navLabel == currentRoute.parent);
-	const childRoutes = allRoutes.filter((rt) => rt.parent == currentRouteSection.navLabel);
+	const childRoutes = allRoutes.filter((rt) => rt.parent == currentRouteSection.navLabel && !rt.hide);
 
 	const [ navDisplay, setNavDisplay ] = useState(false);
 	const toggleNav = () => {
@@ -49,17 +50,19 @@ export function Nav({ colour = "black" }) {
 					))}
 				</ol>
 			</div>
-			<div className={styles.subNav}>
-				<ol className={styles[colour] + ' ' + styles.subNavContainer}>
-					{childRoutes?.map((rt, index) => (
-						<li key={index} className={styles.subRouteLink}>
-							<NavLink to={rt.path} className={({ isActive }) => (isActive ? styles.activeLink : "")}>
-								{rt.navLabel}
-							</NavLink>
-						</li>
-					))}
-				</ol>
-			</div>
+			{childRoutes.length > 1 && (
+				<div className={styles.subNav}>
+					<ol className={styles[colour] + ' ' + styles.subNavContainer}>
+						{childRoutes?.map((rt, index) => (
+							<li key={index} className={styles.subRouteLink}>
+								<NavLink to={rt.path} className={({ isActive }) => (isActive ? styles.activeLink : "")}>
+									{rt.navLabel}
+								</NavLink>
+							</li>
+						))}
+					</ol>
+				</div>
+			)}
 		</div>
 	);
 }

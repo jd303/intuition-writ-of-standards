@@ -19,6 +19,16 @@
 		"spells": {
 			".read": true,
 			".write": false
+		},
+		"status": {
+			".read": true,
+			".write": false
+		},
+		"characters": {
+			"$uid": {
+				".read": "$uid === auth.uid",
+				".write": "$uid === auth.uid"
+			}
 		}
 	}
 }

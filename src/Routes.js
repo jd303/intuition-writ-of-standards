@@ -24,7 +24,9 @@ import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
 import MenageriePage from "./components/Menagerie/MengeriePage";
+import CharacterListPage from "./components/CharacterSheets/CharacterListPage";
 import CharacterSheetPage from "./components/CharacterSheets/CharacterSheetPage";
+import AccountPage from "./components/Account/AccountPage";
 
 export const routeSections = [
 	{
@@ -74,8 +76,13 @@ export const routeSections = [
 	},
 	{
 		id: "characters",
-		navLabel: "Character Sheets",
+		navLabel: "Characters",
 		path: "/characters",
+	},
+	{
+		id: "account",
+		navLabel: "Account",
+		path: "/account",
 	},
 ];
 
@@ -240,10 +247,24 @@ const routes = [
 	},
 
 	{
-		navLabel: "Character Sheets",
+		navLabel: "Characters",
 		path: "/characters",
-		element: <Route key="0" path="/characters" element={<CharacterSheetPage />} />,
-		parent: "Character Sheets",
+		element: <Route key="0" path="/characters" element={<CharacterListPage />} />,
+		parent: "Characters",
+	},
+	{
+		navLabel: "Character Sheet",
+		path: "/characters/:name",
+		element: <Route key="0" path="/characters/:name" element={<CharacterSheetPage />} />,
+		parent: "Characters",
+		hide: true
+	},
+
+	{
+		navLabel: "Account",
+		path: "/account",
+		element: <Route key="0" path="/account" element={<AccountPage />} />,
+		parent: "Account",
 	},
 ];
 

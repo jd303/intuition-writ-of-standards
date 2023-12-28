@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from 'react-router';
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
 import { PurchaseablePointGroup } from "./components/PurchaseablePointGroup";
@@ -9,7 +10,7 @@ import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { Footer } from "../../components/Components/Footer/Footer";
 import { StatusEffect } from "./components/StatusEffect";
 
-import Character from "./CharacterHandler";
+import { CharacterHandler, CharacterObject } from "./CharacterHandler";
 import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
@@ -36,24 +37,33 @@ import icoDocument from '../../assets/images/icons/ico.document.svg';
 import st from './CharacterSheetPage.module.scss';
 import { CircleStatus } from "./components/CircleStatus";
 
+import { useAuthState } from "../../firebase";
+import { Navigate } from "react-router-dom";
+import { selectCharactersData, updateCharactersData } from "../../features/firebase/charactersDataSlice";
+import { prepareCharacterName } from "../../utils/prepareCharacterName";
+
 function CharacterSheetPage() {
+	const { isAuthenticated } = useAuthState();
+	if (isAuthenticated === false) return <Navigate to="/account" />
+
+	const params = useParams();
+	const moves_and_mods = useSelector(selectMovesData);
+	const status_data = useSelector(selectStatusData);
+	const characters_data = useSelector(selectCharactersData);
+	const current_character_data = characters_data.find(char => prepareCharacterName(char.name) == params.name);
+	if (!current_character_data) return <Navigate to="/characters" />
+	
+	// Setup the character
+	const characterObject = new CharacterObject(current_character_data);
+	const [theCharacter, setTheCharacter] = useState(characterObject);
+	console.log("CHAR DAT", theCharacter);
+	console.log("NEXT UP, CONVERT THE REST TO THE NEW MODEL, AND REFACTOR CHARACTERSHEET COMPONENT");
+
 	const getMaxPoints = () => 20 + numSessions;
 	const getAvailablePoints = (manualMaxPoints) => (manualMaxPoints || maxPoints) - character.purchases.spentPoints;
 
-	const moves_and_mods = useSelector(selectMovesData);
-	const status_data = useSelector(selectStatusData);
-
-	const [ sheets, setSheets ] = useState([]);
-
-	useEffect(() => {
-		let characters = JSON.parse(localStorage.getItem('characters') || '[]');
-		console.log("Got characters");
-		setSheets(characters);
-	}, []);
-
-	const [ stats, setStats ] = useState([ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }]);
-
-	// Icons
+	// Static Data
+	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Section expanders
@@ -139,7 +149,7 @@ function CharacterSheetPage() {
 	}
 
 	// Character Data
-	const characterInitial = new Character();
+	const characterInitial = new CharacterHandler();
 	const [numSessions, setNumSessions] = useState(20);
 	const [maxPoints, setMaxPoints] = useState(getMaxPoints());
 	const [character, setCharacter] = useState(characterInitial.loadCharacter());
@@ -152,7 +162,7 @@ function CharacterSheetPage() {
 		const purchaseArray = purchaseKey.split(".");
 		character.adjustPoint(addingMode, ...purchaseArray);
 		const purchasesCopy = character.purchases;
-		const newCharacter = new Character(purchasesCopy);
+		const newCharacter = new CharacterHandler(purchasesCopy);
 		setCharacter(newCharacter);
 		setAvailablePoints(getAvailablePoints());
 		
@@ -195,20 +205,20 @@ function CharacterSheetPage() {
 						<img className={st.profileImage} src={GenericProfile} alt="Character Image" />
 						<div className={st.about}>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Name</div> <InputBox val="Juniper The Red" onUpdate={updateInputCharacterName} />
+								<div className={st.headingMedium}>Name</div> <InputBox val={theCharacter.characterData.name} onUpdate={updateInputCharacterName} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={numSessions} onUpdate={updateInputSessionCount} />
+								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={updateInputSessionCount} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Points</div> <InputBox val={`${character.purchases.spentPoints} / ${maxPoints.toString()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
+								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
 							</div>
-							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val="Human" /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} /></div>
 							<div className={st.racialBonuses}>
 								<div className={st.headingMedium}>Racial Bonuses</div>
-								<InputBox />
-								<InputBox />
-								<InputBox />
+								<InputBox val={theCharacter.characterData.racial_bonuses[0]} />
+								<InputBox val={theCharacter.characterData.racial_bonuses[1]} />
+								<InputBox val={theCharacter.characterData.racial_bonuses[2]} />
 							</div>
 						</div>
 					</div>
@@ -226,7 +236,7 @@ function CharacterSheetPage() {
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={7} columns={7} purchased={1 + character.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
+												<PurchaseablePointGroup count={7} columns={7} purchased={1 + theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
 											</div>
 										</div>
 									))}
@@ -237,10 +247,12 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
 								<div className={st.headingMedium}>Buffs</div> <div className={st.headingSmall}>Source</div>
-								<InputBox val="STR Moves +2" /> <InputBox val='Belt' />
-								<InputBox val="Combat Move +1" /> <InputBox val='Brooch' />
-								<InputBox val="UDR 1" /> <InputBox val='Spell' />
-								<InputBox val="" /> <InputBox val='' />
+								{theCharacter.characterData.buffs.map((buff, index) => (
+									<div className={st.buffDetails} key={index}><InputBox val={buff.effect} /> <InputBox val={buff.source} /></div>
+								))}
+								{Array.from(Array(5 - theCharacter.characterData.buffs.length)).map((i, index) => (
+									<div className={st.buffDetails} key={index}><InputBox val='' /> <InputBox val='' /></div>
+								))}
 							</div>
 						</div>
 					</div>
@@ -255,7 +267,7 @@ function CharacterSheetPage() {
 									<div className={st.titleAndPoints}>
 										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>3/point</div></div>
 										<div className={st.healthPurchases}>
-											<PurchaseablePointGroup count={45} columns={15} purchased={character.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
+											<PurchaseablePointGroup count={45} columns={15} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
@@ -267,7 +279,7 @@ function CharacterSheetPage() {
 									<div className={st.headingMedium}>Stamina</div>
 									<div className={st.staminaPurchases}>
 										<CircleStatus /> <CircleStatus /> <CircleStatus />
-										<div className={st.staminaPointGroup}><PurchaseablePointGroup count={3} purchased={character.purchases.stamina} gap={7} clickCallback={adjustPoints} purchaseKey='stamina' /></div>
+										<div className={st.staminaPointGroup}><PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.stamina} gap={9} clickCallback={adjustPoints} purchaseKey='stamina' /></div>
 									</div>
 								</div>
 							</div>
