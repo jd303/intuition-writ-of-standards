@@ -64,7 +64,6 @@ function createMod(mod) {
 		"type": mod.type,
 		"stamina": mod.stamina,
 		"quick": mod.quick,
-		"description": mod.description,
-		"purchased": Math.random() > 0.75 && true || false
+		"description": mod.description
 	}
 }

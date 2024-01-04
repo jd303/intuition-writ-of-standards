@@ -4,7 +4,7 @@ import icoDice from '../../../assets/images/ico.dice.svg';
 import st from './SubMove.module.scss';
 import { InputBox } from "./InputBox";
 
-export function SubMove( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle, isSubMove = false }) {
+export function SubMove( { move }) {
 
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
@@ -23,9 +23,5 @@ export function SubMove( { move, pointsSpent = 0, statBonus = 0, rollPopupToggle
 }
 
 SubMove.propTypes = {
-	move: PropTypes.object.isRequired,
-	pointsSpent: PropTypes.number,
-	statBonus: PropTypes.number,
-	rollPopupToggle: PropTypes.func,
-	isSubMove: PropTypes.bool
+	move: PropTypes.object.isRequired
 };

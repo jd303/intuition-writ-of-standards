@@ -4,6 +4,19 @@
 	max-width: 600px !important;
 
 	button {
-		margin-top: 25px;
+		margin-top: calc(0.5 * var(--padding-standard));
+		margin-right: calc(0.5 * var(--padding-standard));
+	}
+
+	input {
+		display: block;
+		min-width: 275px;
+		height: 20px;
+		margin-right: calc(0.5 * var(--padding-standard));
+		margin-bottom: calc(0.5 * var(--padding-standard));
+		padding: 5px;
+		border: 2px solid #777;
+		border-radius: var(--border-radius-standard);
+		outline: none;
 	}
 }

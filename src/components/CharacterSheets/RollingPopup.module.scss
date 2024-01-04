@@ -1,0 +1,76 @@
+.rollPopup {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 500px;
+	max-width: 100%;
+	opacity: 0;
+	pointer-events: none;
+	transform: translateX(-50%);
+
+	&.open {
+		opacity: 1;
+		pointer-events: all;
+
+		.hider {
+			display: block;
+		}
+	}
+
+	.content {
+		position: relative;
+		z-index: 100;
+		padding: calc(0.5 * var(--padding-standard));
+		border-radius: 8px;
+		background: var(--colour-cream);
+		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+		&.rollContent {
+			display: grid;
+			grid-template-columns: 1fr 1fr 20px 1fr;
+			gap: calc(0.5 * var(--padding-standard));
+			padding: var(--padding-standard);
+
+			.headingMedium {
+				grid-row: 1;
+				grid-column: 1 / 4;
+				margin: 0;
+			}
+		}
+
+		.diceRollImage {
+			width: 20px;
+		}
+
+		.result {
+			display: block;
+		}
+	}
+
+	.hider {
+		position: fixed;
+		z-index: 99;
+		top: -5000px;
+		left: -5000px;
+		width: 10000px;
+		height: 20000px;
+		display: none;
+		background-color: rgba(0, 0, 0, 0.2);
+
+		&.open {
+			display: block;
+		}
+	}
+}
+
+.rollPopup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+
+	.closer {
+		position: relative;
+		z-index: 5001;		
+	}
+}

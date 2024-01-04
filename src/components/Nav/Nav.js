@@ -13,7 +13,7 @@ export function Nav({ colour = "black" }) {
 	const location = useLocation();
 	const allRoutes = RouteDefinitions();
 	const currentRoute = allRoutes.find((rt) => {
-		if (rt.path == "/characters/:name") return /^\/characters\/([a-zA-Z0-9_-]+)$/.test(location.pathname);
+		if (rt.path == "/characters/:id") return /^\/characters\/([a-zA-Z0-9_-]+)$/.test(location.pathname);
 		else return rt.path == location.pathname;
 	});
 	const currentRouteSection = routeSections.find((rt) => rt.navLabel == currentRoute.parent);

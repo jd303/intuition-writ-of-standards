@@ -1,5 +1,6 @@
 :root {
 	--padding-standard: 20px;
+	--border-radius-standard: 6px;
 	--standard-black-transparent-background: rgba(0, 0, 0, 0.1);
 	--bevel-size: 7px;
 	--font-large: 24px;
@@ -150,6 +151,11 @@ button {
 
 	&:hover {
 		cursor: pointer;
+	}
+
+	&.slimButton {
+		height: 30px;
+		padding: 4px 8px;
 	}
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router';
+import { writeDataForCurrentUser } from '../../utils/writeDataForCurrentUser';
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
 import { PurchaseablePointGroup } from "./components/PurchaseablePointGroup";
@@ -31,7 +32,6 @@ import icoThumbsup from '../../assets/images/icons/ico.thumbsup.svg';
 import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
 import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
-import icoDice from '../../assets/images/ico.dice.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
 
 import st from './CharacterSheetPage.module.scss';
@@ -39,93 +39,21 @@ import { CircleStatus } from "./components/CircleStatus";
 
 import { useAuthState } from "../../firebase";
 import { Navigate } from "react-router-dom";
-import { selectCharactersData, updateCharactersData } from "../../features/firebase/charactersDataSlice";
-import { prepareCharacterName } from "../../utils/prepareCharacterName";
+import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
+import RollingPopup from "./RollingPopup";
 
 function CharacterSheetPage() {
 	const { isAuthenticated } = useAuthState();
 	if (isAuthenticated === false) return <Navigate to="/account" />
 
+	// Params and data
 	const params = useParams();
 	const moves_and_mods = useSelector(selectMovesData);
 	const status_data = useSelector(selectStatusData);
-	const characters_data = useSelector(selectCharactersData);
-	const current_character_data = characters_data.find(char => prepareCharacterName(char.name) == params.name);
-	if (!current_character_data) return <Navigate to="/characters" />
-	
-	// Setup the character
-	const characterObject = new CharacterObject(current_character_data);
-	const [theCharacter, setTheCharacter] = useState(characterObject);
-	console.log("CHAR DAT", theCharacter);
-	console.log("NEXT UP, CONVERT THE REST TO THE NEW MODEL, AND REFACTOR CHARACTERSHEET COMPONENT");
+	let charactersData = useSelector(selectCharactersData);
+	console.log(charactersData);
 
-	const getMaxPoints = () => 20 + numSessions;
-	const getAvailablePoints = (manualMaxPoints) => (manualMaxPoints || maxPoints) - character.purchases.spentPoints;
-
-	// Static Data
-	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
-	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
-
-	// Section expanders
-	const sections = ['Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
-	const sectionRefs = {};
-	sections.forEach(section => sectionRefs[section] = useRef(null));
-
-	const toggleSection = (e) => {
-		const sectionParent = getSectionParent(e.target);
-		if (sectionParent) sectionParent.classList.toggle(st.open);
-	}
-
-	const getSectionParent = (source) => {
-		if (source.tagName == "SECTION") return source;
-		else if (source.parentElement) return getSectionParent(source.parentElement);
-		else return null;
-	}
-
-	// Rolling Popup
-	const [rollBonus, setRollBonus] = useState(0);
-	const rollPopup = useRef(null);
-	const [rollPopupShowing, setRollPopupShowing] = useState(false);
-	const rollPopupToggle = (bonus) => {
-		const resultContainer = rollPopup.current.querySelector(`.${st.result}`);
-		resultContainer.innerHTML = '';
-		setRollBonus(bonus);
-		setRollPopupShowing(true);
-	}
-	const closeRollPopup = () => { setRollPopupShowing(false); }
-
-	const performRoll = () => {
-		const random = Math.ceil(Math.random() * 20);
-		const resultContainer = rollPopup.current.querySelector(`.${st.result}`);
-		console.log(rollPopup, `.${st.result}`);
-		resultContainer.innerHTML = random + rollBonus;
-		console.log(`Base: ${random}, bonus: ${rollBonus}`);
-	}
-
-	const closePopup = () => {
-		closeRollPopup()
-	}
-
-	// Section togglers
-	const openAllSections = () => {
-		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.add(st.open));
-	}
-
-	const closeAllSections = () => {
-		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.remove(st.open));
-	}
-
-	const [levelUpMode, setLevelUpMode] = useState(false);
-	const toggleLevelUpMode = () => {
-		setLevelUpMode(!levelUpMode);
-		setLevelDownMode(false);
-	}
-	const [levelDownMode, setLevelDownMode] = useState(false);
-	const toggleLeveDownMode = () => {
-		setLevelDownMode(!levelDownMode);
-		setLevelUpMode(false);
-	}
-	
+	// Moves Data
 	let movesAndMods = {};
 	movesAndMods = prepareMovesAndMods(moves_and_mods);
 
@@ -140,7 +68,6 @@ function CharacterSheetPage() {
 		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
 		return response;
 	}
-
 	const getTrainedMoves = () => {
 		let response = [];
 		if (movesAndMods['engineering']) response = response.concat(movesAndMods['engineering'].moves);
@@ -148,77 +75,148 @@ function CharacterSheetPage() {
 		return response;
 	}
 
+	// Static Data
+	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
+	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
+
+	// Rolling Popup
+	const [rollBonus, setRollBonus] = useState(0);
+	const [rollPopupShowing, setRollPopupShowing] = useState(false);
+	const rollPopupToggle = (bonus) => {
+		setRollBonus(bonus);
+		setRollPopupShowing(true);
+	}
+	const closeRollPopup = () => { setRollPopupShowing(false); }
+
+	// Section Expanders
+	const sections = ['Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
+	const sectionRefs = {};
+	sections.forEach(section => sectionRefs[section] = useRef(null));
+	const toggleSection = (e) => {
+		const sectionParent = getSectionParent(e.target);
+		if (sectionParent) sectionParent.classList.toggle(st.open);
+	}
+	const getSectionParent = (source) => {
+		if (source.tagName == "SECTION") return source;
+		else if (source.parentElement) return getSectionParent(source.parentElement);
+		else return null;
+	}
+
+	// Bottom Menu Options
+	const openAllSections = () => {
+		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.add(st.open));
+	}
+	const closeAllSections = () => {
+		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.remove(st.open));
+	}
+	const [levelUpMode, setLevelUpMode] = useState(false);
+	const toggleLevelUpMode = () => {
+		setLevelUpMode(!levelUpMode);
+		setLevelDownMode(false);
+	}
+	const [levelDownMode, setLevelDownMode] = useState(false);
+	const toggleLeveDownMode = () => {
+		setLevelDownMode(!levelDownMode);
+		setLevelUpMode(false);
+	}
+	
 	// Character Data
-	const characterInitial = new CharacterHandler();
-	const [numSessions, setNumSessions] = useState(20);
-	const [maxPoints, setMaxPoints] = useState(getMaxPoints());
-	const [character, setCharacter] = useState(characterInitial.loadCharacter());
-	const [availablePoints, setAvailablePoints] = useState(getAvailablePoints());
+	const current_character_data = charactersData?.find(char => char.id == params.id);
+	if (!current_character_data) return <Navigate to="/characters" />
+	
+	// Setup the character
+	const characterObject = new CharacterObject(current_character_data);
+	const [theCharacter, setTheCharacter] = useState(characterObject);
+	const [maxPoints, setMaxPoints] = useState(characterObject.getMaxPoints());
+	const [availablePoints, setAvailablePoints] = useState(theCharacter.getAvailablePoints());
+
+	const updateValueFromInput = (property, valueProp, isNumber = false) => {
+		const value = isNumber && Number(valueProp) || valueProp;
+		const isArray = property.includes("[");
+		const isObject = property.includes(".");
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+
+		switch (true) {
+			case isArray:
+				var arrayName = property.substring(0, property.indexOf("["));
+				var arrayPortion = property.substring(property.indexOf("[") + 1, property.indexOf("]"));
+				newCharacter.characterData[arrayName][Number(arrayPortion)] = value;
+			break;
+			case isObject:
+				newCharacter.characterData[property] = value;
+			break;
+			default:
+				newCharacter.characterData[property] = value;
+		}
+
+		setTheCharacter(newCharacter);
+		setAvailablePoints(newCharacter.getAvailablePoints());
+		setMaxPoints(newCharacter.getMaxPoints());
+	}
 
 	const adjustPoints = (purchaseKey) => {
 		let addingMode = levelUpMode ? true : false;
 		if (addingMode && availablePoints < 1) return false;
 
 		const purchaseArray = purchaseKey.split(".");
-		character.adjustPoint(addingMode, ...purchaseArray);
-		const purchasesCopy = character.purchases;
-		const newCharacter = new CharacterHandler(purchasesCopy);
-		setCharacter(newCharacter);
-		setAvailablePoints(getAvailablePoints());
-		
-		if (addingMode && getAvailablePoints() < 1) {
-			setLevelUpMode(false);
-		} else if (!addingMode && getAvailablePoints() == maxPoints) {
-			setLevelDownMode(false);
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		const success = newCharacter.adjustPoint(addingMode, ...purchaseArray);
+
+		if (success) {
+			setTheCharacter(newCharacter);
+			setAvailablePoints(newCharacter.getAvailablePoints());
+			setMaxPoints(newCharacter.getMaxPoints());
+
+			if (addingMode && newCharacter.getAvailablePoints() < 1) {
+				setLevelUpMode(false);
+			} else if (!addingMode && newCharacter.getAvailablePoints() == maxPoints) {
+				setLevelDownMode(false);
+			}
+		} else {
+			console.log("ERROR Saving");
 		}
 	}
 
-	const updateInputCharacterName = (value) => {
-		console.log("UPDATE NAME: DO SOMETHING WITH THIS", value);
-	}
-
-	const updateInputSessionCount = (value) => {
-		const asNum = Number(value);
-		setNumSessions(asNum);
-		setMaxPoints(20 + asNum);
-	}
 	useEffect(() => {
-		setAvailablePoints(getAvailablePoints());
-	}, [maxPoints]);
+		setAvailablePoints(theCharacter.getAvailablePoints());
+	}, [theCharacter.characterData.sessions]);
+
+	useEffect(() => {
+		saveCharacter();
+	}, [theCharacter]);
+
+	// Save the characters
+	const saveCharacter = () => {
+		charactersData = charactersData.map(char => char.id == theCharacter.characterData.id && theCharacter.characterData || char);
+		writeDataForCurrentUser(charactersData);
+	}
 
 	// JSX
 	return (
 		<React.Fragment>
 			<Header colour="silver" />
 			<PageTitle colour="silver">Character Sheets</PageTitle>
-			<div className={st.rollPopup + ' ' + (rollPopupShowing && st.open || '')} ref={rollPopup}>
-				<button className={st.closer} onClick={closeRollPopup}>Close</button>
-				<div className={st.hider} onClick={closePopup}></div>
-				<div className={st.content + ' ' + st.rollContent}>
-					<div className={st.headingMedium}>Roll for Move:</div>
-					<button onClick={performRoll}><img className={st.diceRollImage} src={icoDice} alt="Roll this Move" /></button> <div className={st.fonted}>Bonus: {rollBonus}</div> <div className={st.fonted}>=</div> <div className={st.result + ' ' + st.fonted}>Total: </div>					
-				</div>
-			</div>
+			<RollingPopup showPopupProp={rollPopupShowing} rollBonusProp={rollBonus} closeRollPopupProp={closeRollPopup} />
 			<div className={"mainContent " + (levelUpMode && ' characterSheetLevelUpMode ' || '') + (levelDownMode && ' characterSheetLevelDownMode ' || '')}>
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
 						<img className={st.profileImage} src={GenericProfile} alt="Character Image" />
 						<div className={st.about}>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Name</div> <InputBox val={theCharacter.characterData.name} onUpdate={updateInputCharacterName} />
+								<div className={st.headingMedium}>Name</div> <InputBox val={theCharacter.characterData.name} onUpdate={(value) => updateValueFromInput('name', value)} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={updateInputSessionCount} />
+								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={(value) => updateValueFromInput('sessions', value, true)} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>20 + num sessions</div>
+								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
 							</div>
-							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} /></div>
-							<div className={st.racialBonuses}>
-								<div className={st.headingMedium}>Racial Bonuses</div>
-								<InputBox val={theCharacter.characterData.racial_bonuses[0]} />
-								<InputBox val={theCharacter.characterData.racial_bonuses[1]} />
-								<InputBox val={theCharacter.characterData.racial_bonuses[2]} />
+							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
+							<div className={st.racialModifiers}>
+								<div className={st.headingMedium}>Racial Modifiers</div>
+								<InputBox val={theCharacter.characterData.racial_modifiers[0]} onUpdate={(value) => updateValueFromInput('racial_modifiers[0]', value)} />
+								<InputBox val={theCharacter.characterData.racial_modifiers[1]} onUpdate={(value) => updateValueFromInput('racial_modifiers[1]', value)} />
+								<InputBox val={theCharacter.characterData.racial_modifiers[2]} onUpdate={(value) => updateValueFromInput('racial_modifiers[2]', value)} />
 							</div>
 						</div>
 					</div>
@@ -265,13 +263,13 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.verve}>
 									<div className={st.titleAndPoints}>
-										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>3/point</div></div>
+										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>{theCharacter.baseVerve} + 3/point</div></div>
 										<div className={st.healthPurchases}>
 											<PurchaseablePointGroup count={45} columns={15} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + theCharacter.characterData.purchases.verve * 3} /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox /></div>
 									</div>
 								</div>
@@ -339,7 +337,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -361,7 +359,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -375,7 +373,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getUntrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -383,7 +381,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getTrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -395,11 +393,14 @@ function CharacterSheetPage() {
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
 							<div className={st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><InputBox /></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchased={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source </div><InputBox /></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchased={1}  purchaseKey={'synergy.slot1'}clickCallback={adjustPoints} /> Synergy 1 </div><InputBox /></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 </div><InputBox /></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 </div><InputBox /></div>
 							</div>
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>
-									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchaseKey={'mana'} /></div>
+									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} /></div>
 									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox /></div>
 									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox /></div>
 								</div>
@@ -419,7 +420,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -433,7 +434,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['psonics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={character.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -498,8 +499,8 @@ function CharacterSheetPage() {
 			<nav className={st.controlBar}>
 				<button onClick={closeAllSections}><img src={icoChevronDown} /></button>
 				<button onClick={openAllSections}><img src={icoChevronDown} className={st.flipY} /></button>
-				<button onClick={toggleLevelUpMode} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend {availablePoints} Points</button>
-				<button onClick={toggleLeveDownMode}>Remove Points</button>
+				<button onClick={toggleLevelUpMode} className={levelUpMode ? st.active : ''} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend Points ({availablePoints})</button>
+				<button onClick={toggleLeveDownMode} className={levelDownMode ? st.active : ''} style={{ display: availablePoints != maxPoints && 'block' || 'none' }}>Remove Points</button>
 			</nav>
 			<Footer />
 		</React.Fragment>

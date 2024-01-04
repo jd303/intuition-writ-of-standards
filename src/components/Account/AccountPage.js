@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import Header from "../Components/Header/Header";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
@@ -7,12 +8,19 @@ import { Footer } from "../../components/Components/Footer/Footer";
 import styles from "./AccountPage.module.scss";
 
 function AccountPage() {
+	const navigate = useNavigate();
+	const navigateToCharacters = () => navigate('/characters');
+
 	const [loggedIn, setLoggedIn] = useState(null);
 	const [loggedInUserEmail, setLoggedInUserEmail] = useState(null);
-	const [emailInput, setEmailInput] = useState('joelmdawson@gmail.com');
-	const [passwordInput, setPasswordInput] = useState('3@Antis@Err@Tango');
-	const onChangeEmail = (event) => { setEmailInput(event.target.value); }
-	const onChangePassword = (event) => { setPasswordInput(event.target.value); }
+	const [loginEmailInput, setLoginEmailInput] = useState('joelmdawson@gmail.com');
+	const [loginPasswordInput, setLoginPasswordInput] = useState('3@Antis@Err@Tango');
+	const onChangeLoginEmail = (event) => { setLoginEmailInput(event.target.value); }
+	const onChangeLoginPassword = (event) => { setLoginPasswordInput(event.target.value); }
+	const [registerEmailInput, setRegisterEmailInput] = useState('');
+	const [registerPasswordInput, setRegisterPasswordInput] = useState('');
+	const onChangeRegisterEmail = (event) => { setRegisterEmailInput(event.target.value); }
+	const onChangeRegisterPassword = (event) => { setRegisterPasswordInput(event.target.value); }
 
 	useEffect(() => {
 		const auth = getAuth();
@@ -32,7 +40,7 @@ function AccountPage() {
 		const auth = getAuth();
 		setPersistence(auth, browserLocalPersistence)
 		.then(() => {
-			signInWithEmailAndPassword(auth, emailInput, passwordInput)
+			signInWithEmailAndPassword(auth, loginEmailInput, loginPasswordInput)
 			.then((userCredential) => {
 				// Signed in 
 				const user = userCredential.user;
@@ -56,22 +64,23 @@ function AccountPage() {
 		});
 	}
 
-	const createAccount = () => {
+	const createUser = (email, password) => {
+		console.log("Creating User");
 		const auth = getAuth();
-		createUserWithEmailAndPassword(auth, emailInput, passwordInput)
-		.then((userCredential) => {
-			// Signed up 
-			const user = userCredential.user;
-			// ...
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			// ..
-		});
-	}
+        createUserWithEmailAndPassword(auth, registerEmailInput, registerPasswordInput)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const uid = user.uid;
+            
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+			console.log(errorMessage);
+          });
+    }
 
-
+	// JSX
 	return (
 		<React.Fragment>
 			<Header colour='silver' />
@@ -81,15 +90,20 @@ function AccountPage() {
 					<>
 						<h1>Account</h1>
 						<div>You are logged in as <em>{loggedInUserEmail}</em>, and can create and load your character sheets.</div>
-						<button onClick={logout}>Logout</button>
+						<button className="slimButton" onClick={logout}>Logout</button> <button onClick={navigateToCharacters}>View Character List</button>
 					</>
 				) }
 
 				{ !loggedIn && (
 					<div>
-						<input type="text" name="email" value={emailInput} onChange={onChangeEmail} /><br />
-						<input type="password" name="password" value={passwordInput} onChange={onChangePassword} />
-						<button type="button" onClick={login}>Submit</button>
+						<h2>Login</h2>
+						<input type="text" name="email" placeholder="Email" value={loginEmailInput} onChange={onChangeLoginEmail} />
+						<input type="password" name="password" placeholder="Password" value={loginPasswordInput} onChange={onChangeLoginPassword} />
+						<button  className="slimButton"type="button" onClick={login}>Login</button>
+						<h2>Register</h2>
+						<input type="text" name="email" placeholder="Email" value={registerEmailInput} onChange={onChangeRegisterEmail} />
+						<input type="password" name="password" placeholder="Password" value={registerPasswordInput} onChange={onChangeRegisterPassword} />
+						<button className="slimButton" type="button" onClick={createUser}>Register</button>
 					</div>
 				) }
 			</div>

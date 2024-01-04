@@ -44,87 +44,11 @@
 	font-size: 16px;
 }
 
-.rollPopup {
-	position: absolute;
-	z-index: 10;
-	top: 0;
-	left: 0;
-	width: 500px;
-	max-width: 100%;
-	opacity: 0;
-	pointer-events: none;
-	transform: translateX(-50%);
-
-	&.open {
-		opacity: 1;
-		pointer-events: all;
-
-		.hider {
-			display: block;
-		}
-	}
-
-	.content {
-		position: relative;
-		z-index: 100;
-		padding: calc(0.5 * var(--padding-standard));
-		border-radius: 8px;
-		background: var(--colour-cream);
-		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-
-		&.rollContent {
-			display: grid;
-			grid-template-columns: 1fr 1fr 20px 1fr;
-			gap: calc(0.5 * var(--padding-standard));
-			padding: var(--padding-standard);
-
-			.headingMedium {
-				grid-row: 1;
-				grid-column: 1 / 4;
-				margin: 0;
-			}
-		}
-
-		.diceRollImage {
-			width: 20px;
-		}
-
-		.result {
-			display: block;
-		}
-	}
-
-	.hider {
-		position: fixed;
-		z-index: 99;
-		top: -5000px;
-		left: -5000px;
-		width: 10000px;
-		height: 20000px;
-		display: none;
-
-		&.open {
-			display: block;
-		}
-	}
-}
-
 .fonted {
 	font-family: "trattatello";
 	font-size: 18px;
 	line-height: 100%;
 	text-transform: uppercase;
-}
-
-.rollPopup {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-
-	.closer {
-		position: relative;
-		z-index: 5001;		
-	}
 }
 
 section {
@@ -189,7 +113,7 @@ section {
 
 	.vitaeLayout {
 		display: grid;
-		grid-template-columns: minmax(auto, 268px) auto;
+		grid-template-columns: minmax(auto, 300px) auto;
 		gap: var(--padding-standard);
 		width: 100%;
 
@@ -203,7 +127,8 @@ section {
 		}
 
 		@media print {
-			grid-template-columns: minmax(auto, 268px) auto;
+			grid-template-columns: minmax(auto, 235px) auto;
+			gap: calc(2 * var(--padding-standard));
 		}
 
 		.headingMedium {
@@ -212,7 +137,7 @@ section {
 	
 		.profileImage {
 			width: 100%;
-			max-width: 300px;
+			max-width: 325px;
 			border-radius: 14px;
 		}
 	
@@ -225,10 +150,11 @@ section {
 				min-width: 135px;
 			}
 
-			.racialBonuses {
+			.racialModifiers {
 				display: flex;
 				flex-direction: column;
 				gap: calc(0.5 * var(--padding-standard));
+				margin-top: calc(0.75 * var(--padding-standard));
 			}
 		}
 	}
@@ -489,8 +415,23 @@ section {
 	.movesLayout {}
 
 	.magicLayout {
+		--standard-flex-direction: row;
+
+		@media (max-width: 500px) {
+			--standard-flex-direction: column;
+		}
+
 		.section1 {
 			flex-direction: column;
+
+			.standardFlex {
+				align-items: start;
+				flex-direction: var(--standard-flex-direction);
+
+				.headingMedium {
+					min-width: 135px;
+				}
+			}
 		}
 
 		.manaContainer {
@@ -559,8 +500,14 @@ section {
 	.notesLayout {}
 
 	.inventoryLayout {
+		--grid-template-columns: 1fr 1fr;
+
+		@media (max-width: 767px) {
+			--grid-template-columns: 1fr;
+		}
+
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: var(--grid-template-columns);
 		gap: 5px;
 	}
 }
@@ -673,6 +620,11 @@ section {
 
 	button {
 		height: 30px;
+
+		&.active {
+			color: #fff;
+			background-color: var(--colour-silver);
+		}
 
 		img {
 			width: 20px;

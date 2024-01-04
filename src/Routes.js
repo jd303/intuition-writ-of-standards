@@ -254,8 +254,8 @@ const routes = [
 	},
 	{
 		navLabel: "Character Sheet",
-		path: "/characters/:name",
-		element: <Route key="0" path="/characters/:name" element={<CharacterSheetPage />} />,
+		path: "/characters/:id",
+		element: <Route key="0" path="/characters/:id" element={<CharacterSheetPage />} />,
 		parent: "Characters",
 		hide: true
 	},
