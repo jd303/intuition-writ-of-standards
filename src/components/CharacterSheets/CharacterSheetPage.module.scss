@@ -132,7 +132,7 @@ section {
 		}
 
 		.headingMedium {
-			min-width: 80px;
+			min-width: 87px;
 		}
 	
 		.profileImage {
@@ -160,18 +160,20 @@ section {
 	}
 
 	.abilitiesLayout {
+		--stats-flex-grow: 0;
+		--section-meta-flex-direction: row;
+
 		display: flex;
 		gap: var(--padding-standard);
 
 		@media (max-width: 767px) {
-			flex-direction: column;
+			--stats-flex-grow: 1;
+			--section-meta-flex-direction: column;
 		}
 
-		.stats,
-		.buffs {
-			display: grid;
-			grid-template-rows: 30px auto;
-			gap: 5px;
+		.sectionMeta {
+			flex-wrap: nowrap;
+			flex-direction: var(--section-meta-flex-direction);
 		}
 
 		.statLabels {
@@ -188,6 +190,12 @@ section {
 		}
 	
 		.stats {
+			flex-grow: var(--stats-flex-grow);
+
+			display: grid;
+			grid-template-rows: 30px auto;
+			gap: 5px;
+
 			.standardFlex {
 				box-sizing:border-box;
 				align-items: center;
@@ -199,18 +207,11 @@ section {
 			}
 
 			.stat {
-				--name-maxwidth: none;
-
-				@media (max-width: 375px) {
-					--name-maxwidth: 110px;
-				}
-
 				display: flex;
 				gap: calc(0.5 * var(--padding-standard));
 				align-items: center;
 
 				.fullName {
-					max-width: var(--name-maxwidth);
 					display: var(--short-name-display);
 					flex-grow: 1;
 					white-space: nowrap;
@@ -229,19 +230,7 @@ section {
 		}
 
 		.buffs {
-			--grid-template-columns: 220px 100px;
-			--width: 380px;
-
-			@media (max-width: 500px) {
-				grid-template-columns: auto auto;
-				--width: 100%;
-			}
-
-			display: grid;
-			grid-template-columns: var(--grid-template-columns);
-			gap: calc(0.25 * var(--padding-standard));
-			align-items: start;
-			width: var(--width);
+			flex-grow: 1;
 
 			.buffDetails {
 				grid-column: 1/3;
@@ -314,17 +303,14 @@ section {
 
 		.stamina {
 			display: flex;
+			align-items: center;
 			gap: calc(0.5 * var(--padding-standard));
 			margin-top: var(--padding-standard);
 
 			.staminaPurchases {
-				display: grid;
-				grid-template-columns: 17px 17px 17px;
-				gap: calc(0.25 * var(--padding-standard));
-
 				.staminaPointGroup {
-					grid-row: 2;
-					grid-column: 1 / 4;
+					margin-left: 2px;
+					margin-top: 3px;
 				}
 			}
 		}
@@ -362,53 +348,97 @@ section {
 			--armourclasstable-width: 375px;
 			--resistancetable-width: 260px;
 
-			@media (max-width: 700px) {
+			@media (max-width: 960px) {
 				--armourclasstable-width: 100%;
 				--resistancetable-width: 100%;
 			}
 
-			.armourClassTable,
-			.resistanceTable {
+			.armourHeader,
+			.armourItem {
 				display: grid;
 				gap: calc(0.25 * var(--padding-standard));
+				grid-template-columns: 90px 60px 60px 145px;
+				grid-template-columns: 2fr 1fr 1fr 3fr;
 				align-items: center;
-				padding: var(--padding-standard);
+				width: var(--armourclasstable-width);
 				background-color: #FFFFFD;
 				border-radius: 10px;
-
-				.headLabel {
-					justify-self: center;
-				}
 			}
 
-			.armourClassTable {
-				grid-template-columns: 20px 55px 55px 55px 135px;
-				width: var(--armourclasstable-width);
+			.resistanceTable {
+				--display: grid;
+
+				@media (max-width: 600px) {
+					--display: flex;
+				}
+
+				display: var(--display);
+				grid-template-columns: auto 1fr;
+				flex-direction: column;
+				gap: calc(1.25 * var(--padding-standard));
+				flex-grow: 1;
+				width: var(--resistancetable-width);
+				align-items: start;
+				justify-items: start;
 
 				.headName {
 					grid-row: 1;
 					grid-column: 1 / 3;
 				}
-			}
 
-			.resistanceTable {
-				grid-template-columns: 145px 66px;
-				width: var(--resistancetable-width);
+				.values {
+					gap: 5px;
+				}
 
-				*:not(.headingSmall):not(.headingMedium) {
-					justify-self: center;
+				.table1,
+				.table2 {
+					--column1-width: 130px;
+
+					display: grid;
+					grid-template-columns: var(--column1-width) auto;
+					gap: calc(0.5 * var(--padding-standard));
+					justify-content: space-between;
+					min-width: 200px;
+					max-width: 215px;
+
+					.tableHeader {
+						grid-row: 1;
+						grid-column: 1 / 3;
+
+						display: flex;
+						justify-content: space-between;
+
+						.values {
+							display: flex;
+						}
+					}
+
+					.label {
+						width: var(--column1-width);
+					}
+
+					.standardFlex {
+						justify-self: end;
+					}
 				}
 			}
 		}
 	}
 
 	.combatLayout {
-		.sectionMeta .weaponTable {
-			grid-template-columns: 125px 75px 75px 75px;
+		.sectionMeta .weaponTable .weaponsHeader,
+		.sectionMeta .weaponTable .weaponFields {
+			display: grid;
+			grid-template-columns: 165px 60px 270px;
+			gap: calc(0.25 * var(--padding-standard));
 
 			@media (max-width: 500px) {
-				grid-template-columns: 135px 75px 75px 75px;
+				grid-template-columns: 135px 75px 75px;
 			}
+		}
+
+		.bonusDamageTable .headingSmall {
+			width: 110px;
 		}
 	}
 
@@ -416,21 +446,30 @@ section {
 
 	.magicLayout {
 		--standard-flex-direction: row;
+		--section-1-gap: calc(0.25 * var(--padding-standard));
+		--magic-flex-gap: var(--padding-standard);
 
 		@media (max-width: 500px) {
 			--standard-flex-direction: column;
+			--section-1-gap: var(--padding-standard);
+			--magic-flex-gap: calc(0.25 * var(--padding-standard));
 		}
 
 		.section1 {
 			flex-direction: column;
 
-			.standardFlex {
+			.magicFlex {
 				align-items: start;
 				flex-direction: var(--standard-flex-direction);
+				gap: var(--magic-flex-gap);
 
 				.headingMedium {
 					min-width: 135px;
 				}
+			}
+
+			.sectionMetaInner {
+				gap: var(--section-1-gap);
 			}
 		}
 
@@ -462,6 +501,11 @@ section {
 			.manaPoints {
 				grid-column: var(--points-column);
 				grid-row: var(--points-row);
+				min-width: 135px;
+
+				.standardFlex {
+					align-items: self-start;
+				}
 				
 				.headingMedium {
 					margin-bottom: calc(0.25 * var(--padding-standard));
@@ -556,7 +600,7 @@ section {
 	.sectionMetaInner {
 		--width: auto;
 
-		@media (max-width: 600px) {
+		@media (max-width: 767px) {
 			--width: 100%;
 		}
 
@@ -610,8 +654,8 @@ section {
     align-items: center;
 	gap: calc(0.5 * var(--padding-standard));
 	bottom: 0;
-	left: 5%;
-	width: 90%;
+	left: 3%;
+	width: 94%;
 	height: 40px;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;

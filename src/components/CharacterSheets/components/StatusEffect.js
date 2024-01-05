@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import icoDice from '../../../assets/images/ico.dice.svg';
 import st from './StatusEffect.module.scss';
 import { InputBox } from "./InputBox";
 import { CircleStatusGroup } from "./CircleStatusGroup";
 import Medal from "../../Components/Medal/Medal";
 
-export function StatusEffect( { status }) {
+export function StatusEffect( { status, circleStatusClickCallback }) {
 
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
@@ -24,21 +23,10 @@ export function StatusEffect( { status }) {
 		}
 	}
 
-	const getStatusValue = (statusType) => {
-		switch (statusType) {
-			case "short (1)":
-				return "(1)";
-			case "standard (3)":
-				return "(3)";
-			default:
-				return "(∞)";
-		}
-	}
-
 	return (
 		<div className={st.el + ' ' + (descriptionVisible && st.descriptionVisible || '')}>
 			<div className={st.mainBlock}>
-				<CircleStatusGroup count={1} />
+				<CircleStatusGroup count={1} usedKey={`statuses-${status.key}`} clickCallback={circleStatusClickCallback} />
 				<div className={st.title} onClick={toggleDescriptionVisible}><div className={st.icon}>{getStatusIcon(status.type)}</div> {status.name}</div>
 				<InputBox className="forPrint" /*value="Rounds"*/ />
 				<div className={st.description}><span className={st.type}>{status.type}</span> {status.effect}</div>
@@ -48,5 +36,6 @@ export function StatusEffect( { status }) {
 }
 
 StatusEffect.propTypes = {
-	status: PropTypes.object.isRequired
+	status: PropTypes.object.isRequired,
+	circleStatusClickCallback: PropTypes.func.isRequired
 };

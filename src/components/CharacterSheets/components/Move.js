@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import icoDice from '../../../assets/images/ico.dice.svg';
+import icoDice from '../../../assets/images/icons/ico.dice.svg';
 import st from './Move.module.scss';
 import { InputBox } from "./InputBox";
 import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
@@ -9,7 +9,7 @@ import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 import { prepareName } from '../../../utils/prepareName';
 
-export function Move( { move, statBonus = 0, rollPopupToggle, printableModsCount = 4, purchaseDetails, clickCallback }) {
+export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseDetails, clickCallback }) {
 
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
@@ -52,8 +52,8 @@ export function Move( { move, statBonus = 0, rollPopupToggle, printableModsCount
 			<div className={st.mainBlock}>
 				<div className={st.title + ' ' + (move.type == "Move" && st.moveCategory || '')} onClick={toggleDescriptionVisible}>{move.name}</div>
 				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.name}`} /></div>
-				<div className={st.bonuses + ' forPrint'}><InputBox value={`+${purchaseDetails?.points+statBonus}`} /></div>
-				<div className={st.buttons + ' notForPrint'}><button className={st.diceRoll} onClick={rollPopupToggle.bind(null, purchaseDetails?.points+statBonus)}><img src={icoDice} alt="Roll this Move" /></button></div>
+				<div className={st.bonuses + ' forPrint'}><InputBox value={`+${purchaseDetails?.points}`} /></div>
+				<div className={st.buttons + ' notForPrint'}><button className={st.diceRoll} onClick={toggleRollPopup.bind(null, move.name, purchaseDetails?.points)}><img src={icoDice} alt="Roll this Move" /></button></div>
 				<div className={st.description}>{ move.type !== "Move" && <span className={st.type}>{move.type}</span>} {move.description}</div>
 			</div>
 			<div className={st.subMoves}>
@@ -90,8 +90,7 @@ export function Move( { move, statBonus = 0, rollPopupToggle, printableModsCount
 
 Move.propTypes = {
 	move: PropTypes.object.isRequired,
-	statBonus: PropTypes.number,
-	rollPopupToggle: PropTypes.func,
+	toggleRollPopup: PropTypes.func,
 	printableModsCount: PropTypes.number,
 	purchaseDetails: PropTypes.object,
 	clickCallback: PropTypes.func.isRequired

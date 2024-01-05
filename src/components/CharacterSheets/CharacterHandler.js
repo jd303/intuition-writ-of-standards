@@ -5,13 +5,14 @@ export class CharacterObject {
 	baseCharacterPoints = 30; // How many you start with at Session 0
 	baseVerve = 20; // How many Verve you start with
 	baseMana = 3; // How many Mana you start with
-	baseStamina = 0; // How many Stamina you start with
+	basePsi = 3; // How many Stamina you start with
 
 	characterTemplate = {
 		"id": "",
 		"name": "New Character",
 		"sessions": 0,
 		"race": "Human",
+		"movesq": 5,
 		"racial_modifiers": [
 			/*"Breathing",
 			"Listening",
@@ -20,10 +21,24 @@ export class CharacterObject {
 		"buffs": [
 			//{ "effect": "STR Moves +2", "source": "Belt" }
 		],
-		"statuses": [
+		"statuses": {
 			//"Paralyzed"
-		],
-		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"armour":{"none":1,"light":0,"heavy":0,"shield":0},"source":1,"synergy":{"slot1":1,"slot2":0,"slot3":0},"mana":0,"spells":{},"moves":{} }
+		},
+		"current_verve": this.baseVerve,
+		"current_mana": this.baseMana,
+		"current_psi": this.basePsi,
+		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"source":1,"synergy":{"slot1":1,"slot2":0,"slot3":0},"mana":0,"spells":{},"moves":{} },
+		"source": "",
+		"magical_synergy": {
+			"slot1": '',
+			"slot2": '',
+			"slot3": '',
+		},
+		"bonus_damage": { "melee": "d4", "ranged": "d4" },
+		"armours": [ { "name": "None", "block": 3, "dodge": 3, "disadvantages": "" } ],
+		"weapons": [],
+		"inventory": [],
+		"notes": []
 	}
 
 	characterData;
@@ -177,6 +192,14 @@ export class CharacterObject {
 		} else {
 			return false;
 		}
+	}
+
+	adjustCircleStatus(statusKey, statusValue) {
+		if (!this.characterData.statuses) this.characterData.statuses = {};
+		this.characterData.statuses[statusKey] = statusValue;
+
+		if (this.characterData.statuses[statusKey] == statusValue) return true;
+		return false;
 	}
 
 	getMovePurchase(moveName) {

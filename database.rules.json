@@ -20,7 +20,7 @@
 			".read": true,
 			".write": false
 		},
-		"status": {
+		"statuses": {
 			".read": true,
 			".write": false
 		},

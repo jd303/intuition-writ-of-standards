@@ -26,4 +26,9 @@
 		width: calc(100% - 4 * var(--padding));
 		border-bottom: 1px dashed #d2d2d2;
 	}
+
+	&::placeholder {
+		font-style: italic;
+		color: #bbb;
+	}
 }

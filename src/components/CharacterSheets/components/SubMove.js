@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import icoDice from '../../../assets/images/ico.dice.svg';
 import st from './SubMove.module.scss';
-import { InputBox } from "./InputBox";
 
 export function SubMove( { move }) {
 

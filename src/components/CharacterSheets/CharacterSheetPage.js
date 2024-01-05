@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, createContext } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router';
+import { useDebounce } from "@uidotdev/usehooks";
 import { writeDataForCurrentUser } from '../../utils/writeDataForCurrentUser';
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
@@ -10,12 +11,14 @@ import { Move } from './components/Move';
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import { Footer } from "../../components/Components/Footer/Footer";
 import { StatusEffect } from "./components/StatusEffect";
-
-import { CharacterHandler, CharacterObject } from "./CharacterHandler";
+import { CharacterObject } from "./CharacterHandler";
 import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
-
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 import { selectStatusData } from "../../features/firebase/statusDataSlice";
+import { useAuthState } from "../../firebase";
+import { Navigate } from "react-router-dom";
+import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
+import RollingPopup from "./RollingPopup";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
 import icoPoison from '../../assets/images/icons/ico.poison.svg';
@@ -35,14 +38,12 @@ import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
 
 import st from './CharacterSheetPage.module.scss';
-import { CircleStatus } from "./components/CircleStatus";
 
-import { useAuthState } from "../../firebase";
-import { Navigate } from "react-router-dom";
-import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
-import RollingPopup from "./RollingPopup";
+export const CharacterContext = createContext();
 
 function CharacterSheetPage() {
+	const debounceSaveTime = 2000;
+
 	const { isAuthenticated } = useAuthState();
 	if (isAuthenticated === false) return <Navigate to="/account" />
 
@@ -59,8 +60,8 @@ function CharacterSheetPage() {
 
 	const getUntrainedMoves = () => {
 		let response = [];
-		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
 		if (movesAndMods['athletics']) response = response.concat(movesAndMods['athletics'].moves);
+		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
 		if (movesAndMods['perception']) response = response.concat(movesAndMods['perception'].moves);
 		if (movesAndMods['knowledge']) response = response.concat(movesAndMods['knowledge'].moves);
 		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
@@ -72,6 +73,7 @@ function CharacterSheetPage() {
 		let response = [];
 		if (movesAndMods['engineering']) response = response.concat(movesAndMods['engineering'].moves);
 		if (movesAndMods['alchemy']) response = response.concat(movesAndMods['alchemy'].moves);
+		if (movesAndMods['inner_power']) response = response.concat(movesAndMods['inner_power'].moves);
 		return response;
 	}
 
@@ -81,8 +83,10 @@ function CharacterSheetPage() {
 
 	// Rolling Popup
 	const [rollBonus, setRollBonus] = useState(0);
+	const [rollMoveName, setRollMoveName] = useState('');
 	const [rollPopupShowing, setRollPopupShowing] = useState(false);
-	const rollPopupToggle = (bonus) => {
+	const toggleRollPopup = (name, bonus) => {
+		setRollMoveName(name);
 		setRollBonus(bonus);
 		setRollPopupShowing(true);
 	}
@@ -129,21 +133,42 @@ function CharacterSheetPage() {
 	const [theCharacter, setTheCharacter] = useState(characterObject);
 	const [maxPoints, setMaxPoints] = useState(characterObject.getMaxPoints());
 	const [availablePoints, setAvailablePoints] = useState(theCharacter.getAvailablePoints());
+	const debouncedCharacter = useDebounce(theCharacter, debounceSaveTime);
 
 	const updateValueFromInput = (property, valueProp, isNumber = false) => {
 		const value = isNumber && Number(valueProp) || valueProp;
 		const isArray = property.includes("[");
 		const isObject = property.includes(".");
+		const isArrayAndObject = isArray && isObject;
 		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
 
+		let parentProperty, arrayIndex, childProperty;
+
 		switch (true) {
+			case isArrayAndObject:
+				parentProperty = property.substring(0, property.indexOf("["));
+				arrayIndex = property.substring(property.indexOf("[") + 1, property.indexOf("]"));
+				childProperty = property.substring(property.indexOf(".") + 1);
+				if (!newCharacter.characterData[parentProperty]) newCharacter.characterData[parentProperty] = [];
+				if (!newCharacter.characterData[parentProperty][arrayIndex]) newCharacter.characterData[parentProperty][arrayIndex] = {};
+				if (!newCharacter.characterData[parentProperty][arrayIndex][childProperty]) newCharacter.characterData[parentProperty][arrayIndex][childProperty] = '';
+
+				console.log(parentProperty, arrayIndex, childProperty);
+				newCharacter.characterData[parentProperty][Number(arrayIndex)][childProperty] = value;
+			break;
 			case isArray:
-				var arrayName = property.substring(0, property.indexOf("["));
-				var arrayPortion = property.substring(property.indexOf("[") + 1, property.indexOf("]"));
-				newCharacter.characterData[arrayName][Number(arrayPortion)] = value;
+				parentProperty = property.substring(0, property.indexOf("["));
+				arrayIndex = property.substring(property.indexOf("[") + 1, property.indexOf("]"));
+				if (!newCharacter.characterData[parentProperty]) newCharacter.characterData[parentProperty] = [];
+
+				newCharacter.characterData[parentProperty][Number(arrayIndex)] = value;
 			break;
 			case isObject:
-				newCharacter.characterData[property] = value;
+				parentProperty = property.substring(0, property.indexOf("."));
+				childProperty = property.substring(property.indexOf(".") + 1);
+				if (!newCharacter.characterData[parentProperty]) newCharacter.characterData[parentProperty] = undefined;
+
+				newCharacter.characterData[parentProperty][childProperty] = value;
 			break;
 			default:
 				newCharacter.characterData[property] = value;
@@ -177,13 +202,24 @@ function CharacterSheetPage() {
 		}
 	}
 
+	const adjustCircleStatus = (circleStatusKey, circleStatusValue) => {
+		console.log("Remembering Circle Status");
+
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		const success = newCharacter.adjustCircleStatus(circleStatusKey, circleStatusValue);
+
+		if (success) setTheCharacter(newCharacter);
+		else console.log("ERROR Saving");
+	}
+
 	useEffect(() => {
 		setAvailablePoints(theCharacter.getAvailablePoints());
 	}, [theCharacter.characterData.sessions]);
 
 	useEffect(() => {
+		console.log("Saving the character");
 		saveCharacter();
-	}, [theCharacter]);
+	}, [debouncedCharacter]);
 
 	// Save the characters
 	const saveCharacter = () => {
@@ -193,10 +229,10 @@ function CharacterSheetPage() {
 
 	// JSX
 	return (
-		<React.Fragment>
+		<CharacterContext.Provider value={theCharacter}>
 			<Header colour="silver" />
 			<PageTitle colour="silver">Character Sheets</PageTitle>
-			<RollingPopup showPopupProp={rollPopupShowing} rollBonusProp={rollBonus} closeRollPopupProp={closeRollPopup} />
+			<RollingPopup showPopupProp={rollPopupShowing} rollMoveNameProp={rollMoveName} rollBonusProp={rollBonus} closeRollPopupProp={closeRollPopup} />
 			<div className={"mainContent " + (levelUpMode && ' characterSheetLevelUpMode ' || '') + (levelDownMode && ' characterSheetLevelDownMode ' || '')}>
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
@@ -212,6 +248,7 @@ function CharacterSheetPage() {
 								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
 							<div className={st.racialModifiers}>
 								<div className={st.headingMedium}>Racial Modifiers</div>
 								<InputBox val={theCharacter.characterData.racial_modifiers[0]} onUpdate={(value) => updateValueFromInput('racial_modifiers[0]', value)} />
@@ -234,7 +271,7 @@ function CharacterSheetPage() {
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={7} columns={7} purchased={1 + theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
+												<PurchaseablePointGroup count={7} columns={7} automaticPurchases={1} purchased={theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
 											</div>
 										</div>
 									))}
@@ -244,12 +281,9 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
-								<div className={st.headingMedium}>Buffs</div> <div className={st.headingSmall}>Source</div>
-								{theCharacter.characterData.buffs.map((buff, index) => (
-									<div className={st.buffDetails} key={index}><InputBox val={buff.effect} /> <InputBox val={buff.source} /></div>
-								))}
-								{Array.from(Array(5 - theCharacter.characterData.buffs.length)).map((i, index) => (
-									<div className={st.buffDetails} key={index}><InputBox val='' /> <InputBox val='' /></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Buffs</div><span className={st.littleNote}>Effect + Source</span></div>
+								{Array.from(Array(5)).map((i, index) => (
+									<div className={st.buffDetails} key={index}><InputBox placeholder="Effect - Source" val={theCharacter.characterData.buffs[index]} onUpdate={(value) => updateValueFromInput(`buffs[${index}]`, value)} /></div>
 								))}
 							</div>
 						</div>
@@ -269,14 +303,14 @@ function CharacterSheetPage() {
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + theCharacter.characterData.purchases.verve * 3} /></div>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + theCharacter.characterData.purchases.verve * 3} disabled={true} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /></div>
 									</div>
 								</div>
 								<div className={st.stamina}>
 									<div className={st.headingMedium}>Stamina</div>
 									<div className={st.staminaPurchases}>
-										<CircleStatus /> <CircleStatus /> <CircleStatus />
+										<CircleStatusGroup count={3} columns={3} gap={7} usedKey="stamina" clickCallback={adjustCircleStatus} />
 										<div className={st.staminaPointGroup}><PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.stamina} gap={9} clickCallback={adjustPoints} purchaseKey='stamina' /></div>
 									</div>
 								</div>
@@ -286,17 +320,17 @@ function CharacterSheetPage() {
 									<div className={st.headingMedium}>Statuses</div>
 									{
 										status_data.filter((item) => item.type == "short (1)").map((status, index) => (
-											<StatusEffect key={index} status={status} />
+											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
 									{
 										status_data.filter((item) => item.type == "standard (3)").map((status, index) => (
-											<StatusEffect key={index} status={status} />
+											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
 									{
 										status_data.filter((item) => item.type == "long (∞)").map((status, index) => (
-											<StatusEffect key={index} status={status} />
+											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
 								</div>
@@ -309,35 +343,51 @@ function CharacterSheetPage() {
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={isoShield} alt="" /> Defences</div></div>
 					<div className={st.collapsable + ' ' + st.defencesLayout}>
 						<div className={st.sectionMeta}>
-							<div className={st.sectionMetaInner + ' ' + st.armourClassTable}>
-								<div className={st.headingMedium + ' ' + st.headName}>Armour</div> <div className={st.fonted + ' ' + st.headLabel}>Block</div> <div className={st.fonted + ' ' + st.headLabel}>Dodge</div> <div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
-								<PurchaseablePointGroup count={1} purchased={1} clickCallback={adjustPoints} purchaseKey={'armour.none'} /> <div className={st.headingSmall}>None</div> <InputBox val="2" /> <InputBox val="4" /> <InputBox val="" />
-								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.light'} /> <div className={st.headingSmall}>Light</div> <InputBox val="3" /> <InputBox val="3" /> <InputBox val="" />
-								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.heavy'} /> <div className={st.headingSmall}>Heavy</div> <InputBox val="4" /> <InputBox val="2" /> <InputBox val="-1sq , -2 Dex Moves" />
-								<PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey={'armour.shield'} /> <div className={st.headingSmall}>Shield</div> <InputBox val="1" /> <InputBox val="0" /> <InputBox val="-3 Cast" />
+							<div className={st.sectionMetaInner}>
+								<div className={st.armourHeader}>
+									<div className={st.headingMedium + ' ' + st.headName}>Armour</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Block</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Dodge</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Disadv.</div>
+								</div>
+								{Array.from(Array(3)).map((i, index) => (
+									<div key={`'armour-${index}`} className={st.armourItem}>
+										<InputBox val={theCharacter.characterData.armours[index]?.name} onUpdate={(value) => updateValueFromInput(`armours[${index}].name`, value, true)} />
+										<InputBox val={theCharacter.characterData.armours[index]?.block} onUpdate={(value) => updateValueFromInput(`armours[${index}].block`, value, true)} />
+										<InputBox val={theCharacter.characterData.armours[index]?.dodge} onUpdate={(value) => updateValueFromInput(`armours[${index}].dodge`, value, true)} />
+										<InputBox val={theCharacter.characterData.armours[index]?.disadvantages} onUpdate={(value) => updateValueFromInput(`armours[${index}].disadvantages`, value, true)} />
+									</div>
+								))}
 							</div>
 
 							<div className={st.sectionMetaInner + ' ' + st.resistanceTable}>
-								<div className={st.headingMedium + ' ' + st.headName}>Resistances</div>  <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
-								<div className={st.headingSmall}>Universal (UDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Physical (PDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Magic (PDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Soul (SDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-							</div>
-
-							<div className={st.resistanceTable}>
-							<div className={st.headingMedium + ' ' + st.headName}>Resistances</div> <div className={st.narrowFlex}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
-								<div className={st.headingSmall}>Fire (FDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Cold (CDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Lightning (LDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
-								<div className={st.headingSmall}>Poisons (PoDR)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} /></div>
+								<div className={st.headingMedium + ' ' + st.headName}>Resistances</div>
+								<div className={st.table1}>
+									<div className={st.tableHeader}>
+										<div className={st.headingSmall}>Damage</div>
+										<div className={st.values}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+									</div>
+									<div className={st.label}>Universal (URed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="ured" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Physical (PRed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pred" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Magic (MRed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="mred" clickCallback={adjustCircleStatus} /></div>
+								</div>
+								<div className={st.table2}>
+									<div className={st.tableHeader}>
+										<div className={st.headingSmall}>Elemental</div>
+										<div className={st.values}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+									</div>
+									<div className={st.label}>Fire (FRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="fres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Cold (CRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="cres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Lightning (LRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="lres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Poisons (PRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pres" clickCallback={adjustCircleStatus} /></div>
+								</div>
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -349,17 +399,30 @@ function CharacterSheetPage() {
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
-								<div className={st.headingMedium + ' ' + st.headName}>Weapon</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Bonus</div> <div className={st.fonted + ' ' + st.headLabel}>STR</div>
-								<InputBox val="Sword" /> <InputBox val="d6" /> <InputBox val="1" /> <InputBox val="3" />
-								<InputBox val="Throw. Knife" /> <InputBox val="d4" /> <InputBox val="+1" /> <InputBox val="2" />
-								<InputBox val="" /> <InputBox val="" /> <InputBox val="" /> <InputBox val="" />
+								<div className={st.weaponsHeader}><div className={st.headingMedium + ' ' + st.headName}>Weapons</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Abilities</div></div>
+								{Array.from(Array(3)).map((i, index) => (
+									<div className={st.weaponFields} key={index}>
+										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
+										<InputBox val={theCharacter.characterData.weapons[index]?.baseDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} />
+										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
+									</div>
+								))}
+							</div>
+							<div className={st.sectionMetaInner + ' ' + st.bonusDamageTable}>
+								<div className={st.headingMedium}>Bonus Dice</div>
+								<div className={st.standardFlex}>
+									<div className={st.headingSmall}>Melee</div> <InputBox val={theCharacter.characterData.bonus_damage.melee} onUpdate={(value) => updateValueFromInput('bonusDamage.melee', value, true)} />
+								</div>
+								<div className={st.standardFlex}>
+									<div className={st.headingSmall}>Ranged</div> <InputBox val={theCharacter.characterData.bonus_damage.ranged} onUpdate={(value) => updateValueFromInput('bonusDamage.ranged', value, true)} />
+								</div>
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -373,7 +436,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getUntrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -381,7 +444,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getTrainedMoves().map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -393,16 +456,17 @@ function CharacterSheetPage() {
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
 							<div className={st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchased={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source </div><InputBox /></div>
-								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchased={1}  purchaseKey={'synergy.slot1'}clickCallback={adjustPoints} /> Synergy 1 </div><InputBox /></div>
-								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 </div><InputBox /></div>
-								<div className={st.standardFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 </div><InputBox /></div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source </div><InputBox val={theCharacter.characterData.source} onUpdate={(value) => updateValueFromInput('source', value)} /></div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'magical_synergy.slot1'} clickCallback={adjustPoints} /> Synergy 1 </div><InputBox val={theCharacter.characterData.magical_synergy.slot1} onUpdate={(value) => updateValueFromInput('magical_synergy.slot1', value)} /></div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 </div><InputBox val={theCharacter.characterData.magical_synergy.slot2} onUpdate={(value) => updateValueFromInput('magical_synergy.slot2', value)} /></div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 </div><InputBox val={theCharacter.characterData.magical_synergy.slot3} onUpdate={(value) => updateValueFromInput('magical_synergy.slot3', value)} /></div>
 							</div>
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>
-									<div className={st.manaPoints}><div className={st.headingMedium}>Mana</div><PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} /></div>
-									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox /></div>
-									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox /></div>
+									<div className={st.manaPoints}><div className={st.standardFlex}><div className={st.headingMedium}>Mana</div> <div className={st.littleNote}>{theCharacter.baseMana} + 3/point</div></div>
+									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} /></div>
+									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox val={theCharacter.baseMana + theCharacter.characterData.purchases.mana * 3} disabled={true} /></div>
+									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox val={theCharacter.characterData.current_mana} onUpdate={(value) => updateValueFromInput(`current_mana`, value)} /></div>
 								</div>
 							</div>
 						</div>
@@ -420,7 +484,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -434,7 +498,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['psonics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} rollPopupToggle={rollPopupToggle} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -444,54 +508,18 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Inventory']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
 					<div className={st.collapsable + ' ' + st.inventoryLayout}>
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
-						<InputBox /> <InputBox />
+					{Array.from(Array(38)).map((i, index) => (
+						<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
+					))}
 					</div>
 				</section>
 
 				<section ref={sectionRefs['Notes']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Notes</div></div>
 					<div className={st.collapsable + ' ' + st.notesLayout}>
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
-						<InputBox />
+						{Array.from(Array(20)).map((i, index) => (
+							<InputBox key={`notes-${index}`} val={theCharacter.characterData.notes[index]} onUpdate={(value) => updateValueFromInput(`notes[${index}]`, value)} />
+						))}
 					</div>
 				</section>
 			</div>
@@ -499,11 +527,12 @@ function CharacterSheetPage() {
 			<nav className={st.controlBar}>
 				<button onClick={closeAllSections}><img src={icoChevronDown} /></button>
 				<button onClick={openAllSections}><img src={icoChevronDown} className={st.flipY} /></button>
-				<button onClick={toggleLevelUpMode} className={levelUpMode ? st.active : ''} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend Points ({availablePoints})</button>
-				<button onClick={toggleLeveDownMode} className={levelDownMode ? st.active : ''} style={{ display: availablePoints != maxPoints && 'block' || 'none' }}>Remove Points</button>
+				<h3>Points:</h3>
+				<button onClick={toggleLevelUpMode} className={levelUpMode ? st.active : ''} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend ({availablePoints})</button>
+				<button onClick={toggleLeveDownMode} className={levelDownMode ? st.active : ''} style={{ display: availablePoints != maxPoints && 'block' || 'none' }}>Remove</button>
 			</nav>
 			<Footer />
-		</React.Fragment>
+		</CharacterContext.Provider>
 	);
 }
 

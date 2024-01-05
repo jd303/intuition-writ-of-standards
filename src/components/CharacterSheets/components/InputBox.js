@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import st from './InputBox.module.scss';
 
-export function InputBox( { onUpdate, onBlur, val, type = "text", inline = false, className = '', disabled = false, debug = false }) {
+export function InputBox( { onUpdate, onBlur, val, type = "text", inline = false, className = '', disabled = false, debug = false, placeholder = "" }) {
 
 	const [value, setValue] = useState(val);
 
@@ -17,7 +17,7 @@ export function InputBox( { onUpdate, onBlur, val, type = "text", inline = false
 
 	return (
 		<React.Fragment>
-			<input type={type} value={value} onChange={updateValue} onBlur={onBlur} className={st.el + ' ' + (inline && st.inline || '') + ' ' + className} disabled={disabled} />
+			<input type={type} value={value} onChange={updateValue} onBlur={onBlur} className={st.el + ' ' + (inline && st.inline || '') + ' ' + className} disabled={disabled} placeholder={placeholder} />
 		</React.Fragment>
 	);
 }
@@ -33,5 +33,6 @@ InputBox.propTypes = {
 	inline: PropTypes.bool,
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
-	debug: PropTypes.bool
+	debug: PropTypes.bool,
+	placeholder: PropTypes.string
 };

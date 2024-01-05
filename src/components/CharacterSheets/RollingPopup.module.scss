@@ -1,10 +1,10 @@
 .rollPopup {
-	position: absolute;
+	position: fixed;
 	z-index: 10;
-	top: 0;
-	left: 0;
+	top: 50%;
+	left: 50%;
 	width: 500px;
-	max-width: 100%;
+	max-width: 96%;
 	opacity: 0;
 	pointer-events: none;
 	transform: translateX(-50%);
@@ -28,14 +28,42 @@
 
 		&.rollContent {
 			display: grid;
-			grid-template-columns: 1fr 1fr 20px 1fr;
-			gap: calc(0.5 * var(--padding-standard));
+			grid-template-columns: 75px 75px 25px 1fr;
+			gap: calc(0.25 * var(--padding-standard));
 			padding: var(--padding-standard);
+
+			.rollButton {
+				width: 50px;
+				justify-self: end;
+				background-color: #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+			}
 
 			.headingMedium {
 				grid-row: 1;
 				grid-column: 1 / 4;
 				margin: 0;
+
+				font-family: "trattatello";
+				font-size: 20px;
+			}
+
+			.moveNotes {
+				grid-row: 4;
+				grid-column: 1 / 5;
+
+				margin-top: calc(0.5 * var(--padding-standard));
+				font-style: italic;
+				color: #aa4444;
+			}
+
+			.notes {
+				grid-row: 5;
+				grid-column: 1 / 5;
+
+				margin-top: calc(0.5 * var(--padding-standard));
+				font-style: italic;
+				color: #666;
 			}
 		}
 
@@ -43,7 +71,8 @@
 			width: 20px;
 		}
 
-		.result {
+		.result,
+		.rawRoll {
 			display: block;
 		}
 	}
@@ -62,15 +91,14 @@
 			display: block;
 		}
 	}
-}
-
-.rollPopup {
-	position: fixed;
-	top: 50%;
-	left: 50%;
 
 	.closer {
-		position: relative;
-		z-index: 5001;		
+		position: absolute;
+		z-index: 5001;
+		bottom: calc(100% + 5px);
+
+		img {
+			width: 20px;
+		}
 	}
 }

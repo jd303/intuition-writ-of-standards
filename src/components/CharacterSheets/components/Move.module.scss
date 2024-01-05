@@ -15,6 +15,10 @@
 	--headingmedium-border: var(--border-dashed-standard);
 	--unpurchasedheading-display: block;
 
+	&.descriptionVisible {
+		--description-display: block;
+	}
+
 	@media print {
 		--grid-template-columns: auto 1fr;
 		--mainblock-grid-row: 1;
@@ -27,15 +31,19 @@
 		--headingmedium-padding: 0;
 		--headingmedium-border: none;
 		--unpurchasedheading-display: none;
+		--description-display: none;
+
+		&.descriptionVisible {
+			--description-display: none;
+		}
 	}
 
 	display: grid;
 	grid-template-columns: var(--grid-template-columns);
 	align-items: start;
-	//gap: calc(0.5 * var(--padding-standard));
 	width: 100%;
 	break-inside: avoid-column;
-	margin-bottom: var(--padding-standard);
+	margin-bottom: calc(0.25 * var(--padding-standard));
 	padding: 12px;
 	border-radius: 10px;
 	border: var(--border-dashed-standard);
@@ -48,10 +56,6 @@
 		}
 	}
 
-	&.descriptionVisible {
-		--description-display: block;
-	}
-
 	.mainBlock {
 		grid-row: var(--mainblock-grid-row);
 		grid-column: var(--mainblock-grid-column);
@@ -61,6 +65,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		width: 100%;
+		margin-bottom: calc(0.5 * var(--padding-standard));
 
 		@media print {
 			width: 265px;
@@ -143,6 +148,8 @@
 	}
 
 	.subMoves {
+		display: var(--description-display);
+
 		margin: calc(0.25 * var(--padding-standard)) 0;
 		grid-row: var(--submoves-grid-row);
 		grid-column: var(--submoves-grid-column);
