@@ -4,7 +4,16 @@ import st from './Dropdown.module.scss';
 
 export function Dropdown( { source, onChange, val, noDefault = false }) {
 
-	const extractedValue = val.value || val;
+	const prepareValue = (val) => {
+		if (val) return val.name || val;
+		else return "";
+	}
+	const prepareDisplay = (item) => {
+		if (item.name) return item.name + ': ' + item.value;
+		else return item;
+	}
+
+	let extractedValue = prepareValue(val);
 	const [value, setValue] = useState(extractedValue);
 
 	useEffect(() => {
@@ -16,14 +25,12 @@ export function Dropdown( { source, onChange, val, noDefault = false }) {
 		if (onChange) onChange(event.target.value);
 	}
 
-
-
 	return (
 		<React.Fragment>
 			<select onChange={updateValue} className={st.el} value={value}>
 				{!noDefault && <option key="option-default" value=""></option>}
 				{source.map((i, index) => (
-					<option key={`option-${index}`} value={i}>{i}</option>
+					<option key={`option-${index}`} value={i.name}>{prepareDisplay(i)}</option>
 				))}
 			</select>
 		</React.Fragment>

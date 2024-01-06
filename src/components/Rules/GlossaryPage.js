@@ -45,6 +45,10 @@ function GlossaryPage() {
 					<li><span className={styles.termName}>Stagger</span>: A measurement of how unbalanced a target is.  Each point in Stagger reduces the requirement for a successful Roll to Trip, Grapple and Disarm a target.</li>
 					<li><span className={styles.termName}>NAME</span>: Effect.</li>
 				</ol>
+				<h1>Magic Terms</h1>
+				<ol>
+					<li><span className={styles.termName}>Critical Cast</span>: A spell that requires you pierce your target&apos;s Defenses, for which you achieve a Raw Roll within your Critical Range, typically 20.</li>
+				</ol>
 			</div>
 			<Footer />
 		</React.Fragment>

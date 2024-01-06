@@ -38,7 +38,7 @@ function AccountPage() {
 
 	const login = () => {
 		const auth = getAuth();
-		setPersistence(auth, browserLocalPersistence)
+		/*setPersistence(auth, browserLocalPersistence)
 		.then(() => {
 			signInWithEmailAndPassword(auth, loginEmailInput, loginPasswordInput)
 			.then((userCredential) => {
@@ -52,6 +52,19 @@ function AccountPage() {
 				const errorMessage = error.message;
 				console.log("ERRROR DURING LOGGED IN", error);
 			});
+		});*/
+
+		signInWithEmailAndPassword(auth, loginEmailInput, loginPasswordInput)
+		.then((userCredential) => {
+			// Signed in 
+			const user = userCredential.user;
+			console.log("LOGGED IN", user);
+			// ...
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			console.log("ERRROR DURING LOGGED IN", error);
 		});
 	}
 

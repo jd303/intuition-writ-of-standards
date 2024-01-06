@@ -24,10 +24,13 @@ export class CharacterObject {
 		"statuses": {
 			//"Paralyzed"
 		},
+		"bonusPoints": 0,
 		"current_verve": this.baseVerve,
+		"bonus_verve": 0,
 		"current_mana": this.baseMana,
+		"bonus_mana": 0,
 		"current_psi": this.basePsi,
-		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"source":1,"synergy":{"slot1":1,"slot2":0,"slot3":0},"mana":0,"spells":{},"moves":{} },
+		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
 		"source": "",
 		"magical_synergy": {
 			"slot1": '',
@@ -35,6 +38,7 @@ export class CharacterObject {
 			"slot3": '',
 		},
 		"bonus_damage": { "melee": "d4", "ranged": "d4" },
+		"weapon_specialisations": [],
 		"armours": [ { "name": "None", "block": 3, "dodge": 3, "disadvantages": "" } ],
 		"weapons": [],
 		"inventory": [],
@@ -53,10 +57,11 @@ export class CharacterObject {
 	}
 
 	getMaxPoints() {
-		return this.baseCharacterPoints + this.characterData.sessions;
+		return this.baseCharacterPoints + this.characterData.sessions + this.characterData.bonusPoints;
 	}
 
 	adjustPoint(adding, type, moveOrKeyName, modName) {
+		console.log(adding, type, moveOrKeyName, modName);
 		let moveKey = prepareName(moveOrKeyName);
 		let modKey = prepareName(modName);
 		let validAdjustment = false;
@@ -175,6 +180,34 @@ export class CharacterObject {
 					if (this.characterData.purchases.moves[moveKey].mods.find(i => i == modKey)) { // Can only remove if exists
 						// Consider limiting purchasing mods if you don't have the Move points, but with the Racial bonus it's hard to know.
 						this.characterData.purchases.moves[moveKey].mods = this.characterData.purchases.moves[moveKey].mods.filter(mod => mod != modKey);
+						validAdjustment = true;
+					}
+				}
+			break;
+				
+			case "magical_synergy":
+				if (adding) {
+					if (this.characterData.purchases.magical_synergy[moveOrKeyName] < 1) {
+						this.characterData.purchases.magical_synergy[moveOrKeyName] = 1;
+						validAdjustment = true;
+					}
+				} else if (!adding) {
+					if (this.characterData.purchases.magical_synergy[moveOrKeyName] == 1) {
+						this.characterData.purchases.magical_synergy[moveOrKeyName] = 0;
+						validAdjustment = true;
+					}
+				}
+			break;
+				
+			case "weapon_specialisations":
+				if (adding) {
+					if (this.characterData.purchases.weapon_specialisations < 3) {
+						this.characterData.purchases.weapon_specialisations += 1;
+						validAdjustment = true;
+					}
+				} else if (!adding) {
+					if (this.characterData.purchases.weapon_specialisations > 0) {
+						this.characterData.purchases.weapon_specialisations -= 1;
 						validAdjustment = true;
 					}
 				}

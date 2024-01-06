@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import st from './InputBox.module.scss';
 
-export function InputBox( { onUpdate, onBlur, val, type = "text", inline = false, className = '', disabled = false, debug = false, placeholder = "" }) {
+export function InputBox( { onUpdate, onBlur, val, type = "text", inline = false, className = '', disabled = false, placeholder = "" }) {
 
 	const [value, setValue] = useState(val);
 
@@ -33,6 +33,5 @@ InputBox.propTypes = {
 	inline: PropTypes.bool,
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
-	debug: PropTypes.bool,
 	placeholder: PropTypes.string
 };

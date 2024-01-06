@@ -53,7 +53,7 @@ function CharacterSheetPage() {
 	const moves_and_mods = useSelector(selectMovesData);
 	const status_data = useSelector(selectStatusData);
 	let charactersData = useSelector(selectCharactersData);
-	console.log(charactersData);
+	console.log("CHARS", charactersData);
 
 	// Moves Data
 	let movesAndMods = {};
@@ -83,6 +83,7 @@ function CharacterSheetPage() {
 	const bonusDice = [ "d4", "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
 	const sources = [ "Summer", "Autumn", "Winter", "Spring" ];
 	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
+	const weapon_specialisations = [ { "name": "Swords", "value": "Does thing" } ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Rolling Popup
@@ -207,8 +208,6 @@ function CharacterSheetPage() {
 	}
 
 	const adjustCircleStatus = (circleStatusKey, circleStatusValue) => {
-		console.log("Remembering Circle Status");
-
 		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
 		const success = newCharacter.adjustCircleStatus(circleStatusKey, circleStatusValue);
 
@@ -249,7 +248,9 @@ function CharacterSheetPage() {
 								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={(value) => updateValueFromInput('sessions', value, true)} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} debug={true} /> <div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
+								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} />
+								<div className={st.headingSmall}>Bonus </div> <InputBox val={theCharacter.characterData.purchases.bonusPoints} onUpdate={(value) => updateValueFromInput('bonusPoints', value, true)} type="number" />
+								<div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
@@ -307,7 +308,8 @@ function CharacterSheetPage() {
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + theCharacter.characterData.purchases.verve * 3} disabled={true} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Bonus</div> <InputBox val={theCharacter.characterData.bonus_verve} onUpdate={(value) => updateValueFromInput(`bonus_verve`, value)} type="number" /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * 3} disabled={true} /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /></div>
 									</div>
 								</div>
@@ -402,7 +404,7 @@ function CharacterSheetPage() {
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</div></div>
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
-							<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
+						<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
 								<div className={st.weaponsHeader}><div className={st.headingMedium + ' ' + st.headName}>Weapons</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Abilities</div></div>
 								{Array.from(Array(3)).map((i, index) => (
 									<div className={st.weaponFields} key={index}>
@@ -420,6 +422,16 @@ function CharacterSheetPage() {
 								<div className={st.standardFlex}>
 								<div className={st.headingSmall}>Melee</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.ranged} onChange={(value) => updateValueFromInput('bonus_damage.ranged', value, true)} />
 								</div>
+							</div>
+							<div className={st.sectionMetaInner + ' ' + st.weaponSpecialisations}>
+								<div className={st.weaponsHeader}>
+									<div className={st.headingMedium + ' ' + st.headName}>Specialisations <PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.weapon_specialisations} purchaseKey='weapon_specialisations' clickCallback={adjustPoints}  /></div>
+								</div>
+								{Array.from(Array(Math.min(theCharacter.characterData.purchases.weapon_specialisations, theCharacter.characterData.weapon_specialisations.length + 1))).map((i, index) => (
+									<div className={st.weaponFields} key={index}>
+										<Dropdown source={weapon_specialisations} val={theCharacter.characterData.weapon_specialisations[index]} onChange={(value) => updateValueFromInput(`weapon_specialisations[${index}]`, value, true)} />
+									</div>
+								))}
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
@@ -474,13 +486,13 @@ function CharacterSheetPage() {
 								</div>
 								<div className={st.standardFlex + ' ' + st.magicFlex}>
 									<div className={st.headingMedium}>
-										<PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 
+										<PurchaseablePointGroup count={1} purchased={theCharacter.characterData.purchases.magical_synergy.slot2} purchaseKey={'magical_synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 
 									</div>
 									<Dropdown source={magical_synergies} val={theCharacter.characterData.magical_synergy.slot2} onChange={(value) => updateValueFromInput('magical_synergy.slot2', value, true)} />
 								</div>
 								<div className={st.standardFlex + ' ' + st.magicFlex}>
 									<div className={st.headingMedium}>
-										<PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 
+										<PurchaseablePointGroup count={1} purchased={theCharacter.characterData.purchases.magical_synergy.slot3} purchaseKey={'magical_synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 
 									</div>
 									<Dropdown source={magical_synergies} val={theCharacter.characterData.magical_synergy.slot3} onChange={(value) => updateValueFromInput('magical_synergy.slot3', value, true)} />
 								</div>
@@ -489,7 +501,8 @@ function CharacterSheetPage() {
 								<div className={st.manaContainer}>
 									<div className={st.manaPoints}><div className={st.standardFlex}><div className={st.headingMedium}>Mana</div> <div className={st.littleNote}>{theCharacter.baseMana} + 3/point</div></div>
 									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} /></div>
-									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox val={theCharacter.baseMana + theCharacter.characterData.purchases.mana * 3} disabled={true} /></div>
+									<div className={st.manaBonus}><div className={st.headingMedium}>Bonus </div><InputBox val={theCharacter.characterData.bonus_mana} onUpdate={(value) => updateValueFromInput(`bonus_mana`, value)} type="number" /></div>
+									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox val={theCharacter.baseMana + Number(theCharacter.characterData.bonus_mana) + theCharacter.characterData.purchases.mana * 3} disabled={true} /></div>
 									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox val={theCharacter.characterData.current_mana} onUpdate={(value) => updateValueFromInput(`current_mana`, value)} /></div>
 								</div>
 							</div>
