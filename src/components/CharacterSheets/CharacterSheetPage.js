@@ -5,6 +5,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { writeDataForCurrentUser } from '../../utils/writeDataForCurrentUser';
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
+import { Dropdown } from './components/Dropdown';
 import { PurchaseablePointGroup } from "./components/PurchaseablePointGroup";
 import { CircleStatusGroup } from "./components/CircleStatusGroup";
 import { Move } from './components/Move';
@@ -79,6 +80,9 @@ function CharacterSheetPage() {
 
 	// Static Data
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
+	const bonusDice = [ "d4", "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
+	const sources = [ "Summer", "Autumn", "Winter", "Spring" ];
+	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Rolling Popup
@@ -411,10 +415,10 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner + ' ' + st.bonusDamageTable}>
 								<div className={st.headingMedium}>Bonus Dice</div>
 								<div className={st.standardFlex}>
-									<div className={st.headingSmall}>Melee</div> <InputBox val={theCharacter.characterData.bonus_damage.melee} onUpdate={(value) => updateValueFromInput('bonusDamage.melee', value, true)} />
+									<div className={st.headingSmall}>Melee</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.melee} onChange={(value) => updateValueFromInput('bonus_damage.melee', value, true)} />
 								</div>
 								<div className={st.standardFlex}>
-									<div className={st.headingSmall}>Ranged</div> <InputBox val={theCharacter.characterData.bonus_damage.ranged} onUpdate={(value) => updateValueFromInput('bonusDamage.ranged', value, true)} />
+								<div className={st.headingSmall}>Melee</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.ranged} onChange={(value) => updateValueFromInput('bonus_damage.ranged', value, true)} />
 								</div>
 							</div>
 						</div>
@@ -456,10 +460,30 @@ function CharacterSheetPage() {
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
 							<div className={st.sectionMetaInner}>
-								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source </div><InputBox val={theCharacter.characterData.source} onUpdate={(value) => updateValueFromInput('source', value)} /></div>
-								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'magical_synergy.slot1'} clickCallback={adjustPoints} /> Synergy 1 </div><InputBox val={theCharacter.characterData.magical_synergy.slot1} onUpdate={(value) => updateValueFromInput('magical_synergy.slot1', value)} /></div>
-								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 </div><InputBox val={theCharacter.characterData.magical_synergy.slot2} onUpdate={(value) => updateValueFromInput('magical_synergy.slot2', value)} /></div>
-								<div className={st.standardFlex + ' ' + st.magicFlex}><div className={st.headingMedium}><PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 </div><InputBox val={theCharacter.characterData.magical_synergy.slot3} onUpdate={(value) => updateValueFromInput('magical_synergy.slot3', value)} /></div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}>
+									<div className={st.headingMedium}>
+										<PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source 
+									</div>
+									<Dropdown source={sources} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} />
+								</div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}>
+									<div className={st.headingMedium}>
+										<PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'magical_synergy.slot1'} clickCallback={adjustPoints} /> Synergy 1 
+									</div>
+									<Dropdown source={magical_synergies} val={theCharacter.characterData.magical_synergy.slot1} onChange={(value) => updateValueFromInput('magical_synergy.slot1', value, true)} />
+								</div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}>
+									<div className={st.headingMedium}>
+										<PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot2'} clickCallback={adjustPoints} /> Synergy 2 
+									</div>
+									<Dropdown source={magical_synergies} val={theCharacter.characterData.magical_synergy.slot2} onChange={(value) => updateValueFromInput('magical_synergy.slot2', value, true)} />
+								</div>
+								<div className={st.standardFlex + ' ' + st.magicFlex}>
+									<div className={st.headingMedium}>
+										<PurchaseablePointGroup count={1} purchaseKey={'magical_synergy.slot3'} clickCallback={adjustPoints} /> Synergy 3 
+									</div>
+									<Dropdown source={magical_synergies} val={theCharacter.characterData.magical_synergy.slot3} onChange={(value) => updateValueFromInput('magical_synergy.slot3', value, true)} />
+								</div>
 							</div>
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>

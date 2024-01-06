@@ -18,8 +18,9 @@ function GlossaryPage() {
 					<li><span className={styles.termName}>Restoring HP</span>: You restore HP, and any HP that exceeds your total are lost.</li>
 					<li><span className={styles.termName}>World Changing Effect</span>: Rolling 2 20s or 2 1s results in a World Changing Effect.</li>
 					<li><span className={styles.termName}>Raw Roll</span>: The exact number shown on the dice you rolled.</li>
+					<li><span className={styles.termName}>DC Penalty</span>: The DC of your Roll is more difficult, as stated by the Penalty&apos;s terms.</li>
 				</ol>
-				<h1>Combat Terms</h1>
+				<h1>Wellness Terms</h1>
 				<ol>
 					<li><span className={styles.termName}>UDR</span>: Universal Damage Resistance, a reduction to any kind of damage that you take.</li>
 					<li>
@@ -40,6 +41,7 @@ function GlossaryPage() {
 				</ol>
 				<h1>Combat Terms</h1>
 				<ol>
+					<li><span className={styles.termName}>Threatened Area / Threatened Range</span>: Squares that your melee weapon can reach.  For most, this is 1 adjacent square, but some increase this to 2 squares.</li>
 					<li><span className={styles.termName}>Stagger</span>: A measurement of how unbalanced a target is.  Each point in Stagger reduces the requirement for a successful Roll to Trip, Grapple and Disarm a target.</li>
 					<li><span className={styles.termName}>NAME</span>: Effect.</li>
 				</ol>

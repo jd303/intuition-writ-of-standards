@@ -1,0 +1,34 @@
+.el {
+	--padding: 4px;
+
+	position: relative;
+	width: 100%;
+	min-width: 40px;
+	height: 32px;
+	text-align: left;
+	padding: var(--padding) var(--padding) var(--padding) calc(3 * var(--padding));
+	box-sizing: border-box;
+	border-radius: 6px;
+	background-color: var(--colour-cream);
+	outline: none;
+	border: none;
+
+	&.inline {
+		width: auto;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: calc(1.25 * var(--padding));
+		left: calc(2 * var(--padding));
+		width: calc(100% - 4 * var(--padding));
+		border-bottom: 1px dashed #d2d2d2;
+	}
+
+	&::placeholder {
+		font-style: italic;
+		color: #bbb;
+	}
+}
