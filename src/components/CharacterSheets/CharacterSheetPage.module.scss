@@ -203,7 +203,7 @@ section {
 			display: grid;
 			grid-template-rows: 30px auto;
 			gap: 5px;
-			align-items: start;
+			align-items: flex-start;
 
 			.standardFlex {
 				box-sizing:border-box;
@@ -255,7 +255,7 @@ section {
 		.sectionMeta {
 			display: grid;
 			grid-template-columns: auto 1fr;
-			align-items: start;
+			align-items: flex-start;
 
 			@media (max-width: 949px) {
 				grid-template-columns: auto;
@@ -385,8 +385,8 @@ section {
 				gap: var(--padding-standard);
 				flex-grow: 1;
 				width: var(--resistancetable-width);
-				align-items: start;
-				justify-items: start;
+				align-items: flex-start;
+				justify-items: flex-start;
 
 				.headName {
 					flex-basis: 100%;
@@ -478,7 +478,7 @@ section {
 			flex-direction: column;
 
 			.magicFlex {
-				align-items: start;
+				align-items: flex-start;
 				flex-direction: var(--standard-flex-direction);
 				gap: var(--magic-flex-gap);
 
@@ -639,7 +639,7 @@ section {
 
 		display: grid;
 		gap: calc(0.25 * var(--padding-standard));
-		align-items: start;
+		align-items: flex-start;
 		padding: var(--padding-standard);
 		background-color: #FFFFFD;
 		box-sizing: border-box;
