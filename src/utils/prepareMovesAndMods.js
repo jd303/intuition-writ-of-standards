@@ -13,8 +13,7 @@ export const prepareMovesAndMods = (moves_and_mods) => {
 			case "Move":
 				response[currentCategory].moves.push(createMove(item));
 				currentMove = response[currentCategory].moves.find(move => move.name == item.name);
-				lastItemType = "move-ish";
-				
+				lastItemType = "move-ish";		
 			break;
 			case "Primary":
 			case "Reaction":
@@ -50,6 +49,7 @@ function createCategory(name) {
 
 function createMove(move) {
 	return {
+		"id": move.id,
 		"name": move.name,
 		"type": move.type,
 		"description": move.description,

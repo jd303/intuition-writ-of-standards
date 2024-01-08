@@ -24,6 +24,10 @@
 			".read": true,
 			".write": false
 		},
+		"racial_bonuses": {
+			".read": true,
+			".write": false
+		},
 		"characters": {
 			"$uid": {
 				".read": "$uid === auth.uid",

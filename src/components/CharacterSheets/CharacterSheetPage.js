@@ -16,9 +16,11 @@ import { CharacterObject } from "./CharacterHandler";
 import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 import { selectStatusData } from "../../features/firebase/statusDataSlice";
+import { selectSpellsData } from "../../features/firebase/spellsDataSlice";
+import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
+import { selectRacialBonusData } from "../../features/firebase/racialBonusDataSlice";
 import { useAuthState } from "../../firebase";
 import { Navigate } from "react-router-dom";
-import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
 import RollingPopup from "./RollingPopup";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
@@ -52,8 +54,11 @@ function CharacterSheetPage() {
 	const params = useParams();
 	const moves_and_mods = useSelector(selectMovesData);
 	const status_data = useSelector(selectStatusData);
+	const spells_data = useSelector(selectSpellsData);
+	const racial_bonus_data = useSelector(selectRacialBonusData);
 	let charactersData = useSelector(selectCharactersData);
 	console.log("CHARS", charactersData);
+	console.log("TODO: repair purchases by comparing to data, in case I delete one, plus utilise the new id field");
 
 	// Moves Data
 	let movesAndMods = {};
@@ -256,9 +261,9 @@ function CharacterSheetPage() {
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
 							<div className={st.racialModifiers}>
 								<div className={st.headingMedium}>Racial Modifiers</div>
-								<InputBox val={theCharacter.characterData.racial_modifiers[0]} onUpdate={(value) => updateValueFromInput('racial_modifiers[0]', value)} />
-								<InputBox val={theCharacter.characterData.racial_modifiers[1]} onUpdate={(value) => updateValueFromInput('racial_modifiers[1]', value)} />
-								<InputBox val={theCharacter.characterData.racial_modifiers[2]} onUpdate={(value) => updateValueFromInput('racial_modifiers[2]', value)} />
+								<Dropdown source={racial_bonus_data.filter(i => i.type == "primary")} noDefault={true} val={theCharacter.characterData.racial_modifiers.primary} onChange={(value) => updateValueFromInput('racial_modifiers.primary', value, true)} />
+								<Dropdown source={racial_bonus_data.filter(i => i.type == "secondary")} noDefault={true} val={theCharacter.characterData.racial_modifiers.secondary} onChange={(value) => updateValueFromInput('racial_modifiers.secondary', value, true)} />
+								<Dropdown source={racial_bonus_data.filter(i => i.type == "stature")} noDefault={true} val={theCharacter.characterData.racial_modifiers.stature} onChange={(value) => updateValueFromInput('racial_modifiers.stature', value, true)} />
 							</div>
 						</div>
 					</div>
@@ -287,8 +292,8 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
 								<div className={st.standardFlex}><div className={st.headingMedium}>Buffs</div><span className={st.littleNote}>Effect + Source</span></div>
-								{Array.from(Array(5)).map((i, index) => (
-									<div className={st.buffDetails} key={index}><InputBox placeholder="Effect - Source" val={theCharacter.characterData.buffs[index]} onUpdate={(value) => updateValueFromInput(`buffs[${index}]`, value)} /></div>
+								{Array.from(Array(Math.max(4, theCharacter.characterData.buffs.filter(buff => buff !== "").length + 1))).map((i, index) => (
+									<div className={st.buffDetails} key={index}><InputBox placeholder="Effect & Source" val={theCharacter.characterData.buffs[index]} onUpdate={(value) => updateValueFromInput(`buffs[${index}]`, value)} /></div>
 								))}
 							</div>
 						</div>
@@ -325,17 +330,7 @@ function CharacterSheetPage() {
 								<div className={st.status}>
 									<div className={st.headingMedium}>Statuses</div>
 									{
-										status_data.filter((item) => item.type == "short (1)").map((status, index) => (
-											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
-										))
-									}
-									{
-										status_data.filter((item) => item.type == "standard (3)").map((status, index) => (
-											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
-										))
-									}
-									{
-										status_data.filter((item) => item.type == "long (∞)").map((status, index) => (
+										status_data.map((status, index) => (
 											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
@@ -349,7 +344,7 @@ function CharacterSheetPage() {
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={isoShield} alt="" /> Defences</div></div>
 					<div className={st.collapsable + ' ' + st.defencesLayout}>
 						<div className={st.sectionMeta}>
-							<div className={st.sectionMetaInner}>
+							<div className={st.sectionMetaInner + ' ' + st.armourTable}>
 								<div className={st.armourHeader}>
 									<div className={st.headingMedium + ' ' + st.headName}>Armour</div>
 									<div className={st.fonted + ' ' + st.headLabel}>Block</div>
@@ -376,16 +371,28 @@ function CharacterSheetPage() {
 									<div className={st.label}>Universal (URed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="ured" clickCallback={adjustCircleStatus} /></div>
 									<div className={st.label}>Physical (PRed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pred" clickCallback={adjustCircleStatus} /></div>
 									<div className={st.label}>Magic (MRed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="mred" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Poison (PoRed)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pores" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Acidic (AcidRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="acidres" clickCallback={adjustCircleStatus} /></div>
 								</div>
 								<div className={st.table2}>
 									<div className={st.tableHeader}>
 										<div className={st.headingSmall}>Elemental</div>
 										<div className={st.values}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
 									</div>
-									<div className={st.label}>Fire (FRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="fres" clickCallback={adjustCircleStatus} /></div>
-									<div className={st.label}>Cold (CRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="cres" clickCallback={adjustCircleStatus} /></div>
-									<div className={st.label}>Lightning (LRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="lres" clickCallback={adjustCircleStatus} /></div>
-									<div className={st.label}>Poisons (PRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Pyral (PyRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="pyres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Cryo (CryRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="cryres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Electric (ElecRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="elecres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Sonic (SonRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="sonres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Zephyr (ZephRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="zephres" clickCallback={adjustCircleStatus} /></div>
+								</div>
+								<div className={st.table3}>
+									<div className={st.tableHeader}>
+										<div className={st.headingSmall}>Transcen.</div>
+										<div className={st.values}><div className={st.fonted + ' ' + st.headLabel}>+3</div> <div className={st.fonted + ' ' + st.headLabel}>+5</div> <div className={st.fonted + ' ' + st.headLabel}>+10</div></div>
+									</div>
+									<div className={st.label}>Arcanic (ArcRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="arcres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Umbral (UmbRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="umbres" clickCallback={adjustCircleStatus} /></div>
+									<div className={st.label}>Luminal (LumRes)</div> <div className={st.standardFlex}><CircleStatusGroup count={3} gap={5} usedKey="lumres" clickCallback={adjustCircleStatus} /></div>
 								</div>
 							</div>
 						</div>
@@ -393,7 +400,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -438,7 +445,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -452,7 +459,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getUntrainedMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -460,7 +467,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getTrainedMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -507,21 +514,19 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 						</div>
-						<div className={st.sectionMeta + ' ' + st.section2}>
+						<div className={st.sectionMeta + ' ' + st.section2 + ' ' + (theCharacter.getMovePurchase('797d1feb').points == 0 ? st.hidden : '')}>
 							<div className={st.sectionMetaInner}>
 								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
-								<div className={st.spellChoice}><PurchaseablePointGroup count={1} clickCallback={adjustPoints} purchaseKey='spells' /><InputBox /></div>
+								{Array.from(Array(Math.min(theCharacter.getMovePurchase('797d1feb').points * 2 || 0, theCharacter.characterData.spells.length + 1))).map((i, index) => (
+									<div key={`spell-${index}`} className={st.spellChoice}><Dropdown source={spells_data} val={theCharacter.characterData.spells[index]} onChange={(value) => updateValueFromInput(`spells[${index}]`, value, true)} /></div>
+								))}
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -534,8 +539,8 @@ function CharacterSheetPage() {
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
-							movesAndMods['psonics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.name)} clickCallback={adjustPoints}></Move>
+							movesAndMods['psionics']?.moves?.map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>

@@ -7,7 +7,6 @@ import { InputBox } from "./InputBox";
 import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
-import { prepareName } from '../../../utils/prepareName';
 
 export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseDetails, clickCallback }) {
 
@@ -27,13 +26,13 @@ export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseD
 	}
 
 	const modIsPurchased = (mod) => {
-		const modName = prepareName(mod.name);
-		return (purchaseDetails && purchaseDetails.mods && purchaseDetails.mods.includes(modName)) ? true : false;
+		const modID = mod.id;
+		return (purchaseDetails && purchaseDetails.mods && purchaseDetails.mods.includes(modID)) ? true : false;
 	}
 	const modIsNotPurchased = (mod) => {
-		const modName = prepareName(mod.name);
+		const modID = mod.id;
 		if (!purchaseDetails || !purchaseDetails.mods) return true;
-		return !purchaseDetails.mods.includes(modName);
+		return !purchaseDetails.mods.includes(modID);
 	}
 
 	const purchasedMods = move.mods.filter(modIsPurchased);
@@ -51,7 +50,7 @@ export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseD
 		<div className={st.el + ' ' + (move.type == "Move" && st.moveCategory || '') + ' ' + (descriptionVisible && st.descriptionVisible || '')}>
 			<div className={st.mainBlock}>
 				<div className={st.title + ' ' + (move.type == "Move" && st.moveCategory || '')} onClick={toggleDescriptionVisible}>{move.name}</div>
-				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.name}`} /></div>
+				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.id}`} /></div>
 				<div className={st.bonuses + ' forPrint'}><InputBox value={`+${purchaseDetails?.points}`} /></div>
 				<div className={st.buttons + ' notForPrint'}><button className={st.diceRoll} onClick={toggleRollPopup.bind(null, move.name, purchaseDetails?.points)}><img src={icoDice} alt="Roll this Move" /></button></div>
 				<div className={st.description}>{ move.type !== "Move" && <span className={st.type}>{move.type}</span>} {move.description}</div>

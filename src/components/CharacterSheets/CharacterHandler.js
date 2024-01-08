@@ -13,11 +13,11 @@ export class CharacterObject {
 		"sessions": 0,
 		"race": "Human",
 		"movesq": 5,
-		"racial_modifiers": [
-			/*"Breathing",
-			"Listening",
-			"Eating"*/
-		],
+		"racial_modifiers": {
+			"primary": "",
+			"secondary": "",
+			"stature": ""
+		},
 		"buffs": [
 			//{ "effect": "STR Moves +2", "source": "Belt" }
 		],
@@ -41,6 +41,7 @@ export class CharacterObject {
 		"weapon_specialisations": [],
 		"armours": [ { "name": "None", "block": 3, "dodge": 3, "disadvantages": "" } ],
 		"weapons": [],
+		"spells": [],
 		"inventory": [],
 		"notes": []
 	}
@@ -235,10 +236,9 @@ export class CharacterObject {
 		return false;
 	}
 
-	getMovePurchase(moveName) {
-		if (this.characterData.purchases.moves) {
-			const moveKey = prepareName(moveName);
-			return this.characterData.purchases.moves[moveKey];
-		} else return {};
+	getMovePurchase(moveID) {
+		if (this.characterData.purchases.moves && this.characterData.purchases.moves[moveID]) {
+			return this.characterData.purchases.moves[moveID];
+		} else return { points: 0 };
 	}
 }

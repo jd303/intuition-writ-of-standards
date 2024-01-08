@@ -9,7 +9,7 @@ export function Dropdown( { source, onChange, val, noDefault = false }) {
 		else return "";
 	}
 	const prepareDisplay = (item) => {
-		if (item.name) return item.name + ': ' + item.value;
+		if (item.name) return item.name + ': ' + (item.value || item.description);
 		else return item;
 	}
 

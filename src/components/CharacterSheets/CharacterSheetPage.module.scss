@@ -203,6 +203,7 @@ section {
 			display: grid;
 			grid-template-rows: 30px auto;
 			gap: 5px;
+			align-items: start;
 
 			.standardFlex {
 				box-sizing:border-box;
@@ -361,6 +362,11 @@ section {
 				--resistancetable-width: 100%;
 			}
 
+			.armourTable {
+				display: flex;
+				flex-direction: column;
+			}
+
 			.armourHeader,
 			.armourItem {
 				display: grid;
@@ -374,24 +380,16 @@ section {
 			}
 
 			.resistanceTable {
-				--display: grid;
-
-				@media (max-width: 600px) {
-					--display: flex;
-				}
-
-				display: var(--display);
-				grid-template-columns: auto 1fr;
-				flex-direction: column;
-				gap: calc(1.25 * var(--padding-standard));
+				display: flex;
+				flex-wrap: wrap;
+				gap: var(--padding-standard);
 				flex-grow: 1;
 				width: var(--resistancetable-width);
 				align-items: start;
 				justify-items: start;
 
 				.headName {
-					grid-row: 1;
-					grid-column: 1 / 3;
+					flex-basis: 100%;
 				}
 
 				.values {
@@ -399,14 +397,15 @@ section {
 				}
 
 				.table1,
-				.table2 {
-					--column1-width: 130px;
+				.table2,
+				.table3 {
+					--column1-width: 125px;
 
 					display: grid;
 					grid-template-columns: var(--column1-width) auto;
 					gap: calc(0.5 * var(--padding-standard));
 					justify-content: space-between;
-					min-width: 200px;
+					min-width: 172px;
 					max-width: 215px;
 
 					.tableHeader {
@@ -564,6 +563,10 @@ section {
 			display: flex;
 			flex-direction: column;
 			gap: calc(0.5 * var(--padding-standard));
+
+			&.hidden {
+				display: none;
+			}
 		}
 	}
 
@@ -636,7 +639,7 @@ section {
 
 		display: grid;
 		gap: calc(0.25 * var(--padding-standard));
-		align-items: center;
+		align-items: start;
 		padding: var(--padding-standard);
 		background-color: #FFFFFD;
 		box-sizing: border-box;
@@ -675,6 +678,10 @@ section {
 
 	column-count: 2;
 	column-gap: var(--column-gap);
+
+	&:not(:last-child) {
+		margin-bottom: var(--padding-standard);
+	}
 }
 
 .controlBar {
