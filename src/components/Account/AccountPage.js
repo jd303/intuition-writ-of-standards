@@ -11,6 +11,8 @@ function AccountPage() {
 	const navigate = useNavigate();
 	const navigateToCharacters = () => navigate('/characters');
 
+	const [loginError, setLoginError] = useState(null);
+	const [registerError, setRegisterError] = useState(null);
 	const [loggedIn, setLoggedIn] = useState(null);
 	const [loggedInUserEmail, setLoggedInUserEmail] = useState(null);
 	const [loginEmailInput, setLoginEmailInput] = useState('joelmdawson@gmail.com');
@@ -37,22 +39,8 @@ function AccountPage() {
 	}, []);
 
 	const login = () => {
+		setLoginError('');
 		const auth = getAuth();
-		/*setPersistence(auth, browserLocalPersistence)
-		.then(() => {
-			signInWithEmailAndPassword(auth, loginEmailInput, loginPasswordInput)
-			.then((userCredential) => {
-				// Signed in 
-				const user = userCredential.user;
-				console.log("LOGGED IN", user);
-				// ...
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				console.log("ERRROR DURING LOGGED IN", error);
-			});
-		});*/
 
 		signInWithEmailAndPassword(auth, loginEmailInput, loginPasswordInput)
 		.then((userCredential) => {
@@ -64,7 +52,7 @@ function AccountPage() {
 		.catch((error) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
-			console.log("ERRROR DURING LOGGED IN", error);
+			setLoginError(errorMessage);
 		});
 	}
 
@@ -72,25 +60,23 @@ function AccountPage() {
 		const auth = getAuth();
 		auth.signOut().then(() => {
 		})
-		.catch((error) => {
-			console.log("Sign out Error", error);
-		});
+		.catch((error) => {});
 	}
 
-	const createUser = (email, password) => {
-		console.log("Creating User");
+	const createUser = () => {
+		setRegisterError('');
 		const auth = getAuth();
         createUserWithEmailAndPassword(auth, registerEmailInput, registerPasswordInput)
         .then((userCredential) => {
-            const user = userCredential.user;
-            const uid = user.uid;
-            
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+			const user = userCredential.user;
+			const uid = user.uid;
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
 			console.log(errorMessage);
-          });
+			setRegisterError(errorMessage);
+		});
     }
 
 	// JSX
@@ -113,10 +99,12 @@ function AccountPage() {
 						<input type="text" name="email" placeholder="Email" value={loginEmailInput} onChange={onChangeLoginEmail} />
 						<input type="password" name="password" placeholder="Password" value={loginPasswordInput} onChange={onChangeLoginPassword} />
 						<button  className="slimButton"type="button" onClick={login}>Login</button>
+						<div className={styles.error}>{loginError}</div>
 						<h2>Register</h2>
 						<input type="text" name="email" placeholder="Email" value={registerEmailInput} onChange={onChangeRegisterEmail} />
 						<input type="password" name="password" placeholder="Password" value={registerPasswordInput} onChange={onChangeRegisterPassword} />
 						<button className="slimButton" type="button" onClick={createUser}>Register</button>
+						<div className={styles.error}>{registerError}</div>
 					</div>
 				) }
 			</div>

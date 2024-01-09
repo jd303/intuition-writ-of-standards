@@ -32,7 +32,7 @@ function GlossaryPage() {
 							<li>Psi Based Damage: Equal to 1 plus your WIS bonus, plus any buffs you have to Psi Base Damage.</li>
 						</ul>
 					</li>
-					<li><span className={styles.termName}>Bonus Damage Dice</span>: Some Moves allow you to roll an additional dice for damage.  When you are asked to, roll this dice and add it to your Base Damage.  Characters start with a bonus dice of d4.  Each time your Bonus Damage Dice improves a rank, it improves by a single class, incrementing the size of the dice (e.g. d6, d8, d10, etc).  The maximum Bonus Damage Dice is d12.</li>
+					<li><span className={styles.termName}>Bonus Damage Dice</span>: Some Moves allow you to roll an additional dice for damage.  When you are asked to, roll this dice and add it to your Base Damage.  Characters start with a bonus dice of d4.  Each time your Bonus Damage Dice improves a rank, it improves by a single class, incrementing the size of the dice, to the values: d6, d8, d10, 2d6, 2d8, 2d10.</li>
 					<li><span className={styles.termName}>UDR</span>: Universal Damage Resistance, a reduction to any kind of damage that you take.</li>
 					<li><span className={styles.termName}>PDR</span>: Physical Damage Resistance, a reduction to physical damage that you take.</li>
 					<li><span className={styles.termName}>MDR</span>: Magical Damage Resistance, a reduction to magial damage that you take.</li>

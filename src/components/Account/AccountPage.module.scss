@@ -19,4 +19,9 @@
 		border-radius: var(--border-radius-standard);
 		outline: none;
 	}
+
+	.error {
+		color: red;
+		margin-top: var(--padding-standard);
+	}
 }
