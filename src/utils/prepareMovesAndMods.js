@@ -60,6 +60,7 @@ function createMove(move) {
 
 function createMod(mod) {
 	return {
+		"id": mod.id,
 		"name": mod.name,
 		"type": mod.type,
 		"stamina": mod.stamina,

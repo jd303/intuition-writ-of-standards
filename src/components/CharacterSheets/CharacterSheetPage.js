@@ -19,6 +19,7 @@ import { selectStatusData } from "../../features/firebase/statusDataSlice";
 import { selectSpellsData } from "../../features/firebase/spellsDataSlice";
 import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
 import { selectRacialBonusData } from "../../features/firebase/racialBonusDataSlice";
+import { selectWeaponSpecialisationData } from "../../features/firebase/weaponSpecialisationDataSlice";
 import { useAuthState } from "../../firebase";
 import { Navigate } from "react-router-dom";
 import RollingPopup from "./RollingPopup";
@@ -41,6 +42,7 @@ import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
 
 import st from './CharacterSheetPage.module.scss';
+import { selectLanguageData } from "../../features/firebase/languageDataSlice";
 
 export const CharacterContext = createContext();
 
@@ -56,9 +58,11 @@ function CharacterSheetPage() {
 	const status_data = useSelector(selectStatusData);
 	const spells_data = useSelector(selectSpellsData);
 	const racial_bonus_data = useSelector(selectRacialBonusData);
+	const languages_data = useSelector(selectLanguageData);
+	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
 	console.log("CHARS", charactersData);
-	console.log("TODO: repair purchases by comparing to data, in case I delete one, plus utilise the new id field");
+	console.log("TODO: repair purchases by comparing to data, in case I delete one.");
 
 	// Moves Data
 	let movesAndMods = {};
@@ -88,7 +92,6 @@ function CharacterSheetPage() {
 	const bonusDice = [ "d4", "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
 	const sources = [ "Summer", "Autumn", "Winter", "Spring" ];
 	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
-	const weapon_specialisations = [ { "name": "Swords", "value": "Does thing" } ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Rolling Popup
@@ -233,6 +236,59 @@ function CharacterSheetPage() {
 	const saveCharacter = () => {
 		charactersData = charactersData.map(char => char.id == theCharacter.characterData.id && theCharacter.characterData || char);
 		writeDataForCurrentUser(charactersData);
+
+		// Also create local backups
+		let backups = localStorage.getItem('characterbackups');
+		if (!backups) backups = { 'date': new Date().getTime(), 'bak1': charactersData, 'bak2': '', 'bak3': '', 'bak4': '' };
+		else backups = JSON.parse(backups);
+
+		const now = new Date().getTime();
+		const day = 24*60*60*1000;
+		if (now - backups['date'] > day) {
+			backups['bak4'] = backups['bak3'];
+			backups['bak3'] = backups['bak2'];
+			backups['bak2'] = backups['bak1'];
+			backups['bak1'] = charactersData;
+			backups['date'] = new Date().getTime();
+		}
+
+		localStorage.setItem('characterbackups', JSON.stringify(backups));
+	}
+
+	const copyCharacterBackupsToClipboard = () => {
+		let textarea;
+		let result;
+		const string = localStorage.getItem('characterbackups');
+
+		try {
+			textarea = document.createElement('textarea');
+			textarea.setAttribute('readonly', true);
+			textarea.setAttribute('contenteditable', true);
+			textarea.style.position = 'fixed'; // prevent scroll from jumping to the bottom when focus is set.
+			textarea.value = string;
+
+			document.body.appendChild(textarea);
+
+			textarea.focus();
+			textarea.select();
+
+			const range = document.createRange();
+			range.selectNodeContents(textarea);
+
+			const sel = window.getSelection();
+			sel.removeAllRanges();
+			sel.addRange(range);
+
+			textarea.setSelectionRange(0, textarea.value.length);
+			result = document.execCommand('copy');
+		} catch (err) {
+			console.error(err);
+			result = null;
+		} finally {
+			document.body.removeChild(textarea);
+		}
+
+		return true;
 	}
 
 	// JSX
@@ -254,17 +310,24 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.standardFlex}>
 								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} />
-								<div className={st.headingSmall}>Bonus </div> <InputBox val={theCharacter.characterData.purchases.bonusPoints} onUpdate={(value) => updateValueFromInput('bonusPoints', value, true)} type="number" />
+								<div className={st.headingSmall}>Bonus </div> <InputBox val={theCharacter.characterData.bonusPoints} onUpdate={(value) => updateValueFromInput('bonusPoints', value, true)} type="number" />
 								<div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
-							<div className={st.racialModifiers}>
-								<div className={st.headingMedium}>Racial Modifiers</div>
-								<Dropdown source={racial_bonus_data.filter(i => i.type == "primary")} noDefault={true} val={theCharacter.characterData.racial_modifiers.primary} onChange={(value) => updateValueFromInput('racial_modifiers.primary', value, true)} />
-								<Dropdown source={racial_bonus_data.filter(i => i.type == "secondary")} noDefault={true} val={theCharacter.characterData.racial_modifiers.secondary} onChange={(value) => updateValueFromInput('racial_modifiers.secondary', value, true)} />
-								<Dropdown source={racial_bonus_data.filter(i => i.type == "stature")} noDefault={true} val={theCharacter.characterData.racial_modifiers.stature} onChange={(value) => updateValueFromInput('racial_modifiers.stature', value, true)} />
-							</div>
+						</div>
+						<div className={st.racialModifiers}>
+							<div className={st.headingMedium}>Racial Modifiers</div>
+							<Dropdown source={racial_bonus_data.filter(i => i.type == "primary")} val={theCharacter.characterData.racial_modifiers.primary} onChange={(value) => updateValueFromInput('racial_modifiers.primary', value, true)} />
+							<Dropdown source={racial_bonus_data.filter(i => i.type == "secondary")} val={theCharacter.characterData.racial_modifiers.secondary} onChange={(value) => updateValueFromInput('racial_modifiers.secondary', value, true)} />
+							<Dropdown source={racial_bonus_data.filter(i => i.type == "stature")} val={theCharacter.characterData.racial_modifiers.stature} onChange={(value) => updateValueFromInput('racial_modifiers.stature', value, true)} />
+						</div>
+						<div className={st.knownLanguages}>
+							<div className={st.headingMedium}>Known Languages <PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.known_languages} purchaseKey='known_languages' clickCallback={adjustPoints} /></div>
+							<InputBox val="Common" disabled={true} />
+							{Array.from(Array(theCharacter.characterData.purchases.known_languages)).map((i, index) => (
+								<Dropdown key={index} source={languages_data} val={theCharacter.characterData.known_languages[0]} onChange={(value) => updateValueFromInput(`known_languages[${0}]`, value, true)} />
+							))}
 						</div>
 					</div>
 				</section>
@@ -274,19 +337,19 @@ function CharacterSheetPage() {
 					<div  className={st.collapsable + ' ' + st.abilitiesLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.stats + ' ' + st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 18 points)</div></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 20 points)</div></div>
 								<div className={st.list}>
 									{stats.map((stat, index) => (
 										<div className={st.stat} key={index}>
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={7} columns={7} automaticPurchases={1} purchased={theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
+												<PurchaseablePointGroup count={6} columns={6} automaticPurchases={1} purchased={theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
 											</div>
 										</div>
 									))}
 									<div className={st.statLabels}>
-										<div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+										<div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
 									</div>
 								</div>
 							</div>
@@ -412,7 +475,7 @@ function CharacterSheetPage() {
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
 						<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
-								<div className={st.weaponsHeader}><div className={st.headingMedium + ' ' + st.headName}>Weapons</div> <div className={st.fonted + ' ' + st.headLabel}>Base</div> <div className={st.fonted + ' ' + st.headLabel}>Abilities</div></div>
+								<div className={st.weaponsHeader}><div className={st.headingMedium + ' ' + st.headName}>Weapons</div> <div className={st.fonted + ' ' + st.headLabel}>Dam</div> <div className={st.fonted + ' ' + st.headLabel}>Abilities</div></div>
 								{Array.from(Array(3)).map((i, index) => (
 									<div className={st.weaponFields} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
@@ -427,7 +490,7 @@ function CharacterSheetPage() {
 									<div className={st.headingSmall}>Melee</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.melee} onChange={(value) => updateValueFromInput('bonus_damage.melee', value, true)} />
 								</div>
 								<div className={st.standardFlex}>
-								<div className={st.headingSmall}>Melee</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.ranged} onChange={(value) => updateValueFromInput('bonus_damage.ranged', value, true)} />
+								<div className={st.headingSmall}>Ranged</div> <Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage.ranged} onChange={(value) => updateValueFromInput('bonus_damage.ranged', value, true)} />
 								</div>
 							</div>
 							<div className={st.sectionMetaInner + ' ' + st.weaponSpecialisations}>
@@ -572,6 +635,7 @@ function CharacterSheetPage() {
 				<h3>Points:</h3>
 				<button onClick={toggleLevelUpMode} className={levelUpMode ? st.active : ''} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend ({availablePoints})</button>
 				<button onClick={toggleLeveDownMode} className={levelDownMode ? st.active : ''} style={{ display: availablePoints != maxPoints && 'block' || 'none' }}>Remove</button>
+				<button onClick={copyCharacterBackupsToClipboard}>&copy; BAKs</button>
 			</nav>
 			<Footer />
 		</CharacterContext.Provider>

@@ -8,7 +8,6 @@ export const racialBonusDataSlice = createSlice({
 	reducers: {
 		updateRacialBonusData: (state, data) => {
 			if (data.payload.data == null) data.payload.data = [];
-			console.log(data.payload.data);
 
 			// Return
 			state.value = data.payload.data;

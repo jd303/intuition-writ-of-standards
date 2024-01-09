@@ -8,6 +8,8 @@ import potionsDataReducer from "../features/firebase/potionsDataSlice";
 import animalCompanionsDataReducer from "../features/firebase/animalCompanionsDataSlice";
 import charactersData from "../features/firebase/charactersDataSlice";
 import racialBonusData from "../features/firebase/racialBonusDataSlice";
+import languageData from "../features/firebase/languageDataSlice";
+import weaponSpecialisationData from "../features/firebase/weaponSpecialisationDataSlice";
 
 export default configureStore({
 	reducer: {
@@ -19,6 +21,8 @@ export default configureStore({
 		potionsData: potionsDataReducer,
 		animalCompanionsData: animalCompanionsDataReducer,
 		charactersData: charactersData,
-		racialBonusData: racialBonusData
+		racialBonusData: racialBonusData,
+		languageData: languageData,
+		weaponSpecialisationData: weaponSpecialisationData
 	},
 });

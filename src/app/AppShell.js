@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
-import { app, AuthContextProvider, useAuthState } from '../firebase';
+import { app, AuthContextProvider } from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
-import { updateDataStandardsData, selectDataStandardsData } from "../features/firebase/dataStandardsDataSlice";
+import { useDispatch } from "react-redux";
+import { updateDataStandardsData } from "../features/firebase/dataStandardsDataSlice";
 import { updateMovesData } from "../features/firebase/movesDataSlice";
 import { updateStatusData } from "../features/firebase/statusDataSlice";
 import { updateSpellsData } from "../features/firebase/spellsDataSlice";
@@ -12,6 +12,8 @@ import { updatePotionsData } from "../features/firebase/potionsDataSlice";
 import { updateAnimalCompanionsData } from "../features/firebase/animalCompanionsDataSlice";
 import { updateCharactersData } from "../features/firebase/charactersDataSlice";
 import { updateRacialBonusData } from "../features/firebase/racialBonusDataSlice";
+import { updateLanguageData } from "../features/firebase/languageDataSlice";
+import { updateWeaponSpecialisationData } from "../features/firebase/weaponSpecialisationDataSlice";
 
 export const AppShell = function ({ children }) {
 
@@ -66,11 +68,25 @@ export const AppShell = function ({ children }) {
 				dispatch(updateAnimalCompanionsData({ data: data, standards: standards }));
 			});
 
-			// Collect animal companions data
+			// Collect racial modifiers data
 			const racialBonusRef = ref(database, '/racial_bonuses');
 			onValue(racialBonusRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateRacialBonusData({ data: data }));
+			});
+
+			// Collect languages data
+			const languagesRef = ref(database, '/languages');
+			onValue(languagesRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateLanguageData({ data: data }));
+			});
+
+			// Collect weapon specialisation data
+			const weaponSpecialisationRef = ref(database, '/weapon_specialisations');
+			onValue(weaponSpecialisationRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateWeaponSpecialisationData({ data: data }));
 			});
 		}
 

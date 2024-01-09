@@ -69,7 +69,7 @@ export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseD
 					{purchasedMods.length > 0 && ( <>
 						<div className={st.mods + ' notForPrint'}>
 							{purchasedMods.map((mod, index) => (
-								<Mod key={index} mod={mod} moveName={move.name} clickCallback={clickCallback} purchased={true} />
+								<Mod key={index} mod={mod} moveID={move.id} clickCallback={clickCallback} purchased={true} />
 							))}
 						</div>
 					</> )}
@@ -77,7 +77,7 @@ export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseD
 						<div className={st.headingMedium + ' ' + st.unpurchasedExpander} onClick={toggleUnpurchasedVisible}>Unpurchased Mods</div>
 						<div className={st.unpurchasedMods + ' notForPrint ' + (unpurchasedVisible && st.visible || '')}>
 							{unpurchasedMods.map((mod, index) => (
-								<Mod key={index} mod={mod} moveName={move.name} clickCallback={clickCallback} purchased={false} />
+								<Mod key={index} mod={mod} moveID={move.id} clickCallback={clickCallback} purchased={false} />
 							))}
 						</div>
 					</> )}

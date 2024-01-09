@@ -39,7 +39,7 @@ function RollingPopup( { rollMoveNameProp = "", rollBonusProp = 0, showPopupProp
 		switch (rollMoveNameProp) {
 			case "Block":
 			case "Dodge":
-				setMoveNote("Note: The Block and Dodge Move have maximum bonuses, set by Armour and Shields.  Please manually adjust the Total if the stated Bonus exceeds your Maximum Bonus.");
+				setMoveNote("Note: The Block and Dodge Move have a maximum Bonus, modified by Racial Stature and your worn Armour and Shields.  Please manually adjust the Total if the stated Bonus exceeds your Maximum Bonus.");
 			break;
 			default:
 				setMoveNote('');

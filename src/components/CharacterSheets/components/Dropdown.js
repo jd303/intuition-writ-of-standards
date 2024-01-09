@@ -9,8 +9,12 @@ export function Dropdown( { source, onChange, val, noDefault = false }) {
 		else return "";
 	}
 	const prepareDisplay = (item) => {
-		if (item.name) return item.name + ': ' + (item.value || item.description);
-		else return item;
+		let response;
+		if (item.name) response = item.name;
+		else response = item;
+		if (item.value || item.description) response += ': ' + (item.value || item.description);
+
+		return response;
 	}
 
 	let extractedValue = prepareValue(val);
@@ -27,10 +31,10 @@ export function Dropdown( { source, onChange, val, noDefault = false }) {
 
 	return (
 		<React.Fragment>
-			<select onChange={updateValue} className={st.el} value={value}>
+			<select onChange={updateValue} className={st.el} value={val}>
 				{!noDefault && <option key="option-default" value=""></option>}
 				{source.map((i, index) => (
-					<option key={`option-${index}`} value={i.name}>{prepareDisplay(i)}</option>
+					<option key={`option-${index}`} value={i.id}>{prepareDisplay(i)}</option>
 				))}
 			</select>
 		</React.Fragment>

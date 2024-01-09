@@ -28,6 +28,14 @@
 			".read": true,
 			".write": false
 		},
+		"languages": {
+			".read": true,
+			".write": false
+		},
+		"weapon_specialisations": {
+			".read": true,
+			".write": false
+		},
 		"characters": {
 			"$uid": {
 				".read": "$uid === auth.uid",

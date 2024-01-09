@@ -7,8 +7,7 @@ import icoQuickActive from "../../../assets/images/icons/ico.quick.active.svg";
 import icoQuickUnactive from "../../../assets/images/icons/ico.quick.unactive.svg";
 import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 
-export function Mod( { mod, moveName, clickCallback, purchased }) {
-
+export function Mod( { mod, moveID, clickCallback, purchased }) {
 	const [descriptionVisible, setDesciptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
 		setDesciptionVisible(!descriptionVisible);
@@ -26,7 +25,7 @@ export function Mod( { mod, moveName, clickCallback, purchased }) {
 
 	return (
 		<div className={st.el}>
-			{getStaminaIcon(mod)} {getQuickIcon(mod)} <PurchaseablePointGroup count={1} columns={1} purchased={purchased && 1 || 0} clickCallback={clickCallback} purchaseKey={`mod.${moveName}.${mod.name}`} />  <div className={st.name} onClick={toggleDescriptionVisible}>{mod.name} {mod.type == "Passive" && <>Passive</>}</div>
+			{getStaminaIcon(mod)} {getQuickIcon(mod)} <PurchaseablePointGroup count={1} columns={1} purchased={purchased && 1 || 0} clickCallback={clickCallback} purchaseKey={`mod.${moveID}.${mod.id}`} />  <div className={st.name} onClick={toggleDescriptionVisible}>{mod.name} {mod.type == "Passive" && <>Passive</>}</div>
 			<div className={st.description + ' ' + (descriptionVisible && st.visible || '')}>{mod.description}</div>
 		</div>
 	);
@@ -34,7 +33,7 @@ export function Mod( { mod, moveName, clickCallback, purchased }) {
 
 Mod.propTypes = {
 	mod: PropTypes.object.isRequired,
-	moveName: PropTypes.string,
+	moveID: PropTypes.string,
 	clickCallback: PropTypes.func.isRequired,
 	purchased: PropTypes.bool.isRequired,
 };

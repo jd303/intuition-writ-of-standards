@@ -24,13 +24,14 @@ export class CharacterObject {
 		"statuses": {
 			//"Paralyzed"
 		},
+		"known_languages": [],
 		"bonusPoints": 0,
 		"current_verve": this.baseVerve,
 		"bonus_verve": 0,
 		"current_mana": this.baseMana,
 		"bonus_mana": 0,
 		"current_psi": this.basePsi,
-		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
+		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
 		"source": "",
 		"magical_synergy": {
 			"slot1": '',
@@ -62,7 +63,6 @@ export class CharacterObject {
 	}
 
 	adjustPoint(adding, type, moveOrKeyName, modName) {
-		console.log(adding, type, moveOrKeyName, modName);
 		let moveKey = prepareName(moveOrKeyName);
 		let modKey = prepareName(modName);
 		let validAdjustment = false;
@@ -73,7 +73,7 @@ export class CharacterObject {
 		switch (type) {
 			case "ability":
 				if (adding) {
-					if (this.characterData.purchases.abilities[moveOrKeyName] < 6) {
+					if (this.characterData.purchases.abilities[moveOrKeyName] < 5) {
 						this.characterData.purchases.abilities[moveOrKeyName] += 1;
 						validAdjustment = true;
 					}
@@ -209,6 +209,20 @@ export class CharacterObject {
 				} else if (!adding) {
 					if (this.characterData.purchases.weapon_specialisations > 0) {
 						this.characterData.purchases.weapon_specialisations -= 1;
+						validAdjustment = true;
+					}
+				}
+			break;
+				
+			case "known_languages":
+				if (adding) {
+					if (this.characterData.purchases.known_languages < 3) {
+						this.characterData.purchases.known_languages += 1;
+						validAdjustment = true;
+					}
+				} else if (!adding) {
+					if (this.characterData.purchases.known_languages > 0) {
+						this.characterData.purchases.known_languages -= 1;
 						validAdjustment = true;
 					}
 				}
