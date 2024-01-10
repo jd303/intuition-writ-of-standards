@@ -25,7 +25,7 @@ export function Mod( { mod, moveID, clickCallback, purchased }) {
 
 	return (
 		<div className={st.el}>
-			{getStaminaIcon(mod)} {getQuickIcon(mod)} <PurchaseablePointGroup count={1} columns={1} purchased={purchased && 1 || 0} clickCallback={clickCallback} purchaseKey={`mod.${moveID}.${mod.id}`} />  <div className={st.name} onClick={toggleDescriptionVisible}>{mod.name} {mod.type == "Passive" && <>Passive</>}</div>
+			{getStaminaIcon(mod)} {getQuickIcon(mod)} <PurchaseablePointGroup count={1} columns={1} purchased={purchased && 1 || 0} clickCallback={clickCallback} purchaseKey={`mod.${moveID}.${mod.id}`} />  <div className={st.name} onClick={toggleDescriptionVisible}>{mod.name} {mod.type == "Passive" && <div className={st.passive}>(Passive)</div>}</div>
 			<div className={st.description + ' ' + (descriptionVisible && st.visible || '')}>{mod.description}</div>
 		</div>
 	);

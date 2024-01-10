@@ -52,6 +52,7 @@ export class CharacterObject {
 	constructor(characterData) {
 		if (characterData) this.characterData = { ...this.characterTemplate, ...characterData };
 		else this.characterData = this.characterTemplate;
+		this.characterData.updated = new Date().getTime();
 	}
 
 	getAvailablePoints() {

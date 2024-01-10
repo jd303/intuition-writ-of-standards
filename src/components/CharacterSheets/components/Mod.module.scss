@@ -23,6 +23,12 @@
 		}
 	}
 
+	.passive {
+		display: inline-block;
+		font-style: italic;
+		color: #777;
+	}
+
 	.description {
 		grid-row: 2;
 		grid-column: 1 / 5;

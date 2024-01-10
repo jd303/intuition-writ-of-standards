@@ -68,22 +68,26 @@ function CharacterSheetPage() {
 	let movesAndMods = {};
 	movesAndMods = prepareMovesAndMods(moves_and_mods);
 
-	const getUntrainedMoves = () => {
+	const getCommonMoves = () => {
 		let response = [];
 		if (movesAndMods['athletics']) response = response.concat(movesAndMods['athletics'].moves);
 		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
 		if (movesAndMods['perception']) response = response.concat(movesAndMods['perception'].moves);
+		return response;
+	}
+	const getAdvancedMoves = () => {
+		let response = [];
 		if (movesAndMods['knowledge']) response = response.concat(movesAndMods['knowledge'].moves);
 		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
 		if (movesAndMods['deception']) response = response.concat(movesAndMods['deception'].moves);
 		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
 		return response;
 	}
-	const getTrainedMoves = () => {
+
+	const getMasterMoves = () => {
 		let response = [];
 		if (movesAndMods['engineering']) response = response.concat(movesAndMods['engineering'].moves);
 		if (movesAndMods['alchemy']) response = response.concat(movesAndMods['alchemy'].moves);
-		if (movesAndMods['inner_power']) response = response.concat(movesAndMods['inner_power'].moves);
 		return response;
 	}
 
@@ -106,7 +110,7 @@ function CharacterSheetPage() {
 	const closeRollPopup = () => { setRollPopupShowing(false); }
 
 	// Section Expanders
-	const sections = ['Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Psionics', 'Notes', 'Inventory'];
+	const sections = ['Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Inner Power', 'Psionics', 'Notes', 'Inventory'];
 	const sectionRefs = {};
 	sections.forEach(section => sectionRefs[section] = useRef(null));
 	const toggleSection = (e) => {
@@ -234,18 +238,19 @@ function CharacterSheetPage() {
 
 	// Save the characters
 	const saveCharacter = () => {
+		// Prepare Characters
 		charactersData = charactersData.map(char => char.id == theCharacter.characterData.id && theCharacter.characterData || char);
+
 		writeDataForCurrentUser(charactersData);
 
 		// Also create local backups
 		let backups = localStorage.getItem('characterbackups');
-		if (!backups) backups = { 'date': new Date().getTime(), 'bak1': charactersData, 'bak2': '', 'bak3': '', 'bak4': '' };
+		if (!backups) backups = { 'date': new Date().getTime(), 'bak1': charactersData, 'bak2': '', 'bak3': '' };
 		else backups = JSON.parse(backups);
 
 		const now = new Date().getTime();
 		const day = 24*60*60*1000;
 		if (now - backups['date'] > day) {
-			backups['bak4'] = backups['bak3'];
 			backups['bak3'] = backups['bak2'];
 			backups['bak2'] = backups['bak1'];
 			backups['bak1'] = charactersData;
@@ -518,18 +523,40 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Moves']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Moves</div></div>
 					<div className={st.collapsable + ' ' + st.movesLayout}>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Untrained Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Common Moves</div>
 						<div className={st.moveList}>
 						{
-							getUntrainedMoves().map((move, index) => (
+							getCommonMoves().map((move, index) => (
 								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Trained Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Advanced Moves</div>
 						<div className={st.moveList}>
 						{
-							getTrainedMoves().map((move, index) => (
+							getAdvancedMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+							))
+						}
+						</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Master Moves</div>
+						<div className={st.moveList}>
+						{
+							getMasterMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+							))
+						}
+						</div>
+					</div>
+				</section>
+
+				<section ref={sectionRefs['Inner Power']} className={st.open}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
+					<div className={st.collapsable + ' ' + st.psionicsLayout}>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.moveList}>
+						{
+							movesAndMods['inner_power']?.moves?.map((move, index) => (
 								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
