@@ -40,6 +40,7 @@ import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
 import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
+import icoP from '../../assets/images/icons/ico.p.svg';
 
 import st from './CharacterSheetPage.module.scss';
 import { selectLanguageData } from "../../features/firebase/languageDataSlice";
@@ -121,6 +122,18 @@ function CharacterSheetPage() {
 		if (source.tagName == "SECTION") return source;
 		else if (source.parentElement) return getSectionParent(source.parentElement);
 		else return null;
+	}
+
+	// Section Printables
+	const [printableSections, setPrintableSections] = useState({ combat: true, magic: true, inner_power: true, psionics: true, notes: true, inventory: true });
+	const togglePrintable = (type) => {
+		const printables = { ...printableSections };
+		printables[type] = !printables[type];
+		setPrintableSections(printables);
+	}
+	const getPrintable = (type) => {
+		if (!printableSections[type]) return ' notForPrint';
+		else return '';
 	}
 
 	// Bottom Menu Options
@@ -308,18 +321,22 @@ function CharacterSheetPage() {
 						<img className={st.profileImage} src={GenericProfile} alt="Character Image" />
 						<div className={st.about}>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Name</div> <InputBox val={theCharacter.characterData.name} onUpdate={(value) => updateValueFromInput('name', value)} />
+								<div className={st.headingMedium}>Name</div>
+								<InputBox val={theCharacter.characterData.name} onUpdate={(value) => updateValueFromInput('name', value)} />
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Sessions</div> <InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={(value) => updateValueFromInput('sessions', value, true)} />
+								<div className={st.headingMedium}>Sessions</div>
+								<InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={(value) => updateValueFromInput('sessions', value, true)} />
+								<div className={st.sessionPoints + ' ' + st.littleNote}>{1 + Math.ceil(theCharacter.characterData.sessions / 8)} Max Move Points</div>
 							</div>
 							<div className={st.standardFlex}>
-								<div className={st.headingMedium}>Points</div> <InputBox val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} />
+								<div className={st.headingMedium}>Points</div> <InputBox className="notForPrint" val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} /> <InputBox className="forPrint" />
 								<div className={st.headingSmall}>Bonus </div> <InputBox val={theCharacter.characterData.bonusPoints} onUpdate={(value) => updateValueFromInput('bonusPoints', value, true)} type="number" />
 								<div className={st.sessionPoints + ' ' + st.littleNote}>{theCharacter.baseCharacterPoints} + num sessions</div>
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><Dropdown source={sources} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} /></div>
 						</div>
 						<div className={st.racialModifiers}>
 							<div className={st.headingMedium}>Racial Modifiers</div>
@@ -383,7 +400,7 @@ function CharacterSheetPage() {
 									<div className={st.totalAndCurrent}>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Bonus</div> <InputBox val={theCharacter.characterData.bonus_verve} onUpdate={(value) => updateValueFromInput(`bonus_verve`, value)} type="number" /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * 3} disabled={true} /></div>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox className="notForPrint" val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /><InputBox className="forPrint" /></div>
 									</div>
 								</div>
 								<div className={st.stamina}>
@@ -475,12 +492,16 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Combat']} className={st.open}>
+				<section ref={sectionRefs['Combat']} className={st.open + getPrintable('combat')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</div></div>
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
-						<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
-								<div className={st.weaponsHeader}><div className={st.headingMedium + ' ' + st.headName}>Weapons</div> <div className={st.fonted + ' ' + st.headLabel}>Dam</div> <div className={st.fonted + ' ' + st.headLabel}>Abilities</div></div>
+							<div className={st.sectionMetaInner + ' ' + st.weaponTable}>
+								<div className={st.weaponsHeader}>
+									<div className={st.headingMedium + ' ' + st.headName}>Weapons</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Dam</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Abilities</div>
+								</div>
 								{Array.from(Array(3)).map((i, index) => (
 									<div className={st.weaponFields} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
@@ -502,11 +523,18 @@ function CharacterSheetPage() {
 								<div className={st.weaponsHeader}>
 									<div className={st.headingMedium + ' ' + st.headName}>Specialisations <PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.weapon_specialisations} purchaseKey='weapon_specialisations' clickCallback={adjustPoints}  /></div>
 								</div>
-								{Array.from(Array(Math.min(theCharacter.characterData.purchases.weapon_specialisations, theCharacter.characterData.weapon_specialisations.length + 1))).map((i, index) => (
-									<div className={st.weaponFields} key={index}>
-										<Dropdown source={weapon_specialisations} val={theCharacter.characterData.weapon_specialisations[index]} onChange={(value) => updateValueFromInput(`weapon_specialisations[${index}]`, value, true)} />
-									</div>
-								))}
+								<div className="notForPrint">
+									{Array.from(Array(Math.min(theCharacter.characterData.purchases.weapon_specialisations, theCharacter.characterData.weapon_specialisations.length + 1))).map((i, index) => (
+										<div className={st.weaponFields} key={index}>
+											<Dropdown source={weapon_specialisations} val={theCharacter.characterData.weapon_specialisations[index]} onChange={(value) => updateValueFromInput(`weapon_specialisations[${index}]`, value, true)} />
+										</div>
+									))}
+								</div>
+								<div className="forPrint">
+									<InputBox />
+									<InputBox />
+									<InputBox />
+								</div>
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
@@ -550,7 +578,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Inner Power']} className={st.open}>
+				<section ref={sectionRefs['Inner Power']} className={st.open + getPrintable('inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
 					<div className={st.collapsable + ' ' + st.psionicsLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
@@ -564,17 +592,11 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Magic']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoMagic} alt="" /> Magic</div></div>
+				<section ref={sectionRefs['Magic']} className={st.open + getPrintable('magic')}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoMagic} alt="" /> Magic </div></div>
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
 							<div className={st.sectionMetaInner}>
-								<div className={st.standardFlex + ' ' + st.magicFlex}>
-									<div className={st.headingMedium}>
-										<PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'source'} clickCallback={adjustPoints} /> Source 
-									</div>
-									<Dropdown source={sources} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} />
-								</div>
 								<div className={st.standardFlex + ' ' + st.magicFlex}>
 									<div className={st.headingMedium}>
 										<PurchaseablePointGroup count={1} automaticPurchases={1} purchaseKey={'magical_synergy.slot1'} clickCallback={adjustPoints} /> Synergy 1 
@@ -623,7 +645,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Psionics']} className={st.open}>
+				<section ref={sectionRefs['Psionics']} className={st.open + getPrintable('psionics')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</div></div>
 					<div className={st.collapsable + ' ' + st.psionicsLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
@@ -637,21 +659,49 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Inventory']} className={st.open}>
+				<section ref={sectionRefs['Inventory']} className={st.open + getPrintable('inventory')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
 					<div className={st.collapsable + ' ' + st.inventoryLayout}>
-					{Array.from(Array(38)).map((i, index) => (
-						<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
-					))}
+					<div className="notForPrint">
+						{Array.from(Array(38)).map((i, index) => (
+							<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
+						))}
+					</div>
+					<div className="forPrint">
+						{Array.from(Array(30)).map((i, index) => (
+							<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
+						))}
+					</div>
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Notes']} className={st.open}>
+				<section ref={sectionRefs['Notes']} className={st.open + getPrintable('notes')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Notes</div></div>
 					<div className={st.collapsable + ' ' + st.notesLayout}>
-						{Array.from(Array(20)).map((i, index) => (
+						{Array.from(Array(30)).map((i, index) => (
 							<InputBox key={`notes-${index}`} val={theCharacter.characterData.notes[index]} onUpdate={(value) => updateValueFromInput(`notes[${index}]`, value)} />
 						))}
+					</div>
+				</section>
+
+				<section className={st.open + ' ' + st.printablesLayout + ' notForPrint'}>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['combat'] ? st.on : st.off)} onClick={() => togglePrintable('combat')}>Print Combat: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
+					</div>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['magic'] ? st.on : st.off)} onClick={() => togglePrintable('magic')}>Print Magic: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
+					</div>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['inner_power'] ? st.on : st.off)} onClick={() => togglePrintable('inner_power')}>Print Inner Power: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
+					</div>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['psionics'] ? st.on : st.off)} onClick={() => togglePrintable('psionics')}>Print Psionics: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
+					</div>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['notes'] ? st.on : st.off)} onClick={() => togglePrintable('notes')}>Print Notes: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
+					</div>
+					<div>
+						<div className={st.headingMedium + ' ' + (printableSections['inventory'] ? st.on : st.off)} onClick={() => togglePrintable('inventory')}>Print Inventory: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
 					</div>
 				</section>
 			</div>

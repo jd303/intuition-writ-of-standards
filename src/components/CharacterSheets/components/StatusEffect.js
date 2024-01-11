@@ -28,7 +28,6 @@ export function StatusEffect( { status, circleStatusClickCallback }) {
 			<div className={st.mainBlock}>
 				<CircleStatusGroup count={1} usedKey={`statuses-${status.id}`} clickCallback={circleStatusClickCallback} />
 				<div className={st.title} onClick={toggleDescriptionVisible}><div className={st.icon}>{getStatusIcon(status.type)}</div> {status.name}</div>
-				<InputBox className="forPrint" /*value="Rounds"*/ />
 				<div className={st.description}><span className={st.type}>{status.type}</span> {status.effect}</div>
 			</div>
 		</div>

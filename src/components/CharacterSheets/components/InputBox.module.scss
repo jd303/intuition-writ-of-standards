@@ -1,17 +1,23 @@
 .el {
-	--padding: 4px;
+	--padding: 4px 4px 4px 12px;
+	--border: none;
+
+	@media print {
+		--padding: 0 4px;
+		--border: 1px solid #ccc;
+	}
 
 	position: relative;
 	width: 100%;
 	min-width: 40px;
 	height: 32px;
 	text-align: left;
-	padding: var(--padding) var(--padding) var(--padding) calc(3 * var(--padding));
+	padding: var(--padding);
 	box-sizing: border-box;
 	border-radius: 6px;
 	background-color: var(--colour-cream);
 	outline: none;
-	border: none;
+	border: var(--border);
 
 	&.inline {
 		width: auto;

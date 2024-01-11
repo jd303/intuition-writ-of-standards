@@ -8,7 +8,7 @@ import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 
-export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseDetails, clickCallback }) {
+export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseDetails, clickCallback }) {
 
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
@@ -62,7 +62,7 @@ export function Move( { move, toggleRollPopup, printableModsCount = 4, purchaseD
 			</div>
 			<div className={st.modContainer}>
 				<div className={st.headingMedium} onClick={togglePurchasedVisible}>Mods</div>
-				<div className='forPrint'>
+				<div className={st.printMods + ' forPrint'}>
 					{ generateInputBoxes() }
 				</div>
 				<div className={st.allMods + ' ' +(purchasedVisible && st.visible || '')}>

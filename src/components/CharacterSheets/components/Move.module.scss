@@ -1,10 +1,13 @@
 .el {
 	--description-display: none;
 	--color-reduced: #555;
+	--padding: calc(0.5 * var(--padding-standard));
+	--border: var(--border-dashed-standard);
 
 	--grid-template-columns: auto;
 	--mainblock-grid-row: 1;
 	--mainblocks-grid-column: 1;
+	--mainblock-margin-bottom: calc(0.5 * var(--padding-standard));
 	--submoves-grid-row: 2;
 	--submoves-grid-column: 1;
 	--mods-display: block;
@@ -20,13 +23,17 @@
 	}
 
 	@media print {
-		--grid-template-columns: auto 1fr;
+		--padding: 0;
+		--border: none;
+
+		--grid-template-columns: auto;
 		--mainblock-grid-row: 1;
 		--mainblocks-grid-column: 1;
+		--mainblock-margin-bottom: 0;
 		--submoves-grid-row: 2;
 		--submoves-grid-column: 1;
-		--mods-grid-row: 1 / 3;
-		--mods-grid-column: 2;
+		--mods-grid-row: 3;
+		--mods-grid-column: 1;
 		--headingmedium-margin: 0;
 		--headingmedium-padding: 0;
 		--headingmedium-border: none;
@@ -44,9 +51,9 @@
 	width: 100%;
 	break-inside: avoid-column;
 	margin-bottom: calc(0.25 * var(--padding-standard));
-	padding: 12px;
+	padding: var(--padding);
 	border-radius: 10px;
-	border: var(--border-dashed-standard);
+	border: var(--border);
 	background-color: #fff;
 
 	&.moveCategory {
@@ -65,12 +72,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		width: 100%;
-		margin-bottom: calc(0.5 * var(--padding-standard));
-
-		@media print {
-			width: 265px;
-			gap: calc(1 * var(--padding-standard));
-		}
+		margin-bottom: var(--mainblock-margin-bottom);
 
 		.title {
 			max-width: 45%;
@@ -78,7 +80,7 @@
 			line-height: 100%;
 			font-family: "trattatello";
 			text-transform: uppercase;
-			font-size: 25px;
+			font-size: 1.5em;
 			letter-spacing: -1px;
 			white-space: nowrap;
 			overflow: hidden;
@@ -87,10 +89,6 @@
 			cursor: pointer;
 
 			@media (max-width: 550px) {
-				max-width: 100%;
-				flex-basis: 100%;
-			}
-			@media print {
 				max-width: 100%;
 				flex-basis: 100%;
 			}
@@ -159,7 +157,7 @@
 		position: relative;
 		font-family: 'trattatello';
 		text-transform: uppercase;
-		font-size: 18px;
+		font-size: 1.2em;
 		line-height: 100%;
 		color: var(--color-reduced);
 		margin: var(--headingmedium-margin);
@@ -180,6 +178,20 @@
 	.modContainer {
 		grid-row: var(--mods-grid-row);
 		grid-column: var(--mods-grid-column);
+
+		@media print {
+			.printMods {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 5px;
+
+				input {
+					width: 100%;
+				}
+			}
+
+			.headingMedium { display: none; }
+		}
 
 		.allMods {
 			display: none;
