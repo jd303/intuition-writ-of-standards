@@ -728,16 +728,16 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Inventory']} className={st.open + getMinimalModeStatus('9a_inventory')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
 					<div className={st.collapsable + ' ' + st.inventoryLayout}>
-					<div className="notForPrint">
-						{Array.from(Array(38)).map((i, index) => (
-							<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
-						))}
-					</div>
-					<div className="forPrint">
-						{Array.from(Array(30)).map((i, index) => (
-							<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
-						))}
-					</div>
+						<div className="notForPrint">
+							{Array.from(Array(38)).map((i, index) => (
+								<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
+							))}
+						</div>
+						<div className="forPrint">
+							{Array.from(Array(28)).map((i, index) => (
+								<InputBox key={`inv-${index}`} val={theCharacter.characterData.inventory[index]} onUpdate={(value) => updateValueFromInput(`inventory[${index}]`, value)} />
+							))}
+						</div>
 					</div>
 				</section>
 

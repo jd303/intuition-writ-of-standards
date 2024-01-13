@@ -64,6 +64,11 @@
 
 .minimallyHidden {
 	display: none !important;
+
+	.forPrint,
+	.notForPrint {
+		display: none;
+	}
 }
 
 section {
@@ -543,7 +548,9 @@ section {
 		page-break-after: always;
 	}
 
-	.innerPowerLayout {}
+	.innerPowerLayout {
+		page-break-after: always;
+	}
 
 	.magicLayout {
 		--standard-flex-direction: row;
@@ -555,6 +562,8 @@ section {
 			--section-1-gap: var(--padding-standard);
 			--magic-flex-gap: calc(0.25 * var(--padding-standard));
 		}
+
+		page-break-after: always;
 
 		.section1 {
 			flex-direction: column;
@@ -657,18 +666,21 @@ section {
 	}
 
 	.inventoryLayout {
-		--grid-template-columns: 1fr 1fr;
+		--column-count: 2;
 
 		@media (max-width: 767px) {
-			--grid-template-columns: 1fr;
+			--column-count: 1;
 		}
 
 		page-break-after: always;
 
-		> div {
-			display: grid;
-			grid-template-columns: var(--grid-template-columns);
-			gap: 5px;
+		div {
+			column-count: var(--column-count);
+			column-gap: 5px;
+
+			input {
+				margin-bottom: 5px;
+			}
 		}
 	}
 
