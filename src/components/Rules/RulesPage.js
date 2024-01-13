@@ -14,6 +14,7 @@ function RulesPage() {
 			<div className={styles.rulesLayout + " mainContent"}>
 				<div className={styles.column1}>
 					<a className={styles.scrollerButton} href="#intro">Intro</a>
+					<a className={styles.scrollerButton} href="#characters">Characters</a>
 					<a className={styles.scrollerButton} href="#moves">Moves</a>
 					<a className={styles.scrollerButton} href="#mods">Mods</a>
 					<a className={styles.scrollerButton} href="#dice">Dice & Rolling</a>
@@ -27,6 +28,9 @@ function RulesPage() {
 					<section className={styles.column} id="intro">
 						<p>Intuition is a Point-buy system that gives you the freedom to create a character your way.  Instead of designing classes, each character can invest points in whichever Move or Mods they choose, designing the perfect character.</p>
 						<p>The system has some core concepts:</p>
+					</section>
+					<section className={styles.column} id="characters">
+						<p>Purchasing Points (you can purchase any time, and you get a +1 to Roll if you purchase a Move point that you are using now).</p>
 					</section>
 					<section className={styles.column} id="moves">
 						<h2>Moves</h2>
@@ -45,6 +49,8 @@ function RulesPage() {
 						<h2>Dice & Rolling</h2>
 						<p>Describe rolls.  Describe bonuses (no stats, just skill points and magic bonuses).</p>
 						<p>Describe Raw Rolls</p>
+						<p>Describe Move Rolls</p>
+						<p>Describe rerolls</p>
 					</section>
 					<section className={styles.column} id="statistics">
 						<h2>Statistics</h2>

@@ -31,7 +31,7 @@ export class CharacterObject {
 		"current_mana": this.baseMana,
 		"bonus_mana": 0,
 		"current_psi": this.basePsi,
-		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
+		"purchases": { "spentPoints":0,"attributes":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
 		"source": "Spring", // Default only
 		"magical_synergy": {
 			"slot1": '',
@@ -44,7 +44,19 @@ export class CharacterObject {
 		"weapons": [],
 		"spells": [],
 		"inventory": [],
-		"notes": []
+		"notes": [],
+		"minimal_mode": {
+			"1_on": false,
+			"2_social": true,
+			"3_stealth": true,
+			"4_engineering": true,
+			"5_craft": true,
+			"6_inner_power": true,
+			"7_magic": true,
+			"8_psionics": true,
+			"9a_inventory": true,
+			"9b_notes": true,
+		}
 	}
 
 	characterData;
@@ -74,13 +86,13 @@ export class CharacterObject {
 		switch (type) {
 			case "ability":
 				if (adding) {
-					if (this.characterData.purchases.abilities[moveOrKeyName] < 5) {
-						this.characterData.purchases.abilities[moveOrKeyName] += 1;
+					if (this.characterData.purchases.attributes[moveOrKeyName] < 5) {
+						this.characterData.purchases.attributes[moveOrKeyName] += 1;
 						validAdjustment = true;
 					}
 				} else if (!adding) {
-					if (this.characterData.purchases.abilities[moveOrKeyName] > 0) {
-						this.characterData.purchases.abilities[moveOrKeyName] -= 1;
+					if (this.characterData.purchases.attributes[moveOrKeyName] > 0) {
+						this.characterData.purchases.attributes[moveOrKeyName] -= 1;
 						validAdjustment = true;
 					}
 				}
@@ -107,7 +119,7 @@ export class CharacterObject {
 						validAdjustment = true;
 					}
 				} else if (!adding) {
-					if (this.characterData.purchases.stamina < 3) {
+					if (this.characterData.purchases.stamina > 0) {
 						this.characterData.purchases.stamina -= 1;
 						validAdjustment = true;
 					}
@@ -255,6 +267,11 @@ export class CharacterObject {
 		if (addMode) this.characterData.spells.push(id);
 		else this.characterData.spells = this.characterData.spells.filter(spell => spell !== id);
 
+		return true;
+	}
+
+	adjustMinimalMode(key, value) {
+		this.characterData.minimal_mode[key] = value;
 		return true;
 	}
 

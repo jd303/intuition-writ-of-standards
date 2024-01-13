@@ -24,6 +24,7 @@ import { selectWeaponSpecialisationData } from "../../features/firebase/weaponSp
 import { useAuthState } from "../../firebase";
 import { Navigate } from "react-router-dom";
 import RollingPopup from "./RollingPopup";
+import MinimalModePopup from "./MinimalModePopup";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
 import icoPoison from '../../assets/images/icons/ico.poison.svg';
@@ -80,21 +81,31 @@ function CharacterSheetPage() {
 		if (movesAndMods['athletics']) response = response.concat(movesAndMods['athletics'].moves);
 		if (movesAndMods['general']) response = response.concat(movesAndMods['general'].moves);
 		if (movesAndMods['perception']) response = response.concat(movesAndMods['perception'].moves);
+		if (movesAndMods['knowledge']) response = response.concat(movesAndMods['knowledge'].moves);
 		return response;
 	}
-	const getAdvancedMoves = () => {
+	const getSocialMoves = () => {
 		let response = [];
-		if (movesAndMods['knowledge']) response = response.concat(movesAndMods['knowledge'].moves);
 		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
-		if (movesAndMods['deception']) response = response.concat(movesAndMods['deception'].moves);
 		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
 		return response;
 	}
 
-	const getMasterMoves = () => {
+	const getStealthMoves = () => {
+		let response = [];
+		if (movesAndMods['deception']) response = response.concat(movesAndMods['deception'].moves);
+		return response;
+	}
+
+	const getCraftyMoves = () => {
+		let response = [];
+		if (movesAndMods['crafty']) response = response.concat(movesAndMods['crafty'].moves);
+		return response;
+	}
+
+	const getEngineeringMoves = () => {
 		let response = [];
 		if (movesAndMods['engineering']) response = response.concat(movesAndMods['engineering'].moves);
-		if (movesAndMods['alchemy']) response = response.concat(movesAndMods['alchemy'].moves);
 		return response;
 	}
 
@@ -130,15 +141,16 @@ function CharacterSheetPage() {
 	}
 
 	// Section Printables
-	const [printableSections, setPrintableSections] = useState({ combat: true, magic: true, inner_power: true, psionics: true, notes: true, inventory: true });
-	const togglePrintable = (type) => {
-		const printables = { ...printableSections };
-		printables[type] = !printables[type];
-		setPrintableSections(printables);
+	const [minimalModePopupShowing, setMinimalModePopupShowing] = useState(false);
+	const toggleMinimalModePopupShowing = () => {
+		setMinimalModePopupShowing(!minimalModePopupShowing);
+		console.log(!minimalModePopupShowing);
 	}
-	const getPrintable = (type) => {
-		if (!printableSections[type]) return ' notForPrint';
-		else return '';
+
+	const getMinimalModeStatus = (key) => {
+		if (!theCharacter.characterData.minimal_mode['1_on']) return '';
+		if (!theCharacter.characterData.minimal_mode[key]) return ' ' + st.minimallyHidden;
+		return '';
 	}
 
 	// Bottom Menu Options
@@ -250,7 +262,14 @@ function CharacterSheetPage() {
 
 		if (success) setTheCharacter(newCharacter);
 		else console.log("ERROR Saving");
+	}
 
+	const adjustMinimalModeToggle = (key) => {
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		const success = newCharacter.adjustMinimalMode(key, !newCharacter.characterData.minimal_mode[key]);
+
+		if (success) setTheCharacter(newCharacter);
+		else console.log("ERROR Saving");
 	}
 
 	// Spells Data
@@ -335,6 +354,7 @@ function CharacterSheetPage() {
 			<Header colour="silver" />
 			<PageTitle colour="silver">Character Sheets</PageTitle>
 			<RollingPopup showPopupProp={rollPopupShowing} rollMoveNameProp={rollMoveName} rollBonusProp={rollBonus} closeRollPopupProp={closeRollPopup} />
+			<MinimalModePopup showPopupProp={minimalModePopupShowing} closePopupProp={() => setMinimalModePopupShowing(false)} hideableSections={theCharacter.characterData.minimal_mode} onUpdate={adjustMinimalModeToggle} />
 			<div className={"mainContent " + (levelUpMode && ' characterSheetLevelUpMode ' || '') + (levelDownMode && ' characterSheetLevelDownMode ' || '')}>
 				<section className={st.open}>
 					<div className={st.vitaeLayout}>
@@ -376,17 +396,17 @@ function CharacterSheetPage() {
 
 				<section ref={sectionRefs['Core']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoPoison} alt="" /> Core</div></div>
-					<div  className={st.collapsable + ' ' + st.abilitiesLayout}>
+					<div  className={st.collapsable + ' ' + st.attributesLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.stats + ' ' + st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}>Abilities</div> <div className={st.littleNote}>(Max 20 points)</div></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Attributes</div> <div className={st.littleNote}>(Max 20 points)</div></div>
 								<div className={st.list}>
 									{stats.map((stat, index) => (
 										<div className={st.stat} key={index}>
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={6} columns={6} automaticPurchases={1} purchased={theCharacter.characterData.purchases.abilities[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
+												<PurchaseablePointGroup count={6} columns={6} automaticPurchases={1} purchased={theCharacter.characterData.purchases.attributes[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
 											</div>
 										</div>
 									))}
@@ -517,7 +537,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Combat']} className={st.open + getPrintable('combat')}>
+				<section ref={sectionRefs['Combat']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCombat} alt="" /> Combat</div></div>
 					<div className={st.collapsable + ' ' + st.combatLayout}>
 						<div className={st.sectionMeta}>
@@ -584,18 +604,34 @@ function CharacterSheetPage() {
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Advanced Moves</div>
-						<div className={st.moveList}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2_social')}>Social Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('2_social')}>
 						{
-							getAdvancedMoves().map((move, index) => (
+							getSocialMoves().map((move, index) => (
 								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Master Moves</div>
-						<div className={st.moveList}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('3_stealth')}>Stealth Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('3_stealth')}>
 						{
-							getMasterMoves().map((move, index) => (
+							getStealthMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+							))
+						}
+						</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('4_engineering')}>Engineering Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('4_engineering')}>
+						{
+							getEngineeringMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+							))
+						}
+						</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('5_craft')}>Craft Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('5_craft')}>
+						{
+							getCraftyMoves().map((move, index) => (
 								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
@@ -603,7 +639,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Inner Power']} className={st.open + getPrintable('inner_power')}>
+				<section ref={sectionRefs['Inner Power']} className={st.open + getMinimalModeStatus('6_inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
 					<div className={st.collapsable + ' ' + st.innerPowerLayout}>
 						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Inner Power Moves</div>*/}
@@ -617,7 +653,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Magic']} className={st.open + getPrintable('magic')}>
+				<section ref={sectionRefs['Magic']} className={st.open + getMinimalModeStatus('7_magic')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoMagic} alt="" /> Magic </div></div>
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
@@ -675,7 +711,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Psionics']} className={st.open + getPrintable('psionics')}>
+				<section ref={sectionRefs['Psionics']} className={st.open + getMinimalModeStatus('8_psionics')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</div></div>
 					<div className={st.collapsable + ' ' + st.psionicsLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Psionic Moves</div>
@@ -689,7 +725,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Inventory']} className={st.open + getPrintable('inventory')}>
+				<section ref={sectionRefs['Inventory']} className={st.open + getMinimalModeStatus('9a_inventory')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
 					<div className={st.collapsable + ' ' + st.inventoryLayout}>
 					<div className="notForPrint">
@@ -705,33 +741,12 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Notes']} className={st.open + getPrintable('notes')}>
+				<section ref={sectionRefs['Notes']} className={st.open + getMinimalModeStatus('9b_notes')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Notes</div></div>
 					<div className={st.collapsable + ' ' + st.notesLayout}>
 						{Array.from(Array(30)).map((i, index) => (
 							<InputBox key={`notes-${index}`} val={theCharacter.characterData.notes[index]} onUpdate={(value) => updateValueFromInput(`notes[${index}]`, value)} />
 						))}
-					</div>
-				</section>
-
-				<section className={st.open + ' ' + st.printablesLayout + ' notForPrint'}>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['combat'] ? st.on : st.off)} onClick={() => togglePrintable('combat')}>Print Combat: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
-					</div>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['magic'] ? st.on : st.off)} onClick={() => togglePrintable('magic')}>Print Magic: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
-					</div>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['inner_power'] ? st.on : st.off)} onClick={() => togglePrintable('inner_power')}>Print Inner Power: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
-					</div>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['psionics'] ? st.on : st.off)} onClick={() => togglePrintable('psionics')}>Print Psionics: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
-					</div>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['notes'] ? st.on : st.off)} onClick={() => togglePrintable('notes')}>Print Notes: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
-					</div>
-					<div>
-						<div className={st.headingMedium + ' ' + (printableSections['inventory'] ? st.on : st.off)} onClick={() => togglePrintable('inventory')}>Print Inventory: <div className={st.printableToggle}><img src={icoP} alt="Printable" /></div></div>
 					</div>
 				</section>
 			</div>
@@ -742,6 +757,9 @@ function CharacterSheetPage() {
 				<h3>Points:</h3>
 				<button onClick={toggleLevelUpMode} className={levelUpMode ? st.active : ''} style={{ display: availablePoints > 0 && 'block' || 'none' }}>Spend ({availablePoints})</button>
 				<button onClick={toggleLeveDownMode} className={levelDownMode ? st.active : ''} style={{ display: availablePoints != maxPoints && 'block' || 'none' }}>Remove</button>
+				- 
+				<button onClick={toggleMinimalModePopupShowing}>Minimal Mode</button>
+				- 
 				<button onClick={copyCharacterBackupsToClipboard}>&copy; BAKs</button>
 			</nav>
 			<Footer />

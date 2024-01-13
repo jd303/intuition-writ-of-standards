@@ -37,8 +37,8 @@ function RollingPopup( { rollMoveNameProp = "", rollBonusProp = 0, showPopupProp
 	const [moveNote, setMoveNote] = useState(rollBonusProp);
 	useEffect(() => {
 		switch (rollMoveNameProp) {
-			case "Block":
-			case "Dodge":
+			case "Block (STR)":
+			case "Dodge (DEX)":
 				setMoveNote("Note: The Block and Dodge Move have a maximum Bonus, modified by Racial Stature and your worn Armour and Shields.  Please manually adjust the Total if the stated Bonus exceeds your Maximum Bonus.");
 			break;
 			default:

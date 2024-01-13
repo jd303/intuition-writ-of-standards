@@ -9,7 +9,6 @@ import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 
 export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseDetails, clickCallback }) {
-
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
 		setDescriptionVisible(!descriptionVisible);

@@ -22,7 +22,7 @@ export function PurchaseablePointGroup( { columns = 10, count = 1, automaticPurc
 
 	return (
 		<div className={st.container} data-count={`${purchased} purchased`}>
-			<div className={st.el + ' ' + (purchased >= count && st.complete || '') + (purchased == 0 && st.empty || '')} onClick={() => clickCallback(purchaseKey)} style={{ gap: gap }}>
+			<div className={st.el + ' ' + (purchased + automaticPurchases >= count && st.complete || '') + (purchased == 0 && st.empty || '')} onClick={() => clickCallback(purchaseKey)} style={{ gap: gap }}>
 				{generatePoints()}
 			</div>
 		</div>
