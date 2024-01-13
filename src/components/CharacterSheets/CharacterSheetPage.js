@@ -183,7 +183,6 @@ function CharacterSheetPage() {
 				if (!newCharacter.characterData[parentProperty][arrayIndex]) newCharacter.characterData[parentProperty][arrayIndex] = {};
 				if (!newCharacter.characterData[parentProperty][arrayIndex][childProperty]) newCharacter.characterData[parentProperty][arrayIndex][childProperty] = '';
 
-				console.log(parentProperty, arrayIndex, childProperty);
 				newCharacter.characterData[parentProperty][Number(arrayIndex)][childProperty] = value;
 			break;
 			case isArray:
@@ -241,7 +240,6 @@ function CharacterSheetPage() {
 	}
 
 	const adjustSpell = (id, addMode = true) => {
-		console.log(id, addMode);
 		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
 		const success = newCharacter.adjustSpells(id, addMode);
 
@@ -264,7 +262,6 @@ function CharacterSheetPage() {
 	}, [theCharacter.characterData.sessions]);
 
 	useEffect(() => {
-		console.log("Saving the character");
 		saveCharacter();
 	}, [debouncedCharacter]);
 
@@ -272,7 +269,6 @@ function CharacterSheetPage() {
 	const saveCharacter = () => {
 		// Prepare Characters
 		charactersData = charactersData.map(char => char.id == theCharacter.characterData.id && theCharacter.characterData || char);
-
 		writeDataForCurrentUser(charactersData);
 
 		// Also create local backups
@@ -355,7 +351,7 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
-							<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><Dropdown source={sources_data} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} noDefault={true} /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><Dropdown source={sources_data} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, false)} noDefault={true} /></div>
 						</div>
 						<div className={st.racialModifiers}>
 							<div className={st.headingMedium}>Racial Modifiers</div>
@@ -500,7 +496,7 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Defence Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
@@ -556,7 +552,7 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Combat Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
@@ -568,7 +564,7 @@ function CharacterSheetPage() {
 				</section>
 
 				<section ref={sectionRefs['Moves']} className={st.open}>
-					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Moves</div></div>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> General Moves</div></div>
 					<div className={st.collapsable + ' ' + st.movesLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Common Moves</div>
 						<div className={st.moveList}>
@@ -600,7 +596,7 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Inner Power']} className={st.open + getPrintable('inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
 					<div className={st.collapsable + ' ' + st.innerPowerLayout}>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Inner Power Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['inner_power']?.moves?.map((move, index) => (
@@ -658,7 +654,7 @@ function CharacterSheetPage() {
 								}
 							</div>
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Magic Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
@@ -672,7 +668,7 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Psionics']} className={st.open + getPrintable('psionics')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</div></div>
 					<div className={st.collapsable + ' ' + st.psionicsLayout}>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader}>Psionic Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['psionics']?.moves?.map((move, index) => (
