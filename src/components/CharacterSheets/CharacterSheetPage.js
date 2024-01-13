@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from "react";
+import React, { useState, useEffect, useRef, useMemo, createContext } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router';
 import { useDebounce } from "@uidotdev/usehooks";
@@ -17,6 +17,7 @@ import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 import { selectStatusData } from "../../features/firebase/statusDataSlice";
 import { selectSpellsData } from "../../features/firebase/spellsDataSlice";
+import { selectSourcesData } from "../../features/firebase/sourcesDataSlice";
 import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
 import { selectRacialBonusData } from "../../features/firebase/racialBonusDataSlice";
 import { selectWeaponSpecialisationData } from "../../features/firebase/weaponSpecialisationDataSlice";
@@ -58,12 +59,12 @@ function CharacterSheetPage() {
 	const moves_and_mods = useSelector(selectMovesData);
 	const status_data = useSelector(selectStatusData);
 	const spells_data = useSelector(selectSpellsData);
+	const sources_data = useSelector(selectSourcesData);
 	const racial_bonus_data = useSelector(selectRacialBonusData);
 	const languages_data = useSelector(selectLanguageData);
 	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
 	console.log("CHARS", charactersData);
-	console.log("TODO: repair purchases by comparing to data, in case I delete one.");
 
 	// Moves Data
 	let movesAndMods = {};
@@ -95,7 +96,6 @@ function CharacterSheetPage() {
 	// Static Data
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
 	const bonusDice = [ "d4", "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
-	const sources = [ "Summer", "Autumn", "Winter", "Spring" ];
 	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
@@ -240,6 +240,25 @@ function CharacterSheetPage() {
 		else console.log("ERROR Saving");
 	}
 
+	const adjustSpell = (id, addMode = true) => {
+		console.log(id, addMode);
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		const success = newCharacter.adjustSpells(id, addMode);
+
+		if (success) setTheCharacter(newCharacter);
+		else console.log("ERROR Saving");
+
+	}
+
+	// Spells Data
+	const sourceSpells = useMemo(() => {
+		return spells_data.filter(spell => spell.sources.indexOf(theCharacter.characterData.source) != -1);
+	}, [spells_data, theCharacter.characterData.source]);
+
+	const getSpellName = (id) => {
+		return spells_data.find(spell => spell.id == id).name || 'missing data';
+	}
+
 	useEffect(() => {
 		setAvailablePoints(theCharacter.getAvailablePoints());
 	}, [theCharacter.characterData.sessions]);
@@ -336,7 +355,7 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Race</div> <InputBox val={theCharacter.characterData.race} onUpdate={(value) => updateValueFromInput('race', value)} /></div>
 							<div className={st.standardFlex}><div className={st.headingMedium}>Move sq.</div> <InputBox val={theCharacter.characterData.movesq} onUpdate={(value) => updateValueFromInput('movesq', value)} /></div>
-							<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><Dropdown source={sources} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} /></div>
+							<div className={st.standardFlex}><div className={st.headingMedium}>Source </div><Dropdown source={sources_data} val={theCharacter.characterData.source} onChange={(value) => updateValueFromInput('source', value, true)} noDefault={true} /></div>
 						</div>
 						<div className={st.racialModifiers}>
 							<div className={st.headingMedium}>Racial Modifiers</div>
@@ -541,7 +560,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={7} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={8} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -580,7 +599,7 @@ function CharacterSheetPage() {
 
 				<section ref={sectionRefs['Inner Power']} className={st.open + getPrintable('inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
-					<div className={st.collapsable + ' ' + st.psionicsLayout}>
+					<div className={st.collapsable + ' ' + st.innerPowerLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>
 						<div className={st.moveList}>
 						{
@@ -629,9 +648,14 @@ function CharacterSheetPage() {
 						<div className={st.sectionMeta + ' ' + st.section2 + ' ' + (theCharacter.getMovePurchase('797d1feb').points == 0 ? st.hidden : '')}>
 							<div className={st.sectionMetaInner}>
 								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
-								{Array.from(Array(Math.min(theCharacter.getMovePurchase('797d1feb').points * 2 || 0, theCharacter.characterData.spells.length + 1))).map((i, index) => (
-									<div key={`spell-${index}`} className={st.spellChoice}><Dropdown source={spells_data} val={theCharacter.characterData.spells[index]} onChange={(value) => updateValueFromInput(`spells[${index}]`, value, true)} /></div>
+								{theCharacter.characterData.spells.map((spell, index) => (
+									<div key={index} className={st.spellFlex}><InputBox val={getSpellName(spell)} disabled={true} /> <button className={st.removeButton + ' notForPrint'} onClick={() => adjustSpell(spell, false)}>X</button></div>
 								))}
+								{theCharacter.characterData.spells.length < Math.min(theCharacter.getMovePurchase('797d1feb').points * 2 || 0)
+								?
+									<div className={st.spellChoice}><Dropdown source={sourceSpells || []} val='' onChange={adjustSpell} /></div>
+								: <></>
+								}
 							</div>
 						</div>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Moves</div>

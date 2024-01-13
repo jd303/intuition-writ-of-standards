@@ -21,6 +21,7 @@ function StatusBar(props) {
 
 	// References to elements
 	const dropdownRef = React.useRef(null);
+	const searchFieldRef = React.useRef(null);
 
 	// State
 	const viewMode = useSelector(selectViewMode);
@@ -33,7 +34,7 @@ function StatusBar(props) {
 	return (
 		<div className={styles.statusBar}>
 			<div className={styles.statusBarContainer}>
-				{filter && addFilters(filters, dropdownRef)}
+				{filter && addFilters(filters, { dropdowns: dropdownRef, searchField: searchFieldRef })}
 				<div className={styles.divider}></div>
 				<div className={styles.view}>
 					<div className={styles.viewItems}>
@@ -48,7 +49,8 @@ function StatusBar(props) {
 	);
 }
 
-function addFilters(filters, dropdownRef) {
+function addFilters(filters, refs) {
+	console.log(filters, refs);
 	/**
 	 * Filter change callbacks
 	 * */
@@ -57,8 +59,8 @@ function addFilters(filters, dropdownRef) {
 	};
 
 	const clearFilter = () => {
-		dropdownRef.current.value = "all";
-		dropdownRef.current.selectedIndex = 0;
+		refs.dropdown.current.value = "all";
+		refs.dropdown.current.selectedIndex = 0;
 		filters.clear();
 	};
 
@@ -69,13 +71,19 @@ function addFilters(filters, dropdownRef) {
 					{filters.dropdowns.map((filter, index) => (
 						<div key={index} className={styles.dropdownGroup}>
 							{filter.name}
-							<select name={filter.name} ref={dropdownRef} onChange={onFilterChangeHandler}>
+							<select name={filter.name} ref={refs.dropdown} onChange={onFilterChangeHandler}>
 								{Object.entries(filter.values).map((entry, index) => (
-									<option key={index}>
+									<option key={index} value={entry[0]}>
 										{entry[1].name ? entry[1].name : entry[1]}
 									</option>
 								))}
 							</select>
+						</div>
+					))}
+					{filters.search.map((filter, index) => (
+						<div key={index} className={styles.dropdownGroup}>
+							{filter.name}
+							<input name={filter.name} ref={refs.search} onChange={onFilterChangeHandler} />
 						</div>
 					))}
 					<button className={styles.btClear} onClick={clearFilter}>

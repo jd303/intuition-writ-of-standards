@@ -9,6 +9,7 @@ import animalCompanionsDataReducer from "../features/firebase/animalCompanionsDa
 import charactersData from "../features/firebase/charactersDataSlice";
 import racialBonusData from "../features/firebase/racialBonusDataSlice";
 import languageData from "../features/firebase/languageDataSlice";
+import sourcesData from "../features/firebase/sourcesDataSlice";
 import weaponSpecialisationData from "../features/firebase/weaponSpecialisationDataSlice";
 
 export default configureStore({
@@ -23,6 +24,7 @@ export default configureStore({
 		charactersData: charactersData,
 		racialBonusData: racialBonusData,
 		languageData: languageData,
+		sourcesData: sourcesData,
 		weaponSpecialisationData: weaponSpecialisationData
 	},
 });

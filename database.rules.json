@@ -16,6 +16,10 @@
 			".read": true,
 			".write": false
 		},
+		"sources": {
+			".read": true,
+			".write": false
+		},
 		"spells": {
 			".read": true,
 			".write": false

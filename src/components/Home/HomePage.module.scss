@@ -80,63 +80,63 @@
 		background-image: url(../../assets/images/gr.home.rules.png);
 
 		&:before {
-			background-color: var(--colour-silver);
+			background-color: rgba(var(--colour-silver));
 		}
 	}
 	&.moves {
 		background-image: url(../../assets/images/gr.home.moves.png);
 
 		&:before {
-			background-color: var(--colour-orange);
+			background-color: rgba(var(--colour-orange));
 		}
 	}
 	&.magic {
 		background-image: url(../../assets/images/gr.home.magic.png);
 
 		&:before {
-			background-color: var(--colour-purple);
+			background-color: rgba(var(--colour-purple));
 		}
 	}
 	&.psionics {
 		background-image: url(../../assets/images/gr.home.psionics.png);
 
 		&:before {
-			background-color: var(--colour-scarlet);
+			background-color: rgba(var(--colour-scarlet));
 		}
 	}
 	&.alchemy {
 		background-image: url(../../assets/images/gr.home.alchemy.png);
 
 		&:before {
-			background-color: var(--colour-cyan);
+			background-color: rgba(var(--colour-cyan));
 		}
 	}
 	&.equipment {
 		background-image: url(../../assets/images/gr.home.costs.png);
 
 		&:before {
-			background-color: var(--colour-silver);
+			background-color: rgba(var(--colour-silver));
 		}
 	}
 	&.companions {
 		background-image: url(../../assets/images/gr.home.companions.png);
 
 		&:before {
-			background-color: var(--colour-mustard);
+			background-color: rgba(var(--colour-mustard));
 		}
 	}
 	&.gadgetry {
 		background-image: url(../../assets/images/gr.home.gadgetry.png);
 
 		&:before {
-			background-color: var(--colour-cobalt);
+			background-color: rgba(var(--colour-cobalt));
 		}
 	}
 	&.menagerie {
 		background-image: url(../../assets/images/gr.home.menagerie.png);
 
 		&:before {
-			background-color: var(--colour-silver);
+			background-color: rgba(var(--colour-silver));
 		}
 	}
 }

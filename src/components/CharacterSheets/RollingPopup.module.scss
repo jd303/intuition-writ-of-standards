@@ -23,7 +23,7 @@
 		z-index: 100;
 		padding: calc(0.5 * var(--padding-standard));
 		border-radius: 8px;
-		background: var(--colour-cream);
+		background: rgba(var(--colour-cream));
 		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 
 		&.rollContent {

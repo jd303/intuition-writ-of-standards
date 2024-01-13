@@ -15,7 +15,7 @@
 .move {
 	padding: calc(var(--padding-standard) / 2);
 	border-radius: 8px;
-	background-color: var(--colour-cream-light);
+	background-color: rgba(var(--colour-cream-light));
 }
 
 .moveDesc {

@@ -13,6 +13,7 @@ import { updateAnimalCompanionsData } from "../features/firebase/animalCompanion
 import { updateCharactersData } from "../features/firebase/charactersDataSlice";
 import { updateRacialBonusData } from "../features/firebase/racialBonusDataSlice";
 import { updateLanguageData } from "../features/firebase/languageDataSlice";
+import { updateSourcesData } from "../features/firebase/sourcesDataSlice";
 import { updateWeaponSpecialisationData } from "../features/firebase/weaponSpecialisationDataSlice";
 
 export const AppShell = function ({ children }) {
@@ -80,6 +81,13 @@ export const AppShell = function ({ children }) {
 			onValue(languagesRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateLanguageData({ data: data }));
+			});
+
+			// Collect sources data
+			const sourcesRef = ref(database, '/sources');
+			onValue(sourcesRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateSourcesData({ data: data }));
 			});
 
 			// Collect weapon specialisation data

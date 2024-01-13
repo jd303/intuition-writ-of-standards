@@ -15,7 +15,7 @@
 			left: 50%;
 			padding: 6px 8px;
 			border-radius: 6px;
-			background-color: var(--colour-cream);
+			background-color: rgba(var(--colour-cream));
 			transform: translateX(-50%);
 
 			&:empty {

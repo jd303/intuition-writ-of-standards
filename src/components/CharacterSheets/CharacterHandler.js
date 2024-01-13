@@ -32,7 +32,7 @@ export class CharacterObject {
 		"bonus_mana": 0,
 		"current_psi": this.basePsi,
 		"purchases": { "spentPoints":0,"abilities":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
-		"source": "",
+		"source": "Spring", // Default only
 		"magical_synergy": {
 			"slot1": '',
 			"slot2": '',
@@ -249,6 +249,13 @@ export class CharacterObject {
 
 		if (this.characterData.statuses[statusKey] == statusValue) return true;
 		return false;
+	}
+
+	adjustSpells(id, addMode) {
+		if (addMode) this.characterData.spells.push(id);
+		else this.characterData.spells = this.characterData.spells.filter(spell => spell !== id);
+
+		return true;
 	}
 
 	getMovePurchase(moveID) {

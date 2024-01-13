@@ -1,50 +1,56 @@
 .container {
-	display: block;
+	display: flex;
+	justify-content: center;
+    align-items: center;
 	min-width: 22px;
 	min-height: 22px;
 	padding: 4px;
 	color: #fff;
-	text-align: center;
-	line-height: 22px;
 	font-size: 15px;
 	background-color: #000;
 	border-radius: 50%;
 
 	/* Colours */
 	&.black {
-		background-color: var(--colour-black);
+		background-color: rgb(var(--colour-black));
 	}
 
 	&.orange {
-		background-color: var(--colour-orange);
+		background-color: rgb(var(--colour-orange));
 	}
 
 	&.purple {
-		background-color: var(--colour-purple);
+		background-color: rgb(var(--colour-purple));
 	}
 
 	&.cyan {
-		background-color: var(--colour-cyan);
+		background-color: rgb(var(--colour-cyan));
 	}
 
 	&.cobalt {
-		background-color: var(--colour-cobalt);
+		background-color: rgb(var(--colour-cobalt));
 	}
 
 	&.scarlet {
-		background-color: var(--colour-scarlet);
+		background-color: rgb(var(--colour-scarlet));
 	}
 
 	&.mustard {
-		background-color: var(--colour-mustard);
-	}
-
-	&.silver {
-		background-color: var(--colour-silver);
+		background-color: rgb(var(--colour-mustard));
 	}
 
 	&.bronze {
-		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 		background-image: var(--colour-bronze-gradient);
+	}
+
+	&.silver {
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+		background-image: var(--colour-silver-gradient-subtle);
+	}
+
+	&.gold {
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+		background-image: var(--colour-gold-gradient);
 	}
 }

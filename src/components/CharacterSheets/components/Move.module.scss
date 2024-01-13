@@ -48,7 +48,6 @@
 	display: grid;
 	grid-template-columns: var(--grid-template-columns);
 	align-items: flex-start;
-	width: 100%;
 	break-inside: avoid-column;
 	margin-bottom: calc(0.25 * var(--padding-standard));
 	padding: var(--padding);

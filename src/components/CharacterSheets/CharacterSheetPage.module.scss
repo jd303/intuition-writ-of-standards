@@ -1,6 +1,6 @@
 :root {
 	--border-dashed-standard: 1px dashed #ddd;
-	--meta-background: var(--colour-cream);
+	--meta-background: rgba(var(--colour-cream));
 	--control-bar-display: flex;
 	--collapser-after-display: block;
 	--section-margin: var(--padding-standard);
@@ -539,6 +539,8 @@ section {
 		page-break-after: always;
 	}
 
+	.innerPowerLayout {}
+
 	.magicLayout {
 		--standard-flex-direction: row;
 		--section-1-gap: calc(0.25 * var(--padding-standard));
@@ -650,8 +652,6 @@ section {
 		page-break-after: always;
 	}
 
-	.notesLayout {}
-
 	.inventoryLayout {
 		--grid-template-columns: 1fr 1fr;
 
@@ -659,11 +659,16 @@ section {
 			--grid-template-columns: 1fr;
 		}
 
-		display: grid;
-		grid-template-columns: var(--grid-template-columns);
-		gap: 5px;
 		page-break-after: always;
+
+		> div {
+			display: grid;
+			grid-template-columns: var(--grid-template-columns);
+			gap: 5px;
+		}
 	}
+
+	.notesLayout {}
 
 	&.printablesLayout {
 		.headingMedium { 
@@ -744,6 +749,7 @@ section {
 		width: var(--width);
 	}
 
+	.spellFlex,
 	.spellChoice {
 		display: flex;
 		gap: calc(0.5 * var(--padding-standard));
@@ -769,16 +775,17 @@ section {
 }
 
 .moveList {
-	--column-gap: calc(2 * var(--padding-standard));
+	--display: grid;
 
 	@media (max-width: 1049px) {
-		column-count: 1;
+		--display: block;
 	}
 
-	width: calc(100% - var(--column-gap));
-
-	column-count: 2;
-	column-gap: var(--column-gap);
+	display: var(--display);
+	grid-template-columns: 1fr 1fr;
+	gap: calc(0.5 * var(--padding-standard));
+	align-items: start;
+	width: 100%;
 
 	&:not(:last-child) {
 		margin-bottom: var(--padding-standard);
@@ -805,7 +812,7 @@ section {
 
 		&.active {
 			color: #fff;
-			background-color: var(--colour-silver);
+			background-color: rgba(var(--colour-silver));
 		}
 
 		img {
@@ -817,4 +824,50 @@ section {
 			}
 		}
 	}
+}
+
+// Alternate design scheme
+.abilitiesLayout {
+	background-color: rgba(var(--colour-purple), 0.1);
+}
+
+.wellnessLayout {
+	background-color: rgba(var(--colour-scarlet), 0.1);
+}
+
+.defencesLayout {
+	background-color: rgba(var(--colour-mustard), 0.1);
+}
+
+.combatLayout {
+	background-color: rgba(var(--colour-cobalt), 0.1);
+}
+
+.movesLayout {
+	background-color: rgba(var(--colour-aqua), 0.1);
+}
+
+.innerPowerLayout {
+	background-color: rgba(var(--colour-aqua), 0.1);
+}
+
+.magicLayout {
+	background-color: rgba(var(--colour-scarlet), 0.1);
+}
+
+.psionicsLayout {
+	background-color: rgba(var(--colour-purple), 0.1);
+}
+
+.inventoryLayout {
+	background-color: rgba(var(--colour-silver), 0);
+}
+
+.notesLayout {
+	background-color: rgba(var(--colour-silver), 0);
+}
+
+.sectionMeta {
+	padding: 0;
+	background-color: transparent;
 }

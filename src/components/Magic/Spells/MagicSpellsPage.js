@@ -16,7 +16,8 @@ import timeIcon from "../../../assets/images/icons/ico.clock.svg";
 import mapPinIcon from "../../../assets/images/icons/ico.map_pin.svg";
 
 // Data
-import { MagicSchools } from "../../../interfaces/magic_interfaces";
+import { selectSourcesData } from "../../../features/firebase/sourcesDataSlice";
+//import { MagicSchools } from "../../../interfaces/magic_interfaces";
 //import { spells } from "../../../assets/data/spells_data.js";
 
 // State
@@ -34,8 +35,12 @@ function MagicSpellsPage() {
 	/**
 	 * Filter State
 	 * */
-	const schoolFilterValues = { all: "All", ...MagicSchools };
+	const source_data = useSelector(selectSourcesData);
+	const schoolFilterValues = { all: "All" };
+	source_data.forEach(source => schoolFilterValues[source.id] = source.name);
+	console.log(schoolFilterValues);
 	const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
+	const [titleSearchValue, setTitleSearchValue] = React.useState('');
 
 	/**
 	 * When a filter is changed
@@ -44,8 +49,15 @@ function MagicSpellsPage() {
 		const filterName = filterChangeEvent.target.name;
 		const filterValue = filterChangeEvent.target.value;
 
-		if (filterName == "school") {
-			setSchoolFilterValue(filterValue);
+		switch (true) {
+			case filterChangeEvent.target instanceof HTMLInputElement:
+				setTitleSearchValue(filterValue);
+			break;
+			default:
+				if (filterName == "school") {
+					setSchoolFilterValue(filterValue);
+				}
+			break;
 		}
 	};
 
@@ -54,15 +66,21 @@ function MagicSpellsPage() {
 	 * */
 	const onFilterClear = () => {
 		setSchoolFilterValue("all");
+		setTitleSearchValue('');
 	};
 
 	/**
 	 * Fiter results by school
 	 * */
-	const filterBySchool = (spell) => {
+	const filterBySource = (spell) => {
 		if (schoolFilterValue == "all") return true;
-		else return spell.school == schoolFilterValue;
+		else return spell.sources.indexOf(schoolFilterValue) !== -1;
 	};
+
+	const filterByTitle = (searchString) => {
+		console.log("DEFAULT TRUE");
+		return true;
+	}
 
 	/**
 	 * Define filters
@@ -73,6 +91,11 @@ function MagicSpellsPage() {
 				name: "school",
 				values: schoolFilterValues,
 			},
+		],
+		search: [
+			{
+				name: "title",
+			}
 		],
 		change: onFilterChange,
 		clear: onFilterClear,
@@ -87,12 +110,9 @@ function MagicSpellsPage() {
 			<PageTitle colour="purple">Spells</PageTitle>
 			<div className="mainContent">
 				<ListingWrapper filter={true} filters={filters}>
-					{spells.filter(filterBySchool).map((spell, index) => (
+					{spells.filter(filterBySource).filter(filterByTitle).map((spell, index) => (
 						<Listing key={index} className={st.spellLayout}>
 							<div className={st.name}><ListingTitle>{spell.name}</ListingTitle></div>
-							<div className={st.cost}>
-								<CircledText text={spell.cost.toString()} />
-							</div>
 							<div className={st.school}>{spell.school}</div>
 							<div className={st.mechanics}>
 								<div className={st.challengeType}>
@@ -110,13 +130,13 @@ function MagicSpellsPage() {
 							</div>
 							<ul className={st.effects}>
 								<li className={st.effect}>
-									<Medal size="small" rarity="bronze" /> {spell.effect_cantrip}
+									<CircledText text={spell.cantripcost?.toString()} colour="bronze" /> <div className={st.desc}>{spell.cantrip}</div>
 								</li>
 								<li className={st.effect}>
-									<Medal size="small" rarity="silver" /> {spell.effect_channeled}
+									<CircledText text={spell.standardcost?.toString()} colour="silver" /> <div className={st.desc}>{spell.standard}</div>
 								</li>
 								<li className={st.effect}>
-									<Medal size="small" rarity="gold" /> {spell.effect_overchanneled}
+									<CircledText text={spell.empoweredcost?.toString()} colour="gold" /> <div className={st.desc}>{spell.empowered}</div>
 								</li>
 							</ul>
 						</Listing>

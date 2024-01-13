@@ -16,7 +16,7 @@
 				a {
 					&.active {
 						opacity: 0.5;
-						color: var(--colour-brown);
+						color: rgba(var(--colour-brown));
 					}
 				}
 			}
@@ -78,47 +78,47 @@
 
 		/* Colours */
 		.black li a.activeLink {
-			color: var(--colour-black);
+			color: rgba(var(--colour-black));
 		}
 	
 		.orange li a.activeLink {
-			background: var(--colour-orange);
+			background: rgba(var(--colour-orange));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.purple li a.activeLink {
-			background: var(--colour-purple);
+			background: rgba(var(--colour-purple));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.cyan li a.activeLink {
-			background: var(--colour-cyan);
+			background: rgba(var(--colour-cyan));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.cobalt li a.activeLink {
-			background: var(--colour-cobalt);
+			background: rgba(var(--colour-cobalt));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.scarlet li a.activeLink {
-			background: var(--colour-scarlet);
+			background: rgba(var(--colour-scarlet));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.mustard li a.activeLink {
-			background: var(--colour-mustard);
+			background: rgba(var(--colour-mustard));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 	
 		.silver li a.activeLink {
-			background: var(--colour-silver);
+			background: rgba(var(--colour-silver));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
