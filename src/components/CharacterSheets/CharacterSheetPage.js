@@ -70,10 +70,15 @@ function CharacterSheetPage() {
 	let movesAndMods = {};
 	movesAndMods = prepareMovesAndMods(moves_and_mods);
 
+	const getBodyMoves = () => {
+		let response = [];
+		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
+		return response;
+	}
 	const getCommonMoves = () => {
 		let response = [];
 		if (movesAndMods['athletics']) response = response.concat(movesAndMods['athletics'].moves);
-		if (movesAndMods['body']) response = response.concat(movesAndMods['body'].moves);
+		if (movesAndMods['general']) response = response.concat(movesAndMods['general'].moves);
 		if (movesAndMods['perception']) response = response.concat(movesAndMods['perception'].moves);
 		return response;
 	}
@@ -437,6 +442,11 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 						</div>
+						{
+							getBodyMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} clickCallback={adjustPoints}></Move>
+							))
+						}
 					</div>
 				</section>
 
@@ -552,7 +562,7 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Combat Moves</div>
+						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Combat Moves</div>*/}
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
@@ -596,7 +606,7 @@ function CharacterSheetPage() {
 				<section ref={sectionRefs['Inner Power']} className={st.open + getPrintable('inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
 					<div className={st.collapsable + ' ' + st.innerPowerLayout}>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Inner Power Moves</div>
+						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Inner Power Moves</div>*/}
 						<div className={st.moveList}>
 						{
 							movesAndMods['inner_power']?.moves?.map((move, index) => (
@@ -654,7 +664,7 @@ function CharacterSheetPage() {
 								}
 							</div>
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader}>Magic Moves</div>
+						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Magic Moves</div>*/}
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
