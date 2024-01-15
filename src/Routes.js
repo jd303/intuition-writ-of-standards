@@ -16,7 +16,6 @@ import PsionicsTelepathyPage from "./components/Psionics/Telepathy/PsionicsTelep
 import PsionicsClairvoyancePage from "./components/Psionics/Clairvoyance/PsionicsClairvoyancePage";
 import PsionicsPsychometabolismPage from "./components/Psionics/Psychometabolism/PsionicsPsychometabolismPage";
 import EquipmentPage from "./components/Equipment/EquipmentPage";
-import CostsListPage from "./components/Equipment/CostsListPage";
 import AnimalCompanionsGuidePage from "./components/Companions/AnimalCompanionsGuidePage";
 import AnimalCompanionsPage from "./components/Companions/AnimalCompanionsPage";
 import AnimalCompanionMovesPage from "./components/Companions/AnimalCompanionMovesPage";
@@ -230,12 +229,6 @@ const routes = [
 		navLabel: "Equipment",
 		path: "/equipment",
 		element: <Route key="0" path="/equipment" element={<EquipmentPage />} />,
-		parent: "Equipment",
-	},
-	{
-		navLabel: "Costs List",
-		path: "/costs-list",
-		element: <Route key="0" path="/costs-list" element={<CostsListPage />} />,
 		parent: "Equipment",
 	},
 

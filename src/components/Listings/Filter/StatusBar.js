@@ -50,7 +50,6 @@ function StatusBar(props) {
 }
 
 function addFilters(filters, refs) {
-	console.log(filters, refs);
 	/**
 	 * Filter change callbacks
 	 * */
@@ -59,8 +58,10 @@ function addFilters(filters, refs) {
 	};
 
 	const clearFilter = () => {
-		refs.dropdown.current.value = "all";
-		refs.dropdown.current.selectedIndex = 0;
+		console.log(refs);
+		if (refs.dropdowns.current) refs.dropdowns.current.value = "all";
+		if (refs.dropdowns.current) refs.dropdowns.current.selectedIndex = 0;
+		if (refs.searchField.current) refs.searchField.current.value = '';
 		filters.clear();
 	};
 
@@ -68,10 +69,10 @@ function addFilters(filters, refs) {
 		<React.Fragment>
 			<div className={styles.filterContainer}>
 				<div className={styles.filterDropdowns}>
-					{filters.dropdowns.map((filter, index) => (
+					{filters.dropdowns?.map((filter, index) => (
 						<div key={index} className={styles.dropdownGroup}>
 							{filter.name}
-							<select name={filter.name} ref={refs.dropdown} onChange={onFilterChangeHandler}>
+							<select name={filter.name} ref={refs.dropdowns} onChange={onFilterChangeHandler}>
 								{Object.entries(filter.values).map((entry, index) => (
 									<option key={index} value={entry[0]}>
 										{entry[1].name ? entry[1].name : entry[1]}
@@ -80,10 +81,10 @@ function addFilters(filters, refs) {
 							</select>
 						</div>
 					))}
-					{filters.search.map((filter, index) => (
+					{filters.search?.map((filter, index) => (
 						<div key={index} className={styles.dropdownGroup}>
 							{filter.name}
-							<input name={filter.name} ref={refs.search} onChange={onFilterChangeHandler} />
+							<input name={filter.name} ref={refs.searchField} onChange={onFilterChangeHandler} />
 						</div>
 					))}
 					<button className={styles.btClear} onClick={clearFilter}>

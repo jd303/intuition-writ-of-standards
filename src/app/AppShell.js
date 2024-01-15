@@ -14,6 +14,7 @@ import { updateCharactersData } from "../features/firebase/charactersDataSlice";
 import { updateRacialBonusData } from "../features/firebase/racialBonusDataSlice";
 import { updateLanguageData } from "../features/firebase/languageDataSlice";
 import { updateSourcesData } from "../features/firebase/sourcesDataSlice";
+import { updateEquipmentData } from "../features/firebase/equipmentDataSlice";
 import { updateWeaponSpecialisationData } from "../features/firebase/weaponSpecialisationDataSlice";
 
 export const AppShell = function ({ children }) {
@@ -88,6 +89,13 @@ export const AppShell = function ({ children }) {
 			onValue(sourcesRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateSourcesData({ data: data }));
+			});
+
+			// Collect sources data
+			const equipmentRef = ref(database, '/equipment');
+			onValue(equipmentRef, (snapshot) => {
+				const data = snapshot.val();
+				dispatch(updateEquipmentData({ data: data }));
 			});
 
 			// Collect weapon specialisation data

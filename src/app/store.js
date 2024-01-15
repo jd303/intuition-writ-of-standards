@@ -10,6 +10,7 @@ import charactersData from "../features/firebase/charactersDataSlice";
 import racialBonusData from "../features/firebase/racialBonusDataSlice";
 import languageData from "../features/firebase/languageDataSlice";
 import sourcesData from "../features/firebase/sourcesDataSlice";
+import equipmentData from "../features/firebase/equipmentDataSlice";
 import weaponSpecialisationData from "../features/firebase/weaponSpecialisationDataSlice";
 
 export default configureStore({
@@ -25,6 +26,7 @@ export default configureStore({
 		racialBonusData: racialBonusData,
 		languageData: languageData,
 		sourcesData: sourcesData,
+		equipmentData: equipmentData,
 		weaponSpecialisationData: weaponSpecialisationData
 	},
 });

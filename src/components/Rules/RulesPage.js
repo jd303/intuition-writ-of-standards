@@ -30,7 +30,25 @@ function RulesPage() {
 						<p>The system has some core concepts:</p>
 					</section>
 					<section className={styles.column} id="characters">
-						<p>Purchasing Points (you can purchase any time, and you get a +1 to Roll if you purchase a Move point that you are using now).</p>
+						<h2>Characters</h2>
+						<p>Advancement Points, often just called points, are earned at the start of each Session and....</p>
+						<p>Whenever you earn an Advancement Point you may spend it immediately, or you may hold it for the duration of the session.  If you spend it during the session on a Move or purchase that you use immediately, it is a Cinematic Spend.  Cinematic Spends on Moves grant you a +1 Bonus to your Move Roll.</p>
+						<h3>Attributes</h3>
+						<p>Players have 6 attributes that define how far they can advance.  Alongside that, players also gain the following benefits:</p>
+						<ul>
+							<li>Strength: You Melee Weapon Damage is improved, and your Maximum Block is improved by half of your Strength.</li>
+							<li>Dexterity: You Ranged Weapon Damage is improved, and your Maximum Dodge is improved by half of your Strength.</li>
+							<li>Constitution: You gain additional Total Verve based on your Constitution Bonus.</li>
+							<li>Intelligence: Your Spell Damage is improved.</li>
+							<li>Wisdom: </li>
+							<li>Charisma: </li>
+						</ul>
+						<h3>Move Purchases</h3>
+						<p>Players cannot purchase Move Points unfettered.  Moves are limites, the rules of which are as follows:</p>
+						<ul>
+							<li>You cannot purchase Moves to a greater level than twice your value of the Attribute it is related to.  That is, if you wish to purchase the 10th rank of Rest, you must have 5 Constitution to do so</li>
+							<li>The maximum number of points that you may spend in any Move is equal to 2 + 1 every 8 sessions.  That is, at session 1 you may have a maximum of 2 points in each Move.  At session 9, that raises to 3, and again at 17, 24, 33, and so on.</li>
+						</ul>
 					</section>
 					<section className={styles.column} id="moves">
 						<h2>Moves</h2>

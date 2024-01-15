@@ -4,7 +4,7 @@ import { PurchaseablePoint } from "./PurchaseablePoint";
 
 import st from './PurchaseablePointGroup.module.scss';
 
-export function PurchaseablePointGroup( { columns = 10, count = 1, automaticPurchases = 0, purchased = 0, gap = 3, clickCallback, purchaseKey } ) {
+export function PurchaseablePointGroup( { columns = 10, count = 1, automaticPurchases = 0, purchased = 0, gap = 3, clickCallback, purchaseKey, maxPurchases = count } ) {
 
 	const generatePoints = () => {
 		const response = [];
@@ -20,9 +20,14 @@ export function PurchaseablePointGroup( { columns = 10, count = 1, automaticPurc
 		return response;
 	}
 
+	const isComplete = () => {
+		if (purchased + automaticPurchases >= count || purchased >= maxPurchases) return st.complete;
+		return '';
+	}
+
 	return (
 		<div className={st.container} data-count={`${purchased} purchased`}>
-			<div className={st.el + ' ' + (purchased + automaticPurchases >= count && st.complete || '') + (purchased == 0 && st.empty || '')} onClick={() => clickCallback(purchaseKey)} style={{ gap: gap }}>
+			<div className={st.el + ' ' + isComplete() + (purchased == 0 && st.empty || '')} onClick={() => clickCallback(purchaseKey)} style={{ gap: gap }}>
 				{generatePoints()}
 			</div>
 		</div>
@@ -37,4 +42,5 @@ PurchaseablePointGroup.propTypes = {
 	gap: PropTypes.number,
 	clickCallback: PropTypes.func.isRequired,
 	purchaseKey: PropTypes.string.isRequired,
+	maxPurchases: PropTypes.number
 };

@@ -8,6 +8,10 @@
 			".read": true,
 			".write": false
 		},
+		"equipment": {
+			".read": true,
+			".write": false
+		},
 		"moves": {
 			".read": true,
 			".write": false

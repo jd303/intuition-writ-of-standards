@@ -41,9 +41,10 @@ function GlossaryPage() {
 				</ol>
 				<h1>Combat Terms</h1>
 				<ol>
-					<li><span className={styles.termName}>Threatened Area / Threatened Range</span>: Squares that your melee weapon can reach.  For most, this is 1 adjacent square, but some increase this to 2 squares.</li>
+					<li><span className={styles.termName}>Threatened Area</span>: Squares that your melee weapon can reach.  For most, this is 1 adjacent square.  For enemies, Threatening Range may also extend to their Special Move and unusually long reach.</li>
 					<li><span className={styles.termName}>Stagger</span>: A measurement of how unbalanced a target is.  Each point in Stagger reduces the requirement for a successful Roll to Trip, Grapple and Disarm a target.</li>
 					<li><span className={styles.termName}>NAME</span>: Effect.</li>
+					<li><span className={styles.termName}>Flanked</span>: See the Flanked Status for more information.</li>
 				</ol>
 				<h1>Magic Terms</h1>
 				<ol>

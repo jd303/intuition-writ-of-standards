@@ -18,7 +18,7 @@ function MinimalModePopup( { hideableSections, showPopupProp, closePopupProp, on
 			<button className={st.closer} onClick={closePopupProp}><img src={icoClose} alt="Close" /></button>
 			<div className={st.hider} onClick={closePopupProp}></div>
 			<div className={st.content + ' ' + st.rollContent}>
-				<div className={st.headingMedium}>Minimal Mode</div>
+				<div className={st.headingMedium}>View Mode</div>
 				<p>You can hide and show certain sections and Move groups from display and print.</p>
 				{Object.keys(hideableSections).map((key, index) => (
 					<div className={st.hideable} key={index}>

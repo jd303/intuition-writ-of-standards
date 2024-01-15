@@ -36,10 +36,10 @@ function MagicSpellsPage() {
 	 * Filter State
 	 * */
 	const source_data = useSelector(selectSourcesData);
-	const schoolFilterValues = { all: "All" };
-	source_data.forEach(source => schoolFilterValues[source.id] = source.name);
-	console.log(schoolFilterValues);
-	const [schoolFilterValue, setSchoolFilterValue] = React.useState("all");
+	const sourceFilterValues = { all: "All" };
+	source_data.forEach(source => sourceFilterValues[source.id] = source.name);
+	console.log(sourceFilterValues);
+	const [sourceFilterValue, setSourceFilterValue] = React.useState("all");
 	const [titleSearchValue, setTitleSearchValue] = React.useState('');
 
 	/**
@@ -54,8 +54,8 @@ function MagicSpellsPage() {
 				setTitleSearchValue(filterValue);
 			break;
 			default:
-				if (filterName == "school") {
-					setSchoolFilterValue(filterValue);
+				if (filterName == "source") {
+					setSourceFilterValue(filterValue);
 				}
 			break;
 		}
@@ -65,7 +65,7 @@ function MagicSpellsPage() {
 	 * When filters are cleared
 	 * */
 	const onFilterClear = () => {
-		setSchoolFilterValue("all");
+		setSourceFilterValue("all");
 		setTitleSearchValue('');
 	};
 
@@ -73,13 +73,17 @@ function MagicSpellsPage() {
 	 * Fiter results by school
 	 * */
 	const filterBySource = (spell) => {
-		if (schoolFilterValue == "all") return true;
-		else return spell.sources.indexOf(schoolFilterValue) !== -1;
+		if (sourceFilterValue == "all") return true;
+		else return spell.sources.indexOf(sourceFilterValue) !== -1;
 	};
 
-	const filterByTitle = (searchString) => {
-		console.log("DEFAULT TRUE");
-		return true;
+	const filterByTitle = (spell) => {
+		let searchTerms = titleSearchValue.indexOf(',') == -1 ? titleSearchValue.toLowerCase() : titleSearchValue.toLowerCase().split(',');
+		if (searchTerms instanceof Array && searchTerms.length > 1) {
+			searchTerms = searchTerms.filter(term => term !== '');
+			return searchTerms.filter(term => spell.name.toLowerCase().indexOf(term) !== -1).length;
+		}
+		else return spell.name.toLowerCase().indexOf(titleSearchValue.toLowerCase()) !== -1;
 	}
 
 	/**
@@ -88,8 +92,8 @@ function MagicSpellsPage() {
 	const filters = {
 		dropdowns: [
 			{
-				name: "school",
-				values: schoolFilterValues,
+				name: "source",
+				values: sourceFilterValues,
 			},
 		],
 		search: [

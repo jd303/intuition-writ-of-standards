@@ -21,12 +21,26 @@ export class CharacterObject {
 		"buffs": [
 			//{ "effect": "STR Moves +2", "source": "Belt" }
 		],
+		"resistances": {
+			"universal": 0,
+			"physical": 0,
+			"magic": 0,
+			"poisons": 0,
+			"acids": 0,
+			"pyral": 0,
+			"cryo": 0,
+			"electric": 0,
+			"zephyr": 0,
+			"umbral": 0,
+			"luminal": 0,
+			"sonic": 0
+		},
 		"statuses": {
 			//"Paralyzed"
 		},
-		"known_languages": [],
+		"known_languages": ["2d0b7484"],
 		"bonusPoints": 0,
-		"current_verve": this.baseVerve,
+		"current_verve": '',
 		"bonus_verve": 0,
 		"current_mana": this.baseMana,
 		"bonus_mana": 0,
@@ -38,9 +52,10 @@ export class CharacterObject {
 			"slot2": '',
 			"slot3": '',
 		},
-		"bonus_damage": { "melee": "d4", "ranged": "d4" },
+		"bonus_damage": "d4",
 		"weapon_specialisations": [],
-		"armours": [ { "name": "None", "block": 3, "dodge": 3, "disadvantages": "" } ],
+		"armours": [ { "name": "None", "block": 3, "dodge": 3 } ],
+		"armour_totals": { "block": '', "dodge": '' },
 		"weapons": [],
 		"spells": [],
 		"inventory": [],

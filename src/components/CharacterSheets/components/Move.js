@@ -8,7 +8,7 @@ import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 
-export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseDetails, clickCallback }) {
+export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseDetails, maxPurchases, clickCallback }) {
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
 		setDescriptionVisible(!descriptionVisible);
@@ -49,7 +49,7 @@ export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseD
 		<div className={st.el + ' ' + (move.type == "Move" && st.moveCategory || '') + ' ' + (descriptionVisible && st.descriptionVisible || '')}>
 			<div className={st.mainBlock}>
 				<div className={st.title + ' ' + (move.type == "Move" && st.moveCategory || '')} onClick={toggleDescriptionVisible}>{move.name}</div>
-				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.id}`} /></div>
+				<div className={st.pointTrack}><PurchaseablePointGroup count={12} columns={12} purchased={purchaseDetails?.points || 0} clickCallback={clickCallback} purchaseKey={`move.${move.id}`} maxPurchases={maxPurchases} /></div>
 				<div className={st.bonuses + ' forPrint'}><InputBox value={`+${purchaseDetails?.points}`} /></div>
 				<div className={st.buttons + ' notForPrint'}><button className={st.diceRoll} onClick={toggleRollPopup.bind(null, move.name, purchaseDetails?.points)}><img src={icoDice} alt="Roll this Move" /></button></div>
 				<div className={st.description}>{ move.type !== "Move" && <span className={st.type}>{move.type}</span>} {move.description}</div>
@@ -91,5 +91,6 @@ Move.propTypes = {
 	toggleRollPopup: PropTypes.func,
 	printableModsCount: PropTypes.number,
 	purchaseDetails: PropTypes.object,
+	maxPurchases: PropTypes.number,
 	clickCallback: PropTypes.func.isRequired
 };
