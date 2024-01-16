@@ -29,6 +29,16 @@ import AccountPage from "./components/Account/AccountPage";
 
 export const routeSections = [
 	{
+		id: "account",
+		navLabel: "Account",
+		path: "/account",
+	},
+	{
+		id: "characters",
+		navLabel: "Characters",
+		path: "/characters",
+	},
+	{
 		id: "rules",
 		navLabel: "Rules",
 		path: "/rules",
@@ -72,16 +82,6 @@ export const routeSections = [
 		id: "equipment",
 		navLabel: "Equipment",
 		path: "/equipment",
-	},
-	{
-		id: "characters",
-		navLabel: "Characters",
-		path: "/characters",
-	},
-	{
-		id: "account",
-		navLabel: "Account",
-		path: "/account",
 	},
 ];
 

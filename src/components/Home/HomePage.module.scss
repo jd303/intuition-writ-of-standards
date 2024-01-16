@@ -139,4 +139,18 @@
 			background-color: rgba(var(--colour-silver));
 		}
 	}
+	&.characters {
+		background-image: url(../../assets/images/gr.home.characters.webp);
+
+		&:before {
+			background-color: rgba(var(--colour-yellow));
+		}
+	}
+	&.account {
+		background-image: url(../../assets/images/gr.home.accounts.webp);
+
+		&:before {
+			background-color: rgba(var(--colour-silver));
+		}
+	}
 }

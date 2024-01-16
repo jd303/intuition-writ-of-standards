@@ -1,16 +1,18 @@
 .el {
 	--padding: 4px 4px 4px 12px;
 	--border: none;
+	--height: 32px;
 
 	@media print {
 		--padding: 0 4px;
 		--border: 1px solid #ccc;
+		--height: 24px;
 	}
 
 	position: relative;
 	width: 100%;
 	min-width: 40px;
-	height: 32px;
+	height: var(--height);
 	text-align: left;
 	padding: var(--padding);
 	box-sizing: border-box;
