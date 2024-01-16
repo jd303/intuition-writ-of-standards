@@ -13,22 +13,23 @@ ListingWrapper.propTypes = {
   viewModeButton: PropTypes.bool,
   filters: PropTypes.object,
   onViewModeChange: PropTypes.func,
+  lockView: PropTypes.string
 };
 
 /**
  * Renders a listing of items
  * */
 function ListingWrapper(props) {
-  const { children, filter, viewModeButton, filters, statusBarChildren } = props;
+  const { children, filter, viewModeButton, filters, statusBarChildren, lockView } = props;
 
   // State
-  const viewMode = useSelector(selectViewMode);
+  const viewMode = lockView || useSelector(selectViewMode);
 
   return (
     <section className={styles.listingsSection}>
       {(filter || viewModeButton) && (
         <header className={styles.header}>
-          <StatusBar filter={filter} filters={filters}>{statusBarChildren}</StatusBar>
+          <StatusBar filter={filter} filters={filters} lockView={lockView}>{statusBarChildren}</StatusBar>
         </header>
       )}
       <div className={`${styles.listingsWrapper} ${styles[`view_${viewMode}`]}`}>{children}</div>

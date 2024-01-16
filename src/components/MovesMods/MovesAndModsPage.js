@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Header from "../Components/Header/Header";
 import { PageTitle } from "../Components/PageTitle/PageTitle";
 import MoveCategoryComponent from "./MoveCategory";
 import { useSelector } from "react-redux";
 import { selectMovesData } from "../../features/firebase/movesDataSlice";
 import { Footer } from "../../components/Components/Footer/Footer";
-import StatusBar from "../Listings/Filter/StatusBar"
+import ListingWrapper from "../Listings/ListingWrapper";
+import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 
 function MovesAndModsPage() {
 	const moves_and_mods = useSelector(selectMovesData);
 
-	console.log(moves_and_mods);
+	const movesCategorised = useMemo(() => {
+		const preparedMoves = prepareMovesAndMods(moves_and_mods);
+		return preparedMoves;
+	}, [moves_and_mods]);
 
 	/**
 	 * Setup type filters
@@ -50,12 +54,12 @@ function MovesAndModsPage() {
 			<Header colour='orange' />
 			<PageTitle colour='orange'>Moves &amp; Mods</PageTitle>
 			<div className="mainContent">
-				<StatusBar filter={true} filters={filters} />
-				<section>
-					{moves_and_mods.filter(filterByType).map((category, index) => {
-						return <MoveCategoryComponent key={index} category={category} />;
-					})}
-				</section>
+				{/*<ListingTitle>{spell.name}</ListingTitle>*/}
+				<ListingWrapper filter={true} filters={filters} lockView="list">
+					{Object.keys(movesCategorised)?.filter(filterByType).map((categoryKey, index) => (
+						<MoveCategoryComponent key={index} name={categoryKey} category={movesCategorised[categoryKey].moves} />
+					))}
+				</ListingWrapper>
 			</div>
 			<Footer />
 		</React.Fragment>

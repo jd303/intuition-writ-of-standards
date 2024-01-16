@@ -501,11 +501,11 @@ section {
 			.weaponTable .weaponsHeader,
 			.weaponTable .weaponFields {
 				display: grid;
-				grid-template-columns: 165px 60px auto;
+				grid-template-columns: 165px 60px 60px auto;
 				gap: calc(0.25 * var(--padding-standard));
 
 				@media (max-width: 500px) {
-					grid-template-columns: 100px 50px auto;
+					grid-template-columns: 85px 50px 50px auto;
 				}
 			}
 

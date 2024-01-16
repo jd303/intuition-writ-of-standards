@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: calc(var(--padding-standard) / 2);
-	max-width: 1024px;
 	margin-top: var(--padding-standard);
 }
 
@@ -49,16 +48,13 @@
 			padding: 4px 8px;
 			border-radius: 6px;
 
-			&.Rank1 {
-				background-color: rgba(#a97142, 0.2);
+			.modName {
+				width: 175px;
 			}
-
-			&.Rank2 {
-				background-color: rgba(#bcc6cc, 0.2);
-			}
-
-			&.Rank3 {
-				background-color: rgba(#d4af37, 0.2);
+			
+			.icon {
+				width: 15px;
+				height: 15px;
 			}
 		}
 	}

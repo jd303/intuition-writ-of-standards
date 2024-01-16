@@ -46,7 +46,7 @@ export class CharacterObject {
 		"bonus_mana": 0,
 		"current_psi": this.basePsi,
 		"purchases": { "spentPoints":0,"attributes":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
-		"source": "Spring", // Default only
+		"source": "30c0e851", // Default only, Spring
 		"magical_synergy": {
 			"slot1": '',
 			"slot2": '',
@@ -87,7 +87,7 @@ export class CharacterObject {
 	}
 
 	getMaxPoints() {
-		return this.baseCharacterPoints + this.characterData.sessions + this.characterData.bonusPoints;
+		return this.baseCharacterPoints + Number(this.characterData.sessions) + Number(this.characterData.bonusPoints);
 	}
 
 	adjustPoint(adding, type, moveOrKeyName, modName) {

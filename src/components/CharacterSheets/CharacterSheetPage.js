@@ -113,7 +113,7 @@ function CharacterSheetPage() {
 	const vervePerPoint = 5;
 	const vervePerCON = 3;
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
-	const bonusDice = [ "d4", "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
+	const bonusDice = [ "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
 	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
@@ -186,6 +186,11 @@ function CharacterSheetPage() {
 	const maxMovePoints = useMemo(() => {
 		return 1 + Math.ceil(theCharacter.characterData.sessions / 8)
 	}, [theCharacter.characterData.sessions]);
+
+	const calculateMaxPoints = (attr) => {
+		const stat = theCharacter.characterData.purchases.attributes[attr];
+		return Math.min((stat + 1) * 3, maxMovePoints);
+	}
 
 	const updateValueFromInput = (property, valueProp, isNumber = false) => {
 		const value = isNumber && Number(valueProp) || valueProp;
@@ -476,7 +481,7 @@ function CharacterSheetPage() {
 						</div>
 						{
 							getBodyMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 					</div>
@@ -537,7 +542,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -552,12 +557,14 @@ function CharacterSheetPage() {
 								<div className={st.weaponsHeader}>
 									<div className={st.headingMedium + ' ' + st.headName}>Weapons</div>
 									<div className={st.fonted + ' ' + st.headLabel}>Dam</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Stat</div>
 									<div className={st.fonted + ' ' + st.headLabel}>Abilities</div>
 								</div>
 								{Array.from(Array(Math.max(1, theCharacter.characterData.weapons.filter(weap => Object.values(weap).join('') !== '').length + 1))).map((i, index) => (
 									<div className={st.weaponFields} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.baseDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} />
+										<InputBox val={Math.max(theCharacter.characterData.purchases.attributes['str'], theCharacter.characterData.purchases.attributes['dex'], theCharacter.characterData.purchases.attributes['con']) + 1} disabled={true} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
 									</div>
 								))}
@@ -588,7 +595,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={8} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={8} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -602,7 +609,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getCommonMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -610,7 +617,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList + getMinimalModeStatus('2_social')}>
 						{
 							getSocialMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -618,7 +625,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList + getMinimalModeStatus('3_stealth')}>
 						{
 							getStealthMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -626,7 +633,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList + getMinimalModeStatus('4_engineering')}>
 						{
 							getEngineeringMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -634,7 +641,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList + getMinimalModeStatus('5_craft')}>
 						{
 							getCraftyMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -648,7 +655,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['inner_power']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -706,7 +713,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>
@@ -720,7 +727,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['psionics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={maxMovePoints} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
 							))
 						}
 						</div>

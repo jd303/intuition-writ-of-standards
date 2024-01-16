@@ -11,13 +11,14 @@ StatusBar.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 	filter: PropTypes.bool,
 	filters: PropTypes.object,
+	lockView: PropTypes.string
 };
 
 function StatusBar(props) {
 	/**
 	 * Destructure Properties
 	 * */
-	const { filter, filters, children } = props;
+	const { filter, filters, children, lockView } = props;
 
 	// References to elements
 	const dropdownRef = React.useRef(null);
@@ -37,10 +38,12 @@ function StatusBar(props) {
 				{filter && addFilters(filters, { dropdowns: dropdownRef, searchField: searchFieldRef })}
 				<div className={styles.divider}></div>
 				<div className={styles.view}>
+					{ !lockView && (
 					<div className={styles.viewItems}>
 						<div>View</div>
 						<button className={styles.viewButton} onClick={toggleView}>{viewMode} View</button>
 					</div>
+					)}
 				</div>
 				<div className={styles.divider}></div>
 				{children}
@@ -84,7 +87,7 @@ function addFilters(filters, refs) {
 					{filters.search?.map((filter, index) => (
 						<div key={index} className={styles.dropdownGroup}>
 							{filter.name}
-							<input name={filter.name} ref={refs.searchField} onChange={onFilterChangeHandler} />
+							<input name={filter.name} value={filter.startingValue} ref={refs.searchField} onChange={onFilterChangeHandler} />
 						</div>
 					))}
 					<button className={styles.btClear} onClick={clearFilter}>

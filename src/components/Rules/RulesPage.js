@@ -15,10 +15,9 @@ function RulesPage() {
 				<div className={styles.column1}>
 					<a className={styles.scrollerButton} href="#intro">Intro</a>
 					<a className={styles.scrollerButton} href="#characters">Characters</a>
-					<a className={styles.scrollerButton} href="#moves">Moves</a>
+					<a className={styles.scrollerButton} href="#moves">Skills &amp; Moves</a>
 					<a className={styles.scrollerButton} href="#mods">Mods</a>
 					<a className={styles.scrollerButton} href="#dice">Dice & Rolling</a>
-					<a className={styles.scrollerButton} href="#statistics">Statistics</a>
 					<a className={styles.scrollerButton} href="#actions">Actions</a>
 					<a className={styles.scrollerButton} href="#combat">Combat</a>
 					<a className={styles.scrollerButton} href="#magic">Magic</a>
@@ -34,7 +33,7 @@ function RulesPage() {
 						<p>Advancement Points, often just called points, are earned at the start of each Session and....</p>
 						<p>Whenever you earn an Advancement Point you may spend it immediately, or you may hold it for the duration of the session.  If you spend it during the session on a Move or purchase that you use immediately, it is a Cinematic Spend.  Cinematic Spends on Moves grant you a +1 Bonus to your Move Roll.</p>
 						<h3>Attributes</h3>
-						<p>Players have 6 attributes that define how far they can advance.  Alongside that, players also gain the following benefits:</p>
+						<p>Players have 6 values that define their physical and mental attributes.  Attributes act as 1 limiter to the number of points that can be spent in Moves; each point in an attribute alleviates a limitation on a Move by 3 points (for example with 2 Strength, the spend on Strength-based moves up to 6 points is not limited by attributes, but may still be limited by the session count). Alongside that, players also gain the following benefits:</p>
 						<ul>
 							<li>Strength: You Melee Weapon Damage is improved, and your Maximum Block is improved by half of your Strength.</li>
 							<li>Dexterity: You Ranged Weapon Damage is improved, and your Maximum Dodge is improved by half of your Strength.</li>
@@ -51,10 +50,12 @@ function RulesPage() {
 						</ul>
 					</section>
 					<section className={styles.column} id="moves">
+						<h2>Skills</h2>
+						<p>Characters advance by progressing in Skills.  A skill is a category of Moves that you can choose to make when you choose your actions in and out of combat.  For example, the Athletics Skill has the Relocate and Jump Moves, amongst others.</p>
 						<h2>Moves</h2>
-						<p>These are motions you make that rely on skill or chance, or which another character may resist.  When you swing an axe, Summon the power of Flow to your whims, talk down a rampaging Orc, or paint a picturesque landscape, you are using a Move.</p>
-						<h3>Move Bonuses</h3>
-						<p>No bonuses from stats.  Bonuses from magic and items</p>
+						<p>These are motions you make that rely on your expertise or chance, or which another character may resist.  When you swing an axe, Summon the power of Flow to your whims, talk down a rampaging Orc, or paint a picturesque landscape, you are using a Move.</p>
+						<h3>Resolving Moves</h3>
+						<p>When asked to resolve a Move, you roll a d20 and add the number of points that you have spent on its parent Skill, and then finaly add any bonuses you get from magic, abilities and items.  Your DM will tell you if it is successful or unsuccessful.</p>
 						<h3>Preparing Moves</h3>
 						<p>You may elect a Move and a Mod, and set a Trigger condition.  If this condition occurs, you act at the same time as the Triggering action (before or after, whichever makes the most sense and that you have the capacity to achieve).</p>
 						<p>If your Trigger was for an ally and the condition does not occur, you may change your Primary Action after everyone has taken their turn.  If your Trigger was for an opponent&apos;s action and it does not occur, you lose your Primary Action that turn.</p>
@@ -69,18 +70,6 @@ function RulesPage() {
 						<p>Describe Raw Rolls</p>
 						<p>Describe Move Rolls</p>
 						<p>Describe rerolls</p>
-					</section>
-					<section className={styles.column} id="statistics">
-						<h2>Statistics</h2>
-						<p>Your core attributes.  Statistics come in 6 different forms:</p>
-						<ul>
-							<li>Strength: your brute force and capability to perform acts of muscle.  Each point increases your Melee Base Damage, and allows you to purchase 2 additional points in STR-based Moves</li>
-							<li>Constitution: your vitality and well-being.  Each point increases the number of HP you gain per point in HP, and allows you to purchase 2 additional points in CON-based Moves</li>
-							<li>Dexterity: your litheness and agility.  Each point increases your Ranged Base Damage, and allows you to purchase 2 additional points in DEX-based Moves</li>
-							<li>Intelligence: your reasoning and intellect.  Each point increases your Spell Base Damage, and allows you to purchase 2 additional points in INT-based Moves</li>
-							<li>Wisdom: your experiences and world-knowledge.  Each point increases your Psi Base Damage, and allows you to purchase 2 additional points in WIS-based Moves</li>
-							<li>Charisma: your relatability and personality.  Each point [has effect]], and allows you to purchase 2 additional points in CHA-based Moves</li>
-						</ul>
 					</section>
 					<section className={styles.column} id="actions">
 						<h2>Actions</h2>

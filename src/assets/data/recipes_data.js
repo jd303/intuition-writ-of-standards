@@ -139,6 +139,15 @@ export const recipesData = [
     dc: 5,
   },
   {
+    type: "Bomb",
+    name: "Black Powder",
+    desc: "A black, explosive powder that can be used in large quantities as a bomb, or in smaller ones as a propellant for bullets and cannonballs.  Makes enough for 1 bomb, or enough to propel 5 cannonballs or 25 bullets.",
+    time: "180m",
+    effects: "Explodes in a 3x3sq shape for 20 damage.  Deals high pyral damage, but only moderate impact damage, so is better against flesh and creatures than it is structures.",
+    reagents: [ReagentProperties.Cor, ReagentProperties.Oil, ReagentProperties.The, ReagentProperties.The, ReagentProperties.The],
+    dc: 5,
+  },
+  {
     type: "Poison",
     name: "Bloodboil",
     desc: "Has a distinctive earthy smell when created, which abates as this oily pink liquid matures.",

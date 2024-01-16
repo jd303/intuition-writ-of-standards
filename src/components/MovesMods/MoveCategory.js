@@ -2,23 +2,32 @@
 //import React from "react";
 import { PropTypes } from "prop-types";
 import MoveComponent from "./MoveComponent";
+import Listing from "../Listings/Listing";
+import ListingTitle from "../Listings/ListingTitle/ListingTitle";
+import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 import st from "./MovesAndModsPage.module.scss";
 
 MoveCategoryComponent.propTypes = {
-  category: PropTypes.object.isRequired,
+	name: PropTypes.string.isRequired,
+	category: PropTypes.array.isRequired,
 };
 
 function MoveCategoryComponent(props) {
-  let { category } = props;
+	let { name, category } = props;
 
-  return (
-    <div className={st.categoryContainer}>
-      <h3 className={st.categoryTitle}>{category.name} Moves</h3>
-      {category.moves.map((move, index) => {
-        return <MoveComponent key={index} move={move} />;
-      })}
-    </div>
-  );
+	const movesAndMods = prepareMovesAndMods(category);
+	console.log(movesAndMods);
+
+	return (
+		<div className={st.categoryContainer}>
+			<h3 className={st.categoryTitle}>{name}</h3>
+			{category.map((move, index) => (
+				<Listing key={index}>
+					<MoveComponent key={index} move={move} />
+				</Listing>
+			))}
+		</div>
+	);
 }
 
 export default MoveCategoryComponent;

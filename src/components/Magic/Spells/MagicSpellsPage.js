@@ -4,7 +4,6 @@ import Header from "../../Components/Header/Header";
 import ListingWrapper from "../../Listings/ListingWrapper";
 import Listing from "../../Listings/Listing";
 import ListingTitle from "../../Listings/ListingTitle/ListingTitle";
-import Medal from "../../Components/Medal/Medal";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
 import CircledText from "../../Components/CircledText/CircledText";
 import { Footer } from "../../../components/Components/Footer/Footer";
@@ -38,9 +37,8 @@ function MagicSpellsPage() {
 	const source_data = useSelector(selectSourcesData);
 	const sourceFilterValues = { all: "All" };
 	source_data.forEach(source => sourceFilterValues[source.id] = source.name);
-	console.log(sourceFilterValues);
 	const [sourceFilterValue, setSourceFilterValue] = React.useState("all");
-	const [titleSearchValue, setTitleSearchValue] = React.useState('');
+	const [titleSearchValue, setTitleSearchValue] = React.useState(localStorage.getItem('magic_spells_search') || '');
 
 	/**
 	 * When a filter is changed
@@ -52,6 +50,7 @@ function MagicSpellsPage() {
 		switch (true) {
 			case filterChangeEvent.target instanceof HTMLInputElement:
 				setTitleSearchValue(filterValue);
+				localStorage.setItem('magic_spells_search', filterValue);
 			break;
 			default:
 				if (filterName == "source") {
@@ -99,6 +98,7 @@ function MagicSpellsPage() {
 		search: [
 			{
 				name: "title",
+				startingValue: titleSearchValue
 			}
 		],
 		change: onFilterChange,
