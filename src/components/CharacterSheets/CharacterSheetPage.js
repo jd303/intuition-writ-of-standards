@@ -25,6 +25,7 @@ import { useAuthState } from "../../firebase";
 import { Navigate } from "react-router-dom";
 import RollingPopup from "./RollingPopup";
 import MinimalModePopup from "./MinimalModePopup";
+import SpellInfoPopup from "./SpellInfoPopup";
 
 import GenericProfile from '../../assets/images/character_profiles/_Generic.Character.Male.webp';
 import icoPoison from '../../assets/images/icons/ico.poison.svg';
@@ -42,7 +43,6 @@ import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
 import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
-import icoP from '../../assets/images/icons/ico.p.svg';
 
 import st from './CharacterSheetPage.module.scss';
 import { selectLanguageData } from "../../features/firebase/languageDataSlice";
@@ -65,7 +65,6 @@ function CharacterSheetPage() {
 	const languages_data = useSelector(selectLanguageData);
 	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
-	console.log("CHARS", charactersData);
 
 	// Moves Data
 	let movesAndMods = {};
@@ -188,7 +187,15 @@ function CharacterSheetPage() {
 	}, [theCharacter.characterData.sessions]);
 
 	const calculateMaxPoints = (attr) => {
-		const stat = theCharacter.characterData.purchases.attributes[attr];
+		let stat;
+		if (attr.indexOf(",") !== -1) {
+			const split = attr.replace(/ /g,'').split(",");
+			let highest = -1;
+			split.forEach(at => highest = theCharacter.characterData.purchases.attributes[at] > highest ? theCharacter.characterData.purchases.attributes[at] : highest);
+			stat = highest;
+		} else {
+			stat = theCharacter.characterData.purchases.attributes[attr];
+		}
 		return Math.min((stat + 1) * 3, maxMovePoints);
 	}
 
@@ -298,6 +305,17 @@ function CharacterSheetPage() {
 		return spells_data.find(spell => spell.id == id).name || 'missing data';
 	}
 
+	const [spellPopupShowing, setSpellPopupShowing] = useState(false);
+	const [shownSpell, setShownSpell] = useState(null);
+	const showSpellInfo = (enable, spell) => {
+		setShownSpell(spell);
+		setSpellPopupShowing(enable);
+	}
+
+	const getSpellInfo = (spellID) => {
+		return spellsForMyLevelAndSource.find(spell => spell.id == spellID);
+	}
+
 	useEffect(() => {
 		setAvailablePoints(theCharacter.getAvailablePoints());
 	}, [theCharacter.characterData.sessions]);
@@ -372,6 +390,7 @@ function CharacterSheetPage() {
 			<PageTitle colour="silver">Character Sheets</PageTitle>
 			<RollingPopup showPopupProp={rollPopupShowing} rollMoveNameProp={rollMoveName} rollBonusProp={rollBonus} closeRollPopupProp={closeRollPopup} />
 			<MinimalModePopup showPopupProp={minimalModePopupShowing} closePopupProp={() => setMinimalModePopupShowing(false)} hideableSections={theCharacter.characterData.minimal_mode} onUpdate={adjustMinimalModeToggle} />
+			<SpellInfoPopup showSpellPopupProp={spellPopupShowing} closePopupProp={() => showSpellInfo(false)} spell={shownSpell} />
 			<div className={"mainContent " + (levelUpMode && ' characterSheetLevelUpMode ' || '') + (levelDownMode && ' characterSheetLevelDownMode ' || '')}>
 				<section ref={sectionRefs['Vitae']} className={st.open}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Vitae</div></div>
@@ -564,7 +583,7 @@ function CharacterSheetPage() {
 									<div className={st.weaponFields} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.baseDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} />
-										<InputBox val={Math.max(theCharacter.characterData.purchases.attributes['str'], theCharacter.characterData.purchases.attributes['dex'], theCharacter.characterData.purchases.attributes['con']) + 1} disabled={true} />
+										<InputBox val={Math.max(theCharacter.characterData.purchases.attributes['str'], theCharacter.characterData.purchases.attributes['dex']) + 1} disabled={true} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
 									</div>
 								))}
@@ -700,7 +719,7 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
 								{theCharacter.characterData.spells.map((spell, index) => (
-									<div key={index} className={st.spellFlex}><InputBox val={getSpellName(spell)} disabled={true} /> <button className={st.removeButton + ' notForPrint'} onClick={() => adjustSpell(spell, false)}>X</button></div>
+									<div key={index} className={st.spellFlex}><InputBox val={getSpellName(spell)} disabled={true} />  <button className='notForPrint' onClick={() => showSpellInfo(true, getSpellInfo(spell))}>Info</button> <button className='notForPrint' onClick={() => adjustSpell(spell, false)}>X</button></div>
 								))}
 								{theCharacter.characterData.spells.length < Math.min(theCharacter.getMovePurchase('797d1feb').points * 2 || 0)
 								?

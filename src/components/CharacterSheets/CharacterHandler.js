@@ -2,7 +2,7 @@ import { prepareName } from '../../utils/prepareName';
 
 export class CharacterObject {
 
-	baseCharacterPoints = 30; // How many you start with at Session 0
+	baseCharacterPoints = 27; // How many you start with at Session 0, adding 1 for session 1.
 	baseVerve = 20; // How many Verve you start with
 	baseMana = 3; // How many Mana you start with
 	basePsi = 3; // How many Stamina you start with
@@ -10,7 +10,7 @@ export class CharacterObject {
 	characterTemplate = {
 		"id": "",
 		"name": "New Character",
-		"sessions": 0,
+		"sessions": 1,
 		"race": "Human",
 		"movesq": 5,
 		"racial_modifiers": {
