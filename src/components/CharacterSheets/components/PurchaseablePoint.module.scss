@@ -1,8 +1,10 @@
 .el {
+	position: relative;
 	width: 10px;
 	height: 10px;
 	border: 2px solid black;
 	background: #fff;
+	overflow: hidden;
 
 	&.automatic {
 		background-color: #666;
@@ -10,5 +12,22 @@
 
 	&.purchased {
 		background-color: #999;
+	}
+
+	.forPrint {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 12px;
+		height: 12px;
+		object-fit: cover;
+	}
+
+	@media print {
+		&.automatic,
+		&.purchased {
+			.forPrint { display: block; }
+		}
 	}
 }

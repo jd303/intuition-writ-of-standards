@@ -62,15 +62,16 @@ export class CharacterObject {
 		"notes": [],
 		"minimal_mode": {
 			"1_on": false,
-			"2_social": true,
-			"3_stealth": true,
-			"4_engineering": true,
-			"5_craft": true,
-			"6_inner_power": true,
-			"7_magic": true,
-			"8_psionics": true,
-			"9a_inventory": true,
-			"9b_notes": true,
+			"2a_social": true,
+			"2b_stealth": true,
+			"2c_engineering": true,
+			"2d_craft": true,
+			"2e_inner_power": true,
+			"2f_magic": true,
+			"2g_psionics": true,
+			"2h_inventory": true,
+			"2i_notes": true,
+			"3_minimal_print_mod_rows": false,
 		}
 	}
 

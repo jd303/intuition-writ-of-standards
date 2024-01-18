@@ -153,6 +153,11 @@ function CharacterSheetPage() {
 		return '';
 	}
 
+	const getMinimalPrintRows = () => {
+		if (theCharacter.characterData.minimal_mode['1_on'] && theCharacter.characterData.minimal_mode['3_minimal_print_mod_rows']) return true;
+		return false;
+	}
+
 	// Bottom Menu Options
 	const openAllSections = () => {
 		Object.keys(sectionRefs).forEach(key => sectionRefs[key].current.classList.add(st.open));
@@ -500,7 +505,7 @@ function CharacterSheetPage() {
 						</div>
 						{
 							getBodyMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 					</div>
@@ -561,7 +566,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['defences']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
@@ -580,11 +585,19 @@ function CharacterSheetPage() {
 									<div className={st.fonted + ' ' + st.headLabel}>Abilities</div>
 								</div>
 								{Array.from(Array(Math.max(1, theCharacter.characterData.weapons.filter(weap => Object.values(weap).join('') !== '').length + 1))).map((i, index) => (
-									<div className={st.weaponFields} key={index}>
+									<div className={st.weaponFields + ' notFoPrint'} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.baseDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} />
 										<InputBox val={Math.max(theCharacter.characterData.purchases.attributes['str'], theCharacter.characterData.purchases.attributes['dex']) + 1} disabled={true} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
+									</div>
+								))}
+								{Array.from(Array(3)).map((i, index) => (
+									<div className={st.weaponFields + ' foPrint'} key={index}>
+										<InputBox val="" />
+										<InputBox val="" />
+										<InputBox val="" />
+										<InputBox val="" />
 									</div>
 								))}
 							</div>
@@ -614,7 +627,7 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							movesAndMods['combat']?.moves.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} printableModsCount={8} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} basePrintableModsCount={10} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
@@ -628,60 +641,60 @@ function CharacterSheetPage() {
 						<div className={st.moveList}>
 						{
 							getCommonMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2_social')}>Social Moves</div>
-						<div className={st.moveList + getMinimalModeStatus('2_social')}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2a_social')}>Social Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('2a_social')}>
 						{
 							getSocialMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('3_stealth')}>Stealth Moves</div>
-						<div className={st.moveList + getMinimalModeStatus('3_stealth')}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2b_stealth')}>Stealth Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('2b_stealth')}>
 						{
 							getStealthMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('4_engineering')}>Engineering Moves</div>
-						<div className={st.moveList + getMinimalModeStatus('4_engineering')}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2c_engineering')}>Engineering Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('2c_engineering')}>
 						{
 							getEngineeringMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('5_craft')}>Craft Moves</div>
-						<div className={st.moveList + getMinimalModeStatus('5_craft')}>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2d_craft')}>Craft Moves</div>
+						<div className={st.moveList + getMinimalModeStatus('2d_craft')}>
 						{
 							getCraftyMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Inner Power']} className={st.open + getMinimalModeStatus('6_inner_power')}>
+				<section ref={sectionRefs['Inner Power']} className={st.open + getMinimalModeStatus('2e_inner_power')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoCircles} alt="" /> Inner Power</div></div>
 					<div className={st.collapsable + ' ' + st.innerPowerLayout}>
 						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Inner Power Moves</div>*/}
 						<div className={st.moveList}>
 						{
 							movesAndMods['inner_power']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Magic']} className={st.open + getMinimalModeStatus('7_magic')}>
+				<section ref={sectionRefs['Magic']} className={st.open + getMinimalModeStatus('2f_magic')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoMagic} alt="" /> Magic </div></div>
 					<div className={st.collapsable + ' ' + st.magicLayout}>
 						<div className={st.sectionMeta + ' ' + st.section1}>
@@ -719,7 +732,7 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
 								{theCharacter.characterData.spells.map((spell, index) => (
-									<div key={index} className={st.spellFlex}><InputBox val={getSpellName(spell)} disabled={true} />  <button className='notForPrint' onClick={() => showSpellInfo(true, getSpellInfo(spell))}>Info</button> <button className='notForPrint' onClick={() => adjustSpell(spell, false)}>X</button></div>
+									<div key={index} className={st.spellFlex}><InputBox val={getSpellName(spell)} disabled={true} className="notForPrint" />  <button className='notForPrint' onClick={() => showSpellInfo(true, getSpellInfo(spell))}>Info</button> <button className='notForPrint' onClick={() => adjustSpell(spell, false)}>X</button></div>
 								))}
 								{theCharacter.characterData.spells.length < Math.min(theCharacter.getMovePurchase('797d1feb').points * 2 || 0)
 								?
@@ -728,32 +741,40 @@ function CharacterSheetPage() {
 								}
 							</div>
 						</div>
+						<div className={st.sectionMeta + ' forPrint'}>
+							<div className={st.sectionMetaInner}>
+								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
+								{Array.from(Array(14)).map((i, index) => (
+									<div key={`printspell-${index}`}><InputBox val="" /></div>
+								))}
+							</div>
+						</div>
 						{/*<div className={st.headingMedium + ' ' + st.movesHeader}>Magic Moves</div>*/}
 						<div className={st.moveList}>
 						{
 							movesAndMods['magic']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Psionics']} className={st.open + getMinimalModeStatus('8_psionics')}>
+				<section ref={sectionRefs['Psionics']} className={st.open + getMinimalModeStatus('2g_psionics')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoSpiral} alt="" /> Psionics</div></div>
 					<div className={st.collapsable + ' ' + st.psionicsLayout}>
 						<div className={st.headingMedium + ' ' + st.movesHeader}>Psionic Moves</div>
 						<div className={st.moveList}>
 						{
 							movesAndMods['psionics']?.moves?.map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints}></Move>
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
 						</div>
 					</div>
 				</section>
 				
-				<section ref={sectionRefs['Inventory']} className={st.open + getMinimalModeStatus('9a_inventory')}>
+				<section ref={sectionRefs['Inventory']} className={st.open + getMinimalModeStatus('2h_inventory')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Inventory</div></div>
 					<div className={st.collapsable + ' ' + st.inventoryLayout}>
 						<div className="notForPrint">
@@ -769,7 +790,7 @@ function CharacterSheetPage() {
 					</div>
 				</section>
 
-				<section ref={sectionRefs['Notes']} className={st.open + getMinimalModeStatus('9b_notes')}>
+				<section ref={sectionRefs['Notes']} className={st.open + getMinimalModeStatus('2i_notes')}>
 					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoDocument} alt="" /> Notes</div></div>
 					<div className={st.collapsable + ' ' + st.notesLayout}>
 						{Array.from(Array(30)).map((i, index) => (

@@ -8,7 +8,7 @@ import { PurchaseablePointGroup } from "./PurchaseablePointGroup";
 import { Mod } from "./Mod";
 import { SubMove } from "./SubMove";
 
-export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseDetails, maxPurchases, clickCallback }) {
+export function Move( { move, toggleRollPopup, basePrintableModsCount = 6, purchaseDetails, maxPurchases, clickCallback, minimalPrintRows = false }) {
 	const [descriptionVisible, setDescriptionVisible] = useState(false);
 	const toggleDescriptionVisible = () => {
 		setDescriptionVisible(!descriptionVisible);
@@ -39,7 +39,8 @@ export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseD
 
 	const generateInputBoxes = () => {
 		let response = [];
-		for (let x=0; x < printableModsCount; x++) {
+		let numMods = minimalPrintRows ? 4 : basePrintableModsCount;
+		for (let x=0; x < numMods; x++) {
 			response.push(<InputBox key={x} />);
 		}
 		return response;
@@ -89,8 +90,9 @@ export function Move( { move, toggleRollPopup, printableModsCount = 6, purchaseD
 Move.propTypes = {
 	move: PropTypes.object.isRequired,
 	toggleRollPopup: PropTypes.func,
-	printableModsCount: PropTypes.number,
+	basePrintableModsCount: PropTypes.number,
 	purchaseDetails: PropTypes.object,
 	maxPurchases: PropTypes.number,
-	clickCallback: PropTypes.func.isRequired
+	clickCallback: PropTypes.func.isRequired,
+	minimalPrintRows: PropTypes.bool
 };

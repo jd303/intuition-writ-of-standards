@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import st from './PurchaseablePoint.module.scss';
+import grSquareBlack from '../../../assets/images/icons/gr.square.black.svg';
 
 export function PurchaseablePoint( { automatic, purchased = false }) {
 
@@ -9,7 +10,9 @@ export function PurchaseablePoint( { automatic, purchased = false }) {
 
 	return (
 		<React.Fragment>
-			<div className={[st.el, automaticClass, purchasedClass].join(' ')}></div>
+			<div className={[st.el, automaticClass, purchasedClass].join(' ')}>
+				<div className={st.forPrint}><img src={grSquareBlack} alt="" /></div>
+			</div>
 		</React.Fragment>
 	);
 }
