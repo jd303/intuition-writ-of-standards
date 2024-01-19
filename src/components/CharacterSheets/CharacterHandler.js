@@ -80,6 +80,7 @@ export class CharacterObject {
 			"2g_psionics": true,
 			"2h_inventory": true,
 			"2i_notes": true,
+			"2j_beast_mastery": true,
 			"3_minimal_print_mod_rows": false,
 		}
 	}

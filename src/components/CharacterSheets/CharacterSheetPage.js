@@ -88,6 +88,11 @@ function CharacterSheetPage() {
 		let response = [];
 		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
 		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
+		return response;
+	}
+
+	const getBeastMasteryMoves = () => {
+		let response = [];
 		if (movesAndMods['beast_mastery']) response = response.concat(movesAndMods['beast_mastery'].moves);
 		return response;
 	}
@@ -310,6 +315,12 @@ function CharacterSheetPage() {
 
 		if (success) setTheCharacter(newCharacter);
 		else console.log("ERROR Saving");
+	}
+
+	const getSkillDamages = () => {
+		const meleeDamage = theCharacter.characterData.purchases.moves && theCharacter.characterData.purchases.moves['a72c2adb']?.points || 0;
+		const rangedDamage = theCharacter.characterData.purchases.moves && theCharacter.characterData.purchases.moves['4bf8b06a']?.points || 0;
+		return `${meleeDamage}/${rangedDamage}`;
 	}
 
 	// Spells Data / Optim note: this triggers on all changes due to theCharacter.characterData.purchases not being specific enough to detect changes
@@ -612,7 +623,7 @@ function CharacterSheetPage() {
 									<div className={st.weaponFields + ' notFoPrint'} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
 										<Dropdown source={weaponDamageDice} noDefault={false} val={theCharacter.characterData.weapons[index]?.damage} onChange={(value) => updateValueFromInput(`weapons[${index}].damage`, value, true)} />
-										<InputBox val={`${theCharacter.characterData.purchases.moves['a72c2adb']?.points || 0}/${theCharacter.characterData.purchases.moves['4bf8b06a']?.points || 0}`} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} disabled={true} />
+										<InputBox val={getSkillDamages()} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} disabled={true} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
 									</div>
 								))}
@@ -700,6 +711,17 @@ function CharacterSheetPage() {
 								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
 							))
 						}
+						</div>
+						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2d_craft')}>Beast Mastery</div>
+						<div className={st.moveList + getMinimalModeStatus('2j_beast_mastery')}>
+						{
+							getBeastMasteryMoves().map((move, index) => (
+								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
+							))
+						}
+						</div>
+						<div className={st.moveList + getMinimalModeStatus('2j_beast_mastery')}>
+							Beast Mastery beasts
 						</div>
 					</div>
 				</section>
