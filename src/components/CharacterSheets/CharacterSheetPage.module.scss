@@ -559,6 +559,38 @@ section {
 		page-break-after: always;
 	}
 
+	.beastMasteryLayout {
+		.moveList {
+			margin-bottom: calc(0.5 * var(--padding-standard));
+		}
+
+		.beastList {
+			padding: calc(0.5 * var(--padding-standard));
+			border-radius: 10px;
+			border: var(--border);
+			background-color: #fff;
+
+			.companionDetails {
+				display: grid;
+				grid-template-columns: 3fr 5fr;
+				gap: calc(0.5 * var(--padding-standard));
+				margin-bottom: calc(0.5 * var(--padding-standard));
+			}
+
+			.companionMoves {
+				.headingSmall {
+					margin-bottom: calc(0.5 * var(--padding-standard));
+				}
+				
+				.companionFlex {
+					display: flex;
+					gap: calc(0.5 * var(--padding-standard));
+					margin-bottom: calc(0.5 * var(--padding-standard));
+				}
+			}
+		}
+	}
+
 	.innerPowerLayout {
 		page-break-after: always;
 	}
@@ -789,6 +821,10 @@ section {
 	margin-bottom: calc(0.5 * var(--padding-standard));
 	margin-left: 5px;
 
+	&:first-child {
+		margin-top: calc(0.5 * var(--padding-standard));
+	}
+
 	@media print {
 		display: none;
 	}
@@ -875,6 +911,10 @@ section {
 
 .movesLayout {
 	background-color: rgba(var(--colour-aqua), 0.1);
+}
+
+.beastMasteryLayout {
+	background-color: rgba(var(--colour-mustard), 0.1);
 }
 
 .innerPowerLayout {

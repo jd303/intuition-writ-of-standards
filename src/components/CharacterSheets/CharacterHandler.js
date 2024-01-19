@@ -296,6 +296,14 @@ export class CharacterObject {
 		return true;
 	}
 
+	adjustCompanionMove(id, addMode) {
+		if (!this.characterData.companion) this.characterData.companion = { name: '', desc: '', moves: [] };
+		if (addMode) this.characterData.companion.moves.push(id);
+		else this.characterData.companion.moves = this.characterData.companion.moves.filter(move => move !== id);
+
+		return true;
+	}
+
 	adjustMinimalMode(key, value) {
 		this.characterData.minimal_mode[key] = value;
 		return true;

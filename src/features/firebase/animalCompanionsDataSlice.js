@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { convertDataStandards } from "./dataStandards";
+//import { convertDataStandards } from "./dataStandards";
 
 export const animalCompanionsDataSlice = createSlice({
 	name: "animalCompanionsData",
@@ -8,7 +8,8 @@ export const animalCompanionsDataSlice = createSlice({
 	},
 	reducers: {
 		updateAnimalCompanionsData: (state, data) => {
-			const payload = convertDataStandards(data.payload.data, data.payload.standards);
+			//const payload = convertDataStandards(data.payload.data, data.payload.standards);
+			const payload = data.payload.data;
 			state.value = payload;
 		},
 	},

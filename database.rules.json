@@ -1,6 +1,6 @@
 {
 	"rules": {
-		"animal_companion_moves": {
+		"animal_companions": {
 			".read": true,
 			".write": false
 		},

@@ -43,9 +43,11 @@ import icoRunningman from '../../assets/images/icons/ico.runningman.svg';
 import icoPuzzlebrain from '../../assets/images/icons/ico.puzzlebrain.svg';
 import icoBrain from '../../assets/images/icons/ico.brain.svg';
 import icoDocument from '../../assets/images/icons/ico.document.svg';
+import icoBear from '../../assets/images/icons/ico.bear.svg';
 
 import st from './CharacterSheetPage.module.scss';
 import { selectLanguageData } from "../../features/firebase/languageDataSlice";
+import { selectAnimalCompanionsData } from "../../features/firebase/animalCompanionsDataSlice";
 
 export const CharacterContext = createContext();
 
@@ -63,6 +65,7 @@ function CharacterSheetPage() {
 	const sources_data = useSelector(selectSourcesData);
 	const racial_bonus_data = useSelector(selectRacialBonusData);
 	const languages_data = useSelector(selectLanguageData);
+	const companions_data = useSelector(selectAnimalCompanionsData);
 	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
 	console.log("CHARS", charactersData);
@@ -135,7 +138,7 @@ function CharacterSheetPage() {
 	const closeRollPopup = () => { setRollPopupShowing(false); }
 
 	// Section Expanders
-	const sections = ['Vitae', 'Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Inner Power', 'Psionics', 'Notes', 'Inventory'];
+	const sections = ['Vitae', 'Core', 'Wellness', 'Defences', 'Combat', 'Moves', 'Magic', 'Beast Mastery', 'Inner Power', 'Psionics', 'Notes', 'Inventory'];
 	const sectionRefs = {};
 	sections.forEach(section => sectionRefs[section] = useRef(null));
 	const toggleSection = (e) => {
@@ -309,6 +312,14 @@ function CharacterSheetPage() {
 		else console.log("ERROR Saving");
 	}
 
+	const adjustCompanionMove = (id, addMode = true) => {
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		const success = newCharacter.adjustCompanionMove(id, addMode);
+
+		if (success) setTheCharacter(newCharacter);
+		else console.log("ERROR Saving");
+	}
+
 	const adjustMinimalModeToggle = (key) => {
 		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
 		const success = newCharacter.adjustMinimalMode(key, !newCharacter.characterData.minimal_mode[key]);
@@ -348,6 +359,12 @@ function CharacterSheetPage() {
 
 	const getSpellInfo = (spellID) => {
 		return spellsForMyLevelAndSource.find(spell => spell.id == spellID);
+	}
+
+	const getCompanionMoveDetails = (id) => {
+		const companionMove = companions_data.find(move => move.id == id);
+		if (companionMove) return `${companionMove.name} - ${companionMove.desc}`;
+		else return 'missing data';
 	}
 
 	useEffect(() => {
@@ -712,18 +729,43 @@ function CharacterSheetPage() {
 							))
 						}
 						</div>
-						<div className={st.headingMedium + ' ' + st.movesHeader + getMinimalModeStatus('2d_craft')}>Beast Mastery</div>
-						<div className={st.moveList + getMinimalModeStatus('2j_beast_mastery')}>
-						{
-							getBeastMasteryMoves().map((move, index) => (
-								<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
-							))
-						}
-						</div>
-						<div className={st.moveList + getMinimalModeStatus('2j_beast_mastery')}>
-							Beast Mastery beasts
-						</div>
 					</div>
+				</section>
+
+				<section ref={sectionRefs['Beast Mastery']} className={st.open + getMinimalModeStatus('2j_beast_mastery')}>
+					<div className={st.collapser} onClick={toggleSection}><div className={st.headingLarge}><img className={st.titleIcon} src={icoBear} alt="" /> Beast Mastery</div></div>
+						<div className={st.collapsable + ' ' + st.beastMasteryLayout}>
+							<div className={st.moveList}>
+							{
+								getBeastMasteryMoves().map((move, index) => (
+									<Move key={index} move={move} toggleRollPopup={toggleRollPopup} purchaseDetails={theCharacter.getMovePurchase(move.id)} maxPurchases={calculateMaxPoints(move.stat)} clickCallback={adjustPoints} minimalPrintRows={getMinimalPrintRows()}></Move>
+								))
+							}
+							</div>
+							<div className={st.beastList}>
+								<div className={st.companionDetails}>
+									<div className={st.headingSmall}>Companion</div> <div className={st.headingSmall}>Abilities</div>
+									<InputBox val={theCharacter.characterData.companion?.name} onUpdate={(value) => updateValueFromInput(`companion.name`, value)} />
+									<InputBox val={theCharacter.characterData.companion?.abilities} onUpdate={(value) => updateValueFromInput(`companion.abilities`, value)} />
+								</div>
+								<div className={st.companionMoves}>
+									<div className={st.headingSmall}>Moves</div>
+									{theCharacter.characterData.companion?.moves?.map((cmove, index) => (
+										<div key={index} className={st.companionFlex}><InputBox val={getCompanionMoveDetails(cmove)} disabled={true} className="notForPrint" /> <button className='notForPrint' onClick={() => adjustCompanionMove(cmove, false)}>X</button></div>
+									))}
+									<div className='forPrint'>
+										{Array.from(Array(5)).map((i, index) => (
+											<div key={`printcompmove-${index}`}><InputBox val="" /></div>
+										))}
+									</div>
+									{(theCharacter.characterData.companion?.moves?.length || 0) < (theCharacter.getMovePurchase('f73a1fd2').points || 0)
+									?
+										<div className={st.companionMoveChoice}><Dropdown source={companions_data.filter(cd => cd.type == "move")} val='' onChange={adjustCompanionMove} /></div>
+									: <></>
+									}
+								</div>
+							</div>
+						</div>
 				</section>
 
 				<section ref={sectionRefs['Inner Power']} className={st.open + getMinimalModeStatus('2e_inner_power')}>
