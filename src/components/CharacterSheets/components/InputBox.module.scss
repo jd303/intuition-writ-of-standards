@@ -38,5 +38,10 @@
 	&::placeholder {
 		font-style: italic;
 		color: #bbb;
+
+		@media print {
+			display: none;
+			color: transparent;
+		}
 	}
 }

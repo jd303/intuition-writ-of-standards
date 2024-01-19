@@ -17,7 +17,7 @@ function RulesPage() {
 					<a className={styles.scrollerButton} href="#characters">Characters</a>
 					<a className={styles.scrollerButton} href="#moves">Skills &amp; Moves</a>
 					<a className={styles.scrollerButton} href="#mods">Mods</a>
-					<a className={styles.scrollerButton} href="#dice">Dice & Rolling</a>
+					<a className={styles.scrollerButton} href="#dice">Dice &amp; Rolling</a>
 					<a className={styles.scrollerButton} href="#actions">Actions</a>
 					<a className={styles.scrollerButton} href="#combat">Combat</a>
 					<a className={styles.scrollerButton} href="#magic">Magic</a>
@@ -33,20 +33,20 @@ function RulesPage() {
 						<p>Advancement Points, often just called points, are earned at the start of each Session and....</p>
 						<p>Whenever you earn an Advancement Point you may spend it immediately, or you may hold it for the duration of the session.  If you spend it during the session on a Move or purchase that you use immediately, it is a Cinematic Spend.  Cinematic Spends on Moves grant you a +1 Bonus to your Move Roll.</p>
 						<h3>Attributes</h3>
-						<p>Players have 6 values that define their physical and mental attributes.  Attributes act as 1 limiter to the number of points that can be spent in Moves; each point in an attribute alleviates a limitation on a Move by 3 points (for example with 2 Strength, the spend on Strength-based moves up to 6 points is not limited by attributes, but may still be limited by the session count). Alongside that, players also gain the following benefits:</p>
+						<p>Players have 6 values that define their physical and mental attributes.  Attributes add to the number of points that can be spent in Skills; each point in an attribute increases the maximum purchase by 1.  Attributes describe your character in the following way:</p>
 						<ul>
-							<li>Strength: You Melee Weapon Damage is improved, and your Maximum Block is improved by half of your Strength.</li>
-							<li>Dexterity: You Ranged Weapon Damage is improved, and your Maximum Dodge is improved by half of your Strength.</li>
-							<li>Constitution: You gain additional Total Verve based on your Constitution Bonus.</li>
-							<li>Intelligence: Your Spell Damage is improved.</li>
-							<li>Wisdom: </li>
-							<li>Charisma: </li>
+							<li>Strength: You are strong, but not necessarily muscular.  You know how to use your body&apos;s strength.</li>
+							<li>Dexterity: You are lithe, fast, agile or a combination of the 3.</li>
+							<li>Constitution: You are hardy or stubborn.</li>
+							<li>Intelligence: You grasp concepts quickly, and can process information in ways that some cannot.</li>
+							<li>Wisdom: You have lived and experienced, and can apply your experiences to situations you encounter.</li>
+							<li>Charisma: You have a force of will, or a memorable character.</li>
 						</ul>
-						<h3>Move Purchases</h3>
-						<p>Players cannot purchase Move Points unfettered.  Moves are limites, the rules of which are as follows:</p>
+						<h3>Skill Purchases</h3>
+						<p>Players cannot purchase Skill Points unfettered.  Skill are limited, the rules of which are as follows:</p>
 						<ul>
-							<li>You cannot purchase Moves to a greater level than twice your value of the Attribute it is related to.  That is, if you wish to purchase the 10th rank of Rest, you must have 5 Constitution to do so</li>
-							<li>The maximum number of points that you may spend in any Move is equal to 2 + 1 every 8 sessions.  That is, at session 1 you may have a maximum of 2 points in each Move.  At session 9, that raises to 3, and again at 17, 24, 33, and so on.</li>
+							<li>You can purchase a Skill point if it does not exceed maximum.</li>
+							<li>The maximum number of points that you may spend in any Skill is equal to 1 every 8 sessions, plus the value of the Stat that applies to the Skill.  For example at level 1 and with a vale of 1 in Constitution, you may purchase 2 points in the Rest Skill.</li>
 						</ul>
 					</section>
 					<section className={styles.column} id="moves">
@@ -84,6 +84,10 @@ function RulesPage() {
 					<section className={styles.column} id="combat">
 						<h2>Combat</h2>
 						<p>Rules here</p>
+						<h2>Creatures in Combat</h2>
+						<p>Talk about basic and special attacks</p>
+						<p>Talk about how some basic attacks ignore Dodge or Block</p>
+						<p>Talk about how most have bad special attacks.  You can use Stagger to slow this down.  If you&apos;ve applied a Stagger in a turn, creatures get resistance to 1 Stagger that turn.  So applying a second requires 3 Stagger all up.</p>
 					</section>
 					<section className={styles.column} id="magic">
 						<h2>Magic</h2>

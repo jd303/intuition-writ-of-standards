@@ -65,6 +65,7 @@ function CharacterSheetPage() {
 	const languages_data = useSelector(selectLanguageData);
 	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
+	console.log("CHARS", charactersData);
 
 	// Moves Data
 	let movesAndMods = {};
@@ -87,6 +88,7 @@ function CharacterSheetPage() {
 		let response = [];
 		if (movesAndMods['influence']) response = response.concat(movesAndMods['influence'].moves);
 		if (movesAndMods['arts']) response = response.concat(movesAndMods['arts'].moves);
+		if (movesAndMods['beast_mastery']) response = response.concat(movesAndMods['beast_mastery'].moves);
 		return response;
 	}
 
@@ -110,8 +112,8 @@ function CharacterSheetPage() {
 
 	// Static Data
 	const vervePerPoint = 5;
-	const vervePerCON = 3;
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
+	const weaponDamageDice = [ "d4", "d8", "d6", "d10", "d12" ];
 	const bonusDice = [ "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
 	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
@@ -186,22 +188,24 @@ function CharacterSheetPage() {
 	const [maxPoints, setMaxPoints] = useState(characterObject.getMaxPoints());
 	const [availablePoints, setAvailablePoints] = useState(theCharacter.getAvailablePoints());
 	const debouncedCharacter = useDebounce(theCharacter, debounceSaveTime);
+	const maxCharacterAttributePoints = 6;
 
 	const maxMovePoints = useMemo(() => {
-		return 1 + Math.ceil(theCharacter.characterData.sessions / 8)
+		return Math.max(1, Math.ceil(theCharacter.characterData.sessions / 8));
 	}, [theCharacter.characterData.sessions]);
 
 	const calculateMaxPoints = (attr) => {
+		attr = attr.toUpperCase();
 		let stat;
 		if (attr.indexOf(",") !== -1) {
 			const split = attr.replace(/ /g,'').split(",");
 			let highest = -1;
-			split.forEach(at => highest = theCharacter.characterData.purchases.attributes[at] > highest ? theCharacter.characterData.purchases.attributes[at] : highest);
+			split.forEach(at => highest = theCharacter.characterData.attributes[at] > highest ? theCharacter.characterData.attributes[at] : highest);
 			stat = highest;
 		} else {
-			stat = theCharacter.characterData.purchases.attributes[attr];
+			stat = theCharacter.characterData.attributes[attr];
 		}
-		return Math.min((stat + 1) * 3, maxMovePoints);
+		return maxMovePoints + stat;
 	}
 
 	const updateValueFromInput = (property, valueProp, isNumber = false) => {
@@ -245,6 +249,20 @@ function CharacterSheetPage() {
 		setTheCharacter(newCharacter);
 		setAvailablePoints(newCharacter.getAvailablePoints());
 		setMaxPoints(newCharacter.getMaxPoints());
+	}
+
+	const updateCharacterAttribute = (key, value) => {
+		const newCharacter = new CharacterObject(structuredClone(theCharacter.characterData));
+		newCharacter.characterData.attributes[key] = Number(value);
+
+		// Adjust for maximum points
+		let index = 0;
+		while (Object.values(newCharacter.characterData.attributes).reduce((x, y) => x + y, 0) > maxCharacterAttributePoints) {
+			newCharacter.characterData.attributes[Object.keys(newCharacter.characterData.attributes)[index]] = 0;
+			index += 1;
+		}
+
+		setTheCharacter(newCharacter);
 	}
 
 	const adjustPoints = (purchaseKey) => {
@@ -409,7 +427,7 @@ function CharacterSheetPage() {
 							<div className={st.standardFlex}>
 								<div className={st.headingMedium}>Sessions</div>
 								<InputBox type="number" val={theCharacter.characterData.sessions} onUpdate={(value) => updateValueFromInput('sessions', value, true)} />
-								<div className={st.sessionPoints + ' ' + st.littleNote}>{maxMovePoints} Max Move Points</div>
+								<div className={st.sessionPoints + ' ' + st.littleNote}>{Math.min(12, maxMovePoints)} Max Skill Points</div>
 							</div>
 							<div className={st.standardFlex}>
 								<div className={st.headingMedium}>Points</div> <InputBox className="notForPrint" val={`${theCharacter.characterData.purchases.spentPoints} / ${theCharacter.getMaxPoints()}`} disabled={true} /> <InputBox className="forPrint" />
@@ -440,25 +458,31 @@ function CharacterSheetPage() {
 					<div  className={st.collapsable + ' ' + st.attributesLayout}>
 						<div className={st.sectionMeta}>
 							<div className={st.stats + ' ' + st.sectionMetaInner}>
-								<div className={st.standardFlex}><div className={st.headingMedium}>Attributes</div> <div className={st.littleNote}>(Max 12 points)</div></div>
+								<div className={st.standardFlex}><div className={st.headingMedium}>Attributes</div> <div className={st.littleNote}>(Max {maxCharacterAttributePoints} points)</div></div>
 								<div className={st.list}>
 									{stats.map((stat, index) => (
 										<div className={st.stat} key={index}>
 											<img src={abilityIcons[index]} alt="Icon" />
 											<div className={st.statName + ' ' + st.fullName}><div className={st.headingSmall}>{stat.full}</div></div>
 											<div className={st.statPurchases}>
-												<PurchaseablePointGroup count={4} columns={4} automaticPurchases={1} purchased={theCharacter.characterData.purchases.attributes[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />
+												{/*<PurchaseablePointGroup count={4} columns={4} automaticPurchases={1} purchased={theCharacter.characterData.purchases.attributes[stat.short.toLowerCase()]} clickCallback={adjustPoints} purchaseKey={`ability.${stat.short.toLowerCase()}`} />*/}
+												{!theCharacter.characterData.attributeslocked ? 
+													<Dropdown source={[0,1,2,3]} noDefault={true} val={theCharacter.characterData.attributes[stat.short]} onChange={(value) => updateCharacterAttribute(stat.short, value, true)} />
+												:
+													<InputBox val={theCharacter.characterData.attributes[stat.short]} disabled={true} />
+												}
 											</div>
 										</div>
 									))}
-									<div className={st.statLabels}>
+									{!theCharacter.characterData.attributeslocked ? <button className="notForPrint" onClick={() => updateValueFromInput('attributeslocked', true)}>Confirm</button> : <></>}
+									{/*<div className={st.statLabels}>
 										<div>1</div><div>2</div><div>3</div><div>4</div>
-									</div>
+									</div>*/}
 								</div>
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
 								<div className={st.standardFlex}><div className={st.headingMedium}>Buffs</div><span className={st.littleNote}>Effect + Source</span></div>
-								{Array.from(Array(Math.max(4, theCharacter.characterData.buffs.filter(buff => buff !== "").length + 1))).map((i, index) => (
+								{Array.from(Array(Math.max(6, theCharacter.characterData.buffs.filter(buff => buff !== "").length + 1))).map((i, index) => (
 									<div className={st.buffDetails} key={index}><InputBox placeholder="Effect & Source" val={theCharacter.characterData.buffs[index]} onUpdate={(value) => updateValueFromInput(`buffs[${index}]`, value)} /></div>
 								))}
 							</div>
@@ -473,14 +497,14 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.verve}>
 									<div className={st.titleAndPoints}>
-										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>{theCharacter.baseVerve} + {vervePerCON}xCON + {vervePerPoint}/point</div></div>
+										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>{theCharacter.baseVerve} + {vervePerPoint}/point</div></div>
 										<div className={st.healthPurchases}>
 											<PurchaseablePointGroup count={36} columns={12} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Bonus</div> <InputBox val={theCharacter.characterData.bonus_verve} onUpdate={(value) => updateValueFromInput(`bonus_verve`, value)} type="number" /></div>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * vervePerPoint + (theCharacter.characterData.purchases.attributes.con + 1) * vervePerCON} disabled={true} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * vervePerPoint} disabled={true} /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox className="notForPrint" val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /><InputBox className="forPrint" /></div>
 									</div>
 								</div>
@@ -581,23 +605,23 @@ function CharacterSheetPage() {
 								<div className={st.weaponsHeader}>
 									<div className={st.headingMedium + ' ' + st.headName}>Weapons</div>
 									<div className={st.fonted + ' ' + st.headLabel}>Dam</div>
-									<div className={st.fonted + ' ' + st.headLabel}>Stat</div>
+									<div className={st.fonted + ' ' + st.headLabel}>Skill</div>
 									<div className={st.fonted + ' ' + st.headLabel}>Abilities</div>
 								</div>
 								{Array.from(Array(Math.max(1, theCharacter.characterData.weapons.filter(weap => Object.values(weap).join('') !== '').length + 1))).map((i, index) => (
 									<div className={st.weaponFields + ' notFoPrint'} key={index}>
 										<InputBox val={theCharacter.characterData.weapons[index]?.name} onUpdate={(value) => updateValueFromInput(`weapons[${index}].name`, value, true)} />
-										<InputBox val={theCharacter.characterData.weapons[index]?.baseDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} />
-										<InputBox val={Math.max(theCharacter.characterData.purchases.attributes['str'], theCharacter.characterData.purchases.attributes['dex']) + 1} disabled={true} />
+										<Dropdown source={weaponDamageDice} noDefault={false} val={theCharacter.characterData.weapons[index]?.damage} onChange={(value) => updateValueFromInput(`weapons[${index}].damage`, value, true)} />
+										<InputBox val={`${theCharacter.characterData.purchases.moves['a72c2adb']?.points || 0}/${theCharacter.characterData.purchases.moves['4bf8b06a']?.points || 0}`} onUpdate={(value) => updateValueFromInput(`weapons[${index}].baseDamage`, value, true)} disabled={true} />
 										<InputBox val={theCharacter.characterData.weapons[index]?.bonusDamage} onUpdate={(value) => updateValueFromInput(`weapons[${index}].notes`, value, true)} />
 									</div>
 								))}
 								{Array.from(Array(3)).map((i, index) => (
-									<div className={st.weaponFields + ' foPrint'} key={index}>
-										<InputBox val="" />
-										<InputBox val="" />
-										<InputBox val="" />
-										<InputBox val="" />
+									<div className={st.weaponFields} key={index}>
+										<InputBox className='forPrint' val="" />
+										<InputBox className='forPrint' val="" />
+										<InputBox className='forPrint' val="" />
+										<InputBox className='forPrint' val="" />
 									</div>
 								))}
 							</div>
