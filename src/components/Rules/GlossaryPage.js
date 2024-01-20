@@ -14,9 +14,10 @@ function GlossaryPage() {
 			<div className={styles.glossaryLayout + " mainContent"}>
 				<h1>Standard Terms</h1>
 				<ol>
-					<li><span className={styles.termName}>Gaining HP</span>: You restore HP, and any HP that exceeds your total becomes temporary HP.</li>
-					<li><span className={styles.termName}>Restoring HP</span>: You restore HP, and any HP that exceeds your total are lost.</li>
-					<li><span className={styles.termName}>World Changing Effect</span>: Rolling 2 20s or 2 1s results in a World Changing Effect.</li>
+					<li><span className={styles.termName}>Restoring</span>: You restore missing resources, and any restored resource that exceeds your total is lost.  For example, if you are missing 5 Verve and Restore 10 Verve, 5 are lost.</li>
+					<li><span className={styles.termName}>Gaining Verve</span>: You gain missing resources, and any gained that exceeds your total becomes temporary resources.  For example, if you are missing 3 Verve and Restore 10 Verve, you gain 7 Temporary Verve.</li>
+					<li><span className={styles.termName}>World Changer</span>: Rolling 2 20s or 2 1s results in a World Changing Effect.  A world changer occurs between the 1 or 2 players who rolled the 20s or 1s.  On a Positive World Changer (2 20s) all players involved may propose a benefit to them that involves the Moves used to trigger the World Changer.  On a Negative World Changer, the DM will apply a negative one.</li>
+					<li><span className={styles.termName}>Personal World Changer</span>: A World Changer that applied to 1 player only.</li>
 					<li><span className={styles.termName}>Raw Roll</span>: The exact number shown on the dice you rolled.</li>
 					<li><span className={styles.termName}>DC Penalty</span>: The DC of your Roll is more difficult, as stated by the Penalty&apos;s terms.</li>
 				</ol>
