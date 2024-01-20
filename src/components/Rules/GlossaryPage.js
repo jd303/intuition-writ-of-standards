@@ -46,6 +46,7 @@ function GlossaryPage() {
 					<li><span className={styles.termName}>Stagger</span>: A measurement of how unbalanced a target is.  Each point in Stagger reduces the requirement for a successful Roll to Trip, Grapple and Disarm a target.</li>
 					<li><span className={styles.termName}>NAME</span>: Effect.</li>
 					<li><span className={styles.termName}>Flanked</span>: See the Flanked Status for more information.</li>
+					<li><span className={styles.termName}>Difficult Terrain</span>: Ground that is unstable, whether due to rocks, vines, or magical effects.  Moving over difficult terrain halves your Movement Sq.</li>
 				</ol>
 				<h1>Magic Terms</h1>
 				<ol>

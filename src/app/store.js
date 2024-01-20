@@ -12,6 +12,7 @@ import languageData from "../features/firebase/languageDataSlice";
 import sourcesData from "../features/firebase/sourcesDataSlice";
 import equipmentData from "../features/firebase/equipmentDataSlice";
 import weaponSpecialisationData from "../features/firebase/weaponSpecialisationDataSlice";
+import gadgetsData from "../features/firebase/gadgetsDataSlice";
 
 export default configureStore({
 	reducer: {
@@ -27,6 +28,7 @@ export default configureStore({
 		languageData: languageData,
 		sourcesData: sourcesData,
 		equipmentData: equipmentData,
-		weaponSpecialisationData: weaponSpecialisationData
+		weaponSpecialisationData: weaponSpecialisationData,
+		gadgetsData: gadgetsData,
 	},
 });

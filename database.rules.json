@@ -12,6 +12,10 @@
 			".read": true,
 			".write": false
 		},
+		"gadgets": {
+			".read": true,
+			".write": false
+		},
 		"moves": {
 			".read": true,
 			".write": false
