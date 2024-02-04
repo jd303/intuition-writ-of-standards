@@ -1,0 +1,35 @@
+@import "../../../index.scss";
+
+.el {
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	width: 87%;
+	max-width: 420px;
+	height: 95%;
+	max-height: 550px;
+	padding: var(--padding-standard);
+	border-radius: var(--border-radius-standard);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	background-color: rgb(var(--colour-cream));
+	opacity: 0;
+	transform: translate(-50%, 0);
+	transition: all 0.25s;
+
+	&.on {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	.btClose {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	h2 {
+		margin-top: 0;
+		line-height: 100%;
+	}
+}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAuthState } from "../../../firebase";
+import { useDebounce } from "@uidotdev/usehooks";
 import { Navigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import { PageTitle } from "../../Components/PageTitle/PageTitle";
@@ -23,8 +24,17 @@ function MenageriePage() {
 	const { ...auth } = useAuthState();
 	if (auth.user?.uid !== "LrOb5kepZdSNuzkH6qGlmIrphas1") return <Navigate to="/" />
 
+	const debounceSaveTime = 350;
+
 	// State
+	const combat_data = useSelector(selectCombatsData);
+	const [combats, setCombats] = useState(combat_data);
+	const debouncedCombats = useDebounce(combats, debounceSaveTime);
 	const viewMode = useSelector(selectViewMode);
+
+	useEffect(() => {
+		saveCombats();
+	}, [debouncedCombats]);
 
 	/**
 	 * Filter States
@@ -90,10 +100,8 @@ function MenageriePage() {
 	};
 
 	const menagerie_data = useSelector(selectMenagerieData);
-	const creatures = menagerie_data.map(prepareMonster);
-	const combat_data = useSelector(selectCombatsData);
-
-	const [combats, setCombats] = useState(combat_data);
+	const menageriePrepared = menagerie_data.map(prepareMonster);
+	const [creatures, setCreatures] = useState(menageriePrepared);
 
 	// Stats
 	const addCreatureToCombat = (newCreatureData) => {

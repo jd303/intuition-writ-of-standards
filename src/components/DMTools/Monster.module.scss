@@ -259,9 +259,13 @@
 		.propertyList {
 			display: flex;
 			flex-wrap: wrap;
-			gap: var(--padding-standard);
+			gap: calc(0.25 * var(--padding-standard));
 			font-weight: bold;
 			font-size: 1.2em;
+
+			> * {
+				margin-right: calc(0.5 * var(--padding-standard));
+			}
 		}
 	}
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import StatusPopup from "./Combat/StatusPopup";
 
 // Styles
 import st from './Monster.module.scss';
@@ -13,10 +14,9 @@ Monster.propTypes = {
   modifyMonster: PropTypes.func,
   showMonsterVerveAdjustment: PropTypes.func,
   showMonsterChargeAdjustment: PropTypes.func,
-  showMonsterStatusAdd: PropTypes.func
 };
 
-function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonster, showMonsterVerveAdjustment, showMonsterChargeAdjustment, showMonsterStatusAdd }) {
+function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonster, showMonsterVerveAdjustment, showMonsterChargeAdjustment }) {
 
 	const getSpecialClass = (move, monster) => {
 		if (move.special && monster.current_charge >= move.special) return ' ' + st.enabledCharge;
@@ -24,7 +24,17 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 		return '';
 	}
 
-	const [monsterBase, setMonsterBase] = useState(monster.base);
+	const modifyBase = (event) => {
+		const value = event.target.value;
+		const newMonster = { ...monster, base: value };
+		modifyMonster(newMonster);
+	}
+
+	const [statusVisible, setStatusVisible] = useState(false);
+	const showMonsterStatusAdd = () => {
+		console.log("SET VISIBLE");
+		setStatusVisible(true);
+	}
 
 	/**
 	 * CJSX
@@ -32,6 +42,7 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 	return (
 		<React.Fragment>
 			<div className={[st.monster, viewMode && st.viewModeOnly || ''].join(' ')}>
+				<StatusPopup visible={statusVisible} closePopup={() => setStatusVisible(false)} />
 				{addClick && (
 					<button className={st.addMonster} onClick={() => addClick(monster)}>+</button>
 				)}
@@ -40,7 +51,7 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 				)}
 				<div className={st.titleBar}>
 					<h1 className={st.title}>{monster.name}</h1>
-					<div className={st.identifier}><input className={st.subtleInput} value={monsterBase} onChange={modifyMonster} /></div>
+					<div className={[st.identifier, st.hideWhenViewMode].join(' ')}><input className={st.subtleInput} value={monster.base} onChange={modifyBase} /></div>
 				</div>
 				<div className={st.metaBar}>
 					<div className={st.verve}>
