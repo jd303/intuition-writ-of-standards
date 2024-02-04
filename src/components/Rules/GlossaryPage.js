@@ -47,6 +47,7 @@ function GlossaryPage() {
 					<li><span className={styles.termName}>NAME</span>: Effect.</li>
 					<li><span className={styles.termName}>Flanked</span>: See the Flanked Status for more information.</li>
 					<li><span className={styles.termName}>Difficult Terrain</span>: Ground that is unstable, whether due to rocks, vines, or magical effects.  Moving over difficult terrain halves your Movement Sq.</li>
+					<li><span className={styles.termName}>Maximum Block / Dodge</span>: This is the maximum that you can apply to the Block and Dodge Moves to resist Basic Attacks.  It does not apply to magic Spells.</li>
 				</ol>
 				<h1>Magic Terms</h1>
 				<ol>

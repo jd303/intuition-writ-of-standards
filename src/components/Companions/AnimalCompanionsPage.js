@@ -11,11 +11,8 @@ import { Footer } from "../../components/Components/Footer/Footer";
 
 import styles from './AnimalCompanionsPage.module.scss';
 
-import { animal_companions } from '../../assets/data/animal_companions_data';
-
 function AnimalCompanionsPage() {
-	//const animal_companions = useSelector(selectAnimalCompanionsData);
-	console.log(animal_companions);
+	const animal_companions = useSelector(selectAnimalCompanionsData);
 
 	return (
 		<React.Fragment>
@@ -23,21 +20,15 @@ function AnimalCompanionsPage() {
 			<PageTitle colour="mustard">Animal Companions (incomplete)</PageTitle>
 			<div className="mainContent">
 				<ListingWrapper filter={false}>
-					{animal_companions.map((companion, index) => {
-						return (
-							<Listing key={index} className={styles.animalCompanionLayout}>
-								<div className={st.name}><ListingTitle>{companion.name}</ListingTitle></div>
-								<div className={st.type}>{companion.type}</div>
-								<div className={st.description}>{companion.description}</div>
-								<div className={st.abilities}>
-									<ListingTitle>Abilities</ListingTitle>
-									{companion.abilities.map((ability, index) => (
-										<div key={index} className={st.ability}>{ability}</div>
-									))}
-								</div>
-							</Listing>
-						);
-					})}
+					{animal_companions.filter(comp => comp.type == "beast").map((companion, index) => (
+						<Listing key={index} className={styles.animalCompanionLayout}>
+						<div className={st.name}><ListingTitle>{companion.name}</ListingTitle></div>
+						<div className={st.type}>{companion.type}</div>
+						<div className={st.description}>{companion.desc}</div>
+						<div className={st.abilities}>{companion.abilities}</div>
+						<div className={st.stats}>{companion.stats}</div>
+					</Listing>
+					))}
 				</ListingWrapper>
 			</div>
 			<Footer />

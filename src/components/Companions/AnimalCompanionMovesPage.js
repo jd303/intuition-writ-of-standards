@@ -18,15 +18,13 @@ function AnimalCompanionMovesPage() {
 			<PageTitle colour="mustard">Animal Companion Moves</PageTitle>
 			<div className="mainContent">
 				<ListingWrapper filter={false}>
-					{animal_companion_moves.map((move, index) => {
-						return (
-							<Listing key={index} className={st.moveLayout}>
-								<ListingTitle>{move.name}</ListingTitle>
-								<div className={st.type}>{move.type}</div>
-								<div className="effect">{move.desc}</div>
-							</Listing>
-						);
-					})}
+					{animal_companion_moves.filter(comp => comp.type == "move").map((move, index) => (
+						<Listing key={index} className={st.moveLayout}>
+							<ListingTitle>{move.name}</ListingTitle>
+							<div className={st.type}>{move.type}</div>
+							<div className="effect">{move.desc}</div>
+						</Listing>
+					))}
 				</ListingWrapper>
 			</div>
 			<Footer />

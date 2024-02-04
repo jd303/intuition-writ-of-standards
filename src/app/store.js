@@ -13,6 +13,9 @@ import sourcesData from "../features/firebase/sourcesDataSlice";
 import equipmentData from "../features/firebase/equipmentDataSlice";
 import weaponSpecialisationData from "../features/firebase/weaponSpecialisationDataSlice";
 import gadgetsData from "../features/firebase/gadgetsDataSlice";
+import dcsData from "../features/firebase/dcsDataSlice";
+import menagerieData from '../features/firebase/menagerieDataSlice';
+import combatsData from '../features/firebase/combatsDataSlice';
 
 export default configureStore({
 	reducer: {
@@ -30,5 +33,8 @@ export default configureStore({
 		equipmentData: equipmentData,
 		weaponSpecialisationData: weaponSpecialisationData,
 		gadgetsData: gadgetsData,
+		dcsData: dcsData,
+		menagerieData: menagerieData,
+		combatsData: combatsData,
 	},
 });

@@ -17,6 +17,9 @@ import { updateSourcesData } from "../features/firebase/sourcesDataSlice";
 import { updateEquipmentData } from "../features/firebase/equipmentDataSlice";
 import { updateWeaponSpecialisationData } from "../features/firebase/weaponSpecialisationDataSlice";
 import { updateGadgetsData } from "../features/firebase/gadgetsDataSlice";
+import { updateDCsData } from "../features/firebase/dcsDataSlice";
+import { updateMenagerieData } from '../features/firebase/menagerieDataSlice';
+import { updateCombatsData } from '../features/firebase/combatsDataSlice';
 
 export const AppShell = function ({ children }) {
 
@@ -127,6 +130,29 @@ export const AppShell = function ({ children }) {
 					const data = snapshot.val();
 					dispatch(updateCharactersData({ data: data }));
 				});
+
+				if (user.uid === "LrOb5kepZdSNuzkH6qGlmIrphas1") {
+					// Collect menagerie data
+					const menagerieRef = ref(database, `/menagerie`);
+					onValue(menagerieRef, (snapshot) => {
+						const data = snapshot.val();
+						dispatch(updateMenagerieData({ data: data }));
+					});
+
+					// Collect combats data
+					const combatsRef = ref(database, `/combats`);
+					onValue(combatsRef, (snapshot) => {
+						const data = snapshot.val();
+						dispatch(updateCombatsData({ data: data }));
+					});
+
+					// Collect dcs data
+					const dcsRef = ref(database, '/dcs');
+					onValue(dcsRef, (snapshot) => {
+						const data = snapshot.val();
+						dispatch(updateDCsData({ data: data }));
+					});
+				}
 			}
 		}, (error) => {
 			console.log("No user");

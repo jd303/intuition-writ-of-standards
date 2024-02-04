@@ -15,8 +15,8 @@ function AccountPage() {
 	const [registerError, setRegisterError] = useState(null);
 	const [loggedIn, setLoggedIn] = useState(null);
 	const [loggedInUserEmail, setLoggedInUserEmail] = useState(null);
-	const [loginEmailInput, setLoginEmailInput] = useState('joelmdawson@gmail.com');
-	const [loginPasswordInput, setLoginPasswordInput] = useState('3@Antis@Err@Tango');
+	const [loginEmailInput, setLoginEmailInput] = useState('');
+	const [loginPasswordInput, setLoginPasswordInput] = useState('');
 	const onChangeLoginEmail = (event) => { setLoginEmailInput(event.target.value); }
 	const onChangeLoginPassword = (event) => { setLoginPasswordInput(event.target.value); }
 	const [registerEmailInput, setRegisterEmailInput] = useState('');

@@ -19,7 +19,7 @@ function Spell({ spell }) {
 	 * */
 	return (
 		<div className={st.spellLayout}>
-			<div className={st.name}><ListingTitle>{spell.name}</ListingTitle></div>
+			<div className={st.name}><ListingTitle>{spell.name}</ListingTitle> {spell.level}</div>
 			<div className={st.school}>{spell.school}</div>
 			<div className={st.mechanics}>
 				<div className={st.challengeType}>
@@ -28,7 +28,7 @@ function Spell({ spell }) {
 				</div>
 				<div className={st.range}>
 					<img src={mapPinIcon} />
-					{spell.range}
+					{spell.shape}
 				</div>
 				<div className={st.duration}>
 					<img src={timeIcon} />

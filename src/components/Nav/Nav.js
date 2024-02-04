@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuthState } from "../../firebase";
 import { PropTypes } from "prop-types";
 import { routeSections, RouteDefinitions } from "../../Routes";
 import { NavLink, useLocation } from "react-router-dom";
@@ -10,6 +11,12 @@ Nav.propTypes = {
 };
 
 export function Nav({ colour = "black" }) {
+	// Check auth
+	let filter;
+	const { ...auth } = useAuthState();
+	if (auth.user?.uid !== "LrOb5kepZdSNuzkH6qGlmIrphas1") filter = (item) => !item.requiresAdmin;
+	else filter = () => true;
+
 	const location = useLocation();
 	const allRoutes = RouteDefinitions();
 	const currentRoute = allRoutes.find((rt) => {
@@ -41,7 +48,7 @@ export function Nav({ colour = "black" }) {
 							Home
 						</NavLink>
 					</li>
-					{routeSections.map((rt, index) => (
+					{routeSections.filter(filter).map((rt, index) => (
 						<li key={index} className={styles.routeLink}>
 							<NavLink to={rt.path} className={currentRouteSection.navLabel == rt.navLabel ? styles.activeLink : ""}>
 								{rt.navLabel}

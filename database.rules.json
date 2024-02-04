@@ -4,7 +4,15 @@
 			".read": true,
 			".write": false
 		},
+		"combats": {
+			".read": true,
+			".write": true
+		},
 		"data_standards": {
+			".read": true,
+			".write": false
+		},
+		"dcs": {
 			".read": true,
 			".write": false
 		},
@@ -13,6 +21,10 @@
 			".write": false
 		},
 		"gadgets": {
+			".read": true,
+			".write": false
+		},
+		"menagerie": {
 			".read": true,
 			".write": false
 		},

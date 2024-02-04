@@ -22,7 +22,9 @@ import AnimalCompanionMovesPage from "./components/Companions/AnimalCompanionMov
 import GadgetsGuidePage from "./components/Gadgetry/GadgetsGuidePage";
 import GadgetsPage from "./components/Gadgetry/GadgetsPage";
 import AlchemyGuidePage from "./components/Alchemy/AlchemyGuidePage/AlchemyGuidePage";
-import MenageriePage from "./components/Menagerie/MengeriePage";
+import DMToolsPage from "./components/DMTools/DMTools/DMToolsPage";
+import MenageriePage from "./components/DMTools/Menagerie/MengeriePage";
+import CombatPage from "./components/DMTools/Combat/CombatPage";
 import CharacterListPage from "./components/CharacterSheets/CharacterListPage";
 import CharacterSheetPage from "./components/CharacterSheets/CharacterSheetPage";
 import AccountPage from "./components/Account/AccountPage";
@@ -74,14 +76,15 @@ export const routeSections = [
 		path: "/companion-guide",
 	},
 	{
-		id: "menagerie",
-		navLabel: "Menagerie",
-		path: "/menagerie",
-	},
-	{
 		id: "equipment",
 		navLabel: "Equipment",
 		path: "/equipment",
+	},
+	{
+		id: "dm_tools",
+		navLabel: "DM Tools",
+		path: "/dm_tools",
+		requiresAdmin: true,
 	},
 ];
 
@@ -233,13 +236,6 @@ const routes = [
 	},
 
 	{
-		navLabel: "Menagerie",
-		path: "/menagerie",
-		element: <Route key="0" path="/menagerie" element={<MenageriePage />} />,
-		parent: "Menagerie",
-	},
-
-	{
 		navLabel: "Characters",
 		path: "/characters",
 		element: <Route key="0" path="/characters" element={<CharacterListPage />} />,
@@ -258,6 +254,28 @@ const routes = [
 		path: "/account",
 		element: <Route key="0" path="/account" element={<AccountPage />} />,
 		parent: "Account",
+	},
+
+	{
+		navLabel: "DM Tools",
+		path: "/dm_tools",
+		element: <Route key="0" path="/dm_tools" element={<DMToolsPage />} />,
+		parent: "DM Tools",
+		requiresAdmin: true
+	},
+	{
+		navLabel: "Menagerie",
+		path: "/menagerie",
+		element: <Route key="0" path="/menagerie" element={<MenageriePage />} />,
+		parent: "DM Tools",
+		requiresAdmin: true
+	},
+	{
+		navLabel: "Combat",
+		path: "/combat",
+		element: <Route key="0" path="/combat" element={<CombatPage />} />,
+		parent: "DM Tools",
+		requiresAdmin: true
 	},
 ];
 

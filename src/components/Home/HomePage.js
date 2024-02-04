@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
-
-import logo from "../../assets/images/lg.intuition.svg";
-import { routeSections, RouteDefinitions } from "../../Routes";
+import { useAuthState } from "../../firebase";
+import { routeSections } from "../../Routes";
 import { IntuitionLogo } from "../Components/IntuitionLogo/IntuitionLogo";
 import { NavLink } from "react-router-dom";
 import styles from "./HomePage.module.scss";
 
 function HomePage() {
+	// Check auth
+	let filter;
+	const { ...auth } = useAuthState();
+	if (auth.user?.uid !== "LrOb5kepZdSNuzkH6qGlmIrphas1") filter = (item) => !item.requiresAdmin;
+	else filter = () => true;
 
 	useEffect(() => {
 		document.querySelectorAll(`.${styles.sectionItem}`).forEach(el => {
@@ -28,7 +32,7 @@ function HomePage() {
 				<div className={styles.header}>
 					<IntuitionLogo colour="black" />
 				</div>
-				{routeSections.map((rt, index) => (
+				{routeSections.filter(filter).map((rt, index) => (
 					<div key={index} className={styles.sectionItem + ' ' + styles[rt.id]}>
 						<NavLink className={styles.link} to={rt.path}>{rt.navLabel}</NavLink>
 					</div>

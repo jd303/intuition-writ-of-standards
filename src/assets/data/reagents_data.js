@@ -38,6 +38,7 @@ export const ReagentProperties = {
   Poi: new ReagentProperty("Poi", "Poison", "#cc0000").info,
   Oil: new ReagentProperty("Oil", "Oil", "#111").info,
   Sce: new ReagentProperty("Sce", "Scent", "#e2a2de").info,
+  Wil: new ReagentProperty("Wil", "Wild", "#111").info,
 };
 
 export const ReagentConsumeEffects = {
@@ -420,6 +421,14 @@ export const reagentData = [
     desc: "A powdery salt made by Alchemists past.  When used in recipes, reduces the DC by 1.",
     type: AlchemicalTypes.C,
     properties: [ReagentProperties.Con, ReagentProperties.Cor, ReagentProperties.Poi, ReagentProperties.Oil, ReagentProperties.Exc],
+	consume_effect: [ReagentConsumeEffects.Non],
+    rarity: Rarity.R,
+  },
+  {
+    name: "Wept Solvent",
+    desc: "A black gooey and awful smelling viscous liquid, amde from monstrous blood.  When light is shone through it, refracts strangely creating dancing lights.  Acts as 2 of any Reagent Property.",
+    type: AlchemicalTypes.R,
+    properties: [ReagentProperties.Wil, ReagentProperties.Wil],
 	consume_effect: [ReagentConsumeEffects.Non],
     rarity: Rarity.R,
   },

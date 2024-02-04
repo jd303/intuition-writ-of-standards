@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, useMemo, createContext } from "reac
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router';
 import { useDebounce } from "@uidotdev/usehooks";
+import { useAuthState } from "../../firebase";
+import { Navigate } from "react-router-dom";
 import { writeDataForCurrentUser } from '../../utils/writeDataForCurrentUser';
 import Header from "../Components/Header/Header";
 import { InputBox } from './components/InputBox';
@@ -21,8 +23,6 @@ import { selectSourcesData } from "../../features/firebase/sourcesDataSlice";
 import { selectCharactersData } from "../../features/firebase/charactersDataSlice";
 import { selectRacialBonusData } from "../../features/firebase/racialBonusDataSlice";
 import { selectWeaponSpecialisationData } from "../../features/firebase/weaponSpecialisationDataSlice";
-import { useAuthState } from "../../firebase";
-import { Navigate } from "react-router-dom";
 import RollingPopup from "./RollingPopup";
 import MinimalModePopup from "./MinimalModePopup";
 import SpellInfoPopup from "./SpellInfoPopup";
@@ -123,7 +123,7 @@ function CharacterSheetPage() {
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
 	const weaponDamageDice = [ "d4", "d8", "d6", "d10", "d12" ];
 	const bonusDice = [ "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
-	const magical_synergies = [ "Pyral (fire)", "Cryal (cold)", "Arcanic (pure)", "Electric (Lightning)", "Acidic (Acid)", "Luminal (Light)", "Umbral (Decay)", "Sonic (Sound)", "Zephyral (Wind)" ];
+	const magical_synergies = [ "Pyral (fire, Burning)", "Cryal (cold, Chilled)", "Arcanic (pure, +5 Verve Loss)", "Electric (Lightning, Shocked)", "Acidic (Acid, Melting)", "Luminal (Light, Blind)", "Umbral (Decay, Decaying)", "Sonic (Sound, Deaf)", "Zephyral (Wind, Gusted)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Rolling Popup
@@ -527,7 +527,7 @@ function CharacterSheetPage() {
 									<div className={st.titleAndPoints}>
 										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>{theCharacter.baseVerve} + {vervePerPoint}/point</div></div>
 										<div className={st.healthPurchases}>
-											<PurchaseablePointGroup count={36} columns={12} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} />
+											<PurchaseablePointGroup count={36} columns={12} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} maxPurchases={theCharacter.characterData.sessions * 2} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>
@@ -574,9 +574,9 @@ function CharacterSheetPage() {
 									<div className={st.fonted + ' ' + st.headLabel}>Max Dodge</div>
 								</div>
 								<div className={st.armourItem}>
-									<InputBox val="Statistics" disabled={true} />
-									<InputBox val={Math.ceil((theCharacter.characterData.purchases.attributes.str + 1) / 2)} disabled={true} />
-									<InputBox val={Math.ceil((theCharacter.characterData.purchases.attributes.dex + 1) / 2)} disabled={true} />
+									<InputBox val="Base" disabled={true} />
+									<InputBox val={2} disabled={true} />
+									<InputBox val={2} disabled={true} />
 								</div>
 								{Array.from(Array(Math.max(1, theCharacter.characterData.armours.filter(armr => Object.values(armr).join('') !== '').length + 1))).map((i, index) => (
 									<div key={`'armour-${index}`} className={st.armourItem}>
@@ -809,7 +809,7 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>
 									<div className={st.manaPoints}><div className={st.standardFlex}><div className={st.headingMedium}>Mana</div> <div className={st.littleNote}>{theCharacter.baseMana} + 3/point</div></div>
-									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} /></div>
+									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} maxPurchases={theCharacter.characterData.sessions}  /></div>
 									<div className={st.manaBonus}><div className={st.headingMedium}>Bonus </div><InputBox val={theCharacter.characterData.bonus_mana} onUpdate={(value) => updateValueFromInput(`bonus_mana`, value)} type="number" /></div>
 									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox val={theCharacter.baseMana + Number(theCharacter.characterData.bonus_mana) + theCharacter.characterData.purchases.mana * 3} disabled={true} /></div>
 									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox val={theCharacter.characterData.current_mana} onUpdate={(value) => updateValueFromInput(`current_mana`, value)} /></div>

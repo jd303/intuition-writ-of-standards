@@ -19,7 +19,7 @@ export function Move( { move, toggleRollPopup, basePrintableModsCount = 6, purch
 		setUnpurchasedVisible(!unpurchasedVisible);
 	}
 
-	const [purchasedVisible, setPurchasedVisible] = useState(false);
+	const [purchasedVisible, setPurchasedVisible] = useState(true);
 	const togglePurchasedVisible = () => {
 		setPurchasedVisible(!purchasedVisible);
 	}

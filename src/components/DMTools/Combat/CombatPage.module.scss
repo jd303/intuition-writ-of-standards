@@ -1,0 +1,20 @@
+@import "../../../index.scss";
+
+.combatLayout {
+	header {
+		display: flex;
+		gap: var(--padding-standard);
+		justify-content: center;
+	}
+
+	.monsters {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: calc(0.5 * var(--padding-standard));
+		margin-top: var(--padding-standard);
+
+		@media (max-width: 1023px) {
+			grid-template-columns: 1fr;
+		}
+	}
+}

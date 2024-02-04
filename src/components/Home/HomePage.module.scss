@@ -132,13 +132,6 @@
 			background-color: rgba(var(--colour-cobalt));
 		}
 	}
-	&.menagerie {
-		background-image: url(../../assets/images/gr.home.menagerie.png);
-
-		&:before {
-			background-color: rgba(var(--colour-silver));
-		}
-	}
 	&.characters {
 		background-image: url(../../assets/images/gr.home.characters.webp);
 
@@ -148,6 +141,13 @@
 	}
 	&.account {
 		background-image: url(../../assets/images/gr.home.accounts.webp);
+
+		&:before {
+			background-color: rgba(var(--colour-silver));
+		}
+	}
+	&.dm_tools {
+		background-image: url(../../assets/images/gr.home.menagerie.png);
 
 		&:before {
 			background-color: rgba(var(--colour-silver));
