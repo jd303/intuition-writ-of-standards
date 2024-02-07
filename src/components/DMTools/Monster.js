@@ -9,14 +9,14 @@ import icoSpecial from '../../assets/images/icons/ico.stamina.active.svg';
 Monster.propTypes = {
   monster: PropTypes.object.isRequired,
   viewMode: PropTypes.bool,
+  minimalMode: PropTypes.bool,
   addClick: PropTypes.func,
   removeClick: PropTypes.func,
   modifyMonster: PropTypes.func,
-  showMonsterVerveAdjustment: PropTypes.func,
   showMonsterChargeAdjustment: PropTypes.func,
 };
 
-function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonster, showMonsterVerveAdjustment, showMonsterChargeAdjustment }) {
+function Monster( { monster, viewMode = true, minimalMode = false, addClick, removeClick, modifyMonster, showMonsterChargeAdjustment }) {
 
 	const getSpecialClass = (move, monster) => {
 		if (move.special && monster.current_charge >= move.special) return ' ' + st.enabledCharge;
@@ -27,6 +27,36 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 	const modifyBase = (event) => {
 		const value = event.target.value;
 		const newMonster = { ...monster, base: value };
+		modifyMonster(newMonster);
+	}
+
+	const modifyNotes = (event) => {
+		const value = event.target.value;
+		const newMonster = { ...monster, notes: value };
+		modifyMonster(newMonster);
+	}
+
+	const verveUp = () => {
+		const value = monster.current_verve;
+		const newMonster = { ...monster, current_verve: value + 1 };
+		modifyMonster(newMonster);
+	}
+
+	const verveDown = () => {
+		const value = monster.current_verve;
+		const newMonster = { ...monster, current_verve: value - 1 };
+		modifyMonster(newMonster);
+	}
+
+	const chargeUp = () => {
+		const value = monster.current_charge;
+		const newMonster = { ...monster, current_charge: value + 1 };
+		modifyMonster(newMonster);
+	}
+
+	const chargeDown = () => {
+		const value = monster.current_charge;
+		const newMonster = { ...monster, current_charge: value - 1 };
 		modifyMonster(newMonster);
 	}
 
@@ -41,7 +71,7 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 	 * */
 	return (
 		<React.Fragment>
-			<div className={[st.monster, viewMode && st.viewModeOnly || ''].join(' ')}>
+			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || ''].join(' ')}>
 				<StatusPopup visible={statusVisible} closePopup={() => setStatusVisible(false)} />
 				{addClick && (
 					<button className={st.addMonster} onClick={() => addClick(monster)}>+</button>
@@ -58,22 +88,29 @@ function Monster( { monster, viewMode = true, addClick, removeClick, modifyMonst
 						<div className={st.verveValues}>
 							<h2>Verve:</h2>
 							<span className={st.hideWhenViewMode}>{monster.current_verve} /</span>{monster.max_verve}
-							<button className={st.hideWhenViewMode} onClick={() => showMonsterVerveAdjustment(monster)}>+/-</button>
+							<button className={st.hideWhenViewMode} onClick={() => verveUp()}>+</button>
+							<button className={st.hideWhenViewMode} onClick={() => verveDown()}>-</button>
 						</div>
 					</div>
 					<div className={[st.charge, (monster.current_charge && monster.current_charge >= monster.max_charge) ? st.charged : ''].join(' ')}>
 						<h2>Charge:</h2>
 						<span className={st.hideWhenViewMode}>{monster.current_charge} /</span>{monster.max_charge}
-						<button className={st.hideWhenViewMode} onClick={() => showMonsterChargeAdjustment(monster)}>+/-</button>
+						<button className={st.hideWhenViewMode} onClick={() => chargeUp()}>+</button>
+						<button className={st.hideWhenViewMode} onClick={() => chargeDown()}>-</button>
 					</div>
 				</div>
 				<div className={st.imageContainer}><img src={require(`../../assets/images/monsters/${monster.image}`)} alt="Monster" /></div>
 				<div className={[st.statuses, st.paddedInnerSection, st.hideWhenViewMode].join(' ')}>
-					<h2>Statuses</h2>
-					<div className={st.statusList}>
-						<button className={st.status}>Cautious: 3</button>
-						<button className={st.status}>Paralysed: 3</button>
-						<button onClick={() => showMonsterStatusAdd(monster)}>+</button>
+					<div className={st.column}>
+						<h2>Statuses <button className='slimButton' onClick={() => showMonsterStatusAdd(monster)}>Add +</button></h2>
+						<div className={st.statusList}>
+							<button className={[st.status, 'slimButton'].join(' ')}>Cautious: 3</button>
+							<button className={[st.status, 'slimButton'].join(' ')}>Paralysed: 3</button>
+						</div>
+					</div>
+					<div className={st.column}>
+						<h2>Notes</h2>
+						<textarea value={monster.notes} onChange={modifyNotes}></textarea>
 					</div>
 				</div>
 				<div className={st.core + ' ' + st.paddedInnerSection}>

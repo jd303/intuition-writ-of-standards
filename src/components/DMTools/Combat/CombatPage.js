@@ -44,6 +44,11 @@ function MenageriePage() {
 		setCombats({ ...combats, creatures: updatedCreatures });
 	}
 
+	const [isMinimal, setIsMinimal] = useState(false);
+	const minimalMode = () => {
+		setIsMinimal(!isMinimal);
+	}
+
 	const modifyMonster = (monster) => {
 		setCombats(
 			{
@@ -56,10 +61,6 @@ function MenageriePage() {
 				})
 			}
 		);
-	}
-
-	const showMonsterVerveAdjustment = () => {
-		console.log("ADust verve");
 	}
 
 	const showMonsterChargeAdjustment = () => {
@@ -85,11 +86,12 @@ function MenageriePage() {
 			<PageTitle colour="silver">Combat</PageTitle>
 			<div className={"mainContent " + st.combatLayout}>
 				<header className={st.header}>
-					{<button onClick={newRound}>New Round</button>}
+					<button onClick={newRound}>New Round</button>
+					<button onClick={minimalMode}>Minimal Mode</button>
 				</header>
 				<div className={st.monsters}>
 					{combats.creatures?.map((monster, index) => (
-						<Monster key={`monster-${monster._unique_id}`} viewMode={false} monster={monster} modifyMonster={modifyMonster.bind(this)} removeClick={removeCreature} />
+						<Monster key={`monster-${monster._unique_id}`} viewMode={false} minimalMode={isMinimal} monster={monster} modifyMonster={modifyMonster.bind(this)} removeClick={removeCreature} />
 					))}
 				</div>
 			</div>
