@@ -95,6 +95,16 @@ function AlchemyReagentsPage() {
 		clear: onFilterClear,
 	};
 
+
+
+	console.log(reagentData);
+	let recipesString = "";
+	reagentData.forEach(recipe => {
+		recipesString += `${recipe.type},${recipe.name},${recipe.desc},${recipe.properties.map(prop => prop.code).join('-')},${recipe.rarity}`;
+		recipesString += "\n";
+	})
+	console.log(recipesString);
+
 	/**
 	 * Return a component
 	 * */

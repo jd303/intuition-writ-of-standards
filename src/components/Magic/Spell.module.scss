@@ -3,11 +3,29 @@
 // When the list item is in Spell Format
 .spellLayout {
 	@extend .gridLayoutStandard;
+	gap: calc(0.5 * var(--padding-standard));
 
 	.name,
-	.cost,
-	.school {
+	.cost {
 		align-self: center;
+	}
+
+	.name {
+		grid-column: 1 / 6;
+
+		display: flex;
+		justify-content: space-between;
+
+		.spellLevel {
+			width: 22px;
+			height: 22px;
+			text-align: center;
+
+			font-weight: bold;
+			justify-self: flex-end;
+			border-radius: 100%;
+			background-color: rgba(0, 0, 0, 0.1);;
+		}
 	}
 
 	.cost {
@@ -18,15 +36,9 @@
 		justify-self: flex-end;
 	}
 
-	.school {
-		width: 100%;
-		justify-content: flex-end;
-		font-style: italic;
-	}
-
 	.effects,
 	.mechanics {
-		padding: 8px 0;
+		padding: 0;
 		margin-top: 0;
 		margin-bottom: 0;
 	}
@@ -37,6 +49,7 @@
 		grid-row: 3;
 		grid-column: 1 / 6;
 		flex-direction: column;
+		padding-top: 10px;
 		border-top: var(--standard-divider);
 
 		.effect {
@@ -56,18 +69,36 @@
 				height: 14px;
 				min-height: 14px;
 			}
+
+			.desc .duration {
+				display: inline;
+				font-style: italic;
+				font-size: 0.9em;
+				opacity: 0.75;
+				white-space: nowrap;
+
+				&:before {
+					content: url(../../assets/images/icons/ico.clock.svg);
+					display: inline-block;
+					width: 14px;
+					height: 14px;
+					margin-right: 5px;
+					transform: translateY(2px);
+				}
+			}
 		}
 	}
 
 	.mechanics {
-		display: flex;
-		gap: calc(var(--padding-standard) / 2);
 		grid-row: 2;
 		grid-column: 1 / 6;
 
+		display: flex;
+		gap: calc(var(--padding-standard) / 2);
+		font-weight: 600;
+
 		.challengeType,
-		.range,
-		.duration {
+		.range {
 			display: flex;
 			gap: 6px;
 			align-items: center;

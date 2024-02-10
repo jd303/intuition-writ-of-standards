@@ -1,0 +1,2338 @@
+{
+    "1428h6ziyvXSQTKlhKi5UYFBYdF3": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 0,
+                "DEX": 3,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 1
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": "5",
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "7716e10d-8749-4eea-9441-63761c76b7e4",
+            "known_languages": [
+                "2d0b7484",
+                "e8972c07"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Anara Isha",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "6ef9ecae": {
+                        "points": 1
+                    },
+                    "99d6763b": {
+                        "mods": [
+                            "05ad69e8"
+                        ],
+                        "points": 1
+                    },
+                    "9c77681c": {
+                        "points": 1
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "a793a931"
+                        ],
+                        "points": 3
+                    },
+                    "d4e2f861": {
+                        "points": 1
+                    },
+                    "e43ece8d": {
+                        "points": 1
+                    }
+                },
+                "spentPoints": 12,
+                "stamina": 0,
+                "verve": 2,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "518a9428",
+                "secondary": "8983ad97",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1,
+            "source": "30c0e851",
+            "updated": 1706169034095,
+            "weapons": [
+                {
+                    "name": "Daggers"
+                },
+                {
+                    "name": "Throwing daggers"
+                }
+            ]
+        }
+    ],
+    "4NmjORG7PVYbGDCxiufGIUWkhL02": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 3,
+                    "dodge": 3,
+                    "name": "None"
+                }
+            ],
+            "bonusPoints": "0",
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "caed9281-2d96-409c-94d3-9a9c8b8e2322",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Cool Stuart",
+            "notes": {
+                "29": ""
+            },
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "spentPoints": 0,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1,
+            "source": "30c0e851",
+            "statuses": {
+                "statuses-f488df8f": 0
+            },
+            "updated": 1705639314916
+        }
+    ],
+    "KX2DsnA4IeQeH4LZOmJ8nqnxCak1": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 3,
+                    "dodge": 3,
+                    "name": "None"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 3,
+                "INT": 0,
+                "STR": 3,
+                "WIS": 0
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "f331b5d2-680b-45a4-849c-98dd4d3144be",
+            "known_languages": [
+                "2d0b7484",
+                "8a98886d"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2_social": true,
+                "3_stealth": true,
+                "4_engineering": true,
+                "5_craft": true,
+                "6_inner_power": true,
+                "7_magic": true,
+                "8_psionics": true,
+                "9a_inventory": true,
+                "9b_notes": true
+            },
+            "movesq": 5,
+            "name": "Let Me Solo Her",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "fb25bccb": {
+                        "points": 4
+                    }
+                },
+                "spentPoints": 7,
+                "stamina": 3,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "ef8bbf5b",
+                "secondary": "32eaf856",
+                "stature": "219b73b9"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 0,
+            "source": "478e7171",
+            "statuses": {
+                "stamina": 0
+            },
+            "updated": 1705919815756
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 1,
+                    "dodge": 3,
+                    "name": "Light armour"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 3,
+                "INT": 2,
+                "STR": 0,
+                "WIS": 1
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d6",
+            "bonus_mana": 0,
+            "bonus_verve": "5",
+            "current_mana": "6",
+            "current_psi": 3,
+            "current_verve": "3",
+            "id": "6fec15fa-b381-4593-923a-3ab6893a204c",
+            "inventory": [
+                "Light Armour (Mushroom Leathers)",
+                "Blackpowder Weapon (Sighted Rifle)",
+                "Short Blade (Hardwood Knife)",
+                "Book",
+                "Backpack",
+                "Item belt",
+                "",
+                "Rope (hemp)",
+                "Basic Ammo",
+                "",
+                "Gunpowder",
+                "9 rations",
+                "9 standards",
+                "Spyglass",
+                "1 western silverbarb "
+            ],
+            "known_languages": [
+                "2d0b7484",
+                "7749123f"
+            ],
+            "magical_synergy": {
+                "slot1": "Zephyral (Wind, Gusted)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Thorneye",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 1,
+                "moves": {
+                    "4bf8b06a": {
+                        "mods": [
+                            "f16a7b58",
+                            "322aca85",
+                            "8b4b46f1"
+                        ],
+                        "points": 4
+                    },
+                    "53f41090": {
+                        "points": 1
+                    },
+                    "6ef9ecae": {
+                        "mods": [
+                            "0029926f",
+                            "5976efde",
+                            "bdfb816f"
+                        ],
+                        "points": 2
+                    },
+                    "797d1feb": {
+                        "points": 3
+                    },
+                    "872601df": {
+                        "mods": [
+                            "9ec83a1c"
+                        ],
+                        "points": 2
+                    },
+                    "9aa1d2f7": {
+                        "points": 1
+                    },
+                    "a72c2adb": {
+                        "points": 0
+                    },
+                    "b7237065": {
+                        "mods": [
+                            "8be6b121"
+                        ],
+                        "points": 1
+                    },
+                    "d4e2f861": {
+                        "mods": [
+                            "56459742",
+                            "7f7a4a01"
+                        ],
+                        "points": 1
+                    },
+                    "e43ece8d": {
+                        "points": 0
+                    },
+                    "e6d05e7b": {
+                        "points": 1
+                    }
+                },
+                "spentPoints": 27,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Dryad",
+            "racial_modifiers": {
+                "primary": "3f62bfe8",
+                "secondary": "e7f9a023",
+                "stature": "76377c99"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 3,
+            "source": "30c0e851",
+            "spells": [
+                "dfe75b9e",
+                "5a3e66df",
+                "337163c3",
+                "f22e6262",
+                "144f30a9",
+                "ed3488f7"
+            ],
+            "updated": 1707220876192,
+            "weapon_specialisations": [
+                "da256890"
+            ],
+            "weapons": [
+                {
+                    "damage": "d10",
+                    "name": "Rifle",
+                    "notes": "Range 30sq. Ranged, Ranged-only, Noisy."
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                },
+                {
+                    "block": 1,
+                    "dodge": 3,
+                    "name": "light armor"
+                },
+                {
+                    "block": 2,
+                    "dodge": "0",
+                    "name": "2 daggers"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 0,
+                "DEX": 3,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 1
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": "5",
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "27",
+            "id": "d66a0155-0c13-4506-a291-6cd9e819fc3b",
+            "inventory": [
+                "20 standards",
+                "1 sample size ultra hold hair wax"
+            ],
+            "known_languages": [
+                "2d0b7484",
+                "e8972c07"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": false,
+                "2d_craft": false,
+                "2e_inner_power": false,
+                "2f_magic": false,
+                "2g_psionics": false,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Anara Isha",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "6ef9ecae": {
+                        "mods": [
+                            "6d5bf26a"
+                        ],
+                        "points": 2
+                    },
+                    "872601df": {
+                        "points": 0
+                    },
+                    "99d6763b": {
+                        "mods": [
+                            "05ad69e8"
+                        ],
+                        "points": 1
+                    },
+                    "9c77681c": {
+                        "mods": [
+                            "931a0608",
+                            "02b0a7ec",
+                            "c1c6bf79",
+                            "4fc7cf4d"
+                        ],
+                        "points": 3
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "a793a931",
+                            "440d92cd",
+                            "edfd10de"
+                        ],
+                        "points": 3
+                    },
+                    "d4e2f861": {
+                        "points": 1
+                    },
+                    "e43ece8d": {
+                        "points": 2
+                    },
+                    "fb25bccb": {
+                        "mods": [
+                            "a0ff922a"
+                        ],
+                        "points": 2
+                    }
+                },
+                "spentPoints": 27,
+                "stamina": 0,
+                "verve": 2,
+                "weapon_specialisations": 1
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "518a9428",
+                "secondary": "8983ad97",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 1,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 5,
+                "zephyr": 0
+            },
+            "sessions": 3,
+            "source": "30c0e851",
+            "updated": 1707219572662,
+            "weapon_specialisations": [
+                "bc5a5c74"
+            ],
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Dagger"
+                },
+                {
+                    "damage": "d6",
+                    "name": "Throwing dagger"
+                }
+            ]
+        }
+    ],
+    "LrOb5kepZdSNuzkH6qGlmIrphas1": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 1,
+                "STR": 3,
+                "WIS": 2
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "ffd1aeb4-a8eb-48c7-87fb-e4d6b02781aa",
+            "inventory": [
+                "asdasd",
+                "asdasdasd",
+                "asdasdasdas",
+                "kjhkjhkjh",
+                "mnbxjyguy",
+                "mhbkyguyf",
+                "jhguyguyg",
+                "clidskjac",
+                "clinaos;fhq;ewuhr",
+                "cauehfq;ieuhf`iweuhwief",
+                "clubeclb",
+                "caublieubc",
+                "cdliucbalehfb"
+            ],
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Test",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "797d1feb": {
+                        "points": 1
+                    }
+                },
+                "spentPoints": 2,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 1
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1,
+            "source": "30c0e851",
+            "statuses": {
+                "statuses-a4b68644": 0
+            },
+            "updated": 1707458588554
+        }
+    ],
+    "QRHBfhf8vZOQwJNnLbotu1xVmFL2": [
+        {
+            "armours": [
+                {
+                    "block": 3,
+                    "disadvantages": "",
+                    "dodge": 3,
+                    "name": "None"
+                }
+            ],
+            "bonusPoints": 0,
+            "bonus_damage": {
+                "melee": "d4",
+                "ranged": "d4"
+            },
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": 20,
+            "id": "5d06ab51-6a46-4342-aa17-d603a6f01634",
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "movesq": 5,
+            "name": "Jumbly",
+            "purchases": {
+                "abilities": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "spentPoints": 0,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "sessions": 0,
+            "source": ""
+        }
+    ],
+    "Xa9B0QRaATPl2X9KoPjxBnFy3U02": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 1,
+                    "dodge": 3,
+                    "name": "Light Armor"
+                },
+                {
+                    "block": 2,
+                    "dodge": "0",
+                    "name": "Katana"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 1,
+                "DEX": 2,
+                "INT": 0,
+                "STR": 1,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "1c9f2291-8f6e-4ad5-b603-919894c9f317",
+            "known_languages": [
+                "2d0b7484",
+                "2d0b7484",
+                "2d0b7484",
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": false,
+                "2f_magic": false,
+                "2g_psionics": false,
+                "2h_inventory": false,
+                "2i_notes": false,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "a",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 2,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "12635fb1": {
+                        "mods": [
+                            "af07ec99",
+                            "8fbc289a",
+                            "6757d5c8",
+                            "a280f3b2",
+                            "f5cb9ac2",
+                            "d9e3fef1"
+                        ],
+                        "points": 0
+                    },
+                    "3d117be9": {
+                        "mods": [
+                            "4ef00e63",
+                            "4f17a3f3",
+                            "54f6882d",
+                            "dbf5fa74",
+                            "c849168a",
+                            "117daed2",
+                            "1d44fcd4",
+                            "806e9e73",
+                            "676a5888",
+                            "6da28e1d",
+                            "5ff13a60",
+                            "411fdf1b",
+                            "3a12ef15",
+                            "7661f9a8",
+                            "5964471a",
+                            "0c75d0c4",
+                            "1ef46b21",
+                            "7a7a95c3",
+                            "09d65b31",
+                            "3e3f2e57",
+                            "0fe46e3b",
+                            "da5c844a",
+                            "6468c1af",
+                            "6c0c08d4",
+                            "86cb3f1d",
+                            "e5b67166",
+                            "61830515",
+                            "50e94a86",
+                            "cd98a90d",
+                            "365adedc"
+                        ],
+                        "points": 0
+                    },
+                    "4bf8b06a": {
+                        "mods": [
+                            "7d0350d3",
+                            "f4f34c0a",
+                            "02f24abf",
+                            "181bfb63",
+                            "f16a7b58",
+                            "c4af4396",
+                            "ff45e218",
+                            "474abb40",
+                            "5db374c0",
+                            "57518e9c",
+                            "d8e43d5e",
+                            "e0e5dd26",
+                            "2227ae7a",
+                            "53b87cbd",
+                            "d46b442d",
+                            "a0666e23",
+                            "0793e94b",
+                            "5ae6c796",
+                            "56f5725d",
+                            "a2159087",
+                            "ba942a5a",
+                            "e0853c5b",
+                            "6c3f8ee7",
+                            "b21b5c25",
+                            "eea64c64",
+                            "b527f1f9",
+                            "5323f845",
+                            "617f9943",
+                            "8f912207",
+                            "322aca85",
+                            "ed1d32e1",
+                            "63656911",
+                            "8b4b46f1",
+                            "ef82920f",
+                            "b740bb57",
+                            "ff3ce3a8",
+                            "5b74a869",
+                            "836e02ef",
+                            "26397260",
+                            "c0fc2608",
+                            "1f66b06d",
+                            "a58ac930",
+                            "2990fa70"
+                        ],
+                        "points": 0
+                    },
+                    "53f41090": {
+                        "mods": [
+                            "c1a5f710",
+                            "ce8ce961",
+                            "dfefa8cc",
+                            "1d371777",
+                            "66e5eb80",
+                            "c12dc5ff",
+                            "485fcb6e",
+                            "f8f09f20",
+                            "0fd0aeec"
+                        ],
+                        "points": 0
+                    },
+                    "6ef9ecae": {
+                        "mods": [
+                            "6d5bf26a",
+                            "5683e840",
+                            "198ff959",
+                            "9713c766",
+                            "ae81b30a",
+                            "d8c4d0a1",
+                            "3e8b1177",
+                            "84418b9d",
+                            "e1f18da0",
+                            "41daaee0",
+                            "549d9464",
+                            "bad7b096",
+                            "de5b821f",
+                            "5794bbea",
+                            "314bfe8f",
+                            "f23b4f01",
+                            "bdfb816f",
+                            "0029926f",
+                            "5976efde",
+                            "36c6b531",
+                            "501dbefa",
+                            "f1f2a396",
+                            "9f89e627",
+                            "fd3b6199",
+                            "8fe941f7"
+                        ],
+                        "points": 1
+                    },
+                    "7ff9fecf": {
+                        "mods": [
+                            "6800b6d3",
+                            "b09c7f4d",
+                            "ef1c6ec2",
+                            "af1c1e2d",
+                            "58a0ceea",
+                            "2c60d972",
+                            "326e62ea"
+                        ],
+                        "points": 0
+                    },
+                    "872601df": {
+                        "mods": [
+                            "1224cb6e",
+                            "d08f4387",
+                            "f222343f",
+                            "2648ce63",
+                            "beb0d83e",
+                            "e27a656f",
+                            "36d6452a",
+                            "0fb36ba2",
+                            "76febd2f",
+                            "260a8770",
+                            "67c5e3fc",
+                            "55d40a5b",
+                            "4c42c3fd",
+                            "cd904464",
+                            "0634d4bf",
+                            "a9ab7f4c",
+                            "9ec83a1c"
+                        ],
+                        "points": 0
+                    },
+                    "8aeda294": {
+                        "mods": [
+                            "7dd05d25",
+                            "598934df",
+                            "ac7c6919",
+                            "1e3d896d",
+                            "bcd089c4",
+                            "febd8bef",
+                            "f75ddbc8",
+                            "89b53214",
+                            "7ca122f7",
+                            "05df29a7",
+                            "33eb31df",
+                            "665fee94",
+                            "f7a41fb5",
+                            "f893cd9f",
+                            "253ffbb5",
+                            "6a81c9b9"
+                        ],
+                        "points": 0
+                    },
+                    "8cf4f202": {
+                        "mods": [
+                            "f79c4036",
+                            "0a7db653",
+                            "80ca259a",
+                            "3920e5d8",
+                            "ac146923",
+                            "ba0f57b8",
+                            "3dcc84c5"
+                        ],
+                        "points": 0
+                    },
+                    "99d6763b": {
+                        "mods": [
+                            "3d11e36e",
+                            "d81eb037",
+                            "05ad69e8",
+                            "0715020f",
+                            "30835694",
+                            "c6d50cd6",
+                            "c2479447",
+                            "8c278b68",
+                            "317c1e9f",
+                            "f1c9b771",
+                            "b0a906e0",
+                            "f8964cdf",
+                            "8ba836ed",
+                            "feb7da19",
+                            "01a3c7af",
+                            "9b27fc20",
+                            "e7a2274e",
+                            "41fd5ed2"
+                        ],
+                        "points": 0
+                    },
+                    "9c77681c": {
+                        "mods": [
+                            "3381fa00",
+                            "c0cbd552",
+                            "02b0a7ec",
+                            "56072241",
+                            "c7f4f8fb",
+                            "4fc7cf4d",
+                            "d19bd453",
+                            "c1c6bf79",
+                            "3072645e",
+                            "bc5d15d8",
+                            "b16adc84",
+                            "71bd879f",
+                            "14ba5829",
+                            "8ccba8af",
+                            "9f7b41a5",
+                            "67c8b0c2",
+                            "4ebb461d",
+                            "27d925ea",
+                            "ecd1a4cf",
+                            "d78d5579",
+                            "88aabf3c",
+                            "931a0608",
+                            "707faad5",
+                            "fdaeed05"
+                        ],
+                        "points": 0
+                    },
+                    "a39eb68b": {
+                        "mods": [
+                            "a66df4fc",
+                            "9a4d4871",
+                            "e710fa2f",
+                            "8b123457",
+                            "c326ecad",
+                            "166ede24",
+                            "aded4b42"
+                        ],
+                        "points": 0
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "a5615832",
+                            "f8544f90",
+                            "072e7679",
+                            "0d23c3d3",
+                            "65dee65d",
+                            "fca9fb5e",
+                            "3336f914",
+                            "94f01865",
+                            "2222ff2c",
+                            "b5ca708e",
+                            "a89a5eef",
+                            "e5610c07",
+                            "68492c90",
+                            "41c6b3f4",
+                            "478fd974",
+                            "2c3ef9dc",
+                            "63ba4604",
+                            "5f02e116",
+                            "f0602587",
+                            "1124b608",
+                            "5c3b0719",
+                            "b9e4429e",
+                            "b51f6947",
+                            "c614c773",
+                            "85ca2da9",
+                            "032165b5",
+                            "a235a650",
+                            "cd1b22d1",
+                            "37c2fe15",
+                            "54fe84bc",
+                            "440d92cd",
+                            "154cf776",
+                            "e796c0f1",
+                            "7d0350d3",
+                            "622c9ebd",
+                            "4b86e942",
+                            "2408bf32",
+                            "513c67d2",
+                            "7c0586cd",
+                            "a6208d15",
+                            "24b77d43",
+                            "ae4b67a3",
+                            "3cf2f746",
+                            "edfd10de",
+                            "2e988ae5",
+                            "68275d95",
+                            "a793a931"
+                        ],
+                        "points": 2
+                    },
+                    "b7237065": {
+                        "mods": [
+                            "0dd7d4b2",
+                            "91aa9c32",
+                            "8be6b121",
+                            "d2a1fbbc",
+                            "e00a67eb"
+                        ],
+                        "points": 0
+                    },
+                    "d4e2f861": {
+                        "mods": [
+                            "b06d26db",
+                            "7f7a4a01",
+                            "c4f72474",
+                            "f73c05cf",
+                            "4bae6826",
+                            "9e0071f5",
+                            "ab7652a3",
+                            "2dc46928",
+                            "8b03caaf",
+                            "4f72a870",
+                            "56459742",
+                            "2f6e4d4e",
+                            "7bc138db"
+                        ],
+                        "points": 1
+                    },
+                    "e21ee114": {
+                        "mods": [
+                            "120943ba",
+                            "59509e73",
+                            "91b7176f",
+                            "f2a4374e",
+                            "a0baf8ea",
+                            "f80cb8a0",
+                            "f025f09a",
+                            "4dc8fe1d",
+                            "2107299b",
+                            "44ab1592",
+                            "ec662ee3",
+                            "8e2468b3",
+                            "04750774",
+                            "c9ed6189",
+                            "96a9f3d7",
+                            "797ebe5b",
+                            "3a85ec19",
+                            "07f05182",
+                            "eb8d4c21",
+                            "f3d4c496",
+                            "1e539630"
+                        ],
+                        "points": 0
+                    },
+                    "e43ece8d": {
+                        "mods": [
+                            "20ceca0c",
+                            "e2ca63d4",
+                            "25829276",
+                            "6438f5a0",
+                            "9f35c7dc",
+                            "133e66ac",
+                            "f837f40c",
+                            "82a0502d",
+                            "4cd2f19e",
+                            "986de247",
+                            "319f75df",
+                            "0e293673"
+                        ],
+                        "points": 0
+                    },
+                    "e6d05e7b": {
+                        "mods": [
+                            "c8621266",
+                            "f120cfa7",
+                            "add1ed3b",
+                            "26cae0ef",
+                            "5a77674d",
+                            "2764266d",
+                            "3bbcf463",
+                            "4c004480",
+                            "d9c59128",
+                            "84399587"
+                        ],
+                        "points": 0
+                    },
+                    "f1ddbecf": {
+                        "mods": [
+                            "72e11b82",
+                            "d1151cbe",
+                            "0a9bd247",
+                            "dd393ee5",
+                            "c70eb8a7",
+                            "20b7b2f2",
+                            "39fd019a",
+                            "c8bfd34a",
+                            "47d7a27d",
+                            "63d8b6a4",
+                            "33418b42",
+                            "5a84e71a"
+                        ],
+                        "points": 0
+                    },
+                    "f6bd2b52": {
+                        "mods": [
+                            "7fb8e63b",
+                            "119bad0a",
+                            "6a9d700d",
+                            "3f6408b0",
+                            "e4729282",
+                            "af4f6412",
+                            "e0445d9c"
+                        ],
+                        "points": 0
+                    },
+                    "fb25bccb": {
+                        "mods": [
+                            "482dd2c5",
+                            "53ed2314",
+                            "865b1488",
+                            "4b384d13",
+                            "3dfb4d9f",
+                            "3e52c4b9",
+                            "0d77ceba",
+                            "7d9117d5",
+                            "8422fccf",
+                            "c0ba6b25",
+                            "a0ff922a",
+                            "79299e0e",
+                            "cb65d94e",
+                            "df6378f7",
+                            "b69bd833",
+                            "43ecca9c",
+                            "2670c4ab"
+                        ],
+                        "points": 0
+                    }
+                },
+                "spentPoints": 368,
+                "stamina": 0,
+                "verve": 8,
+                "weapon_specialisations": 1
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 1,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1723423,
+            "source": "30c0e851",
+            "updated": 1706766801342,
+            "weapon_specialisations": [
+                "bc5a5c74"
+            ],
+            "weapons": [
+                {
+                    "damage": "d8",
+                    "name": "Katana"
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": 5,
+                "dodge": 5
+            },
+            "armours": [
+                {
+                    "block": 1,
+                    "dodge": 3,
+                    "name": "Light Armor"
+                },
+                {
+                    "block": 2,
+                    "dodge": "0",
+                    "name": "Katana"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 0,
+                "DEX": 2,
+                "INT": 0,
+                "STR": 1,
+                "WIS": 1
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "30",
+            "id": "0febd56a-9218-44bd-9a68-848d247fa1d2",
+            "known_languages": [
+                "2d0b7484",
+                "d3fa1c2d"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": false,
+                "2d_craft": false,
+                "2e_inner_power": false,
+                "2f_magic": false,
+                "2g_psionics": false,
+                "2h_inventory": false,
+                "2i_notes": false,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Kyra",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "3d117be9": {
+                        "points": 1
+                    },
+                    "6ef9ecae": {
+                        "mods": [
+                            "84418b9d",
+                            "6d5bf26a"
+                        ],
+                        "points": 1
+                    },
+                    "9c77681c": {
+                        "mods": [
+                            "02b0a7ec",
+                            "c0cbd552"
+                        ],
+                        "points": 2
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "032165b5",
+                            "a89a5eef"
+                        ],
+                        "points": 3
+                    },
+                    "d4e2f861": {
+                        "points": 1
+                    },
+                    "e21ee114": {
+                        "mods": [
+                            "a0baf8ea"
+                        ],
+                        "points": 2
+                    },
+                    "fb25bccb": {
+                        "mods": [
+                            "43ecca9c",
+                            "482dd2c5"
+                        ],
+                        "points": 3
+                    }
+                },
+                "spentPoints": 25,
+                "stamina": 0,
+                "verve": 2,
+                "weapon_specialisations": 1
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "4a6d52a3",
+                "secondary": "8983ad97",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 1,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 2,
+            "source": "478e7171",
+            "updated": 1707224083699,
+            "weapon_specialisations": [
+                "bc5a5c74"
+            ],
+            "weapons": [
+                {
+                    "damage": "d8",
+                    "name": "Katana",
+                    "notes": "Bladed, 2-handed"
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "fd078f38-29cc-406e-9ba0-d212278ec5d3",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "isha-maybe",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "4bf8b06a": {
+                        "mods": [
+                            "2990fa70",
+                            "b740bb57",
+                            "836e02ef",
+                            "63656911",
+                            "eea64c64",
+                            "b21b5c25",
+                            "6c3f8ee7",
+                            "a2159087",
+                            "56f5725d",
+                            "0793e94b",
+                            "c4af4396",
+                            "5db374c0",
+                            "f4f34c0a",
+                            "f16a7b58",
+                            "181bfb63"
+                        ],
+                        "points": 0
+                    },
+                    "f1ddbecf": {
+                        "mods": [
+                            "d1151cbe"
+                        ],
+                        "points": 0
+                    }
+                },
+                "spentPoints": 18,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 2
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1,
+            "source": "30c0e851",
+            "updated": 1707262823501,
+            "weapon_specialisations": [
+                "bc5a5c74",
+                "de8720dc"
+            ]
+        }
+    ],
+    "Y7he2buQEZgSJfg6P8KrswW4kKG2": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": "O",
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 2,
+                "DEX": 3,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 1
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "15",
+            "id": "f1775fc0-cc82-4741-ac56-264cc30932a3",
+            "inventory": {
+                "0": "Thieves Tools",
+                "1": "Rations x 3",
+                "2": "Item Belt",
+                "27": ""
+            },
+            "known_languages": [
+                "2d0b7484",
+                "e8972c07"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": false,
+                "2e_inner_power": true,
+                "2f_magic": false,
+                "2g_psionics": false,
+                "2h_inventory": true,
+                "2i_notes": false,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": "5 flying/3 walking",
+            "name": "Ilaydria",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "3d117be9": {
+                        "mods": [
+                            "cd98a90d",
+                            "6c0c08d4"
+                        ],
+                        "points": 2
+                    },
+                    "872601df": {
+                        "mods": [
+                            "260a8770",
+                            "36d6452a",
+                            "a9ab7f4c",
+                            "55d40a5b"
+                        ],
+                        "points": 4
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "2c3ef9dc",
+                            "b5ca708e",
+                            "7c0586cd"
+                        ],
+                        "points": 3
+                    },
+                    "d4e2f861": {
+                        "points": 0
+                    },
+                    "e43ece8d": {
+                        "mods": [
+                            "25829276"
+                        ],
+                        "points": 4
+                    },
+                    "fb25bccb": {
+                        "mods": [
+                            "df6378f7"
+                        ],
+                        "points": 2
+                    }
+                },
+                "spentPoints": 27,
+                "stamina": 0,
+                "verve": 1,
+                "weapon_specialisations": 0
+            },
+            "race": "Pixie",
+            "racial_modifiers": {
+                "primary": "6eccaa20",
+                "secondary": "32eaf856",
+                "stature": "219b73b9"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 1,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": "0",
+                "zephyr": 0
+            },
+            "sessions": 3,
+            "source": "b5332003",
+            "updated": 1707218505018,
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Dagger",
+                    "notes": "Max Block + 1, Throwable, Concealable, Backstab, 1 Handed"
+                },
+                {
+                    "damage": "d6",
+                    "name": "Dagger",
+                    "notes": "Max Block + 1, Throwable, Concealable, Backstab, 1 Handed"
+                },
+                {
+                    "damage": "d6",
+                    "name": "Talons/Teeth",
+                    "notes": ""
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 3,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 2,
+                "WIS": 1
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "5f693b85-b4a4-4062-a744-97d6f41285ed",
+            "known_languages": [
+                "2d0b7484",
+                "04c7d5aa"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Zeta",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "spentPoints": 0,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "518a9428",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 1,
+            "source": "30c0e851",
+            "updated": 1706690545481
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 3,
+                "CON": 0,
+                "DEX": 1,
+                "INT": 2,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_damage": "d4",
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "30",
+            "id": "476ed84f-3509-45d5-a6ca-d03f556406cb",
+            "inventory": {
+                "0": "3 Standards",
+                "1": "1 Bubble Tip, 1 Pure Water, 1 Pure Alcohol, 1x Western Silverbarb",
+                "10": "Extensive Makeup Kit, Colour Dyes, 2x Fragrances, 1 Wig",
+                "2": "",
+                "37": "Purple Flower Pinned to Hat",
+                "4": "2x Vigour Tonic",
+                "6": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+                "7": "Travel Alchemy Kit",
+                "8": "Vial of human brown goo",
+                "9": "Small Diary paper filled and well worn "
+            },
+            "known_languages": [
+                "2d0b7484",
+                "e8972c07"
+            ],
+            "magical_synergy": {
+                "slot1": "Zephyral (Wind, Gusted)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": false,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Zeta ",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "12635fb1": {
+                        "mods": [
+                            "f5cb9ac2"
+                        ],
+                        "points": 3
+                    },
+                    "3461da9d": {
+                        "points": 0
+                    },
+                    "4bf8b06a": {
+                        "points": 0
+                    },
+                    "6ef9ecae": {
+                        "mods": [
+                            "5976efde",
+                            "0029926f"
+                        ],
+                        "points": 2
+                    },
+                    "797d1feb": {
+                        "points": 0
+                    },
+                    "8aeda294": {
+                        "points": 3
+                    },
+                    "9aa1d2f7": {
+                        "points": 0
+                    },
+                    "9c77681c": {
+                        "points": 2
+                    },
+                    "a72c2adb": {
+                        "points": 2
+                    },
+                    "e21ee114": {
+                        "points": 0
+                    },
+                    "e43ece8d": {
+                        "points": 1
+                    },
+                    "e6d05e7b": {
+                        "mods": [
+                            "4c004480"
+                        ],
+                        "points": 3
+                    },
+                    "f1ddbecf": {
+                        "mods": [
+                            "72e11b82"
+                        ],
+                        "points": 2
+                    },
+                    "f6bd2b52": {
+                        "points": 0
+                    },
+                    "fb25bccb": {
+                        "points": 1
+                    }
+                },
+                "spentPoints": 27,
+                "stamina": 1,
+                "verve": 2,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "518a9428",
+                "secondary": 76145881,
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 3,
+            "source": "478e7171",
+            "spells": [
+                "337163c3"
+            ],
+            "statuses": {
+                "stamina": 0
+            },
+            "updated": 1707221356934,
+            "weapon_specialisations": [
+                "bc5a5c74"
+            ],
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Sherapier"
+                }
+            ]
+        }
+    ],
+    "pObULtwmGHUtmqwsLHOUqNYdkvq2": [
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 2,
+                "STR": 0,
+                "WIS": 2
+            },
+            "attributeslocked": true,
+            "bonusPoints": "0",
+            "bonus_damage": "d4",
+            "bonus_mana": "2",
+            "bonus_verve": 0,
+            "current_mana": "6",
+            "current_psi": 3,
+            "current_verve": "",
+            "id": "bfaa04c1-ddec-4e1f-a105-24418cc8068b",
+            "known_languages": [
+                "2d0b7484",
+                "d3fa1c2d"
+            ],
+            "magical_synergy": {
+                "slot1": "Luminal (Light, Blind)",
+                "slot2": "Umbral (Decay, Decaying)",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": false,
+                "2c_engineering": false,
+                "2d_craft": true,
+                "2e_inner_power": false,
+                "2f_magic": true,
+                "2g_psionics": false,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": true
+            },
+            "movesq": 5,
+            "name": "Lucis",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 1,
+                    "slot3": 0
+                },
+                "mana": 3,
+                "moves": {
+                    "6ef9ecae": {
+                        "mods": [
+                            "8fe941f7",
+                            "f1f2a396",
+                            "f23b4f01"
+                        ],
+                        "points": 3
+                    },
+                    "797d1feb": {
+                        "mods": [
+                            "1a15e729"
+                        ],
+                        "points": 3
+                    },
+                    "7ff9fecf": {
+                        "points": 1
+                    },
+                    "9aa1d2f7": {
+                        "mods": [
+                            "7dc033bf"
+                        ],
+                        "points": 3
+                    },
+                    "9c77681c": {
+                        "mods": [
+                            "14ba5829",
+                            "bc5d15d8"
+                        ],
+                        "points": 3
+                    },
+                    "a39eb68b": {
+                        "points": 1
+                    },
+                    "d4e2f861": {
+                        "points": 0
+                    },
+                    "f6bd2b52": {
+                        "points": 1
+                    }
+                },
+                "spentPoints": 27,
+                "stamina": 0,
+                "verve": 1,
+                "weapon_specialisations": 0
+            },
+            "race": "Elf",
+            "racial_modifiers": {
+                "primary": "c0f81f11",
+                "secondary": "1f5f0f44",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 3,
+            "source": "478e7171",
+            "spells": [
+                "33e3935d",
+                "bb9c27e5",
+                "7d384f89",
+                "b7cf597f",
+                "a078ccf6",
+                "883b5b52"
+            ],
+            "updated": 1707219676493,
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Staff"
+                }
+            ]
+        }
+    ]
+}

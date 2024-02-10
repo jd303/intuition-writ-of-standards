@@ -19,31 +19,26 @@ function Spell({ spell }) {
 	 * */
 	return (
 		<div className={st.spellLayout}>
-			<div className={st.name}><ListingTitle>{spell.name}</ListingTitle> {spell.level}</div>
-			<div className={st.school}>{spell.school}</div>
+			<div className={st.name}><ListingTitle>{spell.name}</ListingTitle> <div className={st.spellLevel}>{spell.level}</div></div>
 			<div className={st.mechanics}>
-				<div className={st.challengeType}>
-					<img src={target} />
-					{spell.challenge_type}
-				</div>
 				<div className={st.range}>
 					<img src={mapPinIcon} />
 					{spell.shape}
 				</div>
-				<div className={st.duration}>
-					<img src={timeIcon} />
-					{spell.duration}
-				</div>
+				{spell.save !== "None" && <div className={st.challengeType}>
+					<img src={target} />
+					{spell.save}
+				</div>}
 			</div>
 			<ul className={st.effects}>
 				<li className={st.effect}>
-					<CircledText text={spell.cantripcost?.toString()} colour="bronze" /> <div className={st.desc}>{spell.cantrip}</div>
+					<CircledText text={spell.cantripcost?.toString()} colour="bronze" /> <div className={st.desc}>{spell.cantrip} <div className={st.duration}>{spell.cantripduration}</div></div>
 				</li>
 				<li className={st.effect}>
-					<CircledText text={spell.standardcost?.toString()} colour="silver" /> <div className={st.desc}>{spell.standard}</div>
+					<CircledText text={spell.standardcost?.toString()} colour="silver" /> <div className={st.desc}>{spell.standard} <div className={st.duration}>{spell.cantripduration}</div></div>
 				</li>
 				<li className={st.effect}>
-					<CircledText text={spell.empoweredcost?.toString()} colour="gold" /> <div className={st.desc}>{spell.empowered}</div>
+					<CircledText text={spell.empoweredcost?.toString()} colour="gold" /> <div className={st.desc}>{spell.empowered} <div className={st.duration}>{spell.cantripduration}</div></div>
 				</li>
 			</ul>
 		</div>

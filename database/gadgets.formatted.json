@@ -1,0 +1,112 @@
+[
+    {
+        "dc": 1,
+        "effect": "While using any Move that changes your position, you can Activate this to have it let off Caltrops.  Squares with Caltrops are considered Difficult Terrain.",
+        "id": "6fc435b3",
+        "materials": "Iron",
+        "name": "Caltrop Spreader",
+        "standards": 5,
+        "type": "item"
+    },
+    {
+        "dc": 2,
+        "effect": "This gadget can be Activated to make an obnoxious noise.  The noise can be delayed by up to 5 minutes.  It can be heard from 200m away.",
+        "id": "af9a64de",
+        "materials": "Orraquartz",
+        "name": "Noisy Peeper",
+        "standards": 15,
+        "type": "item"
+    },
+    {
+        "dc": 2,
+        "effect": "This gadget attaches to strings and has vibration sensors.  If someone approaches within 10m, or through the string, it emits an obnoxious noise that can be heard up to 50m away.",
+        "id": "2c102913",
+        "materials": "Orraquartz",
+        "name": "Guard Dog",
+        "standards": 15,
+        "type": "item"
+    },
+    {
+        "dc": 2,
+        "effect": "You make rolling gadget that can carry 1kg and travels up to 15m in one direction, or until it hits something.",
+        "id": "f4c53b47",
+        "name": "Little Groundhog",
+        "standards": 10,
+        "type": "autogol"
+    },
+    {
+        "dc": 3,
+        "effect": "A gadget that can be hidden on your person.  Can be loaded with a single Dart or Throwing Knife.  You may perform the Ranged Basic Attack Move with it as a Free Action once per battle, however you only use your Weapon Damage to resolve Verve Loss.",
+        "id": "745804f6",
+        "name": "Hidden Launcher",
+        "standards": 15,
+        "type": "launcher"
+    },
+    {
+        "dc": 3,
+        "effect": "You create a device that can automatically pick 1 non-magical lock of up to DC 3.",
+        "id": "f5d7ede3",
+        "name": "Autopick",
+        "standards": 15,
+        "type": "item"
+    },
+    {
+        "dc": 4,
+        "effect": "You can attach this gadget to any immobile surface.  If anything passes this it fires a dart at that target, applying 5 Verve Loss.  It can hold up to 5 darts.  You may optionally apply a single dose of poison to the darts.",
+        "id": "2c67a9eb",
+        "name": "Spring Launcher",
+        "type": "equipment"
+    },
+    {
+        "dc": 4,
+        "effect": "You can create a clamp that attaches to a Shield or Weapon.  As a Free Action, you can trigger it to deal 3 Sonic Damage.  If on a weapon, the damage is applied when resolving Basic Melee Attack.  If on a shield it occurs when resolving Block.  Holds 3 charges.",
+        "id": "f7bbd3b9",
+        "name": "Vibrating Clamp",
+        "type": "trap"
+    },
+    {
+        "dc": 4,
+        "effect": "You create a long clockwork device which grinds and generates heat.  You can use it as a Free Action to generate a small flame that deals 2 Pyral Damage in a 1sq. space.  It has unlimited uses if stopped after 1 round, however if left to burn, the flame doubles in damage and increases its radius by 1sq each round.  By round 2, it can no longer be held safely.  If it reaches 4 rounds, it is destroyed.",
+        "id": "707d8bb1",
+        "name": "Little Burner",
+        "standards": 20,
+        "type": "trap"
+    },
+    {
+        "dc": 4,
+        "effect": "You make flying gadget that can carry 1kg and travels up to 15m in one direction horizontally, or 25m vertically.  It stops if it hits something.",
+        "id": "e6ac21a1",
+        "name": "Worker Bird",
+        "standards": 15,
+        "type": "autogol"
+    },
+    {
+        "dc": 5,
+        "effect": "You create a device that can automatically pick 1 mundane lock of up to DC 5.",
+        "id": "d465b0da",
+        "name": "Advanced Autopick",
+        "standards": 45,
+        "type": "item"
+    },
+    {
+        "dc": 5,
+        "effect": "You create a diminutive clockwork humanoid.  It can be set to move a specified distance in one direction, and stops if it hits something.  Once it reaches its target, it swings wildly with fists at creatures, applying 3 Verve Loss with each hit.  It continues to work indefinitely, or until shut down.",
+        "id": "17c91312",
+        "name": "Basic Autogol",
+        "type": "autogol"
+    },
+    {
+        "dc": 6,
+        "effect": "You create a diminutive clockwork humanoid.  It can be set to move a specified distance in one direction.  Once it does, it emits a Sonic Blast that deals 10 Damage and may apply the Deafness Status, if you beat the Defence (CON) of targets, to all within a 3x3 square.",
+        "id": "75f62ede",
+        "name": "Sonic Bantam",
+        "type": "autogol"
+    },
+    {
+        "dc": 6,
+        "effect": "You create a diminutive clockwork humanoid.  It can be set to move a specified distance in one direction.  Once it does, it fires a dart at the closest target each turn for 4 turns.  Darts deal 5 damage.  You may optionally apply a single dose of poison to the darts.",
+        "id": "248189bd",
+        "name": "Spitting Bantam",
+        "type": "autogol"
+    }
+]

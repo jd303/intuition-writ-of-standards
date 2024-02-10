@@ -12,8 +12,8 @@ export const RecipeTypes = {
 export const recipesData = [
   {
     type: "Potion",
-    name: "Vigor Tonic",
-    desc: "A Vigor Tonic is a small, lightly coloured solution that lasts a few months before settling into a sediment and becoming inert.",
+    name: "Vigour Tonic",
+    desc: "A Vigour Tonic is a small, lightly coloured solution that lasts a few months before settling into a sediment and becoming inert.",
     time: "60m",
     effects: "When consumed, Restores 5 Verve.  When you use it, mark a Heal.",
     reagents: [ReagentProperties.Vig, ReagentProperties.Vig, ReagentProperties.Vig],
@@ -329,7 +329,7 @@ export const recipesData = [
   },
   {
     type: "Misc",
-    name: "FireFireworks",
+    name: "Fireworks",
     desc: "A paper tube filled with glittering dust, plus a wick, and wooden pole",
     time: "30m",
     effects: "A single, but impressive firework that fires into the air and explodes in a dazzling display of colour and sound.",

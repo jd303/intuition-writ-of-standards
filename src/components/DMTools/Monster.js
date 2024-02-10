@@ -60,11 +60,29 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 		modifyMonster(newMonster);
 	}
 
+	const staggerUp = () => {
+		const value = monster.current_stagger;
+		const newMonster = { ...monster, current_stagger: value + 1 };
+		modifyMonster(newMonster);
+	}
+
+	const staggerDown = () => {
+		const value = monster.current_stagger;
+		const newMonster = { ...monster, current_stagger: value - 1 };
+		modifyMonster(newMonster);
+	}
+
 	const [statusVisible, setStatusVisible] = useState(false);
 	const showMonsterStatusAdd = () => {
 		console.log("SET VISIBLE");
 		setStatusVisible(true);
 	}
+
+	const [imageLarge, setImageLarge] = useState(false);
+	const toggleImageLarge = () => setImageLarge(!imageLarge);
+
+	const [descShowing, setDescShowing] = useState(false);
+	const toggleDesc = () => setDescShowing(!descShowing);
 
 	/**
 	 * CJSX
@@ -72,6 +90,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 	return (
 		<React.Fragment>
 			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || ''].join(' ')}>
+				<div className={[st.monsterDesc, descShowing ? st.on : ''].join(' ')} dangerouslySetInnerHTML={{ __html:monster.description?.replace(/\n/g, "<br>") }} onClick={toggleDesc}></div>
 				<StatusPopup visible={statusVisible} closePopup={() => setStatusVisible(false)} />
 				{addClick && (
 					<button className={st.addMonster} onClick={() => addClick(monster)}>+</button>
@@ -80,8 +99,11 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 					<button className={st.addMonster} onClick={() => removeClick(monster)}>-</button>
 				)}
 				<div className={st.titleBar}>
-					<h1 className={st.title}>{monster.name}</h1>
-					<div className={[st.identifier, st.hideWhenViewMode].join(' ')}><input className={st.subtleInput} value={monster.base} onChange={modifyBase} /></div>
+					<h1 className={st.title}>{monster.name} {monster.description?.length && <span onClick={toggleDesc}>ⓘ</span>}</h1>
+					<div className={st.subtitle}>
+						{monster.type}, DC {monster.dc}
+						<span className={[st.identifier, st.hideWhenViewMode].join(' ')}><input className={st.subtleInput} value={monster.base} onChange={modifyBase} /></span>
+					</div>
 				</div>
 				<div className={st.metaBar}>
 					<div className={st.verve}>
@@ -98,8 +120,14 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 						<button className={st.hideWhenViewMode} onClick={() => chargeUp()}>+</button>
 						<button className={st.hideWhenViewMode} onClick={() => chargeDown()}>-</button>
 					</div>
+					<div className={[st.charge, (monster.current_charge && monster.current_charge >= monster.max_charge) ? st.charged : ''].join(' ')}>
+						<h2>Stagger:</h2>
+						<span className={st.hideWhenViewMode}>{monster.current_stagger} /</span>{monster.max_stagger}
+						<button className={st.hideWhenViewMode} onClick={() => staggerUp()}>+</button>
+						<button className={st.hideWhenViewMode} onClick={() => staggerDown()}>-</button>
+					</div>
 				</div>
-				<div className={st.imageContainer}><img src={require(`../../assets/images/monsters/${monster.image}`)} alt="Monster" /></div>
+				<div className={[st.imageContainer, imageLarge && st.imageLarge || ''].join(' ')} onClick={toggleImageLarge}><img src={require(`../../assets/images/monsters/${monster.image}`)} alt="Monster" /></div>
 				<div className={[st.statuses, st.paddedInnerSection, st.hideWhenViewMode].join(' ')}>
 					<div className={st.column}>
 						<h2>Statuses <button className='slimButton' onClick={() => showMonsterStatusAdd(monster)}>Add +</button></h2>
@@ -114,25 +142,14 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 					</div>
 				</div>
 				<div className={st.core + ' ' + st.paddedInnerSection}>
-					<h2>Core</h2>
 					<div className={st.attributes}>
-						<div className={st.column}>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>STR</div><div className={st.attributeValue}>1</div></div>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>DEX</div><div className={st.attributeValue}>1</div></div>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>CON</div><div className={st.attributeValue}>2</div></div>
-						</div>
-						<div className={st.column}>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>INT</div><div className={st.attributeValue}>2</div></div>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>WIS</div><div className={st.attributeValue}>3</div></div>
-							<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>CHA</div><div className={st.attributeValue}>0</div></div>
-						</div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>STR</div><div className={st.attributeValue}>{monster.strength}</div></div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>DEX</div><div className={st.attributeValue}>{monster.dexterity}</div></div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>CON</div><div className={st.attributeValue}>{monster.constitution}</div></div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>INT</div><div className={st.attributeValue}>{monster.intelligence}</div></div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>WIS</div><div className={st.attributeValue}>{monster.wisdom}</div></div>
+						<div className={st.attribute}><div className={st.attributeName + ' ' + st.fonted}>CHA</div><div className={st.attributeValue}>{monster.charisma}</div></div>
 					</div>
-				</div>
-				<div className={st.monsterStatuses + ' ' + st.paddedInnerSection}>
-					<h2>Monster Stats</h2>
-					<div className={st.fonted}>Stagger</div><div>{monster.current_stagger} / {monster.max_stagger}</div>
-					<div className={st.fonted}>Daze</div><div>{monster.current_daze} / {monster.max_daze}</div>
-					<div className={st.fonted}>Exhaust</div><div>{monster.current_exhaust} / {monster.max_exhaust}</div>
 				</div>
 				<div className={st.moves}>
 					{monster.properties?.length && (
@@ -159,6 +176,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 								<div className={st.moveDefences}>
 									<span className={st.fonted}>Block:</span> {move.block_percentage}
 									<span className={st.fonted}>Dodge:</span> {move.dodge_percentage}
+									{move.save && <span><span className={st.fonted}>Save:</span> {move.save}</span>}
 								</div>
 							</div>
 						))}

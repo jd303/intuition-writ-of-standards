@@ -8,11 +8,8 @@ export const prepareMonster = (monster) => {
 	newMonster.max_charge = newMonster.charge;
 	newMonster.current_charge = 0;
 	newMonster.max_stagger = newMonster.stagger;
-	newMonster.current_stagger = newMonster.stagger;
-	newMonster.max_daze = newMonster.daze;
-	newMonster.current_daze = newMonster.daze;
-	newMonster.max_exhaust = newMonster.exhaust;
-	newMonster.current_exhaust = newMonster.exhaust;
+	newMonster.current_stagger = 0;
+	console.log(newMonster);
 	return newMonster;
 }
 
@@ -21,13 +18,14 @@ export const prepareCombatMoves = (moves) => {
 		const moveSplit = move.split("|");
 		return {
 			name: moveSplit[0]?.trim(),
-			ranged: JSON.parse(moveSplit[1]?.trim()),
-			special: JSON.parse(moveSplit[2]?.trim()),
+			ranged: JSON.parse(moveSplit[1] && moveSplit[1].trim() || false),
+			special: JSON.parse(moveSplit[2] && moveSplit[2].trim() || false),
 			type: moveSplit[3]?.trim(),
 			description: moveSplit[4]?.trim(),
 			verve_loss: Number(moveSplit[5]?.trim()) || "",
 			block_percentage: Number(moveSplit[6]) || "-",
-			dodge_percentage: Number(moveSplit[7]) || "-"
+			dodge_percentage: Number(moveSplit[7]) || "-",
+			save: moveSplit[8]?.trim() || null
 		}
 	});
 	return moves;
