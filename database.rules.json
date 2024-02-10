@@ -1,5 +1,9 @@
 {
 	"rules": {
+		"alchemicals": {
+			".read": true,
+			".write": false
+		},
 		"animal_companions": {
 			".read": true,
 			".write": false

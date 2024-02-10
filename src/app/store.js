@@ -5,6 +5,7 @@ import spellsDataReducer from "../features/firebase/spellsDataSlice";
 import movesDataReducer from "../features/firebase/movesDataSlice";
 import statusDataReducer from "../features/firebase/statusDataSlice";
 import potionsDataReducer from "../features/firebase/potionsDataSlice";
+import alchemicalsDataReducer from "../features/firebase/alchemicalsDataSlice";
 import animalCompanionsDataReducer from "../features/firebase/animalCompanionsDataSlice";
 import charactersData from "../features/firebase/charactersDataSlice";
 import racialBonusData from "../features/firebase/racialBonusDataSlice";
@@ -25,6 +26,7 @@ export default configureStore({
 		movesData: movesDataReducer,
 		statusData: statusDataReducer,
 		potionsData: potionsDataReducer,
+		alchemicalsData: alchemicalsDataReducer,
 		animalCompanionsData: animalCompanionsDataReducer,
 		charactersData: charactersData,
 		racialBonusData: racialBonusData,

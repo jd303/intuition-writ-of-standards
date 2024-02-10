@@ -27,6 +27,7 @@
 	"deploy": "npm run build; firebase deploy",
 	"database:get": "bash ./database/_databaseGet.sh",
 	"database:set": "bash ./database/_databasePush.sh",
+	"database:set:alchemicals": "firebase database:set /alchemicals ./database/alchemicals.formatted.json -f",
 	"database:set:animal_companions": "firebase database:set /animal_companions ./database/animal_companions.formatted.json -f",
 	"database:set:combats": "firebase database:set /combats ./database/combats.formatted.json -f",
 	"database:set:data_standards": "firebase database:set /data_standards ./database/data_standards.formatted.json -f",

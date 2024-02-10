@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+firebase database:get /alchemicals > ./database/alchemicals.json;
 firebase database:get /animal_companions > ./database/animal_companions.json;
 firebase database:get /characters > ./database/characters.json;
 firebase database:get /combats > ./database/combats.json;
@@ -16,6 +17,7 @@ firebase database:get /spells > ./database/spells.json;
 firebase database:get /statuses > ./database/statuses.json; 
 firebase database:get /weapon_specialisations > ./database/weapon_specialisations.json; 
 
+python -m json.tool ./database/alchemicals.json > ./database/alchemicals.formatted.json;
 python -m json.tool ./database/animal_companions.json > ./database/animal_companions.formatted.json;
 python -m json.tool ./database/characters.json > ./database/characters.formatted.json;
 python -m json.tool ./database/combats.json > ./database/combats.formatted.json;
@@ -32,6 +34,7 @@ python -m json.tool ./database/spells.json > ./database/spells.formatted.json;
 python -m json.tool ./database/statuses.json > ./database/statuses.formatted.json;
 python -m json.tool ./database/weapon_specialisations.json > ./database/weapon_specialisations.formatted.json;
 
+rm ./database/alchemicals.json;
 rm ./database/animal_companions.json;
 rm ./database/characters.json;
 rm ./database/combats.json;

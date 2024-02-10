@@ -216,6 +216,12 @@
         "type": "alchemical"
     },
     {
+        "cost": 18,
+        "description": "A legendary alchemical reagent, like White Flohthinne.",
+        "name": "Reagent (Rare)",
+        "type": "alchemical"
+    },
+    {
         "cost": 5,
         "description": "A simple Alchemical, like Vigor Tonic.",
         "name": "Alchemical (DC1)",
