@@ -74,7 +74,6 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 
 	const [statusVisible, setStatusVisible] = useState(false);
 	const showMonsterStatusAdd = () => {
-		console.log("SET VISIBLE");
 		setStatusVisible(true);
 	}
 

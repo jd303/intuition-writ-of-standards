@@ -1,102 +1,430 @@
 {
     "creatures": [
         {
-            "_unique_id": "6ef3e49c-89ab-46aa-ae3e-0c74a2495fbe",
-            "charge": 2,
+            "_unique_id": "d081af91-bf16-4f90-bae7-720495ccfa9a",
+            "charge": 3,
             "charisma": 1,
             "combatmoves": [
                 {
                     "block_percentage": 0.5,
-                    "description": "A pecking attack while stationary.",
+                    "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
                     "name": "Basic Attack",
                     "ranged": false,
                     "special": 0,
                     "type": "Physical",
-                    "verve_loss": 10
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
                 },
                 {
                     "block_percentage": "-",
-                    "description": "Moves up to 5sq from above and attacks with a swooping attack.  If not dodged, gain an additional Basic Melee Attack.",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
-                    "name": "Swoop",
+                    "name": "Boulder Throw",
                     "ranged": false,
-                    "special": 1,
+                    "special": 3,
                     "type": "Physical",
                     "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 }
             ],
-            "constitution": 1,
+            "constitution": 2,
             "current_charge": 0,
             "current_stagger": 0,
-            "current_verve": 22,
+            "current_verve": 25,
             "dc": 1,
-            "dexterity": 2,
-            "id": "0d7bff79",
-            "image": "vultavian.webp",
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
             "intelligence": 1,
-            "max_charge": 2,
-            "max_stagger": 2,
-            "max_verve": 22,
-            "name": "Vultavian",
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
             "properties": [
-                "Flight (10sq.)"
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
             ],
-            "speed": 5,
-            "stagger": 2,
-            "strength": 1,
-            "type": "Beast",
-            "verve": 22,
-            "wisdom": 2
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
         },
         {
-            "_unique_id": "76815476-d9c6-4fa8-97fe-f151131b8662",
-            "charge": 2,
+            "_unique_id": "5bfc0e27-805e-424a-be3d-e1005c1152bc",
+            "charge": 3,
             "charisma": 1,
             "combatmoves": [
                 {
                     "block_percentage": 0.5,
-                    "description": "A pecking attack while stationary.",
+                    "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
                     "name": "Basic Attack",
                     "ranged": false,
                     "special": 0,
                     "type": "Physical",
-                    "verve_loss": 10
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
                 },
                 {
                     "block_percentage": "-",
-                    "description": "Moves up to 5sq from above and attacks with a swooping attack.  If not dodged, gain an additional Basic Melee Attack.",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
-                    "name": "Swoop",
+                    "name": "Boulder Throw",
                     "ranged": false,
-                    "special": 1,
+                    "special": 3,
                     "type": "Physical",
                     "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 }
             ],
-            "constitution": 1,
+            "constitution": 2,
             "current_charge": 0,
             "current_stagger": 0,
-            "current_verve": 22,
+            "current_verve": 25,
             "dc": 1,
-            "dexterity": 2,
-            "id": "0d7bff79",
-            "image": "vultavian.webp",
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
             "intelligence": 1,
-            "max_charge": 2,
-            "max_stagger": 2,
-            "max_verve": 22,
-            "name": "Vultavian",
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
             "properties": [
-                "Flight (10sq.)"
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
             ],
-            "speed": 5,
-            "stagger": 2,
-            "strength": 1,
-            "type": "Beast",
-            "verve": 22,
-            "wisdom": 2
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
+        },
+        {
+            "_unique_id": "13eb66bb-aeb1-4f05-8e98-3834b4873e73",
+            "charge": 3,
+            "charisma": 1,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "A slam attack with powerful earthen fists.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Physical",
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
+                    "dodge_percentage": 0.5,
+                    "name": "Boulder Throw",
+                    "ranged": false,
+                    "special": 3,
+                    "type": "Physical",
+                    "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 2,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 25,
+            "dc": 1,
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
+            "intelligence": 1,
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
+            "properties": [
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
+            ],
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
+        },
+        {
+            "_unique_id": "8393ced4-9d10-42e2-a244-2ad03a439adb",
+            "charge": 3,
+            "charisma": 1,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "A slam attack with powerful earthen fists.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Physical",
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
+                    "dodge_percentage": 0.5,
+                    "name": "Boulder Throw",
+                    "ranged": false,
+                    "special": 3,
+                    "type": "Physical",
+                    "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 2,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 25,
+            "dc": 1,
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
+            "intelligence": 1,
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
+            "properties": [
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
+            ],
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
+        },
+        {
+            "_unique_id": "7b2eed2e-aafa-4bd0-98fc-3fb1de1382a6",
+            "charge": 3,
+            "charisma": 1,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "A slam attack with powerful earthen fists.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Physical",
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
+                    "dodge_percentage": 0.5,
+                    "name": "Boulder Throw",
+                    "ranged": false,
+                    "special": 3,
+                    "type": "Physical",
+                    "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 2,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 25,
+            "dc": 1,
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
+            "intelligence": 1,
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
+            "properties": [
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
+            ],
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
+        },
+        {
+            "_unique_id": "8f31486b-4f69-4224-83bd-42def48e080d",
+            "charge": 3,
+            "charisma": 1,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "A slam attack with powerful earthen fists.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Physical",
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
+                    "dodge_percentage": 0.5,
+                    "name": "Slam",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
+                    "dodge_percentage": 0.5,
+                    "name": "Boulder Throw",
+                    "ranged": false,
+                    "special": 3,
+                    "type": "Physical",
+                    "verve_loss": 12
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "name": "Crust",
+                    "ranged": false,
+                    "special": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 2,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 25,
+            "dc": 1,
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
+            "intelligence": 1,
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
+            "properties": [
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
+            ],
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "wisdom": 1
         }
     ]
 }

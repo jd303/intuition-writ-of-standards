@@ -499,7 +499,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 3,
+            "sessions": 4,
             "source": "30c0e851",
             "spells": [
                 "dfe75b9e",
@@ -509,7 +509,7 @@
                 "144f30a9",
                 "ed3488f7"
             ],
-            "updated": 1707220876192,
+            "updated": 1707712467456,
             "weapon_specialisations": [
                 "da256890"
             ],
@@ -812,7 +812,7 @@
             "statuses": {
                 "statuses-a4b68644": 0
             },
-            "updated": 1707458588554
+            "updated": 1707807209155
         }
     ],
     "QRHBfhf8vZOQwJNnLbotu1xVmFL2": [
@@ -2040,7 +2040,7 @@
                 "e8972c07"
             ],
             "magical_synergy": {
-                "slot1": "Zephyral (Wind, Gusted)",
+                "slot1": "Pyral (fire, Burning)",
                 "slot2": "",
                 "slot3": ""
             },
@@ -2168,7 +2168,7 @@
             "statuses": {
                 "stamina": 0
             },
-            "updated": 1707221356934,
+            "updated": 1707544996271,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
