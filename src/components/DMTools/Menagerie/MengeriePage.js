@@ -143,7 +143,11 @@ export default MenageriePage;
 
 const MenagerieTypes = {
 	Beast: "Beast",
-	Undead: "Undead"
+	Undead: "Undead",
+	Monstrous: "Monstrous",
+	Fae: "Fae",
+	Generic: "Generic",
+	NPC: "NPC"
 }
 
 const Attacks = {
