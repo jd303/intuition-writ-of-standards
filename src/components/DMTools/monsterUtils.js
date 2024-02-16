@@ -9,7 +9,6 @@ export const prepareMonster = (monster) => {
 	newMonster.current_charge = 0;
 	newMonster.max_stagger = newMonster.stagger;
 	newMonster.current_stagger = 0;
-	console.log(newMonster);
 	return newMonster;
 }
 

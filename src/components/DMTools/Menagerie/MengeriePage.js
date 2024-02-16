@@ -41,6 +41,8 @@ function MenageriePage() {
 	 * */
 	const [filterTypeValue, setFilterTypeValue] = useState("all");
 	const typeFilterValues = { all: "All", ...MenagerieTypes };
+	const [filterDCValue, setFilterDCValue] = useState(0);
+	const dcFilterValues = { 0: "All", 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
 	const [titleSearchValue, setTitleSearchValue] = useState('');
 
 	/**
@@ -58,13 +60,16 @@ function MenageriePage() {
 			default:
 				if (filterName == "type") {
 					setFilterTypeValue(filterValue);
+				} else if (filterName == "DC") {
+					setFilterDCValue(filterValue);
 				}
 			break;
 		}
 	}
 
 	const onFilterClear = () => {
-		console.log("FILTER CLEAR");
+		setTitleSearchValue("");
+		setFilterDCValue("all");
 	}
 
 	/**
@@ -73,6 +78,11 @@ function MenageriePage() {
 	const filterByType = (item) => {
 		if (filterTypeValue == "all") return true;
 		if (item.type == filterTypeValue) return true;
+		return false;
+	}
+	const filterByDC = (item) => {
+		if (filterDCValue == 0) return true;
+		if (item.dc == filterDCValue) return true;
 		return false;
 	}
 	const filterByTitle = (item) => {
@@ -87,6 +97,10 @@ function MenageriePage() {
 			{
 				name: "type",
 				values: typeFilterValues,
+			},
+			{
+				name: "DC",
+				values: dcFilterValues,
 			},
 		],
 		search: [
@@ -129,7 +143,7 @@ function MenageriePage() {
 			<PageTitle colour="silver">Managerie</PageTitle>
 			<div className="mainContent">
 				<ListingWrapper filter={true} filters={filters}>
-					{creatures.filter(filterByType).filter(filterByTitle).map((monster, index) => (
+					{creatures.filter(filterByType).filter(filterByDC).filter(filterByTitle).map((monster, index) => (
 						<Monster key={`monster-${monster.id}`} monster={monster} addClick={addCreatureToCombat} />
 					))}
 				</ListingWrapper>
