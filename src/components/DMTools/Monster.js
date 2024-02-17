@@ -18,6 +18,14 @@ Monster.propTypes = {
 
 function Monster( { monster, viewMode = true, minimalMode = false, addClick, removeClick, modifyMonster, showMonsterChargeAdjustment }) {
 
+	let image;
+	try {
+		image = require(`../../assets/images/monsters/${monster.image}`);
+		console.log("IM", image);
+	} catch (e) {
+		image = '';
+	}
+
 	const getSpecialClass = (move, monster) => {
 		if (move.special && monster.current_charge >= move.special) return ' ' + st.enabledCharge;
 		else if (move.special) return ' ' + st.disabledCharge;
@@ -126,7 +134,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 						<button className={st.hideWhenViewMode} onClick={() => staggerDown()}>-</button>
 					</div>
 				</div>
-				<div className={[st.imageContainer, imageLarge && st.imageLarge || ''].join(' ')} onClick={toggleImageLarge}><img src={require(`../../assets/images/monsters/${monster.image}`)} alt="Monster" /></div>
+				<div className={[st.imageContainer, imageLarge && st.imageLarge || ''].join(' ')} onClick={toggleImageLarge}><img src={image} alt="Monster" /></div>
 				<div className={[st.statuses, st.paddedInnerSection, st.hideWhenViewMode].join(' ')}>
 					<div className={st.column}>
 						<h2>Statuses <button className='slimButton' onClick={() => showMonsterStatusAdd(monster)}>Add +</button></h2>

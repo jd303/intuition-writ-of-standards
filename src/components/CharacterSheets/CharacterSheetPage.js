@@ -68,7 +68,7 @@ function CharacterSheetPage() {
 	const companions_data = useSelector(selectAnimalCompanionsData);
 	const weapon_specialisations = useSelector(selectWeaponSpecialisationData);
 	let charactersData = useSelector(selectCharactersData);
-	console.log("CHARS", charactersData);
+	//console.log("CHARS", charactersData);
 
 	// Moves Data
 	let movesAndMods = {};
@@ -534,6 +534,7 @@ function CharacterSheetPage() {
 										<div className={st.standardFlex}><div className={st.headingSmall}>Bonus</div> <InputBox val={theCharacter.characterData.bonus_verve} onUpdate={(value) => updateValueFromInput(`bonus_verve`, value)} type="number" /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * vervePerPoint} disabled={true} /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox className="notForPrint" val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /><InputBox className="forPrint" /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Reserve</div> <InputBox val={Math.ceil((theCharacter.baseVerve + theCharacter.characterData.purchases.verve * vervePerPoint) * 0.25)} disabled={true} /></div>
 									</div>
 								</div>
 								<div className={st.stamina}>

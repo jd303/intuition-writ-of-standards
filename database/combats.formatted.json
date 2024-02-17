@@ -425,6 +425,57 @@
             "type": "Magical",
             "verve": 25,
             "wisdom": 1
+        },
+        {
+            "_unique_id": "e5c983d5-c6f3-455d-9f95-0f09f6ef6e21",
+            "charge": 4,
+            "charisma": 5,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "3 Attacks to those with his Keen Blade.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Sonic",
+                    "verve_loss": 25
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "3 Attacks to those with his Keen Blade.",
+                    "dodge_percentage": 0.5,
+                    "name": "Basic Attack",
+                    "ranged": false,
+                    "special": 0,
+                    "type": "Zephyral",
+                    "verve_loss": 25
+                }
+            ],
+            "constitution": 3,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 100,
+            "dc": 4,
+            "description": "[Needs a desc and backstory]",
+            "dexterity": 4,
+            "id": "7f64dc39",
+            "image": "varrithen.webp",
+            "intelligence": 5,
+            "max_charge": 4,
+            "max_stagger": 2,
+            "max_verve": 100,
+            "name": "Varrithen",
+            "properties": [
+                "OpportunityAttack ",
+                " Agile"
+            ],
+            "speed": 6,
+            "stagger": 2,
+            "strength": 4,
+            "type": "NPC",
+            "verve": 100,
+            "wisdom": 4
         }
     ]
 }

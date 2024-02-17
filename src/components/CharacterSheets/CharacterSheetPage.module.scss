@@ -379,6 +379,10 @@ section {
 				flex-direction: column;
 				gap: calc(0.5 * var(--padding-standard));
 
+				.headingSmall {
+					width: 105px;
+				}
+
 				.title {
 					display: flex;
 					gap: calc(0.5 * var(--padding-standard));
