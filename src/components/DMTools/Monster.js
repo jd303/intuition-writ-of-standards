@@ -164,7 +164,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 								<div key={`move-${index}`} className={st.property}>{prop}</div>
 							))}
 						</div>
-					)}
+					) || <></>}
 					{(monster.resistances || monster.weaknesses) && (<div className={[st.paddedInnerSection, st.resistancesAndWeaknesses].join(' ')}>
 						{monster.resistances && (<div><span className={st.fonted}>Resistances:</span> {monster.resistances}</div>) || <></>}
 						{monster.weaknesses && (<div><span className={st.fonted}>Weaknesses:</span> {monster.weaknesses}</div>) || <></>}
