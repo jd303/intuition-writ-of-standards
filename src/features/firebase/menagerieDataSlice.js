@@ -8,7 +8,6 @@ export const menagerieDataSlice = createSlice({
 	reducers: {
 		updateMenagerieData: (state, data) => {
 			const payload = data.payload.data;
-			console.log("MENAG", payload);
 			state.value = payload;
 		},
 	},

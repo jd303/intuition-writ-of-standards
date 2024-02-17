@@ -1,290 +1,352 @@
 [
     {
-        "effect": "You cannot use your Relocate Action, and receive a -2 to Move Rolls used with your Primary Action.",
+        "type": "short (1)",
         "id": "f813c6a6",
+        "negative": true,
         "name": "Bound",
-        "type": "short (1)"
+        "effect": "You cannot use your Relocate Action, and receive a -2 to Move Rolls used with your Primary Action."
     },
     {
-        "effect": "A target that is running from you or an ally.  They are considered Flanked while fleeing.",
+        "type": "short (1)",
         "id": "9c117575",
+        "negative": true,
         "name": "Fleeing",
-        "type": "short (1)"
+        "effect": "A target that is running from you or an ally.  They are considered Flanked while fleeing."
     },
     {
-        "effect": "All Defence Move Rolls suffer a -3 Penalty.  Attacks against you deal +5 Bonus Verve Damage.  You can remove the Prone Status by sacrificing your Relocate Move.",
+        "type": "short (1)",
         "id": "12ee8d87",
+        "negative": true,
         "name": "Prone",
-        "type": "short (1)"
+        "effect": "All Defence Move Rolls suffer a -3 Penalty.  Attacks against you deal +5 Bonus Verve Damage.  You can remove the Prone Status by sacrificing your Relocate Move."
     },
     {
-        "effect": "Your vision is reduced to 6 squares, you lose 1 Action of your choice, and cannot perform Moves that require a Roll.    Any spell or psionic power that you have in effect dissapates immediately.",
+        "type": "short (1)",
         "id": "84286d9f",
+        "negative": true,
         "name": "Stunned",
-        "type": "short (1)"
+        "effect": "Your vision is reduced to 6 squares, you lose 1 Action of your choice, and cannot perform Moves that require a Roll.    Any spell or psionic power that you have in effect dissapates immediately, and you can no longer maintain concentration."
     },
     {
-        "effect": "You lose Verve for each sq you Move.  DC1 Bleeding is 1 Verve per sq, and so forth to DC5.",
+        "type": "standard (3)",
+        "id": "0f1b200e",
+        "negative": false,
+        "name": "Attribute Buffed",
+        "effect": "An attribute is buffed.  All Skill Moves that you resolve with that Attribute gain a bonus.  See the effect for the bonus."
+    },
+    {
+        "type": "standard (3)",
         "id": "d1dd5b91",
+        "negative": true,
         "name": "Bleeding",
-        "type": "standard (3)"
+        "effect": "You lose Verve for each sq you Move.  DC1 Bleeding is 1 Verve per sq, and so forth to DC5."
     },
     {
-        "effect": "You fail any check that requires sight, and reroll successful Move Rolls when seeing is important.",
+        "type": "standard (3)",
         "id": "12744298",
+        "negative": true,
         "name": "Blind",
-        "type": "standard (3)"
+        "effect": "You fail any check that requires sight, and reroll successful Move Rolls when seeing is important."
     },
     {
-        "effect": "Your target incurs 2 Verve Loss per round while burning.  They may expend a Relocate Move to put themselves out.",
+        "type": "standard (3)",
         "id": "6cf9f659",
+        "negative": true,
         "name": "Burning",
-        "type": "standard (3)"
+        "effect": "Your target incurs 2 Verve Loss per round while burning.  They may expend a Relocate Move to put themselves out."
     },
     {
-        "effect": "You are aware and cautious of all opponents.  When you are Cautious, opponents cannot use some Moves against you - such as Stealth, Subterfuge and the Grapple and Trip SubMoves.  Additionally, your Defence Rolls gain a +2 Bonus against some Moves, such as Influence.",
+        "type": "standard (3)",
         "id": "61aeeb61",
+        "negative": false,
         "name": "Cautious",
-        "type": "standard (3)"
+        "effect": "You are aware and cautious of all opponents.  When you are Cautious, opponents cannot use some Moves against you - such as Stealth, Subterfuge and the Grapple and Trip SubMoves.  Additionally, your Defence Rolls gain a +2 Bonus against some Moves, such as Influence."
     },
     {
-        "effect": "Your target's Move sq. incurs a -1 Penalty.  ",
+        "type": "standard (3)",
         "id": "1031d6a8",
+        "negative": true,
         "name": "Chilled",
-        "type": "standard (3)"
+        "effect": "Your target's Move sq. incurs a -1 Penalty.  "
     },
     {
-        "effect": "When attempting any Move, a Raw Value of 8- grants the DM the ability to choose a new target, or cancel the action.  If the Move does not require a Roll, you must Roll for the Raw Value.",
+        "type": "standard (3)",
         "id": "78f6a36a",
+        "negative": true,
         "name": "Confused",
-        "type": "standard (3)"
+        "effect": "When attempting any Move, a Raw Value of 8- grants the DM the ability to choose a new target, or cancel the action.  If the Move does not require a Roll, you must Roll for the Raw Value."
     },
     {
-        "effect": "You fail any check that requires hearing, and reroll successful Move Rolls when hearing is important.",
+        "type": "standard (3)",
         "id": "733f9696",
+        "negative": true,
         "name": "Deaf",
-        "type": "standard (3)"
+        "effect": "You fail any check that requires hearing, and you reroll successful Move Rolls when hearing is important.  Additionally, you fail the Cast a Spell Move on a Raw Roll of 4-."
     },
     {
-        "effect": "Your target incurs a -1 Penalty to the first Move they use each turn that uses a Physical Attribute.",
+        "type": "standard (3)",
         "id": "ef5858f3",
+        "negative": true,
         "name": "Decaying",
-        "type": "standard (3)"
+        "effect": "Your target incurs a -1 Penalty to the first Move they use each turn that uses a Physical Attribute."
     },
     {
-        "effect": "The target will prefer not to take an action, such as Melee Attack or Ranged Attack.  If they ignore this preference, they incur a -1 Penalty to their roll, or a -2 to any application of Verve Loss.",
+        "type": "standard (3)",
         "id": "60cf1f0c",
+        "negative": true,
         "name": "Dissuaded",
-        "type": "standard (3)"
+        "effect": "The target will prefer not to take an action, such as Melee Attack or Ranged Attack.  If they ignore this preference, they incur a -1 Penalty to their roll, or a -2 to any application of Verve Loss."
     },
     {
-        "effect": "The target has taken too much damage and is bleeding out.  You may be able to resolve the Stabilise Move in the Rest Skill to save yourself.  If you have the Dying Status for three rounds, you perish from wounds and exhaustion.",
+        "type": "standard (3)",
         "id": "eb65bb44",
+        "negative": true,
         "name": "Dying",
-        "type": "standard (3)"
+        "effect": "The target has taken too much damage and is bleeding out.  You may be able to resolve the Stabilise Move in the Rest Skill to save yourself.  If you have the Dying Status for three rounds, you perish from wounds and exhaustion."
     },
     {
-        "effect": "The enraged target will aggressively approach and attack targets it considers their opponents, using only the Relocate and Attack Moves if it can unless unable to.",
+        "type": "standard (3)",
         "id": "5e75dfa0",
+        "negative": true,
         "name": "Enraged",
-        "type": "standard (3)"
+        "effect": "The enraged target will aggressively approach and attack targets it considers their opponents, using only the Relocate and Attack Moves if it can unless unable to."
     },
     {
-        "effect": "If you would ever take more than 10 damage from a single physical hit, reduce it to 10.",
+        "type": "standard (3)",
         "id": "95b27798",
+        "negative": false,
         "name": "Fortified 10",
-        "type": "standard (3)"
+        "effect": "If you would ever take more than 10 damage from a single physical hit, reduce it to 10."
     },
     {
-        "effect": "If you would ever take more than 5 damage from a single physical hit, reduce it to 5.",
+        "type": "standard (3)",
         "id": "632b39a0",
+        "negative": false,
         "name": "Fortified 5",
-        "type": "standard (3)"
+        "effect": "If you would ever take more than 5 damage from a single physical hit, reduce it to 5."
     },
     {
-        "effect": "All Move Rolls suffer a -2 Penalty while you can perceive your source of fear.",
+        "type": "standard (3)",
         "id": "3342f15c",
+        "negative": true,
         "name": "Frightened",
-        "type": "standard (3)"
+        "effect": "All Move Rolls suffer a -2 Penalty while you can perceive your source of fear."
     },
     {
-        "effect": "Your target incurs a -1 Penalty to Defence Moves against effects that try to Move them, as well as to the Athletics Move.",
+        "type": "standard (3)",
         "id": "c2c2e818",
+        "negative": true,
         "name": "Gusted",
-        "type": "standard (3)"
+        "effect": "Your target incurs a -1 Penalty to Defence Moves against effects that try to Move them, as well as to the Athletics Move."
     },
     {
-        "effect": "Your speed is multiplied by 1.5.  You gain 1 additional Primary, Relocate or Quick Action each turn.  When you leave Hasted, you gain the Stunned Status.",
+        "type": "standard (3)",
         "id": "171709ae",
+        "negative": false,
         "name": "Hasted",
-        "type": "standard (3)"
+        "effect": "Your speed is multiplied by 1.5.  You gain 1 additional Primary, Relocate or Quick Action each turn.  When you leave Hasted, you gain the Stunned Status."
     },
     {
-        "effect": "Roll an additional D4 on one Roll per turn.",
+        "type": "standard (3)",
         "id": "8762b1e7",
+        "negative": false,
         "name": "Inspired",
-        "type": "standard (3)"
+        "effect": "Roll an additional D4 on one Roll per turn."
     },
     {
-        "effect": "Your target prefers to avoid the target of their intimidation.  Targets automatically succeed at Defenses against it on a Raw Roll of 16+",
+        "type": "standard (3)",
         "id": "a8702444",
+        "negative": true,
         "name": "Intimidated",
-        "type": "standard (3)"
+        "effect": "Your target prefers to avoid the target of their intimidation.  Targets automatically succeed at Defenses against it on a Raw Roll of 16+"
     },
     {
-        "effect": "You have Advantage on any creature that cannot perceive you with sight.",
+        "type": "standard (3)",
         "id": "c9f689b7",
+        "negative": false,
         "name": "Invisible",
-        "type": "standard (3)"
+        "effect": "You have Advantage on any creature that cannot perceive you with sight."
     },
     {
-        "effect": "Your target incurs 1 Verve Loss per round, and suffers a -1 Penalty to the Block Move.",
+        "type": "standard (3)",
         "id": "4a0ae563",
+        "negative": true,
         "name": "Melting",
-        "type": "standard (3)"
+        "effect": "Your target incurs 1 Verve Loss per round, and suffers a -1 Penalty to the Block Move."
     },
     {
-        "effect": "You lose all your Actions.",
+        "type": "standard (3)",
         "id": "f488df8f",
+        "negative": true,
         "name": "Paralyzed",
-        "type": "standard (3)"
+        "effect": "You lose all your Actions."
     },
     {
-        "effect": "You lose Verve each turn.  The amount of Verve is based on the strength of the poison.  DC1 Poison applies 3 Verve Loss, DC2 applies 6, DC3 applies 10, DC4 applies 15, and DC5 applies 20.",
+        "type": "standard (3)",
         "id": "50195e5a",
+        "negative": true,
         "name": "Poisoned",
-        "type": "standard (3)"
+        "effect": "You lose Verve each turn.  The amount of Verve is based on the strength of the poison.  DC1 Poison applies 3 Verve Loss, DC2 applies 6, DC3 applies 10, DC4 applies 15, and DC5 applies 20."
     },
     {
-        "effect": "Your target prefers to target the object / person they were provoked to.  If that would put them in danger, they may ignore this provocation.",
+        "type": "standard (3)",
         "id": "4088abfe",
+        "negative": true,
         "name": "Provoked",
-        "type": "standard (3)"
+        "effect": "Your target prefers to target the object / person they were provoked to.  If that would put them in danger, they may ignore this provocation."
     },
     {
-        "effect": "Your target incurs a -1 Penalty to the first Move they use each turn that uses a Mental Attribute.",
+        "type": "standard (3)",
         "id": "3a6faa1a",
+        "negative": true,
         "name": "Shocked",
-        "type": "standard (3)"
+        "effect": "You incur a -1 Penalty to the first Move they use each turn that uses a Mental Attribute."
     },
     {
-        "effect": "Your speed is halved.  You lose an Action of your choice each turn.",
+        "type": "standard (3)",
+        "id": "bce09fa5",
+        "negative": true,
+        "name": "Sickened",
+        "effect": "You incur a -3 to all Rolls."
+    },
+    {
+        "type": "standard (3)",
         "id": "a4b68644",
+        "negative": true,
         "name": "Slow",
-        "type": "standard (3)"
+        "effect": "Your speed is halved.  You lose an Action of your choice each turn."
     },
     {
-        "effect": "Reroll all failed Move Rolls once.",
+        "type": "standard (3)",
         "id": "023c6625",
+        "negative": false,
         "name": "Uplifted",
-        "type": "standard (3)"
+        "effect": "Reroll all failed Move Rolls once."
     },
     {
-        "effect": "Unless they do anything to obviously break your trust, you consider the source of the Charm Effect as a friend.",
+        "type": "long (∞)",
         "id": "f54d66ec",
+        "negative": true,
         "name": "Charmed",
-        "type": "long (\u221e)"
+        "effect": "Unless they do anything to obviously break your trust, you consider the source of the Charm Effect as a friend."
     },
     {
-        "effect": "Reroll all successful Move Rolls once.",
+        "type": "long (∞)",
         "id": "b6c99dec",
+        "negative": true,
         "name": "Cursed",
-        "type": "long (\u221e)"
+        "effect": "Reroll all successful Move Rolls once."
     },
     {
-        "effect": "Your vision is reduced to 6 squares and you lose 1 action of your choice.  You can maintain any effect that requires concentration for a maximum of 1 round.",
+        "type": "long (∞)",
         "id": "cfa1809a",
+        "negative": true,
         "name": "Dazed",
-        "type": "long (\u221e)"
+        "effect": "Your vision is reduced to 6 squares and you lose 1 action of your choice.  You can maintain any effect that requires concentration for a maximum of 1 round."
     },
     {
-        "effect": "You may have a physical or a mental disease, or both.  Whenever you perform a Move that has a class of attribute to which you are diseased, if you roll a low Raw Roll you gain the Exhausted Status.  DC 1 Diseases cause this effect on a Raw Roll of 2-.  DC 2 occurs on 3- and so on.  Rolling under the Raw Roll a second time also applies the Dazed Status.  Performing a Short Rest removes these Statuses.",
+        "type": "long (∞)",
         "id": "52cbf2ff",
+        "negative": true,
         "name": "Diseased",
-        "type": "long (\u221e)"
+        "effect": "You may have a physical or a mental disease, or both.  Whenever you perform a Move that has a class of attribute to which you are diseased, if you roll a low Raw Roll you gain the Exhausted Status.  DC 1 Diseases cause this effect on a Raw Roll of 2-.  DC 2 occurs on 3- and so on.  Rolling under the Raw Roll a second time also applies the Dazed Status.  Performing a Short Rest removes these Statuses."
     },
     {
-        "effect": "You cannot use Moves that use a Mental Stat.",
+        "type": "long (∞)",
         "id": "910f3718",
+        "negative": true,
         "name": "Dumb",
-        "type": "long (\u221e)"
+        "effect": "You cannot use Moves that use a Mental Stat."
     },
     {
-        "effect": "Your movement speed is reduced by 1sq, and you get a -2 Penalty to Moves that use the Dex Attribute.",
+        "type": "long (∞)",
         "id": "ea0f287e",
+        "negative": true,
         "name": "Encumbered",
-        "type": "long (\u221e)"
+        "effect": "Your movement speed is reduced by 1sq, and you get a -2 Penalty to Moves that use the Dex Attribute."
     },
     {
-        "effect": "You lose all current Stamina.  Your maximum Verve is reduced to 70% of the total, and you cannot gain more than that amount.",
+        "type": "long (∞)",
         "id": "ecdb6cee",
+        "negative": true,
         "name": "Exhausted",
-        "type": "long (\u221e)"
+        "effect": "You lose all current Stamina.  Your maximum Verve is reduced to 70% of the total, and you cannot gain more than that amount."
     },
     {
-        "effect": "A character is Flanked if they do not have the Cautious Status, and are adjacent to 3 enemies or if 2 enemies are adjacent and on opposite sides of them.  Enemies: may be Backstabbed and you may use Stealth against them if they are not cautious of you.  Players: incur a -2 penalty to the Dodge move.",
+        "type": "long (∞)",
         "id": "82e65a18",
+        "negative": true,
         "name": "Flanked",
-        "type": "long (\u221e)"
+        "effect": "A character is Flanked if they do not have the Cautious Status, and are adjacent to 3 enemies or if 2 enemies are adjacent and on opposite sides of them.  Enemies: may be Backstabbed and you may use Stealth against them if they are not cautious of you.  Players: incur a -2 penalty to the Dodge move."
     },
     {
-        "effect": "You may only engage up to 5 Points on any Point Track.",
+        "type": "long (∞)",
         "id": "8dd591e1",
+        "negative": true,
         "name": "Limited",
-        "type": "long (\u221e)"
+        "effect": "You may only engage up to 5 Points on any Point Track."
     },
     {
-        "effect": "Your target is slumbering soundly.  They wake with the Prone Status if struck, or if a loud noise occurs.  In combat, this is most often when melee attacks are made within 3 sq. of them, or a spell of DC3 or higher is cast.",
+        "type": "long (∞)",
         "id": "c1dcd2a7",
+        "negative": true,
         "name": "Sleeping",
-        "type": "long (\u221e)"
+        "effect": "Your target is slumbering soundly.  They wake with the Prone Status if struck, or if a loud noise occurs.  In combat, this is most often when melee attacks are made within 3 sq. of them, or a spell of DC3 or higher is cast."
     },
     {
-        "effect": "Enemy sufferers lose their Primary Action and cannot use Special Attacks.  PC sufferers may not use Mods on Moves.  This Status may be removed by expending your Relocate Action, but the effect still applies on the turn you remove the Status.",
+        "type": "long (∞)",
         "id": "9fcd506b",
+        "negative": true,
         "name": "Staggered",
-        "type": "long (\u221e)"
+        "effect": "Enemy sufferers lose their Primary Action and cannot use Special Attacks.  PC sufferers may not use Mods on Moves.  This Status may be removed by expending your Relocate Action, but the effect still applies on the turn you remove the Status."
     },
     {
-        "effect": "You are unseen and unheard, and cannot be targeted by enemy Moves.",
+        "type": "long (∞)",
         "id": "6f711d40",
+        "negative": true,
         "name": "Stealth",
-        "type": "long (\u221e)"
+        "effect": "You are unseen and unheard, and cannot be targeted by enemy Moves."
     },
     {
-        "effect": "All Move Rolls suffer a -2 Penalty while you can perceive your source of fear or anything like it, and terrified targets will prefer to leave the presence of their source of terror.",
+        "type": "long (∞)",
         "id": "6e2f9f82",
+        "negative": true,
         "name": "Terrified",
-        "type": "long (\u221e)"
+        "effect": "All Move Rolls suffer a -2 Penalty while you can perceive your source of fear or anything like it, and terrified targets will prefer to leave the presence of their source of terror."
     },
     {
-        "effect": "You receive 1.5x Verve loss, and any time you incur 10 or more Verve Loss, you also gain the Wound: Injured Status.",
+        "type": "long (∞)",
         "id": "e7c84844",
+        "negative": true,
         "name": "Vulnerable",
-        "type": "long (\u221e)"
+        "effect": "You receive 1.5x Verve loss, and any time you incur 10 or more Verve Loss, you also gain the Wound: Injured Status."
     },
     {
-        "effect": "You cannot use Moves that use a Physical Stat.",
+        "type": "long (∞)",
         "id": "c1ed5597",
+        "negative": true,
         "name": "Weakened",
-        "type": "long (\u221e)"
+        "effect": "You cannot use Moves that use a Physical Stat."
     },
     {
-        "effect": "All Move Rolls are performed with a -1 penalty.",
+        "type": "long (∞)",
         "id": "beb7d604",
+        "negative": true,
         "name": "Wound: Injured",
-        "type": "long (\u221e)"
+        "effect": "All Move Rolls are performed with a -1 penalty."
     },
     {
-        "effect": "Any time you gain Verve, you only gain half and all Rolls are performed with a -1 penalty.",
+        "type": "long (∞)",
         "id": "2bec14ca",
+        "negative": true,
         "name": "Wound: Scarred",
-        "type": "long (\u221e)"
+        "effect": "Any time you gain Verve, you only gain half and all Rolls are performed with a -1 penalty."
     },
     {
-        "effect": "Any time you gain Verve, you only gain half.  All Rolls are performed with a -2 penalty and your movement is reduced by 1.",
+        "type": "long (∞)",
         "id": "a57c4bf0",
+        "negative": true,
         "name": "Wound: Mortal",
-        "type": "long (\u221e)"
+        "effect": "Any time you gain Verve, you only gain half.  All Rolls are performed with a -2 penalty and your movement is reduced by 1."
     }
 ]

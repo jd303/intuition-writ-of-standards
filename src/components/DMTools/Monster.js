@@ -21,14 +21,13 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 	let image;
 	try {
 		image = require(`../../assets/images/monsters/${monster.image}`);
-		console.log("IM", image);
 	} catch (e) {
 		image = '';
 	}
 
 	const getSpecialClass = (move, monster) => {
-		if (move.special && monster.current_charge >= move.special) return ' ' + st.enabledCharge;
-		else if (move.special) return ' ' + st.disabledCharge;
+		if (move.specialCost && monster.current_charge >= move.specialCost) return ' ' + st.enabledCharge;
+		else if (move.specialCost) return ' ' + st.disabledCharge;
 		return '';
 	}
 
@@ -108,7 +107,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 				<div className={st.titleBar}>
 					<h1 className={st.title}>{monster.name} {monster.description?.length && <span onClick={toggleDesc}>ⓘ</span>}</h1>
 					<div className={st.subtitle}>
-						{monster.type}, DC {monster.dc}
+						{monster.type}, DC {monster.dc}, {monster.size}
 						<span className={[st.identifier, st.hideWhenViewMode].join(' ')}><input className={st.subtleInput} value={monster.base} onChange={modifyBase} /></span>
 					</div>
 				</div>
@@ -166,12 +165,16 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 							))}
 						</div>
 					)}
+					{(monster.resistances || monster.weaknesses) && (<div className={[st.paddedInnerSection, st.resistancesAndWeaknesses].join(' ')}>
+						{monster.resistances && (<div><span className={st.fonted}>Resistances:</span> {monster.resistances}</div>) || <></>}
+						{monster.weaknesses && (<div><span className={st.fonted}>Weaknesses:</span> {monster.weaknesses}</div>) || <></>}
+					</div>)}
 					<div className={st.paddedInnerSection}>
 						{monster.combatmoves.map((move, index) => (
 							<div key={`combat-move-${index}`} className={st.move + getSpecialClass(move, monster)}>
 								<div className={st.moveTitle + ' ' + st.fonted}>
-									{move.special && <span><img className={st.icoSpecial} src={icoSpecial} alt="" /> {move.special}</span> || <></>}
-									{move.name} ({move.ranged && 'Ranged' || 'Melee'})
+									{move.specialCost && <span><img className={st.icoSpecial} src={icoSpecial} alt="" /> {move.specialCost}</span> || <></>}
+									{move.name} ({move.moveRange})
 									<div className={st.type}>{move.type}</div>
 								</div>
 								<div className={st.moveVerve}>

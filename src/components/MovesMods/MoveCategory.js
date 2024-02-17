@@ -16,7 +16,6 @@ function MoveCategoryComponent(props) {
 	let { name, category } = props;
 
 	const movesAndMods = prepareMovesAndMods(category);
-	console.log(movesAndMods);
 
 	return (
 		<div className={st.categoryContainer}>

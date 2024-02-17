@@ -69,7 +69,8 @@ function MenageriePage() {
 
 	const onFilterClear = () => {
 		setTitleSearchValue("");
-		setFilterDCValue("all");
+		setFilterDCValue("0");
+		setFilterTypeValue("all");
 	}
 
 	/**
@@ -160,6 +161,8 @@ const MenagerieTypes = {
 	Undead: "Undead",
 	Monstrous: "Monstrous",
 	Fae: "Fae",
+	Arcanic: "Arcanic",
+	Draconic: "Draconic",
 	Generic: "Generic",
 	NPC: "NPC"
 }

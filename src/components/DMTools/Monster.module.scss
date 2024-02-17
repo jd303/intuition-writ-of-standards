@@ -228,16 +228,16 @@
 			align-content: flex-start;
 			min-width: 250px;
 
-			.column {
-				.attribute {
-					display: flex;
-					gap: calc(0.5 * var(--padding-standard));
-					line-height: 20px;
+			.attribute {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				line-height: 20px;
 
-					.attributeName {
-						width: 35px;
-						font-weight: bold;
-					}
+				.attributeName {
+					width: 35px;
+					font-weight: bold;
 				}
 			}
 		}
@@ -356,6 +356,11 @@
 			> * {
 				margin-right: calc(0.5 * var(--padding-standard));
 			}
+		}
+
+		.resistancesAndWeaknesses {
+			display: flex;
+			gap: calc(0.5 * var(--padding-standard));
 		}
 	}
 }

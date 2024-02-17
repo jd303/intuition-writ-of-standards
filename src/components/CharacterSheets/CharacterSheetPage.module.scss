@@ -433,6 +433,10 @@ section {
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 			gap: calc(0.5 * var(--padding-standard));
 
+			&:not(:last-child) {
+				margin-bottom: calc(0.5 * var(--padding-standard));
+			}
+
 			@media (max-width: 1049px) {
 				grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 				min-width: auto;

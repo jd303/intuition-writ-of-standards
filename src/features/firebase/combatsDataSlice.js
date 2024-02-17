@@ -7,7 +7,6 @@ export const combatsDataSlice = createSlice({
 	},
 	reducers: {
 		updateCombatsData: (state, data) => {
-			console.log("COmbats", data.payload.data)
 			const payload = data.payload.data;
 			state.value = payload;
 		},

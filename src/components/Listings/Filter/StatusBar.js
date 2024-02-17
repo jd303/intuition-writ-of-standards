@@ -61,7 +61,6 @@ function addFilters(filters, refs) {
 	};
 
 	const clearFilter = () => {
-		console.log(refs);
 		if (refs.dropdowns.current) refs.dropdowns.current.value = "all";
 		if (refs.dropdowns.current) refs.dropdowns.current.selectedIndex = 0;
 		if (refs.searchField.current) refs.searchField.current.value = '';

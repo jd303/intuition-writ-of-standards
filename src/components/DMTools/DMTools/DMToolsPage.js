@@ -15,7 +15,6 @@ function DMToolsPage() {
 	if (auth.user?.uid !== "LrOb5kepZdSNuzkH6qGlmIrphas1") return <Navigate to="/" />
 
 	const dcs = useSelector(selectDCsData);
-	console.log(dcs);
 	
 	/**
 	 * CJSX

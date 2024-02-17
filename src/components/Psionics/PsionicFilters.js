@@ -33,7 +33,6 @@ function PsionicFilters() {
 	 * Fiter results by school
 	 * */
 	const filterPsionics = (power) => {
-		console.log(levelFilterValue);
 		if (levelFilterValue !== "All") {
 			if (power.level !== parseInt(levelFilterValue)) return false;
 		}

@@ -17,8 +17,8 @@ export const prepareCombatMoves = (moves) => {
 		const moveSplit = move.split("|");
 		return {
 			name: moveSplit[0]?.trim(),
-			ranged: JSON.parse(moveSplit[1] && moveSplit[1].trim() || false),
-			special: JSON.parse(moveSplit[2] && moveSplit[2].trim() || false),
+			moveRange: moveSplit[1]?.trim(),
+			specialCost: JSON.parse(moveSplit[2] && moveSplit[2].trim() || false),
 			type: moveSplit[3]?.trim(),
 			description: moveSplit[4]?.trim(),
 			verve_loss: Number(moveSplit[5]?.trim()) || "",

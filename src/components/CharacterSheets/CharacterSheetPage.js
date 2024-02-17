@@ -123,7 +123,7 @@ function CharacterSheetPage() {
 	const stats = [ { full: 'Strength', short: 'STR' }, { full: 'Constitution', short: 'CON' }, { full: 'Dexterity', short: 'DEX' }, { full: 'Intelligence', short: 'INT' }, { full: 'Wisdom', short: 'WIS' }, { full: 'Charisma', short: 'CHA' }];
 	const weaponDamageDice = [ "d4", "d8", "d6", "d10", "d12" ];
 	const bonusDice = [ "d6", "d8", "d10", "2d6", "2d8", "2d10" ];
-	const magical_synergies = [ "Pyral (fire, Burning)", "Cryal (cold, Chilled)", "Arcanic (pure, +5 Verve Loss)", "Electric (Lightning, Shocked)", "Acidic (Acid, Melting)", "Luminal (Light, Blind)", "Umbral (Decay, Decaying)", "Sonic (Sound, Deaf)", "Zephyral (Wind, Gusted)" ];
+	const magical_synergies = [ "Pyral (fire, Burning)", "Cryonic (cold, Chilled)", "Arcanic (pure, +5 Verve Loss)", "Electric (Lightning, Shocked)", "Acidic (Acid, Melting)", "Luminal (Light, Blind)", "Umbral (Decay, Decaying)", "Sonic (Sound, Deaf)", "Zephyral (Wind, Gusted)" ];
 	const abilityIcons = [icoFist, icoHeartbeat, icoRunningman, icoBrain, icoPuzzlebrain, icoThumbsup];
 
 	// Rolling Popup
@@ -546,10 +546,18 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 							<div className={st.sectionMetaInner}>
-								<div className={st.status}>
-									<div className={st.headingMedium}>Statuses</div>
+							<div className={st.status}>
+									<div className={st.headingMedium}>Neg Statuses</div>
 									{
-										status_data.map((status, index) => (
+										status_data.filter((status) => status.negative).map((status, index) => (
+											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
+										))
+									}
+								</div>
+								<div className={st.status}>
+									<div className={st.headingMedium}>Pos Statuses</div>
+									{
+										status_data.filter((status) => !status.negative).map((status, index) => (
 											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
@@ -596,10 +604,10 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner + ' ' + st.resistanceTable}>
 								<div className={st.headingMedium + ' ' + st.headName}>Resistances</div>
 								<div className={st.table1}>
-									<div className={st.label}>Universal (URed)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.universal} onUpdate={(value) => updateValueFromInput('resistances.universal', value, true)} /></div>
-									<div className={st.label}>Physical (PRed)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.physical} onUpdate={(value) => updateValueFromInput('resistances.physical', value, true)} /></div>
-									<div className={st.label}>Magic (MRed)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.magic} onUpdate={(value) => updateValueFromInput('resistances.magic', value, true)} /></div>
-									<div className={st.label}>Poison (PoRed)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.poisons} onUpdate={(value) => updateValueFromInput('resistances.poisons', value, true)} /></div>
+									<div className={st.label}>Universal (URes)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.universal} onUpdate={(value) => updateValueFromInput('resistances.universal', value, true)} /></div>
+									<div className={st.label}>Physical (PRes)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.physical} onUpdate={(value) => updateValueFromInput('resistances.physical', value, true)} /></div>
+									<div className={st.label}>Magic (MRes)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.magic} onUpdate={(value) => updateValueFromInput('resistances.magic', value, true)} /></div>
+									<div className={st.label}>Poison (PoRes)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.poisons} onUpdate={(value) => updateValueFromInput('resistances.poisons', value, true)} /></div>
 								</div>
 								<div className={st.table2}>
 									<div className={st.label}>Pyral (PyRes)</div> <div className={st.standardFlex}><InputBox type="number" val={theCharacter.characterData.resistances.pyral} onUpdate={(value) => updateValueFromInput('resistances.pyral', value, true)} /></div>
