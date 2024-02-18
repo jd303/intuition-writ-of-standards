@@ -90,30 +90,6 @@ function MenageriePage() {
 		return (item.name.toLowerCase().indexOf(titleSearchValue.toLowerCase()) !== -1);
 	}
 
-	/**
-	 * Define filters
-	 * */
-	const filters = {
-		dropdowns: [
-			{
-				name: "type",
-				values: typeFilterValues,
-			},
-			{
-				name: "DC",
-				values: dcFilterValues,
-			},
-		],
-		search: [
-			{
-				name: "title",
-				startingValue: titleSearchValue
-			}
-		],
-		change: onFilterChange,
-		clear: onFilterClear,
-	};
-
 	const menagerie_data = useSelector(selectMenagerieData);
 	const menageriePrepared = menagerie_data.map(prepareMonster);
 	const [creatures, setCreatures] = useState(menageriePrepared);
@@ -134,6 +110,41 @@ function MenageriePage() {
 		const db = getDatabase();
 		set(ref(db, `combats`), combats);
 	}
+	
+	const [isMinimal, setIsMinimal] = useState(true);
+	const minimalMode = () => {
+		setIsMinimal(!isMinimal);
+	}
+
+	/**
+	 * Define filters
+	 * */
+	const filters = {
+		dropdowns: [
+			{
+				name: "type",
+				values: typeFilterValues,
+			},
+			{
+				name: "DC",
+				values: dcFilterValues,
+			},
+		],
+		search: [
+			{
+				name: "title",
+				startingValue: titleSearchValue
+			}
+		],
+		customElements: [
+			{
+				name: "Minimal Mode",
+				element: <button onClick={minimalMode} className={isMinimal && st.minimalMode || ''}>{isMinimal && 'On' || 'Off'}</button>
+			}
+		],
+		change: onFilterChange,
+		clear: onFilterClear,
+	};
 
 	/**
 	 * CJSX
@@ -145,7 +156,7 @@ function MenageriePage() {
 			<div className="mainContent">
 				<ListingWrapper filter={true} filters={filters}>
 					{creatures.filter(filterByType).filter(filterByDC).filter(filterByTitle).map((monster, index) => (
-						<Monster key={`monster-${monster.id}`} monster={monster} addClick={addCreatureToCombat} />
+						<Monster key={`monster-${monster.id}`} monster={monster} minimalMode={isMinimal} addClick={addCreatureToCombat} />
 					))}
 				</ListingWrapper>
 			</div>

@@ -23,6 +23,7 @@ function StatusBar(props) {
 	// References to elements
 	const dropdownRef = React.useRef(null);
 	const searchFieldRef = React.useRef(null);
+	const customElementsRef = React.useRef(null);
 
 	// State
 	const viewMode = useSelector(selectViewMode);
@@ -35,7 +36,7 @@ function StatusBar(props) {
 	return (
 		<div className={styles.statusBar}>
 			<div className={styles.statusBarContainer}>
-				{filter && addFilters(filters, { dropdowns: dropdownRef, searchField: searchFieldRef })}
+				{filter && addFilters(filters, { dropdowns: dropdownRef, searchField: searchFieldRef, customElements: customElementsRef  })}
 				<div className={styles.divider}></div>
 				<div className={styles.view}>
 					{ !lockView && (
@@ -87,6 +88,12 @@ function addFilters(filters, refs) {
 						<div key={index} className={styles.dropdownGroup}>
 							{filter.name}
 							<input name={filter.name} value={filter.startingValue} ref={refs.searchField} onChange={onFilterChangeHandler} />
+						</div>
+					))}
+					{filters.customElements?.map((filter, index) => (
+						<div key={index} className={styles.dropdownGroup}>
+							{filter.name}
+							{filter.element}
 						</div>
 					))}
 					<button className={styles.btClear} onClick={clearFilter}>

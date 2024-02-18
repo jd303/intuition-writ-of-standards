@@ -42,7 +42,6 @@ function CombatPage() {
 			if (newCreature.statuses) {
 				newCreature.statuses = [ ...newCreature.statuses.map(status => { return { ...status } }) ];
 				newCreature.statuses.forEach(status => status.duration -= 1);
-				console.log(JSON.parse(JSON.stringify(newCreature.statuses)));
 				newCreature.statuses = newCreature.statuses.filter(status => status.duration > 0);
 			}
 			return newCreature;
@@ -70,7 +69,6 @@ function CombatPage() {
 	}
 
 	const saveCombats = () => {
-		console.log("Saving");
 		const db = getDatabase();
 		set(ref(db, `combats`), combats);
 	}
