@@ -38,7 +38,9 @@ function CombatPage() {
 		updatedCreatures = updatedCreatures.map(creature => {
 			const newCreature = { ...creature };
 			newCreature.current_charge = Math.min(newCreature.max_charge, newCreature.current_charge + 1);
+			
 			if (newCreature.statuses) {
+				newCreature.statuses = [ ...newCreature.statuses.map(status => { return { ...status } }) ];
 				newCreature.statuses.forEach(status => status.duration -= 1);
 				console.log(JSON.parse(JSON.stringify(newCreature.statuses)));
 				newCreature.statuses = newCreature.statuses.filter(status => status.duration > 0);
