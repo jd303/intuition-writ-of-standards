@@ -1,7 +1,7 @@
 {
     "creatures": [
         {
-            "_unique_id": "d081af91-bf16-4f90-bae7-720495ccfa9a",
+            "_unique_id": "9e227dee-37d9-4f26-a284-fbead40c89e7",
             "charge": 3,
             "charisma": 1,
             "combatmoves": [
@@ -9,19 +9,19 @@
                     "block_percentage": 0.5,
                     "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
+                    "specialCost": 0,
                     "type": "Physical",
-                    "verve_loss": 5
+                    "verve_loss": 6
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
                     "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": 14
                 },
@@ -29,25 +29,35 @@
                     "block_percentage": "-",
                     "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
                     "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
+                    "specialCost": 3,
                     "type": "Physical",
-                    "verve_loss": 12
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 },
                 {
                     "block_percentage": "-",
                     "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
                     "dodge_percentage": "-",
+                    "moveRange": "Special",
                     "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": ""
                 }
             ],
             "constitution": 2,
-            "current_charge": 0,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 25,
             "dc": 1,
@@ -64,15 +74,18 @@
                 " Earthpass (Move through stone & earth) ",
                 " Unflankable"
             ],
+            "resistances": "Physical",
+            "size": "Medium",
             "speed": 4,
             "stagger": 3,
             "strength": 2,
             "type": "Magical",
             "verve": 25,
+            "weaknesses": "Arcanic",
             "wisdom": 1
         },
         {
-            "_unique_id": "5bfc0e27-805e-424a-be3d-e1005c1152bc",
+            "_unique_id": "ad4db49d-ebe5-447b-9878-4bbd5bd3df8d",
             "charge": 3,
             "charisma": 1,
             "combatmoves": [
@@ -80,19 +93,19 @@
                     "block_percentage": 0.5,
                     "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
+                    "specialCost": 0,
                     "type": "Physical",
-                    "verve_loss": 5
+                    "verve_loss": 6
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
                     "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": 14
                 },
@@ -100,25 +113,119 @@
                     "block_percentage": "-",
                     "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
                     "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
+                    "specialCost": 3,
                     "type": "Physical",
-                    "verve_loss": 12
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 },
                 {
                     "block_percentage": "-",
                     "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
                     "dodge_percentage": "-",
+                    "moveRange": "Special",
                     "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": ""
                 }
             ],
             "constitution": 2,
-            "current_charge": 0,
+            "current_charge": 3,
+            "current_stagger": 3,
+            "current_verve": 25,
+            "dc": 1,
+            "dexterity": 1,
+            "id": "33bd47dd",
+            "image": "gigan.terra.webp",
+            "intelligence": 1,
+            "max_charge": 3,
+            "max_stagger": 3,
+            "max_verve": 25,
+            "name": "Gigan, Terra, Small",
+            "properties": [
+                "Grapple ",
+                " Earthpass (Move through stone & earth) ",
+                " Unflankable"
+            ],
+            "resistances": "Physical",
+            "size": "Medium",
+            "speed": 4,
+            "stagger": 3,
+            "strength": 2,
+            "type": "Magical",
+            "verve": 25,
+            "weaknesses": "Arcanic",
+            "wisdom": 1
+        },
+        {
+            "_unique_id": "9d46c125-c805-4bf2-a83b-258fe6f911da",
+            "charge": 3,
+            "charisma": 1,
+            "combatmoves": [
+                {
+                    "block_percentage": 0.5,
+                    "description": "A slam attack with powerful earthen fists.",
+                    "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
+                    "name": "Basic Attack",
+                    "specialCost": 0,
+                    "type": "Physical",
+                    "verve_loss": 6
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
+                    "name": "Slam",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": 14
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
+                    "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
+                    "name": "Boulder Throw",
+                    "specialCost": 3,
+                    "type": "Physical",
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Crust",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 2,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 25,
             "dc": 1,
@@ -135,15 +242,18 @@
                 " Earthpass (Move through stone & earth) ",
                 " Unflankable"
             ],
+            "resistances": "Physical",
+            "size": "Medium",
             "speed": 4,
             "stagger": 3,
             "strength": 2,
             "type": "Magical",
             "verve": 25,
+            "weaknesses": "Arcanic",
             "wisdom": 1
         },
         {
-            "_unique_id": "13eb66bb-aeb1-4f05-8e98-3834b4873e73",
+            "_unique_id": "6e77a342-6a95-4133-b34d-8b93d1521f97",
             "charge": 3,
             "charisma": 1,
             "combatmoves": [
@@ -151,19 +261,19 @@
                     "block_percentage": 0.5,
                     "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
+                    "specialCost": 0,
                     "type": "Physical",
-                    "verve_loss": 5
+                    "verve_loss": 6
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
                     "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": 14
                 },
@@ -171,25 +281,35 @@
                     "block_percentage": "-",
                     "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
                     "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
+                    "specialCost": 3,
                     "type": "Physical",
-                    "verve_loss": 12
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 },
                 {
                     "block_percentage": "-",
                     "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
                     "dodge_percentage": "-",
+                    "moveRange": "Special",
                     "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": ""
                 }
             ],
             "constitution": 2,
-            "current_charge": 0,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 25,
             "dc": 1,
@@ -206,15 +326,18 @@
                 " Earthpass (Move through stone & earth) ",
                 " Unflankable"
             ],
+            "resistances": "Physical",
+            "size": "Medium",
             "speed": 4,
             "stagger": 3,
             "strength": 2,
             "type": "Magical",
             "verve": 25,
+            "weaknesses": "Arcanic",
             "wisdom": 1
         },
         {
-            "_unique_id": "8393ced4-9d10-42e2-a244-2ad03a439adb",
+            "_unique_id": "722d55af-8919-4bbf-a4e9-175f3cbfaaa9",
             "charge": 3,
             "charisma": 1,
             "combatmoves": [
@@ -222,19 +345,19 @@
                     "block_percentage": 0.5,
                     "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
+                    "specialCost": 0,
                     "type": "Physical",
-                    "verve_loss": 5
+                    "verve_loss": 6
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
                     "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": 14
                 },
@@ -242,25 +365,35 @@
                     "block_percentage": "-",
                     "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
                     "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
+                    "specialCost": 3,
                     "type": "Physical",
-                    "verve_loss": 12
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 },
                 {
                     "block_percentage": "-",
                     "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
                     "dodge_percentage": "-",
+                    "moveRange": "Special",
                     "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": ""
                 }
             ],
             "constitution": 2,
-            "current_charge": 0,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 25,
             "dc": 1,
@@ -277,15 +410,18 @@
                 " Earthpass (Move through stone & earth) ",
                 " Unflankable"
             ],
+            "resistances": "Physical",
+            "size": "Medium",
             "speed": 4,
             "stagger": 3,
             "strength": 2,
             "type": "Magical",
             "verve": 25,
+            "weaknesses": "Arcanic",
             "wisdom": 1
         },
         {
-            "_unique_id": "7b2eed2e-aafa-4bd0-98fc-3fb1de1382a6",
+            "_unique_id": "9d9bc251-f46a-45c4-acdf-215d43223433",
             "charge": 3,
             "charisma": 1,
             "combatmoves": [
@@ -293,19 +429,19 @@
                     "block_percentage": 0.5,
                     "description": "A slam attack with powerful earthen fists.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
+                    "specialCost": 0,
                     "type": "Physical",
-                    "verve_loss": 5
+                    "verve_loss": 6
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
+                    "description": "The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
                     "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": 14
                 },
@@ -313,25 +449,35 @@
                     "block_percentage": "-",
                     "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
                     "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
+                    "specialCost": 3,
                     "type": "Physical",
-                    "verve_loss": 12
+                    "verve_loss": 20
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Chunk",
+                    "specialCost": 2,
+                    "type": "Physical",
+                    "verve_loss": ""
                 },
                 {
                     "block_percentage": "-",
                     "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
                     "dodge_percentage": "-",
+                    "moveRange": "Special",
                     "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
+                    "specialCost": 2,
                     "type": "Physical",
                     "verve_loss": ""
                 }
             ],
             "constitution": 2,
-            "current_charge": 0,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 25,
             "dc": 1,
@@ -348,86 +494,18 @@
                 " Earthpass (Move through stone & earth) ",
                 " Unflankable"
             ],
+            "resistances": "Physical",
+            "size": "Medium",
             "speed": 4,
             "stagger": 3,
             "strength": 2,
             "type": "Magical",
             "verve": 25,
+            "weaknesses": "Arcanic",
             "wisdom": 1
         },
         {
-            "_unique_id": "8f31486b-4f69-4224-83bd-42def48e080d",
-            "charge": 3,
-            "charisma": 1,
-            "combatmoves": [
-                {
-                    "block_percentage": 0.5,
-                    "description": "A slam attack with powerful earthen fists.",
-                    "dodge_percentage": 0.5,
-                    "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
-                    "type": "Physical",
-                    "verve_loss": 5
-                },
-                {
-                    "block_percentage": 0.5,
-                    "description": "The Gigan slams its fists into the earth, dealing massive damage.",
-                    "dodge_percentage": 0.5,
-                    "name": "Slam",
-                    "ranged": false,
-                    "special": 2,
-                    "type": "Physical",
-                    "verve_loss": 14
-                },
-                {
-                    "block_percentage": "-",
-                    "description": "The Gigan pulls a chunk of itself off for a terrible throw.",
-                    "dodge_percentage": 0.5,
-                    "name": "Boulder Throw",
-                    "ranged": false,
-                    "special": 3,
-                    "type": "Physical",
-                    "verve_loss": 12
-                },
-                {
-                    "block_percentage": "-",
-                    "description": "The Gigan wreathes itself in tough rock, gaining UDR 5.",
-                    "dodge_percentage": "-",
-                    "name": "Crust",
-                    "ranged": false,
-                    "special": 2,
-                    "type": "Physical",
-                    "verve_loss": ""
-                }
-            ],
-            "constitution": 2,
-            "current_charge": 0,
-            "current_stagger": 0,
-            "current_verve": 25,
-            "dc": 1,
-            "dexterity": 1,
-            "id": "33bd47dd",
-            "image": "gigan.terra.webp",
-            "intelligence": 1,
-            "max_charge": 3,
-            "max_stagger": 3,
-            "max_verve": 25,
-            "name": "Gigan, Terra, Small",
-            "properties": [
-                "Grapple ",
-                " Earthpass (Move through stone & earth) ",
-                " Unflankable"
-            ],
-            "speed": 4,
-            "stagger": 3,
-            "strength": 2,
-            "type": "Magical",
-            "verve": 25,
-            "wisdom": 1
-        },
-        {
-            "_unique_id": "e5c983d5-c6f3-455d-9f95-0f09f6ef6e21",
+            "_unique_id": "11e9b1c2-826e-44fa-970f-e6815c617973",
             "charge": 4,
             "charisma": 5,
             "combatmoves": [
@@ -435,29 +513,51 @@
                     "block_percentage": 0.5,
                     "description": "3 Attacks to those with his Keen Blade.",
                     "dodge_percentage": 0.5,
+                    "moveRange": "Melee",
                     "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
-                    "type": "Sonic",
+                    "specialCost": 0,
+                    "type": "Physical + Sonic / Physical + Zephyral",
                     "verve_loss": 25
                 },
                 {
                     "block_percentage": 0.5,
-                    "description": "3 Attacks to those with his Keen Blade.",
+                    "description": "Engages someone in a duel, applying 4 attacks to them.  To disengage, they must Resist, and even if they do he may apply a special 10 Verve Loss.",
                     "dodge_percentage": 0.5,
-                    "name": "Basic Attack",
-                    "ranged": false,
-                    "special": 0,
-                    "type": "Zephyral",
+                    "moveRange": "Melee",
+                    "name": "Duel",
+                    "save": "Str/Dex",
+                    "specialCost": 1,
+                    "type": "Physical + Sonic / Physical + Zephyral",
                     "verve_loss": 25
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "Verrithen confuses and distracts his opponent, slipping out and away and gaining 6sq, as well as applying the Confused Status for 1 Round to all within sight.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
+                    "name": "Distract",
+                    "save": "Wis",
+                    "specialCost": 1,
+                    "type": "Special",
+                    "verve_loss": ""
+                },
+                {
+                    "block_percentage": 0.5,
+                    "description": "The target loses Cautious, and Varrithen slips around behind to gain Flanking and stealth, and may perform a Sneak Attack.",
+                    "dodge_percentage": 0.5,
+                    "moveRange": "Ranged",
+                    "name": "Maneuvre",
+                    "save": "Str/Dex",
+                    "specialCost": 2,
+                    "type": "Luminal",
+                    "verve_loss": 40
                 }
             ],
             "constitution": 3,
-            "current_charge": 0,
+            "current_charge": 3,
             "current_stagger": 0,
             "current_verve": 100,
             "dc": 4,
-            "description": "[Needs a desc and backstory]",
             "dexterity": 4,
             "id": "7f64dc39",
             "image": "varrithen.webp",
@@ -470,6 +570,8 @@
                 "OpportunityAttack ",
                 " Agile"
             ],
+            "resistances": "Universal",
+            "size": "Medium",
             "speed": 6,
             "stagger": 2,
             "strength": 4,

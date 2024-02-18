@@ -16,7 +16,7 @@ Monster.propTypes = {
   showMonsterChargeAdjustment: PropTypes.func,
 };
 
-function Monster( { monster, viewMode = true, minimalMode = false, addClick, removeClick, modifyMonster, showMonsterChargeAdjustment }) {
+function Monster( { monster, viewMode = true, minimalMode = false, addClick, removeClick, modifyMonster }) {
 
 	let image;
 	try {
@@ -79,10 +79,41 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 		modifyMonster(newMonster);
 	}
 
-	const [statusVisible, setStatusVisible] = useState(false);
-	const showMonsterStatusAdd = () => {
-		setStatusVisible(true);
+	const applyStatusOrDuration = (status) => {
+		const statusesValue = monster.statuses || [];
+		
+		const existingStatus = statusesValue.find(comparedStatus => comparedStatus.id == status.id);
+		if (existingStatus) {
+			existingStatus.duration += getDuration(status);
+		} else {
+			statusesValue.push({ ...status, duration: getDuration(status) });
+		}
+		
+		const newMonster = { ...monster, statuses: statusesValue };
+		modifyMonster(newMonster);
+
+		function getDuration(status) {
+			switch (true) {
+				case status.type == "short (1)":
+					return 1;
+				case status.type == "standard (3)":
+					return 3;
+				default:
+					return 10;	
+			}
+		}
 	}
+
+	const [statusVisible, setStatusVisible] = useState(false);
+	const modifyStatusDuration = (status, adjustment) => {
+		let statusesValue = monster.statuses || [];
+		const existingStatus = statusesValue.find(comparedStatus => comparedStatus.id == status.id);
+		if (existingStatus && existingStatus.duration > 0) existingStatus.duration += adjustment;
+		if (existingStatus && existingStatus.duration === 0) statusesValue = statusesValue.filter(comparedStatus => comparedStatus.id !== status.id);
+		const newMonster = { ...monster, statuses: statusesValue };
+		modifyMonster(newMonster);
+	}
+	
 
 	const [imageLarge, setImageLarge] = useState(false);
 	const toggleImageLarge = () => setImageLarge(!imageLarge);
@@ -97,7 +128,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 		<React.Fragment>
 			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || ''].join(' ')}>
 				<div className={[st.monsterDesc, descShowing ? st.on : ''].join(' ')} dangerouslySetInnerHTML={{ __html:monster.description?.replace(/\n/g, "<br>") }} onClick={toggleDesc}></div>
-				<StatusPopup visible={statusVisible} closePopup={() => setStatusVisible(false)} />
+				{statusVisible && <StatusPopup closePopup={() => setStatusVisible(false)} monster={monster} applyStatusOrDuration={applyStatusOrDuration} modifyStatusDuration={modifyStatusDuration} /> || <></>}
 				{addClick && (
 					<button className={st.addMonster} onClick={() => addClick(monster)}>+</button>
 				)}
@@ -112,7 +143,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 					</div>
 				</div>
 				<div className={st.metaBar}>
-					<div className={st.verve}>
+					<div className={[st.verve, (monster.current_verve !== undefined && monster.current_verve <= 0) ? st.depleted : ''].join(' ')}>
 						<div className={st.verveValues}>
 							<h2>Verve:</h2>
 							<span className={st.hideWhenViewMode}>{monster.current_verve} /</span>{monster.max_verve}
@@ -126,7 +157,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 						<button className={st.hideWhenViewMode} onClick={() => chargeUp()}>+</button>
 						<button className={st.hideWhenViewMode} onClick={() => chargeDown()}>-</button>
 					</div>
-					<div className={[st.charge, (monster.current_charge && monster.current_charge >= monster.max_charge) ? st.charged : ''].join(' ')}>
+					<div className={[st.charge].join(' ')}>
 						<h2>Stagger:</h2>
 						<span className={st.hideWhenViewMode}>{monster.current_stagger} /</span>{monster.max_stagger}
 						<button className={st.hideWhenViewMode} onClick={() => staggerUp()}>+</button>
@@ -136,10 +167,11 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 				<div className={[st.imageContainer, imageLarge && st.imageLarge || ''].join(' ')} onClick={toggleImageLarge}><img src={image} alt="Monster" /></div>
 				<div className={[st.statuses, st.paddedInnerSection, st.hideWhenViewMode].join(' ')}>
 					<div className={st.column}>
-						<h2>Statuses <button className='slimButton' onClick={() => showMonsterStatusAdd(monster)}>Add +</button></h2>
+						<h2>Statuses <button className='slimButton' onClick={() => setStatusVisible(true)}>Edit</button></h2>
 						<div className={st.statusList}>
-							<button className={[st.status, 'slimButton'].join(' ')}>Cautious: 3</button>
-							<button className={[st.status, 'slimButton'].join(' ')}>Paralysed: 3</button>
+							{monster.statuses?.map(status => (
+								<button key={`mon-${monster._unique_id}-status-${status.id}`} className={[st.status, 'slimButton'].join(' ')} onClick={() => setStatusVisible(true)}>{status.name}: {status.duration}</button>	
+							))}
 						</div>
 					</div>
 					<div className={st.column}>

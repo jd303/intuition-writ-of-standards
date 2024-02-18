@@ -5,6 +5,18 @@
 		display: flex;
 		gap: var(--padding-standard);
 		justify-content: center;
+
+		button.minimalMode {
+			color: #fff;
+			background-color: rgb(var(--colour-bronze));
+		}
+	}
+
+	em {
+		display: block;
+		text-align: center;
+		font-style: italic;
+		margin-top: 5px;
 	}
 
 	.monsters {

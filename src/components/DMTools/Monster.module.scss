@@ -200,6 +200,11 @@
 			display: flex;
 			gap: calc(0.5 * var(--padding-standard));
 		}
+
+		&.depleted h2 {
+			box-shadow: 0 0 10px rgba(220, 20, 0, 0.4);
+			background-color: rgba(220, 20, 0, 0.25);
+		}
 	}
 
 	.charge {

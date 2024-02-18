@@ -10,13 +10,12 @@ import { Footer } from "../../../components/Components/Footer/Footer";
 
 // State
 import { getDatabase, ref, set } from "firebase/database";
-import { selectMenagerieData } from "../../../features/firebase/menagerieDataSlice";
 import { selectCombatsData } from "../../../features/firebase/combatsDataSlice";
 
 // Styles
 import st from './CombatPage.module.scss';
 
-function MenageriePage() {
+function CombatPage() {
 	const { ...auth } = useAuthState();
 	if (auth.user?.uid !== "LrOb5kepZdSNuzkH6qGlmIrphas1") return <Navigate to="/" />;
 
@@ -39,6 +38,11 @@ function MenageriePage() {
 		updatedCreatures = updatedCreatures.map(creature => {
 			const newCreature = { ...creature };
 			newCreature.current_charge = Math.min(newCreature.max_charge, newCreature.current_charge + 1);
+			if (newCreature.statuses) {
+				newCreature.statuses.forEach(status => status.duration -= 1);
+				console.log(JSON.parse(JSON.stringify(newCreature.statuses)));
+				newCreature.statuses = newCreature.statuses.filter(status => status.duration > 0);
+			}
 			return newCreature;
 		});
 		setCombats({ ...combats, creatures: updatedCreatures });
@@ -63,16 +67,8 @@ function MenageriePage() {
 		);
 	}
 
-	const showMonsterChargeAdjustment = () => {
-		console.log("ADust Charge");
-	}
-
-	const showMonsterStatusAdd = () => {
-		console.log("Add Status to monster");
-	}
-	
-
 	const saveCombats = () => {
+		console.log("Saving");
 		const db = getDatabase();
 		set(ref(db, `combats`), combats);
 	}
@@ -86,8 +82,9 @@ function MenageriePage() {
 			<PageTitle colour="silver">Combat</PageTitle>
 			<div className={"mainContent " + st.combatLayout}>
 				<header className={st.header}>
+					<em>Apply new round on player turns</em>
 					<button onClick={newRound}>New Round</button>
-					<button onClick={minimalMode}>Minimal Mode</button>
+					<button onClick={minimalMode} className={isMinimal && st.minimalMode || ''}>Minimal Mode</button>
 				</header>
 				<div className={st.monsters}>
 					{combats.creatures?.map((monster, index) => (
@@ -100,4 +97,4 @@ function MenageriePage() {
 	);
 }
 
-export default MenageriePage;
+export default CombatPage;

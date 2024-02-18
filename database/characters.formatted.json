@@ -769,7 +769,7 @@
                 "3_minimal_print_mod_rows": false
             },
             "movesq": 5,
-            "name": "Test",
+            "name": "Testington McGee",
             "purchases": {
                 "attributes": {
                     "cha": 0,
@@ -790,9 +790,9 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 68,
+                "spentPoints": 65,
                 "stamina": 0,
-                "verve": 36,
+                "verve": 33,
                 "weapon_specialisations": 1
             },
             "race": "Human",
@@ -818,9 +818,10 @@
             "sessions": 60,
             "source": "30c0e851",
             "statuses": {
+                "statuses-61aeeb61": 0,
                 "statuses-a4b68644": 0
             },
-            "updated": 1708132319820
+            "updated": 1708144351663
         }
     ],
     "QRHBfhf8vZOQwJNnLbotu1xVmFL2": [
@@ -1599,7 +1600,7 @@
             },
             "sessions": 3,
             "source": "478e7171",
-            "updated": 1707828796002,
+            "updated": 1708146834008,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
