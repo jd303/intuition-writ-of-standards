@@ -358,7 +358,7 @@ section {
 			display: grid;
 			grid-template-columns: auto;
 			gap: 0;
-			width: 210px;
+			width: 170px;
 			min-width: 170px;
 
 			@media (max-width: 950px) {
@@ -379,8 +379,12 @@ section {
 				flex-direction: column;
 				gap: calc(0.5 * var(--padding-standard));
 
+				.standardFlex {
+					gap: calc(0.25 * var(--padding-standard));
+				}
+
 				.headingSmall {
-					width: 105px;
+					width: 100px;
 				}
 
 				.title {
@@ -401,7 +405,7 @@ section {
 			}
 
 			.titleAndPoints {
-				min-width: 205px;
+				min-width: 170px;
 				margin-bottom: calc(0.5 * var(--padding-standard));
 			}
 		}

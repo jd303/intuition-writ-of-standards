@@ -527,7 +527,7 @@ function CharacterSheetPage() {
 									<div className={st.titleAndPoints}>
 										<div className={st.title}><div className={st.headingMedium}>Verve</div> <div className={st.littleNote}>{theCharacter.baseVerve} + {vervePerPoint}/point</div></div>
 										<div className={st.healthPurchases}>
-											<PurchaseablePointGroup count={36} columns={12} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} maxPurchases={theCharacter.characterData.sessions * 2} />
+											<PurchaseablePointGroup count={30} columns={10} gap={3} purchased={theCharacter.characterData.purchases.verve} clickCallback={adjustPoints} purchaseKey={'verve'} maxPurchases={theCharacter.characterData.sessions * 2} />
 										</div>
 									</div>
 									<div className={st.totalAndCurrent}>

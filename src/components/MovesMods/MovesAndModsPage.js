@@ -20,22 +20,32 @@ function MovesAndModsPage() {
 	 * Setup type filters
 	 */
 	const [filterTypeValue, setFilterTypeValue] = useState("All");
-	const filterTypeValues = { All: "All", Combat: "Combat", Ranged: "Ranged" }
+	const filterTypeValues = { All: "All", athletics: "Athletics", combat: "Combat", body: "Body", general: "General", defences: "Defences", perception: "Perception", knowledge: "Knowledge", deception: "Deception", influence: "Influence", arts: "Arts", engineering: "Engineering", crafty: "Crafty", beast_mastery: "Beast Mastery", magic: "Magic", inner_power: "Inner Power", psionics: "Psionics" };
+	const [searchValue, setSearchValue] = useState('');
 
 	const onFilterChange = (event) => {
 		const target = event.target;
 		const targetProperty = target.getAttribute("name");
 		const targetValue = target.value;
-		setFilterTypeValue(targetValue);
+
+		switch (true) {
+			case event.target instanceof HTMLInputElement:
+				setSearchValue(targetValue);
+			break;
+			default:
+				setFilterTypeValue(targetValue);
+			break;
+		}
 	}
 
 	const onFilterClear = () => {
-		console.log("Clear filter");
+		setFilterTypeValue("All");
+		setSearchValue("");
 	}
 
 	const filterByType = (category) => {
 		if (filterTypeValue == "All") return true;
-		return category.name == filterTypeValue;
+		return category == filterTypeValue;
 	}
 
 	const filters = {
@@ -44,6 +54,12 @@ function MovesAndModsPage() {
 				name: "type",
 				values: filterTypeValues,
 			},
+		],
+		search: [
+			{
+				name: "Text Search",
+				startingValue: searchValue
+			}
 		],
 		change: onFilterChange,
 		clear: onFilterClear,
@@ -54,10 +70,9 @@ function MovesAndModsPage() {
 			<Header colour='orange' />
 			<PageTitle colour='orange'>Moves &amp; Mods</PageTitle>
 			<div className="mainContent">
-				{/*<ListingTitle>{spell.name}</ListingTitle>*/}
 				<ListingWrapper filter={true} filters={filters} lockView="list">
 					{Object.keys(movesCategorised)?.filter(filterByType).map((categoryKey, index) => (
-						<MoveCategoryComponent key={index} name={categoryKey} category={movesCategorised[categoryKey].moves} />
+						<MoveCategoryComponent key={index} name={categoryKey} category={movesCategorised[categoryKey].moves} searchFilterValue={searchValue} />
 					))}
 				</ListingWrapper>
 			</div>

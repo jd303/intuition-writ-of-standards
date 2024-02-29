@@ -1,28 +1,23 @@
-//import React, { useState } from "react";
-//import React from "react";
 import { PropTypes } from "prop-types";
 import MoveComponent from "./MoveComponent";
 import Listing from "../Listings/Listing";
-import ListingTitle from "../Listings/ListingTitle/ListingTitle";
-import { prepareMovesAndMods } from "../../utils/prepareMovesAndMods";
 import st from "./MovesAndModsPage.module.scss";
 
 MoveCategoryComponent.propTypes = {
 	name: PropTypes.string.isRequired,
 	category: PropTypes.array.isRequired,
+	searchFilterValue: PropTypes.string
 };
 
 function MoveCategoryComponent(props) {
-	let { name, category } = props;
-
-	const movesAndMods = prepareMovesAndMods(category);
+	let { name, category, searchFilterValue } = props;
 
 	return (
-		<div className={st.categoryContainer}>
+		<div className={[st.categoryContainer].join(' ')}>
 			<h3 className={st.categoryTitle}>{name}</h3>
 			{category.map((move, index) => (
 				<Listing key={index}>
-					<MoveComponent key={index} move={move} />
+					<MoveComponent key={index} move={move} searchFilterValue={searchFilterValue} />
 				</Listing>
 			))}
 		</div>

@@ -3,6 +3,10 @@
 	flex-direction: column;
 	gap: calc(var(--padding-standard) / 2);
 	margin-top: var(--padding-standard);
+
+	&.hide {
+		display: none;
+	}
 }
 
 .categoryTitle {
