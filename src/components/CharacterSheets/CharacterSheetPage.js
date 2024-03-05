@@ -818,7 +818,7 @@ function CharacterSheetPage() {
 							<div className={st.sectionMetaInner}>
 								<div className={st.manaContainer}>
 									<div className={st.manaPoints}><div className={st.standardFlex}><div className={st.headingMedium}>Mana</div> <div className={st.littleNote}>{theCharacter.baseMana} + 3/point</div></div>
-									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} maxPurchases={theCharacter.characterData.sessions}  /></div>
+									<PurchaseablePointGroup count={30} columns={10} clickCallback={adjustPoints} purchased={theCharacter.characterData.purchases.mana} purchaseKey={'mana'} maxPurchases={Math.ceil(theCharacter.characterData.sessions * 0.5)}  /></div>
 									<div className={st.manaBonus}><div className={st.headingMedium}>Bonus </div><InputBox val={theCharacter.characterData.bonus_mana} onUpdate={(value) => updateValueFromInput(`bonus_mana`, value)} type="number" /></div>
 									<div className={st.manaTotal}><div className={st.headingMedium}>Total </div><InputBox val={theCharacter.baseMana + Number(theCharacter.characterData.bonus_mana) + theCharacter.characterData.purchases.mana * 3} disabled={true} /></div>
 									<div className={st.manaCurrent}><div className={st.headingMedium}>Current </div><InputBox val={theCharacter.characterData.current_mana} onUpdate={(value) => updateValueFromInput(`current_mana`, value)} /></div>

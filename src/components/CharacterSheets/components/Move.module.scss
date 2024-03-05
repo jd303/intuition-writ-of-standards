@@ -192,6 +192,25 @@
 			.headingMedium { display: none; }
 		}
 
+		.headingMedium {
+			span {
+				display: inline-block;
+				position: relative;
+				margin-left: calc(0.5 * var(--padding-standard));
+				top: -1px;
+				width: 0; 
+				height: 0; 
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				
+				border-bottom: 8px solid #bbb;
+			}
+			&.visible span {
+				border-bottom: none;
+				border-top: 8px solid black;
+			}
+		}
+
 		.allMods {
 			display: none;
 			margin-top: calc(0.5 * var(--padding-standard));
@@ -201,12 +220,7 @@
 			}
 
 			.unpurchasedMods {
-				display: none;
 				margin-top: calc(0.5 * var(--padding-standard));
-				
-				&.visible {
-					display: var(--mods-display);
-				}
 			}
 		}
 	}

@@ -57,7 +57,7 @@ function MovesAndModsPage() {
 		],
 		search: [
 			{
-				name: "Text Search",
+				name: "Search",
 				startingValue: searchValue
 			}
 		],

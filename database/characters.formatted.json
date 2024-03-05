@@ -369,24 +369,25 @@
                 "Book",
                 "Backpack",
                 "Item belt",
-                "",
+                "New bullets (With the alchemist)",
                 "Rope (hemp)",
                 "Basic Ammo",
-                "",
+                "Blue crystal (at oolus the joolus)",
                 "Gunpowder",
                 "9 rations",
-                "19 standards",
+                "24 standards",
                 "Spyglass",
                 "1 western silverbarb ",
                 "Flint and steel",
+                "1 lunestalk",
                 null,
                 null,
-                null,
-                ""
+                "Large Cloak with pocket for Ilaydria to hide in",
+                "Oversized Cowboy Hat"
             ],
             "known_languages": [
                 "2d0b7484",
-                "7749123f"
+                "e8972c07"
             ],
             "magical_synergy": {
                 "slot1": "Zephyral (Wind, Gusted)",
@@ -468,7 +469,9 @@
                     "d4e2f861": {
                         "mods": [
                             "56459742",
-                            "7f7a4a01"
+                            "7f7a4a01",
+                            "b06d26db",
+                            "ab7652a3"
                         ],
                         "points": 2
                     },
@@ -479,7 +482,7 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 28,
+                "spentPoints": 30,
                 "stamina": 0,
                 "verve": 0,
                 "weapon_specialisations": 0
@@ -504,7 +507,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 4,
+            "sessions": 6,
             "source": "30c0e851",
             "spells": [
                 "dfe75b9e",
@@ -517,15 +520,19 @@
             "statuses": {
                 "statuses-8762b1e7": 1
             },
-            "updated": 1707823034492,
+            "updated": 1709033771260,
             "weapon_specialisations": [
-                "da256890"
+                ""
             ],
             "weapons": [
                 {
                     "damage": "d10",
                     "name": "Rifle",
-                    "notes": "Range 30sq. Ranged, Ranged-only, Noisy."
+                    "notes": "Range 30"
+                },
+                {
+                    "damage": "d4",
+                    "name": "Dagger"
                 }
             ]
         },
@@ -566,11 +573,13 @@
             "bonus_verve": "5",
             "current_mana": 3,
             "current_psi": 3,
-            "current_verve": "35",
+            "current_verve": "30",
             "id": "d66a0155-0c13-4506-a291-6cd9e819fc3b",
             "inventory": [
-                "20 standards",
-                "1 sample size ultra hold hair wax"
+                "37 standards",
+                "1 sample size ultra hold hair wax",
+                "1x tremaxite, purple rock worth 50 standards",
+                "golden feather dagger"
             ],
             "known_languages": [
                 "2d0b7484",
@@ -613,6 +622,9 @@
                 },
                 "mana": 0,
                 "moves": {
+                    "3d117be9": {
+                        "points": 1
+                    },
                     "6ef9ecae": {
                         "mods": [
                             "6d5bf26a"
@@ -646,7 +658,7 @@
                         "points": 3
                     },
                     "d4e2f861": {
-                        "points": 1
+                        "points": 2
                     },
                     "e43ece8d": {
                         "points": 2
@@ -655,10 +667,10 @@
                         "mods": [
                             "a0ff922a"
                         ],
-                        "points": 2
+                        "points": 3
                     }
                 },
-                "spentPoints": 27,
+                "spentPoints": 30,
                 "stamina": 0,
                 "verve": 2,
                 "weapon_specialisations": 1
@@ -683,9 +695,9 @@
                 "universal": 5,
                 "zephyr": 0
             },
-            "sessions": 4,
+            "sessions": 6,
             "source": "30c0e851",
-            "updated": 1707814522763,
+            "updated": 1709035925115,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -786,13 +798,19 @@
                 },
                 "mana": 30,
                 "moves": {
+                    "4bf8b06a": {
+                        "mods": [
+                            "2990fa70"
+                        ],
+                        "points": 0
+                    },
                     "797d1feb": {
                         "points": 1
                     }
                 },
-                "spentPoints": 65,
+                "spentPoints": 43,
                 "stamina": 0,
-                "verve": 33,
+                "verve": 10,
                 "weapon_specialisations": 1
             },
             "race": "Human",
@@ -821,7 +839,7 @@
                 "statuses-61aeeb61": 0,
                 "statuses-a4b68644": 0
             },
-            "updated": 1708144351663
+            "updated": 1709345741326
         }
     ],
     "QRHBfhf8vZOQwJNnLbotu1xVmFL2": [
@@ -1573,9 +1591,9 @@
                         "points": 3
                     }
                 },
-                "spentPoints": 26,
+                "spentPoints": 27,
                 "stamina": 0,
-                "verve": 3,
+                "verve": 4,
                 "weapon_specialisations": 1
             },
             "race": "Human",
@@ -1600,7 +1618,7 @@
             },
             "sessions": 3,
             "source": "478e7171",
-            "updated": 1708146834008,
+            "updated": 1709026807797,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -1765,12 +1783,12 @@
             },
             "attributeslocked": true,
             "bonusPoints": 0,
-            "bonus_damage": "d4",
+            "bonus_damage": "d8",
             "bonus_mana": 0,
             "bonus_verve": 0,
             "current_mana": 3,
             "current_psi": 3,
-            "current_verve": "24",
+            "current_verve": "29",
             "id": "f1775fc0-cc82-4741-ac56-264cc30932a3",
             "inventory": {
                 "0": "Thieves Tools",
@@ -1842,12 +1860,12 @@
                         "mods": [
                             "2c3ef9dc",
                             "b5ca708e",
-                            "7c0586cd"
+                            "7d0350d3"
                         ],
                         "points": 3
                     },
                     "d4e2f861": {
-                        "points": 0
+                        "points": 1
                     },
                     "e43ece8d": {
                         "mods": [
@@ -1862,9 +1880,9 @@
                         "points": 2
                     }
                 },
-                "spentPoints": 28,
+                "spentPoints": 30,
                 "stamina": 0,
-                "verve": 1,
+                "verve": 2,
                 "weapon_specialisations": 0
             },
             "race": "Pixie",
@@ -1887,12 +1905,13 @@
                 "universal": "0",
                 "zephyr": 0
             },
-            "sessions": 4,
+            "sessions": 6,
             "source": "b5332003",
             "statuses": {
-                "statuses-8762b1e7": 1
+                "statuses-171709ae": 0,
+                "statuses-8762b1e7": 0
             },
-            "updated": 1707814849675,
+            "updated": 1709035886501,
             "weapons": [
                 {
                     "damage": "d6",
@@ -2022,10 +2041,10 @@
                 }
             ],
             "attributes": {
-                "CHA": 3,
+                "CHA": 2,
                 "CON": 0,
                 "DEX": 1,
-                "INT": 2,
+                "INT": 3,
                 "STR": 0,
                 "WIS": 0
             },
@@ -2043,20 +2062,20 @@
                 "1": "1 Bubble Tip, 1 Pure Water, 1 Pure Alcohol, 1x Western Silverbarb",
                 "10": "Extensive Makeup Kit, Colour Dyes, 2x Fragrances, 1 Wig",
                 "11": "",
-                "2": "Vial of human brown goo",
-                "3": "6x Voltarian Feathers",
+                "2": "Western Subbum Seed (Pink mtn flower)",
+                "3": "5x Voltarian Feathers",
                 "36": "Travel Alchemy Kit",
                 "37": "Purple Flower Pinned to Hat",
-                "4": "2x Vigour Tonic",
+                "4": "2x Vigour Tonic, Vial of human brown goo, Vial of Goo Mistonne (May HYDR)",
                 "5": "Plemberry (peppery, lemon) and leaves",
                 "6": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
-                "7": "",
+                "7": "10 standards",
                 "8": "Spice dispenser",
                 "9": "Small Diary paper filled and well worn "
             },
             "known_languages": [
                 "2d0b7484",
-                "e8972c07"
+                "77a2da4a"
             ],
             "magical_synergy": {
                 "slot1": "Pyral (fire, Burning)",
@@ -2109,7 +2128,6 @@
                     },
                     "6ef9ecae": {
                         "mods": [
-                            "5976efde",
                             "0029926f"
                         ],
                         "points": 2
@@ -2118,6 +2136,9 @@
                         "points": 0
                     },
                     "8aeda294": {
+                        "mods": [
+                            "f7a41fb5"
+                        ],
                         "points": 3
                     },
                     "9aa1d2f7": {
@@ -2139,7 +2160,7 @@
                         "mods": [
                             "4c004480"
                         ],
-                        "points": 3
+                        "points": 4
                     },
                     "f1ddbecf": {
                         "mods": [
@@ -2154,7 +2175,7 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 28,
+                "spentPoints": 29,
                 "stamina": 1,
                 "verve": 2,
                 "weapon_specialisations": 0
@@ -2179,16 +2200,16 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 4,
+            "sessions": 6,
             "source": "478e7171",
             "spells": [
                 "337163c3"
             ],
             "statuses": {
-                "stamina": 1,
+                "stamina": 0,
                 "statuses-8762b1e7": 1
             },
-            "updated": 1707825743509,
+            "updated": 1709033880711,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -2269,7 +2290,7 @@
                     "slot2": 1,
                     "slot3": 0
                 },
-                "mana": 4,
+                "mana": 5,
                 "moves": {
                     "6ef9ecae": {
                         "mods": [
@@ -2311,7 +2332,7 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 28,
+                "spentPoints": 29,
                 "stamina": 0,
                 "verve": 1,
                 "weapon_specialisations": 0
@@ -2336,7 +2357,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 4,
+            "sessions": 6,
             "source": "478e7171",
             "spells": [
                 "33e3935d",
@@ -2346,7 +2367,7 @@
                 "a078ccf6",
                 "c248d9a6"
             ],
-            "updated": 1707823306474,
+            "updated": 1709033626203,
             "weapons": [
                 {
                     "damage": "d6",

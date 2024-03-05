@@ -14,12 +14,7 @@ export function Move( { move, toggleRollPopup, basePrintableModsCount = 6, purch
 		setDescriptionVisible(!descriptionVisible);
 	}
 
-	const [unpurchasedVisible, setUnpurchasedVisible] = useState(false);
-	const toggleUnpurchasedVisible = () => {
-		setUnpurchasedVisible(!unpurchasedVisible);
-	}
-
-	const [purchasedVisible, setPurchasedVisible] = useState(true);
+	const [purchasedVisible, setPurchasedVisible] = useState(false);
 	const togglePurchasedVisible = () => {
 		setPurchasedVisible(!purchasedVisible);
 	}
@@ -61,11 +56,11 @@ export function Move( { move, toggleRollPopup, basePrintableModsCount = 6, purch
 				))}
 			</div>
 			<div className={st.modContainer}>
-				<div className={st.headingMedium} onClick={togglePurchasedVisible}>Mods</div>
+				<div className={[st.headingMedium, (purchasedVisible && st.visible || '')].join(' ')} onClick={togglePurchasedVisible}>Mods<span></span></div>
 				<div className={st.printMods + ' forPrint'}>
 					{ generateInputBoxes() }
 				</div>
-				<div className={st.allMods + ' ' +(purchasedVisible && st.visible || '')}>
+				<div className={st.allMods + ' ' + (purchasedVisible && st.visible || '')}>
 					{purchasedMods.length > 0 && ( <>
 						<div className={st.mods + ' notForPrint'}>
 							{purchasedMods.map((mod, index) => (
@@ -74,8 +69,8 @@ export function Move( { move, toggleRollPopup, basePrintableModsCount = 6, purch
 						</div>
 					</> )}
 					{unpurchasedMods.length > 0 && ( <>
-						<div className={st.headingMedium + ' ' + st.unpurchasedExpander} onClick={toggleUnpurchasedVisible}>Unpurchased Mods</div>
-						<div className={st.unpurchasedMods + ' notForPrint ' + (unpurchasedVisible && st.visible || '')}>
+						<div className={st.headingMedium + ' ' + st.unpurchasedExpander}>Unpurchased Mods</div>
+						<div className={st.unpurchasedMods + ' notForPrint '}>
 							{unpurchasedMods.map((mod, index) => (
 								<Mod key={index} mod={mod} moveID={move.id} clickCallback={clickCallback} purchased={false} />
 							))}
