@@ -63,6 +63,7 @@ function RulesPage() {
 					<section className={styles.column} id="mods">
 						<h2>Mods</h2>
 						<p>Each Move has multiple Mods that make your application of a Move unique.  Anyone can Swing a Sword, but can they do it while leaping down from a higher vantage point?  Novice Channelers can create dancing lights, but only those trained in the body as well as the mind can leap metres forward into battle with a spell ready to place directly on their enemy&lsquo;s chest.</p>
+						<p><strong>Flowing:</strong> Any character that chooses three different Mods on their Primary Action each turn (not Quick or Reaction Actions) gain the Flowing Status.</p>
 					</section>
 					<section className={styles.column} id="dice">
 						<h2>Dice & Rolling</h2>

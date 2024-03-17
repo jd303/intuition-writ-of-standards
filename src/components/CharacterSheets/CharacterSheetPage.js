@@ -203,6 +203,7 @@ function CharacterSheetPage() {
 	}, [theCharacter.characterData.sessions]);
 
 	const calculateMaxPoints = (attr) => {
+		console.log(attr);
 		attr = attr.toUpperCase();
 		let stat;
 		if (attr.indexOf(",") !== -1) {
@@ -532,9 +533,9 @@ function CharacterSheetPage() {
 									</div>
 									<div className={st.totalAndCurrent}>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Bonus</div> <InputBox val={theCharacter.characterData.bonus_verve} onUpdate={(value) => updateValueFromInput(`bonus_verve`, value)} type="number" /></div>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * vervePerPoint} disabled={true} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Total</div> <InputBox val={theCharacter.baseVerve + Number(theCharacter.characterData.bonus_verve) + theCharacter.characterData.purchases.verve * vervePerPoint + (theCharacter.characterData.racial_modifiers?.secondary == "8983ad97" && 5 || 0)} disabled={true} /></div>
 										<div className={st.standardFlex}><div className={st.headingSmall}>Current</div> <InputBox className="notForPrint" val={theCharacter.characterData.current_verve} onUpdate={(value) => updateValueFromInput(`current_verve`, value)} /><InputBox className="forPrint" /></div>
-										<div className={st.standardFlex}><div className={st.headingSmall}>Reserve</div> <InputBox val={Math.ceil((theCharacter.baseVerve + theCharacter.characterData.purchases.verve * vervePerPoint) * 0.25)} disabled={true} /></div>
+										<div className={st.standardFlex}><div className={st.headingSmall}>Reserve</div> <InputBox val={Math.ceil((theCharacter.baseVerve + theCharacter.characterData.purchases.verve * vervePerPoint + (theCharacter.characterData.racial_modifiers?.secondary == "8983ad97" && 5 || 0)) * 0.25)} disabled={true} /></div>
 									</div>
 								</div>
 								<div className={st.stamina}>

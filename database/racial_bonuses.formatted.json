@@ -1,170 +1,170 @@
 [
     {
-        "description": "You may fly at your movement speed.  Under stressful flying conditions, you will need to perform Athletics Tests or risk failing and gaining the exhausted Status.",
-        "id": "6eccaa20",
         "name": "Flight-capable wings",
-        "type": "primary"
+        "id": "6eccaa20",
+        "type": "primary",
+        "description": "You may fly at your movement speed.  Under stressful flying conditions, you will need to perform Athletics Tests or risk failing and gaining the exhausted Status."
     },
     {
-        "description": "5 bonus Development Points.",
-        "id": "c5558e07",
         "name": "Quick Learner",
-        "type": "primary"
+        "id": "c5558e07",
+        "type": "primary",
+        "description": "5 bonus Development Points."
     },
     {
-        "description": "Rolls in Forest environments gain +1.",
-        "id": "3f62bfe8",
         "name": "Naturalist",
-        "type": "primary"
+        "id": "3f62bfe8",
+        "type": "primary",
+        "description": "Rolls in Forest environments gain +1."
     },
     {
-        "description": "Rolls in Underground environments gain +1.",
-        "id": "8afdba00",
         "name": "Undergrounder",
-        "type": "primary"
+        "id": "8afdba00",
+        "type": "primary",
+        "description": "Rolls in Underground environments gain +1."
     },
     {
-        "description": "Rolls aboard ships or underwater gain +1.",
-        "id": "e9fb9a1f",
         "name": "Seasider",
-        "type": "primary"
+        "id": "e9fb9a1f",
+        "type": "primary",
+        "description": "Rolls aboard ships or underwater gain +1."
     },
     {
-        "description": "Rolls in large cities gain +1.",
-        "id": "86eea993",
         "name": "Citysider",
-        "type": "primary"
+        "id": "86eea993",
+        "type": "primary",
+        "description": "Rolls in large cities gain +1."
     },
     {
-        "description": "You can see in darkness to 10sq.  Immune to Blind and Deaf Status Effects.  Perception Move +1 Bonus.  No disadvantage when attacking invisible or hidden creatures.",
-        "id": "e134883b",
         "name": "Sensorium",
-        "type": "primary"
+        "id": "e134883b",
+        "type": "primary",
+        "description": "You can see in darkness to 10sq.  Immune to Blind and Deaf Status Effects.  Perception Move +1 Bonus.  No disadvantage when attacking invisible or hidden creatures."
     },
     {
-        "description": "You gain +1sq Jump vertical, +3sq Fall vertical.  You are immune to difficult terrain.  You cannot be tripped.  Athletics Move +2 Bonus.",
-        "id": "251861ef",
         "name": "Sure-footed",
-        "type": "primary"
+        "id": "251861ef",
+        "type": "primary",
+        "description": "You gain +1sq Jump vertical, +3sq Fall vertical.  You are immune to difficult terrain.  You cannot be tripped.  Athletics Move +2 Bonus."
     },
     {
-        "description": "You gain a +1 Bonus to: Influence, Sense Motive, Art / Craft, Stealth, Subterfuge and Perform.",
-        "id": "518a9428",
         "name": "Influencer",
-        "type": "primary"
+        "id": "518a9428",
+        "type": "primary",
+        "description": "You gain a +1 Bonus to: Influence, Sense Motive, Art / Craft, Stealth, Subterfuge and Perform."
     },
     {
-        "description": "Once per day as a Free Action, you can release energy at Touch that deals 5 Damage of the type of one of your Magical Synergies, that automatically hits and is considered a Critical Cast.  You regain this ability whenever a Spell is Cast on you.",
-        "id": "c0f81f11",
         "name": "Flow Battery",
-        "type": "primary"
+        "id": "c0f81f11",
+        "type": "primary",
+        "description": "Once per day as a Free Action, you can release energy at Touch that deals 5 Damage of the type of one of your Magical Synergies, that automatically hits and is considered a Critical Cast.  You regain this ability whenever a Spell is Cast on you."
     },
     {
-        "description": "Any time you take Verve Damage, you take 1 less.",
-        "id": "4a6d52a3",
         "name": "Hardy",
-        "type": "primary"
+        "id": "4a6d52a3",
+        "type": "primary",
+        "description": "Any time you take Verve Damage, you take 1 less."
     },
     {
-        "description": "You may purchase 2 more Move Points than your Statistics require.",
-        "id": "ee260509",
         "name": "Stored Potential",
-        "type": "primary"
+        "id": "ee260509",
+        "type": "primary",
+        "description": "You may purchase 2 more Move Points than your Statistics require."
     },
     {
-        "description": "As a Free Action, you may sacrifice 15 Verve to use an additional Mod on a Move.",
-        "id": "ef8bbf5b",
         "name": "Push your limits",
-        "type": "primary"
+        "id": "ef8bbf5b",
+        "type": "primary",
+        "description": "As a Free Action, you may sacrifice 15 Verve to use an additional Mod on a Move."
     },
     {
-        "description": "Move sq +1.  You can perform a Relocate for an additional hour before requiring an Athletics Roll to check Exhaustion.",
-        "id": "414f0e7f",
         "name": "Natural Athlete",
-        "type": "primary"
+        "id": "414f0e7f",
+        "type": "primary",
+        "description": "Move sq +1.  You can perform a Relocate for an additional hour before requiring an Athletics Roll to check Exhaustion."
     },
     {
-        "description": "Your rolls count towards World Changers when you roll a 19 or 20.",
-        "id": "7dc74050",
         "name": "Fated",
-        "type": "primary"
+        "id": "7dc74050",
+        "type": "primary",
+        "description": "Your rolls count towards World Changers when you roll a 19 or 20."
     },
     {
-        "description": "You may reroll one Roll per day.",
-        "id": "32eaf856",
         "name": "Lucky",
-        "type": "secondary"
+        "id": "32eaf856",
+        "type": "secondary",
+        "description": "You may reroll one Roll per day."
     },
     {
-        "description": "A unit of rest is 20 minutes.",
-        "id": "76145881",
         "name": "Quick Sleeper",
-        "type": "secondary"
+        "id": "76145881",
+        "type": "secondary",
+        "description": "A unit of rest is 20 minutes."
     },
     {
-        "description": "You may hold your breath safely for 5 minutes.",
-        "id": "3c6a0be0",
         "name": "Deep Breaths",
-        "type": "secondary"
+        "id": "3c6a0be0",
+        "type": "secondary",
+        "description": "You may hold your breath safely for 5 minutes."
     },
     {
-        "description": "Bonus Mana: 2",
-        "id": "1f5f0f44",
         "name": "Channeller",
-        "type": "secondary"
+        "id": "1f5f0f44",
+        "type": "secondary",
+        "description": "Bonus Mana: 2"
     },
     {
-        "description": "Starting Psi: 5",
-        "id": "9473134c",
         "name": "Conduit",
-        "type": "secondary"
+        "id": "9473134c",
+        "type": "secondary",
+        "description": "Starting Psi: 5"
     },
     {
-        "description": "Bonus Verve: 5",
-        "id": "8983ad97",
         "name": "Vervatious",
-        "type": "secondary"
+        "id": "8983ad97",
+        "type": "secondary",
+        "description": "Bonus Verve: 5"
     },
     {
-        "description": "You can exceed the maximum Mod purchases in Move Categories by 1.",
-        "id": "9dee48d6",
         "name": "Jack of All Trades",
-        "type": "secondary"
+        "id": "9dee48d6",
+        "type": "secondary",
+        "description": "You can exceed the maximum Mod purchases in Move Categories by 1."
     },
     {
-        "description": "You transform your body as per the Transmute Flesh Spell Standard Effect, 3 times per day, with the effects lasting for 2 hours.  You always adopt the same form, which you choose at character creation from Human, Elven, Dwarven or Halfling of any gender.",
-        "id": "e7f9a023",
         "name": "Faeform",
-        "type": "secondary"
+        "id": "e7f9a023",
+        "type": "secondary",
+        "description": "You transform your body as per the Transmute Flesh Spell Standard Effect, 3 times per day, with the effects lasting for 2 hours.  You always adopt the same form, which you choose at character creation from Human, Elven, Dwarven or Halfling of any gender."
     },
     {
-        "description": "Unavailable for players.  Maximum Dodge +3, MoveSq. -2, Strength-based Moves -2.",
-        "id": "fa560e14",
         "name": "Tiny Stature",
-        "type": "stature"
+        "id": "fa560e14",
+        "type": "stature",
+        "description": "Unavailable for players.  Maximum Dodge +3, MoveSq. -2, Strength-based Moves -2."
     },
     {
-        "description": "Maximum Dodge +1, MoveSq. -1",
-        "id": "219b73b9",
         "name": "Small Stature",
-        "type": "stature"
+        "id": "219b73b9",
+        "type": "stature",
+        "description": "Maximum Dodge +1, MoveSq. -1"
     },
     {
-        "description": "No change",
-        "id": "6b51a528",
         "name": "Medium Stature",
-        "type": "stature"
+        "id": "6b51a528",
+        "type": "stature",
+        "description": "No change"
     },
     {
-        "description": "Maximum Dodge -1, Starting Verve +5",
-        "id": "76377c99",
         "name": "Larger Stature",
-        "type": "stature"
+        "id": "76377c99",
+        "type": "stature",
+        "description": "Maximum Dodge -1, Starting Verve +5"
     },
     {
-        "description": "Unavailable for players.  Maximum Dodge -3, Starting Verve +20, Strength-basd Moves +2.",
-        "id": "68d8fce7",
         "name": "Huge Stature",
-        "type": "stature"
+        "id": "68d8fce7",
+        "type": "stature",
+        "description": "Unavailable for players.  Maximum Dodge -3, Starting Verve +20, Strength-basd Moves +2."
     }
 ]

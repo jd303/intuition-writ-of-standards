@@ -533,6 +533,15 @@
         "description": "You are used to long awake times.  You only need to resolve the Long Rest Move or eat once every 3 days to avoid Exhaustion.  You may use this ability once, and it is restored when you perform a Long Rest and eat a meal."
     },
     {
+        "category": "body",
+        "name": "Does the body good",
+        "id": "6114dae8",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "When under the effect of the Flowing Status, you Restore an additional 2 Verve."
+    },
+    {
         "category": "general",
         "name": "Use Item",
         "stat": "dex",
@@ -1645,7 +1654,7 @@
         "type": "Mod",
         "stamina": false,
         "quick": false,
-        "description": "When resolving Basic Melee Attack, you apply 3 additional Verve Loss to all creatures you apply Verve Loss to and who are beneath you."
+        "description": "When resolving Basic Melee Attack, you apply 3 additional Verve Loss if there is at least one target who is beneath you."
     },
     {
         "category": "combat",
@@ -3158,6 +3167,24 @@
     },
     {
         "category": "influence",
+        "name": "Demoralise",
+        "id": "4a7d219f",
+        "type": "Primary",
+        "stamina": false,
+        "quick": false,
+        "description": "You demoralise an opponent, applying the Demoralised Status to them if you beat a DC against their Defence (CHA).  You must share a language with your target."
+    },
+    {
+        "category": "influence",
+        "name": "Encourage",
+        "id": "fba1e698",
+        "type": "Primary",
+        "stamina": false,
+        "quick": false,
+        "description": "You encourage an ally, applying the Encouraged Status to them if you beat a DC of 2.  You must share a language with your target."
+    },
+    {
+        "category": "influence",
         "name": "Sense Motive",
         "id": "ec4290ae",
         "type": "Primary",
@@ -3302,12 +3329,12 @@
     },
     {
         "category": "influence",
-        "name": "Encouragement",
+        "name": "Get back on that horse",
         "id": "c0cbd552",
         "type": "Mod",
         "stamina": false,
         "quick": true,
-        "description": "Once per hour, after noting a failing Move made by an Ally, resolve an Influence.  If you beat the DC, based on their Defence (CHA), they get +1 to their next attempt at the same Move."
+        "description": "After noting a failing Move made by an Ally, resolve the Encourage Move.  If you beat the DC, in addition to the Encouraged Status they get +1 to their next attempt at the same Move.  You may use this Mod at most once per hour."
     },
     {
         "category": "influence",
@@ -3408,159 +3435,6 @@
         "stamina": false,
         "quick": false,
         "description": "You use your body to create a performance."
-    },
-    {
-        "category": "arts",
-        "name": "Create Performance",
-        "id": "42c3727b",
-        "type": "Primary",
-        "stamina": false,
-        "quick": false,
-        "description": "You create a performance, of song, dance, comedy or drama; one in which you've had experience or the talent for.  The DC is based on the general target's Defence (CHA), modified by the difficulty of the performance."
-    },
-    {
-        "category": "arts",
-        "name": "Sympathetic Performance I",
-        "id": "7dd05d25",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC of a Spell effect or Status.  If you succeed, copy the effect or apply the Status to a target that you can perceive.  The remaining duration and other changing factors applied to the copy."
-    },
-    {
-        "category": "arts",
-        "name": "Sympathetic Performance II",
-        "id": "6a81c9b9",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC of a Spell effect or Status.  If you succeed, copy the effect or apply the Status to a target that you can perceive.  The Status or Spell effect's duration resets for your copy."
-    },
-    {
-        "category": "arts",
-        "name": "Uplifting Performance I",
-        "id": "253ffbb5",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Uplifted Status."
-    },
-    {
-        "category": "arts",
-        "name": "Uplifting Performance II",
-        "id": "f893cd9f",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target, minus 1.  If you succeed, your target(s) gain the Uplifted Status."
-    },
-    {
-        "category": "arts",
-        "name": "Inspiring Performance I",
-        "id": "f7a41fb5",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Inspired Status."
-    },
-    {
-        "category": "arts",
-        "name": "Inspiring Performance II",
-        "id": "665fee94",
-        "type": "Mod",
-        "stamina": false,
-        "quick": false,
-        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target, minus 1.  If you succeed, your target(s) gain the Inspired Status."
-    },
-    {
-        "category": "arts",
-        "name": "Cymbal Clash",
-        "id": "33eb31df",
-        "type": "Mod",
-        "stamina": false,
-        "quick": false,
-        "description": "If you successfully Blocked any attack last turn, you may use it to enhance a performance that is active.  The duration of the performance is reset for all targets.  You can only use this on a performance once."
-    },
-    {
-        "category": "arts",
-        "name": "Harmonic Chorus",
-        "id": "05df29a7",
-        "type": "Mod",
-        "stamina": false,
-        "quick": false,
-        "description": "If an ally also performs along with you, you and your ally resolve the Create Performance Move, with the ally resolving it at half the DC.  If your ally succeeds, your performance gains a +2 Bonus."
-    },
-    {
-        "category": "arts",
-        "name": "Whistle while you work",
-        "id": "7ca122f7",
-        "type": "Mod",
-        "stamina": false,
-        "quick": true,
-        "description": "An ally that you can perceive can exchange 5 Verve to gain the Inspired Status until the start of your next turn."
-    },
-    {
-        "category": "arts",
-        "name": "Gulliver's Symphony",
-        "id": "89b53214",
-        "type": "Mod",
-        "stamina": false,
-        "quick": true,
-        "description": "An ally that you can perceive can exchange 20 Verve to gain the Fortified (10) Status until the start of your next turn.  You may use this a number of times equal to your CHA bonus, per combat."
-    },
-    {
-        "category": "arts",
-        "name": "Rock out",
-        "id": "f75ddbc8",
-        "type": "Mod",
-        "stamina": false,
-        "quick": true,
-        "description": "An ally that you can perceive can exchange 20 Verve to gain the Hasted Status until the start of your next turn.  You may use this a number of times equal to your CHA bonus, per combat."
-    },
-    {
-        "category": "arts",
-        "name": "Rally",
-        "id": "febd8bef",
-        "type": "Mod",
-        "stamina": false,
-        "quick": true,
-        "description": "Resolve the Create Performance Move based on a DC of 1.  If you succeed, any allies who are further than 6sq from you get +3sq speed this turn if they move towards you."
-    },
-    {
-        "category": "arts",
-        "name": "Inspiring Motivator",
-        "id": "bcd089c4",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Performance Move.  For the rest of the turn, any allies that are within 1sq of you gain +1 to all Move Rolls."
-    },
-    {
-        "category": "arts",
-        "name": "Noooooooo!",
-        "id": "1e3d896d",
-        "type": "Passive",
-        "stamina": false,
-        "quick": false,
-        "description": "If one of your allies has entered the Dying state this turn, the Perform Move is a Free Action this turn."
-    },
-    {
-        "category": "arts",
-        "name": "Final Song",
-        "id": "ac7c6919",
-        "type": "Passive",
-        "stamina": true,
-        "quick": false,
-        "description": "If you gain the Dying Status you automatically resolve and apply the Uplifitng Performance I and Inspiring Performance I Mods."
-    },
-    {
-        "category": "arts",
-        "name": "Tragic Artist",
-        "id": "598934df",
-        "type": "Passive",
-        "stamina": false,
-        "quick": false,
-        "description": "When under the effect of a spell, effect, or Status that provides a Debuff, you gain a +2 bonus to the Perform Move."
     },
     {
         "category": "engineering",
@@ -3773,7 +3647,7 @@
     },
     {
         "category": "crafty",
-        "name": "Art / Craft",
+        "name": "Creativity",
         "stat": "cha",
         "id": "12635fb1",
         "type": "Skill",
@@ -3792,30 +3666,21 @@
     },
     {
         "category": "crafty",
+        "name": "Create Performance",
+        "id": "42c3727b",
+        "type": "Primary",
+        "stamina": false,
+        "quick": false,
+        "description": "You create a performance, of song, dance, comedy or drama; one in which you've had experience or the talent for.  The DC is based on the general target's Defence (CHA), modified by the difficulty of the performance.  You can typically charge 10-20 Standards per DC of the performance, though its value reduces over time.  Composing or preparing the work is typically 2 days per DC."
+    },
+    {
+        "category": "crafty",
         "name": "Cooking",
         "id": "51997986",
         "type": "Primary",
         "stamina": false,
         "quick": false,
         "description": "You attempt to create a work of food.  If feeding a crew, you resolve this automatically.  If attempting to impress, or otherwise use cooking to your advantage, you must beat an easy DC."
-    },
-    {
-        "category": "crafty",
-        "name": "Uplifting Creation",
-        "id": "d9e3fef1",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Artwork Move on something you could create in seconds, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Uplifted Status."
-    },
-    {
-        "category": "crafty",
-        "name": "Inspired Creation",
-        "id": "f5cb9ac2",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "Resolve the Create Artwork Move on something you could create in seconds, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Inspired Status."
     },
     {
         "category": "crafty",
@@ -4915,6 +4780,15 @@
     },
     {
         "category": "inner_power",
+        "name": "Ki Weave",
+        "id": "c10a0621",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "When you charge directly at an opponent, expend 2 Ki Marks on yourself to ignore all terrain and other creatures as you weave between worlds to your target.  Once there, you apply 5 additional Verve Loss to any Basic Melee Attack you make this turn."
+    },
+    {
+        "category": "inner_power",
         "name": "Ki Cast",
         "id": "8c4094d6",
         "type": "Mod",
@@ -5183,7 +5057,7 @@
         "type": "Skill",
         "stamina": true,
         "quick": false,
-        "description": "You Channel Magical Divinity via your Source for [low level effect]"
+        "description": "You Channel the very power of the gods via your Source to bring your divine will to those around you."
     },
     {
         "category": "inner_power",
@@ -5328,6 +5202,214 @@
         "stamina": false,
         "quick": true,
         "description": "Resolve the Blessing Move as a Quick Action."
+    },
+    {
+        "category": "inner_power",
+        "name": "Channeled Power",
+        "id": "f77e58ba",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "Once per day per point in Channel Divinity, you may apply your Bonus Damage Dice to Basic Melee or Basic Ranged Attack.  The energy type of Verve Loss applied is that which is most commonly associated with your beliefs."
+    },
+    {
+        "category": "inner_power",
+        "name": "Rhapsody",
+        "stat": "cha",
+        "id": "e46bd134",
+        "type": "Skill",
+        "stamina": true,
+        "quick": false,
+        "description": "Something about your form, your movement, your voice, and your creations is beyond those of even the greatest creatives.  By weaving energies of your Source into your performance and creations, you can enact amazing feats of inspiration and uplifiting of the spirit.  When resolving Performance, Create Artwork, Cooking or Rhapsodic Creation, you may use the Skill of either Creativity or Rhapsody as your Roll score."
+    },
+    {
+        "category": "inner_power",
+        "name": "Rhapsodic Creation",
+        "id": "f1802d7c",
+        "type": "Primary",
+        "stamina": false,
+        "quick": false,
+        "description": "You create or reveal a Rhapsodic work: a performance, a song, a scent, or even an object of art or work of wondrous cooking.  Resolve a Rhapsodic Creation and note the DC Rank you beat.  The first time a target experiences this work, they Gain 1 Verve per DC rank of your Creation starting at DC 0.  You may apply this effect to a number of targets equal to half your Rhapsody Score.  If your creation is art or food that you created earlier, you may apply this effect when you first reveal it, however you may only have 1 creation stored."
+    },
+    {
+        "category": "inner_power",
+        "name": "Uplifting Creation",
+        "id": "d9e3fef1",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "You present your Rhapsodic Creation with outstanding elevation.  Your target(s) also gain the Uplifted Status."
+    },
+    {
+        "category": "inner_power",
+        "name": "Inspired Creation",
+        "id": "f5cb9ac2",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "You present your Rhapsodic Creation with immeasurable vigour.  Your target(s) also gain the Inspired Status."
+    },
+    {
+        "category": "inner_power",
+        "name": "Go with The Flow",
+        "id": "69d80a6c",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "You attempt to copy part of the effect of a Spell that you could see being Cast this round.  You copy the spell with half of the numeric effects, including duration.  Treat the new spell as originating from you with the same target and shape conditions.  If the spell you copied can be Resisted, you must beat the Defences of the target using your Rhapsodic Skill with a -3 Disadvantage."
+    },
+    {
+        "category": "inner_power",
+        "name": "Sympathetic Creation",
+        "id": "7dd05d25",
+        "type": "Mod",
+        "stamina": false,
+        "quick": true,
+        "description": "You attempt to Sympathetically copy a Positive Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you copy the effect, including its remaining duration and other factors, to another target that you can perceive.  If you fail, your targets still apply the original Gained Verve."
+    },
+    {
+        "category": "inner_power",
+        "name": "Unsympathetic Creation",
+        "id": "6a81c9b9",
+        "type": "Mod",
+        "stamina": true,
+        "quick": true,
+        "description": "You attempt to sympathetically move a Negative Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you move the effect, including its remaining duration and other factors, to another target that you can perceive.  If you fail, your targets still apply the original Gained Verve."
+    },
+    {
+        "category": "inner_power",
+        "name": "Whistle while you work",
+        "id": "7ca122f7",
+        "type": "Mod",
+        "stamina": false,
+        "quick": true,
+        "description": "You grant one ally that you can see who is under the effect of a Rhapsodic Creation the ability to exchange 5 Verve to gain the Inspired Status until the start of your next turn."
+    },
+    {
+        "category": "inner_power",
+        "name": "Gulliver's Symphony",
+        "id": "89b53214",
+        "type": "Mod",
+        "stamina": false,
+        "quick": true,
+        "description": "You grant one ally that you can see who is under the effect of a Rhapsodic Creation the ability to exchange 15 Verve to gain the Fortified (10) Status until the start of your next turn.  You may use this a number of times equal to your CHA bonus, per combat (minimum of 1)."
+    },
+    {
+        "category": "inner_power",
+        "name": "Rock out",
+        "id": "f75ddbc8",
+        "type": "Mod",
+        "stamina": false,
+        "quick": true,
+        "description": "You grant one ally that you can see who is under the effect of a Rhapsodic Creation the ability to exchange 15 Verve to gain the Hasted Status until the start of your next turn.  You may use this a number of times equal to your CHA bonus, per combat (minimum 1)."
+    },
+    {
+        "category": "inner_power",
+        "name": "Harmonious",
+        "id": "14a294cd",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "You attempt to modify the duration of a Status on one ally.  You automatically increase the duration of a positive Status on a willing target by 1 Round.  Alternatively, you can attempt to reduce the duration of a negative Status.  Resolve Rhapsodic Creation.  If you beat half the DC, you reduce the duration of a Standard (3) Status by 1 Round."
+    },
+    {
+        "category": "inner_power",
+        "name": "Cymbal Clash",
+        "id": "33eb31df",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "If you successfully Blocked any attack last turn, you automatically enhance an active Rhapsodic Creation.  The duration of the effects of the creation is reset for all targets.  You can only use this on a creation once."
+    },
+    {
+        "category": "inner_power",
+        "name": "Rally",
+        "id": "febd8bef",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "You attempt to rally your allies to you.  Resolve the Rhapsodic Creation Move with a DC of 1.  If you succeed, all allies who can see or hear you gain +4sq speed this turn if they move directly towards you."
+    },
+    {
+        "category": "inner_power",
+        "name": "Inspiring Motivator",
+        "id": "bcd089c4",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "You attempt to instill your allies with skill and success.  Resolve the Rhapsodic Creation Move based on a DC of 0.  If you succeed, for the rest of the turn, any allies that are within 1sq of you gain +1 to all Move Rolls."
+    },
+    {
+        "category": "inner_power",
+        "name": "Harmonic Chorus",
+        "id": "05df29a7",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "If an ally resolves a Creativity Move to help you and beats a DC of 1, then until the end of your next turn, you gain a +1 Bonus to Rhapsodic Creation.  This increases to a +2 Bonus if they beat a DC of 2."
+    },
+    {
+        "category": "inner_power",
+        "name": "Noooooooo!",
+        "id": "1e3d896d",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "If one of your allies has entered the Dying state this turn, the Rhapsodic Creation Move is a Free Action this turn."
+    },
+    {
+        "category": "inner_power",
+        "name": "Final Song",
+        "id": "ac7c6919",
+        "type": "Passive",
+        "stamina": true,
+        "quick": false,
+        "description": "If you gain the Dying Status you automatically resolve and apply Rhapsodic Performance with either the Uplifting or Inspired Creation Mod."
+    },
+    {
+        "category": "inner_power",
+        "name": "Tragic Artist",
+        "id": "598934df",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "When under the effect of a negative spell, effect, or Status, you gain a +1 bonus to the Rhapsodic Creation Move."
+    },
+    {
+        "category": "inner_power",
+        "name": "Uplifting Performance I (DEPRECATED)",
+        "id": "253ffbb5",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Uplifted Status."
+    },
+    {
+        "category": "inner_power",
+        "name": "Uplifting Performance II (DEPRECATED)",
+        "id": "f893cd9f",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target, minus 1.  If you succeed, your target(s) gain the Uplifted Status."
+    },
+    {
+        "category": "inner_power",
+        "name": "Inspiring Performance I (DEPRECATED)",
+        "id": "f7a41fb5",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target.  If you succeed, your target(s) gain the Inspired Status."
+    },
+    {
+        "category": "inner_power",
+        "name": "Inspiring Performance II (DEPRECATED)",
+        "id": "665fee94",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "Resolve the Create Performance Move, with the DC equal to the number of allies you wish to target, minus 1.  If you succeed, your target(s) gain the Inspired Status."
     },
     {
         "category": "psionics",
