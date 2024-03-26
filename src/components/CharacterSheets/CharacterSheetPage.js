@@ -203,7 +203,6 @@ function CharacterSheetPage() {
 	}, [theCharacter.characterData.sessions]);
 
 	const calculateMaxPoints = (attr) => {
-		console.log(attr);
 		attr = attr.toUpperCase();
 		let stat;
 		if (attr.indexOf(",") !== -1) {

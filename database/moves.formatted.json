@@ -5229,7 +5229,16 @@
         "type": "Primary",
         "stamina": false,
         "quick": false,
-        "description": "You create or reveal a Rhapsodic work: a performance, a song, a scent, or even an object of art or work of wondrous cooking.  Resolve a Rhapsodic Creation and note the DC Rank you beat.  The first time a target experiences this work, they Gain 1 Verve per DC rank of your Creation starting at DC 0.  You may apply this effect to a number of targets equal to half your Rhapsody Score.  If your creation is art or food that you created earlier, you may apply this effect when you first reveal it, however you may only have 1 creation stored."
+        "description": "You create or reveal a Rhapsodic work: a performance, a song, a scent, or even an object of art or work of wondrous cooking.  Resolve a Rhapsodic Creation and note the DC Rank you beat.  The first time a target experiences this work, they Gain 1 Verve per DC rank of your Creation starting at DC 0.  You may apply this effect to a number of targets equal to half your Rhapsody Score.  If your creation is art or food that you created earlier, you may apply this effect when you first reveal it, however you may only have 1 creation stored.  You are considered under the effect of a Rhapsodic Creation if you were the target of Rhapsodic Creation in this combat or if Rhapsodic Creation has allowed you to Gain Verve above your total which you still have."
+    },
+    {
+        "category": "inner_power",
+        "name": "Rhapsodic Presence",
+        "id": "7cade4dd",
+        "type": "Primary",
+        "stamina": false,
+        "quick": false,
+        "description": "Your presence is felt in your movements, your voice and your creations, and when you focus you can control how you project this feeling.  Resolve Rhapsodic Presence and note how many DC Ranks you beat, starting at DC 0.  You gain 3 Presence for each rank you beat, and with some other passives you will be able to use them for interesting effects."
     },
     {
         "category": "inner_power",
@@ -5265,7 +5274,7 @@
         "type": "Mod",
         "stamina": false,
         "quick": true,
-        "description": "You attempt to Sympathetically copy a Positive Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you copy the effect, including its remaining duration and other factors, to another target that you can perceive.  If you fail, your targets still apply the original Gained Verve."
+        "description": "You attempt to Sympathetically copy a Positive Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you copy the effect, including its remaining duration and other factors, to another target that you can perceive."
     },
     {
         "category": "inner_power",
@@ -5274,7 +5283,7 @@
         "type": "Mod",
         "stamina": true,
         "quick": true,
-        "description": "You attempt to sympathetically move a Negative Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you move the effect, including its remaining duration and other factors, to another target that you can perceive.  If you fail, your targets still apply the original Gained Verve."
+        "description": "You attempt to sympathetically move a Negative Status effect. Resolve the Rhapsodic Creation Move, with the DC of a Spell effect or Status on a target you can see.  If you succeed, you move the effect, including its remaining duration and other factors, to another target that you can perceive."
     },
     {
         "category": "inner_power",
@@ -5319,7 +5328,7 @@
         "type": "Mod",
         "stamina": false,
         "quick": false,
-        "description": "If you successfully Blocked any attack last turn, you automatically enhance an active Rhapsodic Creation.  The duration of the effects of the creation is reset for all targets.  You can only use this on a creation once."
+        "description": "If you successfully Blocked any attack last turn, Resolve Rhapsodic Creation to reset the duration of the any Status applied by the creation.  You can only use this on a creation once."
     },
     {
         "category": "inner_power",
@@ -5341,12 +5350,39 @@
     },
     {
         "category": "inner_power",
+        "name": "Discordant Presence",
+        "id": "ab030a1b",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "As a Free Action you may spend a Presence to roll a d20 when an enemy resolves a Basic Attack or Move.  On a Raw Roll of 20 the Move does not occur and the originator of the Move cannot replace it.  Additionally, if this was part of a multi-attack, all remaining attacks are lost.  You may only use this on each creature once per turn."
+    },
+    {
+        "category": "inner_power",
+        "name": "Requiem Presence",
+        "id": "30a62705",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "As a Free Action you may spend 1 Presence to apply Verve Loss to a creature equal to 1/2 of your points in Rhapsody.  You can apply this to each creature a maximum of once per turn.  This Verve Loss is only reduce by MRes and URes."
+    },
+    {
+        "category": "inner_power",
+        "name": "Distracting Presence",
+        "id": "2f80f0ea",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "As a Free Action you may spend 1 Presence to apply have an enemy that can see you switch the target of their Basic Attacks to a different target.  This fails if there are no other viable targets, and cannot be used on area of effect attacks or Spells."
+    },
+    {
+        "category": "inner_power",
         "name": "Harmonic Chorus",
         "id": "05df29a7",
         "type": "Passive",
         "stamina": false,
         "quick": false,
-        "description": "If an ally resolves a Creativity Move to help you and beats a DC of 1, then until the end of your next turn, you gain a +1 Bonus to Rhapsodic Creation.  This increases to a +2 Bonus if they beat a DC of 2."
+        "description": "If an ally resolves a Creativity Move to help you and beats a DC of 1, then until the end of your next turn, you gain a +1 Bonus to Rhapsodic Creation or Rhapsodic Presence.  This increases to a +2 Bonus if they beat a DC of 2."
     },
     {
         "category": "inner_power",
@@ -5355,7 +5391,16 @@
         "type": "Passive",
         "stamina": false,
         "quick": false,
-        "description": "If one of your allies has entered the Dying state this turn, the Rhapsodic Creation Move is a Free Action this turn."
+        "description": "If one of your allies has entered the Dying state this turn, the Rhapsodic Creation or Rhapsodic Presence Move is a Free Action this turn."
+    },
+    {
+        "category": "inner_power",
+        "name": "Tragic Artist",
+        "id": "598934df",
+        "type": "Passive",
+        "stamina": false,
+        "quick": false,
+        "description": "When under the effect of a negative spell, effect, or Status, you gain a +1 bonus to the Rhapsodic Creation or Rhapsodic Presence Move."
     },
     {
         "category": "inner_power",
@@ -5365,15 +5410,6 @@
         "stamina": true,
         "quick": false,
         "description": "If you gain the Dying Status you automatically resolve and apply Rhapsodic Performance with either the Uplifting or Inspired Creation Mod."
-    },
-    {
-        "category": "inner_power",
-        "name": "Tragic Artist",
-        "id": "598934df",
-        "type": "Passive",
-        "stamina": false,
-        "quick": false,
-        "description": "When under the effect of a negative spell, effect, or Status, you gain a +1 bonus to the Rhapsodic Creation Move."
     },
     {
         "category": "inner_power",
