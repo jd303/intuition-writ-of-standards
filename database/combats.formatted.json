@@ -75,6 +75,73 @@
             "type": "NPC",
             "verve": 100,
             "wisdom": 4
+        },
+        {
+            "_unique_id": "c18d3192-c68f-4c50-8d28-c29602b34681",
+            "charge": 5,
+            "charisma": 4,
+            "combatmoves": [
+                {
+                    "block_percentage": "-",
+                    "description": "An assault on your id to assail your senses.  Applies the Blind and Deafened Statuses.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Melee",
+                    "name": "Basic Attack",
+                    "save": "Cha",
+                    "specialCost": 0,
+                    "type": "Psychic",
+                    "verve_loss": 5
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "Creates a complex illusion, allowing the Maladite to adopt the shape of any creature or item, and can mask its movements as well.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Illusory Form",
+                    "save": "Cha",
+                    "specialCost": 1,
+                    "type": "Special",
+                    "verve_loss": ""
+                },
+                {
+                    "block_percentage": "-",
+                    "description": "Bonds to you, and becomes the object of your most intense desire, and you will fight for it with your life if it is threatened.",
+                    "dodge_percentage": "-",
+                    "moveRange": "Special",
+                    "name": "Dearest",
+                    "save": "Cha",
+                    "specialCost": 5,
+                    "type": "Special",
+                    "verve_loss": ""
+                }
+            ],
+            "constitution": 3,
+            "current_charge": 0,
+            "current_stagger": 0,
+            "current_verve": 15,
+            "dc": 3,
+            "description": "A creature that mimics the form of something that a humanoid wants, and which will bring it close.  For this reason, it often turns into children and clothing.  Jewellry is too small.  When alone, it transforms parts of itself back to a leeching black oozing mass, and drains the parent of their life force.  The drained can never see the true form, and become fascinated and overprotective of the Maladite, so much that they will protect it with their life.\n\nThe Maladite has extreme physical and magical resistance to those that cannot truly see it.  Magical divinations, detections and illusion dispels are twisted, such that the magic user knows that something is up, but cannot glean real information about it.\n\nThey say the Maladite\u2019s true form can be seen freely by one who truly wants for nothing.  And those who want more find themselves less able to see it.",
+            "dexterity": 3,
+            "id": "7cd51c56",
+            "image": "mothers.maladite.webp",
+            "intelligence": 3,
+            "max_charge": 5,
+            "max_stagger": 1,
+            "max_verve": 15,
+            "name": "Mother's Maladite",
+            "properties": [
+                "UnGrappleable ",
+                " ShrinkSelf"
+            ],
+            "resistances": "Psychic, Umbral, Luminal",
+            "size": "Tiny",
+            "speed": 3,
+            "stagger": 1,
+            "strength": 1,
+            "type": "Undead",
+            "verve": 15,
+            "weaknesses": "Electric, Arcanic",
+            "wisdom": 2
         }
     ]
 }

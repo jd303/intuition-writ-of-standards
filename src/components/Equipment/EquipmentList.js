@@ -19,7 +19,6 @@ function EquipmentList(props) {
 			if (!categories[cost.type]) categories[cost.type] = [];
 			categories[cost.type].push(cost);
 		});
-		console.log(categories);
 		return categories;
 	}, [costsList]);
 
@@ -28,7 +27,6 @@ function EquipmentList(props) {
 	 * */
 	const [searchFilterValue, setSearchFilterValue] = useState('');
 	const onFilterChange = (event) => {
-		console.log(event.target.value);
 		setSearchFilterValue(event.target.value.toLowerCase());
 	}
 
