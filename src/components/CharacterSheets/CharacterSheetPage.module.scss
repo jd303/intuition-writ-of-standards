@@ -658,9 +658,11 @@ section {
 			--points-column: 1;
 			--bonus-row: 1;
 			--bonus-column: 2;
-			--total-row: 2;
+			--infuse-row: 2;
+			--infuse-column: 2;
+			--total-row: 3;
 			--total-column: 2;
-			--current-row: 5;
+			--current-row: 6;
 			--current-column: 1 / 3;
 
 			@media (max-width: 500px) {
@@ -670,9 +672,11 @@ section {
 				--points-column: 1;
 				--bonus-row: 2;
 				--bonus-column: 1;
-				--total-row: 3;
+				--infuse-row: 3;
+				--infuse-column: 1;
+				--total-row: 4;
 				--total-column: 1;
-				--current-row: 4;
+				--current-row: 5;
 				--current-column: 1;
 			}
 
@@ -695,6 +699,7 @@ section {
 			}
 
 			.manaBonus,
+			.manaInfuseCost,
 			.manaTotal,
 			.manaCurrent {
 				display: flex;
@@ -705,6 +710,11 @@ section {
 			.manaBonus {
 				grid-column: var(--bonus-column);
 				grid-row: var(--bonus-row);
+			}
+
+			.manaInfuseCost {
+				grid-column: var(--infuse-column);
+				grid-row: var(--infuse-row);
 			}
 
 			.manaTotal {

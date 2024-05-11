@@ -8,7 +8,6 @@ import { updateDataStandardsData } from "../features/firebase/dataStandardsDataS
 import { updateMovesData } from "../features/firebase/movesDataSlice";
 import { updateStatusData } from "../features/firebase/statusDataSlice";
 import { updateSpellsData } from "../features/firebase/spellsDataSlice";
-import { updatePotionsData } from "../features/firebase/potionsDataSlice";
 import { updateAlchemicalsData } from "../features/firebase/alchemicalsDataSlice";
 import { updateAnimalCompanionsData } from "../features/firebase/animalCompanionsDataSlice";
 import { updateCharactersData } from "../features/firebase/charactersDataSlice";
@@ -59,13 +58,6 @@ export const AppShell = function ({ children }) {
 			onValue(spellsRef, (snapshot) => {
 				const data = snapshot.val();
 				dispatch(updateSpellsData({ data: data, standards: standards }));
-			});
-
-			// Collect potions data
-			const potionsRef = ref(database, '/potions');
-			onValue(potionsRef, (snapshot) => {
-				const data = snapshot.val();
-				dispatch(updatePotionsData({ data: data, standards: standards }));
 			});
 
 			// Collect animal companions data

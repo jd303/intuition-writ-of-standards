@@ -8,7 +8,7 @@ import AlchemyReagentsPage from "./components/Alchemy/AlchemyReagentsPage/Alchem
 import AlchemyRecipesPage from "./components/Alchemy/AlchemyRecipesPage/AlchemyRecipesPage";
 import MagicGuidePage from "./components/Magic/Guide/MagicGuidePage";
 import MagicSpellsPage from "./components/Magic/Spells/MagicSpellsPage";
-import MagicPotionsPage from "./components/Magic/Potions/MagicPotionsPage";
+import MagicConsumablesPage from "./components/Magic/Consumables/MagicConsumablesPage";
 import MagicEnchantingPage from "./components/Magic/Enchanting/MagicEnchantingPage";
 import PsionicsGuidePage from "./components/Psionics/Guide/PsionicsGuidePage";
 import PsionicsKineticsPage from "./components/Psionics/Kinetics/PsionicsKineticsPage";
@@ -153,9 +153,9 @@ const routes = [
 		parent: "Magic",
 	},
 	{
-		navLabel: "Potions",
-		path: "/magic-potions",
-		element: <Route key="0" path="/magic-potions" element={<MagicPotionsPage />} />,
+		navLabel: "Consumables",
+		path: "/magic-consumables",
+		element: <Route key="0" path="/magic-consumables" element={<MagicConsumablesPage />} />,
 		parent: "Magic",
 	},
 	{

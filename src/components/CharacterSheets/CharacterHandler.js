@@ -53,6 +53,7 @@ export class CharacterObject {
 		"bonus_verve": 0,
 		"current_mana": this.baseMana,
 		"bonus_mana": 0,
+		"enchant_mana_cost": 0,
 		"current_psi": this.basePsi,
 		"purchases": { "spentPoints":0,"attributes":{"str":0,"con":0,"dex":0,"int":0,"wis":0,"cha":0},"verve":0,"stamina":0,"known_languages":0,"magical_synergy":{"slot2":0,"slot3":0},"weapon_specialisations":0,"mana":0,"spells":{},"moves":{} },
 		"source": "30c0e851", // Default only, Spring

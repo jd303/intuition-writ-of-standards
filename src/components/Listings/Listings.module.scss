@@ -25,8 +25,8 @@
 
     // CARD VIEW
     &card {
-      grid-template-columns: var(--card-columns);
-
+      /*grid-template-columns: var(--card-columns);
+	  
       --card-columns: repeat(1, 1fr);
 
       @media (min-width: 800px) {
@@ -39,7 +39,9 @@
 
       @media (min-width: 1600px) {
         --card-columns: repeat(4, 1fr);
-      }
+      }*/
+
+	  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
       .listing {
         padding: calc(var(--padding-standard) * 0.75);

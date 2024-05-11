@@ -1,0 +1,18 @@
+@import "../../../index.scss";
+
+section.section {
+	display: flex;
+	gap: var(--padding-standard);
+	align-items: flex-start;
+
+	h2 {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--padding-standard) / 2);
+		margin-top: 0;
+	}
+
+	.accompanyingIcon {
+		width: 32px;
+	}
+}
