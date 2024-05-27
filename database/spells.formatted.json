@@ -2,6 +2,7 @@
     {
         "id": "33e3935d",
         "name": "Vervatious Restorium",
+        "easyname": "Healing",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -12,13 +13,15 @@
         "standardcost": 3,
         "standardduration": "Instant",
         "empowered": "The Verve Restored increases to 4d8.",
-        "empoweredcost": 5,
+        "empoweredcost": 7,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "e41cf401",
         "name": "Vervatious Wellspring",
+        "easyname": "Aura Healing",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "Aura",
@@ -29,13 +32,15 @@
         "standardcost": 3,
         "standardduration": "Short",
         "empowered": "You apply a restorative Aura to yourself, an Ally that you can see, or an object or item.  Each round, allies within the Aura shape of your target, including your target, Restore 2d6+6 Verve.",
-        "empoweredcost": 5,
+        "empoweredcost": 10,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "bb9c27e5",
         "name": "Vervatious Trigon",
+        "easyname": "Volume Healing",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "Volume",
@@ -46,14 +51,16 @@
         "standardcost": 4,
         "standardduration": "Instant",
         "empowered": "The Verve Restored increases to 2d12+8.",
-        "empoweredcost": 6,
+        "empoweredcost": 8,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "25223606",
         "name": "Staminatal Touch",
-        "level": 1,
+        "easyname": "Stamina Healing",
+        "level": 2,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "Touch",
         "cantrip": "You instill a target with the potential of Stamina.  On a Raw Roll of 15+ they Restore a Stamina.",
@@ -63,13 +70,15 @@
         "standardcost": 3,
         "standardduration": "Instant",
         "empowered": "The Restoration chance improves to 11+.",
-        "empoweredcost": 4,
+        "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "9eb6d787",
         "name": "Blurring Forme",
+        "easyname": "Blur",
         "level": 1,
         "sources": "478e7171,e86f9780",
         "shape": "SVT",
@@ -77,16 +86,18 @@
         "cantripcost": 1,
         "cantripduration": "Round",
         "standard": "The Dodge Bonus increases to +2 and the Maximum Dodge Bonus increases to +2.",
-        "standardcost": 2,
+        "standardcost": 3,
         "standardduration": "Short",
         "empowered": "The Dodge Bonus increases to +2 and the Maximum Dodge Bonus increases to +5.",
-        "empoweredcost": 3,
+        "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "298ef4e1",
         "name": "Stonerous Skin",
+        "easyname": "Stoneskin",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "SVT",
@@ -94,16 +105,18 @@
         "cantripcost": 1,
         "cantripduration": "Round",
         "standard": "The Block Bonus increases to +2 and the Maximum Block Bonus increases to +2.",
-        "standardcost": 2,
+        "standardcost": 3,
         "standardduration": "Short",
         "empowered": "The Block Bonus increases to +2 and the Maximum Block Bonus increases to +5.",
-        "empoweredcost": 3,
+        "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "cfff6b8a",
         "name": "Mirrorising Image",
+        "easyname": "Mirror Image",
         "level": 2,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -114,13 +127,15 @@
         "standardcost": 4,
         "standardduration": "Short",
         "empowered": "The target instead gains 3 Mirrored, and the chance to ignore the attack is 13+.",
-        "empoweredcost": 6,
+        "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "f209d622",
         "name": "Flow Reflectorium",
+        "easyname": "Magic Reflection",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Volume",
@@ -131,13 +146,15 @@
         "standardcost": 3,
         "standardduration": "Short",
         "empowered": "The MRes improves to 8 and the Defence Bonus improves to +2.  Additionally, when resolving Resistances, Raw Rolls of 20 automatically resist, and reflect a copy of the spell back to the origin.",
-        "empoweredcost": 6,
+        "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "7d384f89",
         "name": "Shielding Ward",
+        "easyname": "Shield",
         "level": 1,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -148,13 +165,15 @@
         "standardcost": 2,
         "standardduration": "Short",
         "empowered": "Instead of UDR, the target gains the Fortified (10) Status.",
-        "empoweredcost": 3,
+        "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "5d57ea5e",
         "name": "Energistic Beacon",
+        "easyname": "Energy Beacon",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -165,13 +184,15 @@
         "standardcost": 1,
         "standardduration": "Instant",
         "empowered": "The Verve Loss improves to 2d6+5.",
-        "empoweredcost": 2,
+        "empoweredcost": 4,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "883b5b52",
         "name": "Energistic Bolt",
+        "easyname": "Energy Bolt",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -182,13 +203,15 @@
         "standardcost": 2,
         "standardduration": "Instant",
         "empowered": "The Verve Loss improves to 2d12+6.",
-        "empoweredcost": 3,
+        "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "Dex"
+        "save": "Dex",
+        "potable": "No"
     },
     {
         "id": "261a57ed",
         "name": "Energistic Burst",
+        "easyname": "Energy Burst",
         "level": 2,
         "sources": "478e7171",
         "shape": "Volume",
@@ -199,13 +222,15 @@
         "standardcost": 5,
         "standardduration": "Instant",
         "empowered": "The Verve Loss improves to 3d10",
-        "empoweredcost": 7,
+        "empoweredcost": 9,
         "empoweredduration": "Instant",
-        "save": "Dex"
+        "save": "Dex",
+        "potable": "No"
     },
     {
         "id": "b9a05cba",
         "name": "Energistic Presence",
+        "easyname": "Energy Presence",
         "level": 2,
         "sources": "30c0e851",
         "shape": "SVT",
@@ -216,13 +241,15 @@
         "standardcost": 2,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 3d4.",
-        "empoweredcost": 3,
+        "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "431c97ab",
         "name": "Energistic Beam",
+        "easyname": "Energy Beam",
         "level": 3,
         "sources": "478e7171,e86f9780",
         "shape": "SVT",
@@ -233,13 +260,15 @@
         "standardcost": 2,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to d10.",
-        "empoweredcost": 3,
+        "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "No"
     },
     {
         "id": "6179aa49",
         "name": "Energistic Storm",
+        "easyname": "Energy Storm",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Aura",
@@ -252,11 +281,13 @@
         "empowered": "The Verve Loss improves to 3d12.",
         "empoweredcost": 12,
         "empoweredduration": "Short",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "No"
     },
     {
         "id": "3ebe0a1d",
         "name": "Energistic Conduit",
+        "easyname": "Energy Conduit",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "Touch",
@@ -267,13 +298,15 @@
         "standardcost": 4,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 2d12.",
-        "empoweredcost": 6,
+        "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "7054ba7e",
         "name": "Energistic Cone",
+        "easyname": "Energy Conduit",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Cone",
@@ -284,13 +317,15 @@
         "standardcost": 2,
         "standardduration": "Instant",
         "empowered": "The Verve Loss improves to 3d6.",
-        "empoweredcost": 3,
+        "empoweredcost": 4,
         "empoweredduration": "Instant",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "8342b9c1",
         "name": "Energistic Comets",
+        "easyname": "Energy Comets",
         "level": 1,
         "sources": "478e7171,e86f9780",
         "shape": "Self",
@@ -301,13 +336,15 @@
         "standardcost": 2,
         "standardduration": "Long",
         "empowered": "The number of comets increases to 5, and the Verve Loss improves to 2d6+5 when fired or 4d6+5 when discharged.",
-        "empoweredcost": 3,
+        "empoweredcost": 4,
         "empoweredduration": "Long",
-        "save": "Dex"
+        "save": "Dex",
+        "potable": "No"
     },
     {
         "id": "d37f0097",
         "name": "Energistic Wall",
+        "easyname": "Energy Wall",
         "level": 2,
         "sources": "30c0e851,b5332003",
         "shape": "Wal",
@@ -318,13 +355,15 @@
         "standardcost": 3,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 4d10, and the Wall Shape's length is doubled.",
-        "empoweredcost": 4,
+        "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "No"
     },
     {
         "id": "f91ccc30",
         "name": "Energistic Weapon",
+        "easyname": "Energy Weapon",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "Self",
@@ -335,13 +374,15 @@
         "standardcost": 3,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 20.",
-        "empoweredcost": 6,
+        "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Str"
+        "save": "Str",
+        "potable": "No"
     },
     {
         "id": "f43cd3a7",
         "name": "Energistic Infuse",
+        "easyname": "Energy Infuse",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "Touch",
@@ -352,13 +393,15 @@
         "standardcost": 2,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 10 for weapons and armour, and 14 for items.",
-        "empoweredcost": 3,
+        "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "1c896f30",
         "name": "Energistic Lunge",
+        "easyname": "Energy Lunge",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "SVT",
@@ -366,16 +409,18 @@
         "cantripcost": 0,
         "cantripduration": "Instant",
         "standard": "The Verve Loss improves to d8+4.",
-        "standardcost": 1,
+        "standardcost": 2,
         "standardduration": "Instant",
         "empowered": "You now wreathe yourself in Synergistic Energy, dealing your damage to everything in your path up to 10sq. in any direction.",
-        "empoweredcost": 2,
+        "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "Yes"
     },
     {
         "id": "2b1424c9",
         "name": "Energistic Aura",
+        "easyname": "Energy Aura",
         "level": 3,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "Aura",
@@ -383,16 +428,18 @@
         "cantripcost": 3,
         "cantripduration": "Short",
         "standard": "The Verve Loss improves to 2d8.",
-        "standardcost": 5,
+        "standardcost": 6,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 3d8.",
-        "empoweredcost": 7,
+        "empoweredcost": 9,
         "empoweredduration": "Short",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "3a53136d",
         "name": "Energistic Totem",
+        "easyname": "Energy Totem",
         "level": 2,
         "sources": "478e7171,b5332003",
         "shape": "SVT",
@@ -403,30 +450,34 @@
         "standardcost": 5,
         "standardduration": "Short",
         "empowered": "The number of totemular fonts increases to 3.",
-        "empoweredcost": 7,
+        "empoweredcost": 9,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "No"
     },
     {
         "id": "380ab653",
         "name": "Energistic Meteors",
+        "easyname": "Energy Meteors",
         "level": 4,
         "sources": "478e7171,e86f9780",
         "shape": "Volume",
-        "cantrip": "You conjure meteors of Synergistic Energy that will strike a nominated square and exlode in a Volume Shape.  Your meteors comes crashing down d4-2 turns later, dealing 2d10 damage to everyone in the Volume shape.  If the meteors have not fallen, then each turn as a Quick Action you may shift the center of the spell's target by 3sq.",
-        "cantripcost": 1,
+        "cantrip": "You conjure meteors of Synergistic Energy that will strike a nominated square and explode in a Volume Shape.  Your meteors comes crashing down d4-2 turns later, dealing 2d10 damage to everyone in the Volume shape.  If the meteors have not fallen, then each turn as a Quick Action you may shift the center of the spell's target by 3sq.",
+        "cantripcost": 2,
         "cantripduration": "Short",
         "standard": "The Verve Loss improves to 3d10.",
-        "standardcost": 2,
+        "standardcost": 4,
         "standardduration": "Short",
         "empowered": "The Verve Loss improves to 4d10, and the Volume shape increases by 1 sq radius.",
-        "empoweredcost": 3,
+        "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "Dex"
+        "save": "Dex",
+        "potable": "No"
     },
     {
         "id": "4da90c6e",
         "name": "Energistic Realm",
+        "easyname": "Energy Realm",
         "level": 3,
         "sources": "e86f9780",
         "shape": "Environment",
@@ -439,11 +490,13 @@
         "empowered": "The Verve Loss increases to 2d4.",
         "empoweredcost": 6,
         "empoweredduration": "Instant",
-        "save": "Con"
+        "save": "Con",
+        "potable": "No"
     },
     {
         "id": "a84e5a87",
         "name": "Disintegratum",
+        "easyname": "Disintegrate",
         "level": 3,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -451,16 +504,18 @@
         "cantripcost": 1,
         "cantripduration": "Instant",
         "standard": "You may instead target a creature up to DC2.  If they fail, they are destroyed and turn to ash.  If they succeed, you apply d10 Verve Loss to them.",
-        "standardcost": 4,
+        "standardcost": 5,
         "standardduration": "Instant",
         "empowered": "You may instead target a creature up to DC3, and the Verve Loss increases to 2d10.  You also may instead target a creature up to DC4, but the DC raises by 3 instead of 1, and the Verve Loss increases to 2d10.",
-        "empoweredcost": 7,
+        "empoweredcost": 10,
         "empoweredduration": "Instant",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "1ac553ac",
         "name": "Deathening",
+        "easyname": "Death",
         "level": 5,
         "sources": "e86f9780",
         "shape": "Touch",
@@ -470,18 +525,20 @@
         "standard": "If you beat the target's Defences, you additionally apply the Vulnerable and Decaying Statuses to them.",
         "standardcost": 6,
         "standardduration": "Short",
-        "empowered": "The DC of the target you may apply this spell raises to DC3, and If you beat the target's Defences, you additionally applying the Dying Status to them.  You may also instead target a creature up to DC4, but the DC raises by 3 instead of 1.",
-        "empoweredcost": 9,
+        "empowered": "The DC of the target you may apply this spell raises to DC3, and If you beat the target's Defences, you additionally apply the Dying Status to them.  You may also instead target a creature up to DC4, but the DC raises by 3 instead of 1.",
+        "empoweredcost": 10,
         "empoweredduration": "Long",
-        "save": "Con / Wis"
+        "save": "Con / Wis",
+        "potable": "Yes"
     },
     {
         "id": "13a34cc7",
         "name": "Curse Vervorium",
+        "easyname": "Curse of Verve",
         "level": 2,
         "sources": "478e7171,b5332003",
         "shape": "SVT",
-        "cantrip": "You dive into your target's Constitution, placing a curse within.  If you beat your target's Defences, then whenever they incurs Verve Loss, they incur 2 additional.",
+        "cantrip": "You dive into your target's Constitution, placing a curse within.  If you beat your target's Defences, then whenever they incur Verve Loss, they incur 2 additional.",
         "cantripcost": 2,
         "cantripduration": "Short",
         "standard": "The additional Verve Loss incurred increases to 4.",
@@ -490,11 +547,13 @@
         "empowered": "The additional Verve Loss incurred increases to 6.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Con"
+        "save": "Con",
+        "potable": "No"
     },
     {
         "id": "eda110f1",
         "name": "Corpus Poisonum / Plaguum",
+        "easyname": "Poison",
         "level": 1,
         "sources": "30c0e851,e86f9780",
         "shape": "SVT",
@@ -507,11 +566,13 @@
         "empowered": "The DC of the poison or disease you apply is DC3.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "c06c6262",
         "name": "Torturous Simalacrum",
+        "easyname": "Painshare",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "SVT",
@@ -524,11 +585,13 @@
         "empowered": "The Verve Loss copied increases to 8, and neither target has to be willing.",
         "empoweredcost": 3,
         "empoweredduration": "Short",
-        "save": "Con / Cha"
+        "save": "Con / Cha",
+        "potable": "No"
     },
     {
         "id": "07adf5dc",
         "name": "Tortuous Mirror",
+        "easyname": "Pain Reflection",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -541,11 +604,13 @@
         "empowered": "The Verve Loss reflected increases to 8.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Con / Cha"
+        "save": "Con / Cha",
+        "potable": "No"
     },
     {
         "id": "c3b57a81",
         "name": "Restoring Rapture",
+        "easyname": "Restore Body",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -558,11 +623,13 @@
         "empowered": "Instead of suppressing the Status, you remove up to 2.",
         "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "925fb9e1",
         "name": "Purifying Rapture",
+        "easyname": "Restore Soul",
         "level": 2,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -575,11 +642,13 @@
         "empowered": "Instead of suppressing the Status, you remove up to 2.",
         "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "d2261221",
         "name": "Purifying Mind",
+        "easyname": "Restore Mind",
         "level": 2,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -592,11 +661,13 @@
         "empowered": "Instead of suppressing the Status, you remove up to 2.",
         "empoweredcost": 5,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "9f7c0ab3",
         "name": "Precious Preservater",
+        "easyname": "Preserve",
         "level": 2,
         "sources": "30c0e851,b5332003,e86f9780",
         "shape": "Touch",
@@ -609,11 +680,13 @@
         "empowered": "You encase a willing creature in time.  It is unable to take any Moves, and cannot be affected by any effect.  You may instead apply this to an unwilling target if you beat their Defences.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "Wis / Cha"
+        "save": "Wis / Cha",
+        "potable": "No"
     },
     {
         "id": "74c8e437",
         "name": "Elemental Preservater",
+        "easyname": "Resist Elemental",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -626,11 +699,13 @@
         "empowered": "The shape of your spell changes into a Cone, with yourself also gaining the benefit.  Additonally, you may choose 2 Resistances from the list.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "26860e31",
         "name": "Protection from Caustic",
+        "easyname": "Resist Caustic",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -643,11 +718,13 @@
         "empowered": "The shape of your spell changes into a Cone, with yourself also gaining the benefit.  Additonally, you may choose 2 Resistances from the list.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "6665712f",
         "name": "Protection from Transcendent",
+        "easyname": "Resist Transcendant",
         "level": 3,
         "sources": "478e7171,e86f9780",
         "shape": "[RNG]",
@@ -660,11 +737,13 @@
         "empowered": "The shape of your spell changes into a Cone, with yourself also gaining the benefit.  Additonally, you may choose 2 Resistances from the list.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "c416b3f6",
         "name": "Dispellus",
+        "easyname": "Dispel",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -677,11 +756,13 @@
         "empowered": "You instead attempt to suppress the magic of an enchanted item, up to DC3, temporarily.  If you beat the DC of the item's Enchantment +2, it is suppressed and does not have any effect. ",
         "empoweredcost": 5,
         "empoweredduration": "Long",
-        "save": "Int"
+        "save": "Int",
+        "potable": "Yes"
     },
     {
         "id": "dfe75b9e",
         "name": "Flesh Transmutorum",
+        "easyname": "Transmute Flesh",
         "level": 2,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "Touch",
@@ -694,11 +775,13 @@
         "empowered": "Instead of changing your form, you meld your body into other materials.  Choose a material type: you can pass through that material at will for the duration of the spell.  If you end in the material when the Spell ends, you are shunted to the nearest safe space.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "b0c5e344",
-        "name": "Polymorph",
+        "name": "Corpus Morphum",
+        "easyname": "Polymorph",
         "level": 4,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Touch",
@@ -711,11 +794,13 @@
         "empowered": "You may choose a creature up to DC 4.  Additionally, you may apply this effect to an unwilling target if you beat their Defences.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Con / Cha"
+        "save": "Con / Cha",
+        "potable": "Yes"
     },
     {
         "id": "54b7c891",
         "name": "Necral Animatum",
+        "easyname": "Animate Dead",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -728,11 +813,13 @@
         "empowered": "The DC of creatures you may raise increases to DC5.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "90a28be0",
         "name": "Object Animatum",
+        "easyname": "Animate Object",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "[RNG]",
@@ -745,11 +832,13 @@
         "empowered": "You may animate a non-magical item up to DC3.",
         "empoweredcost": 4,
         "empoweredduration": "Long",
-        "save": "Int / Cha"
+        "save": "Int / Cha",
+        "potable": "No"
     },
     {
         "id": "1551d6d6",
         "name": "Necral Revulsion",
+        "easyname": "Revulsion: Necrotic",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "Aura",
@@ -762,11 +851,13 @@
         "empowered": "In addition to the Status Effects, creatures cannot enter your Aura.",
         "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "No"
     },
     {
         "id": "eb0a8d34",
         "name": "Monstrous Revulsion",
+        "easyname": "Revulsion: Monstrous",
         "level": 3,
         "sources": "30c0e851,b5332003",
         "shape": "[RNG]",
@@ -779,11 +870,13 @@
         "empowered": "In addition to the Status Effects, creatures cannot enter your Aura.",
         "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "No"
     },
     {
         "id": "7d537a54",
         "name": "Arcane Revulsion",
+        "easyname": "Revulsion: Arcane",
         "level": 3,
         "sources": "478e7171,e86f9780",
         "shape": "[RNG]",
@@ -796,11 +889,13 @@
         "empowered": "In addition to the Status Effects, creatures cannot enter your Aura.",
         "empoweredcost": 6,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "No"
     },
     {
         "id": "0d032c74",
         "name": "Illusory Visage",
+        "easyname": "Illusion",
         "level": 2,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -813,11 +908,13 @@
         "empowered": "Your illusion can take up to 12 sq. in total size, and applies a +3 Visibility Bonus.  Additionally, it may move up to 20sq. from where it originated.",
         "empoweredcost": 7,
         "empoweredduration": "Long",
-        "save": "Int / Wis"
+        "save": "Int / Wis",
+        "potable": "No"
     },
     {
         "id": "ed3488f7",
         "name": "Invisibilatum",
+        "easyname": "Invisibility",
         "level": 2,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Touch",
@@ -830,11 +927,13 @@
         "empowered": "You may now apply this ability in an Aura centred on you.  Alternatively, if you apply this to a single target, they may resolve 1 aggressive Move before the spell ends.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "91a6ef91",
         "name": "Corpus Enhanceum ",
+        "easyname": "Enhance Body",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -847,11 +946,13 @@
         "empowered": "The Move Bonus increases to +2.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "fef15398",
         "name": "Mentus Enhanceum",
+        "easyname": "Enhance Mind",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -864,11 +965,13 @@
         "empowered": "The Move Bonus increases to +2.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "c8c58507",
         "name": "Enhance Senses",
+        "easyname": "Enhance Senses",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -881,11 +984,13 @@
         "empowered": "You additionally can sense movement by tremors up to 20sq, hear more clearly through walls, and smell additions to food and water without danger of being affected by them.  Also, the Bonus for Moves that require your sense raises to +2.",
         "empoweredcost": 2,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "2ab6da3b",
-        "name": "Fly",
+        "name": "Wondrous Aerospirited",
+        "easyname": "Fly",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "SVT",
@@ -898,11 +1003,13 @@
         "empowered": "You may cast this Spell as a volume.  All allies can resolve the Relocate Move as Flying, using their full Move sq.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "ddd6a028",
         "name": "Corpus Detractum",
+        "easyname": "Disenhance Body",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -915,11 +1022,13 @@
         "empowered": "The Move Bonus penalty to -2.",
         "empoweredcost": 3,
         "empoweredduration": "Short",
-        "save": "Str"
+        "save": "Str",
+        "potable": "Yes"
     },
     {
         "id": "14b54f88",
         "name": "Mentus Detractum",
+        "easyname": "Disenhance Mind",
         "level": 2,
         "sources": "b5332003,e86f9780",
         "shape": "SVT",
@@ -932,11 +1041,13 @@
         "empowered": "The Move Bonus penalty to -2.",
         "empoweredcost": 3,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "Yes"
     },
     {
         "id": "5a3e66df",
         "name": "Symbiotic Naturum Teleportising",
+        "easyname": "Nature Teleport",
         "level": 2,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -949,11 +1060,13 @@
         "empowered": "When you are within the bounds of a storm, you excite lightning within it and you and up to 5 companions may ride the lightning instantly as far as the stormclouds reach, or up to 10km away, whichever is shorter.",
         "empoweredcost": 3,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "4067b134",
         "name": "Teleportal",
+        "easyname": "Teleportal",
         "level": 4,
         "sources": "478e7171,e86f9780",
         "shape": "Strata",
@@ -966,11 +1079,13 @@
         "empowered": "Instead of teleporting to a Teleportal Beacon, you open a Teleportal to a place you've visited before, but the ritual cast time increases to 1 hour.  Alternatively, you may attempt to open a teleportal to somewhere you haven't been but have heard about.  In this case, the DM will roll a D20 and add your Intelligence, Wisdom or Charisma attribute, whichever is highest.  On a 1-8 you are transported somewhere else entirely.  On a 9-12 you are transported somewhere nearby to your intended target, that might be dangerous.  On a 13+ you teleport to the exact spot you wanted.",
         "empoweredcost": 10,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "8c41abd7",
         "name": "Teleportum Malifica",
+        "easyname": "Baneful Teleport",
         "level": 5,
         "sources": "b5332003,e86f9780",
         "shape": "Touch",
@@ -983,11 +1098,13 @@
         "empowered": "The distance you may send you target vertically is increased to 15 sq.  Alternatively, you may send you target to a space that is dangerous, such as over a cliff or into fire.",
         "empoweredcost": 8,
         "empoweredduration": "Instant",
-        "save": "Str / Cha"
+        "save": "Str / Cha",
+        "potable": "No"
     },
     {
         "id": "7e3b3eb9",
         "name": "Extra-Stratal Rift",
+        "easyname": "Extra-Stratal Rift",
         "level": 6,
         "sources": "e86f9780",
         "shape": "SVT",
@@ -1000,11 +1117,13 @@
         "empowered": "Instead of teleporting to a Strata Beacon, you open a Rift to a place on a Strata that you've been to before.  Alternatively, you may attempt to open a Rift to a Strata you haven't been to but have heard about and confirm exists.  In this case, the DM will roll a D20 and add your Intelligence, Wisdom or Charisma attribute, whichever is highest.  On a 1-10 you are transported somewhere else entirely, including another Strata.  On a 11-16 you are transported somewhere nearby to your intended target, that might be dangerous.  On a 17+ you teleport to the exact spot you wanted.\n\nYou may cast the Standard and Overpowered versions of this Spell once per day.",
         "empoweredcost": 16,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "b00bad5a",
         "name": "Sleepening",
+        "easyname": "Sleep",
         "level": 1,
         "sources": "b5332003,e86f9780",
         "shape": "Volume",
@@ -1017,11 +1136,13 @@
         "empowered": "The DC3 limitation of targets raises to DC5, but no individual target can be more than DC3.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "Yes"
     },
     {
         "id": "9466e2da",
         "name": "Corpus Resizing",
+        "easyname": "Shrink/Enlarge",
         "level": 2,
         "sources": "30c0e851,b5332003",
         "shape": "Touch",
@@ -1034,11 +1155,13 @@
         "empowered": "The Stature change increases to 3, or you may cast this spell as a Cone.  Additionally, the DC of creature you can affect is increased to 4.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Con"
+        "save": "Con",
+        "potable": "Yes"
     },
     {
         "id": "23506ca4",
         "name": "Corpus Constrictum",
+        "easyname": "Constrict",
         "level": 3,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -1051,11 +1174,13 @@
         "empowered": "Instead of applying Bound, you apply the Paralyzed Status.  For each DC above 4 that your target is, the duration is reduced by 1 Round.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Str"
+        "save": "Str",
+        "potable": "Yes"
     },
     {
         "id": "55703d41",
         "name": "Corpus Puppet",
+        "easyname": "Puppet",
         "level": 4,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -1068,11 +1193,13 @@
         "empowered": "You control both of the target's Actions.",
         "empoweredcost": 6,
         "empoweredduration": "Round",
-        "save": "Int"
+        "save": "Int",
+        "potable": "No"
     },
     {
         "id": "deea407d",
         "name": "Corpus Delayum",
+        "easyname": "Slow",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "[RNG]",
@@ -1085,11 +1212,13 @@
         "empowered": "You may cast this Spell as a volume, applying the Slow Status to all creatures whose Defences you beat.",
         "empoweredcost": 7,
         "empoweredduration": "Short",
-        "save": "Str"
+        "save": "Str",
+        "potable": "Yes"
     },
     {
         "id": "8133f3c1",
         "name": "Corpus Hastum",
+        "easyname": "Haste",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "[RNG]",
@@ -1102,11 +1231,13 @@
         "empowered": "You may instead cast this spell as an Aura.  Allies within the Aura must use their Bonus Action within the Aura, but they retain the extra Move sq. untilt the end of the turn they leave.",
         "empoweredcost": 10,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "Yes"
     },
     {
         "id": "d7e2565a",
         "name": "Silencis",
+        "easyname": "Silence",
         "level": 2,
         "sources": "30c0e851,b5332003",
         "shape": "Volume",
@@ -1119,11 +1250,13 @@
         "empowered": "Sounds are reduced to 0%, increasing the Bonus and Penalty to +5 and -5 respectively.  No verbal commands can be given, nor can performance be made.  Additionally, no spell with a Verbal component can be cast.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "45d01c1b",
         "name": "Darkenis",
+        "easyname": "Darkness",
         "level": 2,
         "sources": "30c0e851,b5332003",
         "shape": "Volume",
@@ -1136,28 +1269,32 @@
         "empowered": "Light is reduced to 0%, increasing the Bonus and Penalty to +5 and -5 respectively.  All targets inside the volume gain the Blind Status.  Additionally, no creature inside the darkness can be targeted.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "b7cf597f",
-        "name": "Mentus Comprehension",
+        "name": "Lingua Comprehensus",
+        "easyname": "Comprehend Languages",
         "level": 1,
         "sources": "30c0e851,478e7171",
         "shape": "Touch",
-        "cantrip": "You employ your Source to derive the meaning of something.  The target of your spell may attempt the Knowing Skill, even for languages that you do not speak.",
+        "cantrip": "You employ your Source to derive the meaning of something.  The target of your spell may attempt the Knowing Skill, even for languages that they do not speak.",
         "cantripcost": 1,
         "cantripduration": "Round",
-        "standard": "Your target fully comprehends written or verbal languages that they experience.",
+        "standard": "Your target fully comprehends common and advanced written or verbal languages that they experience.  A Knowing may still be required for ancient, archaic, or ciphered languages.",
         "standardcost": 2,
         "standardduration": "Long",
-        "empowered": "The shape of this spell becomes an Aura.",
+        "empowered": "The shape of this spell becomes an Aura, and those affected may optionally have the Spell translate their speech into the languages that they are made able to comprehend.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "3c37aa81",
         "name": "Necral Commune",
+        "easyname": "Speak with Dead",
         "level": 4,
         "sources": "b5332003,e86f9780",
         "shape": "Touch",
@@ -1170,11 +1307,13 @@
         "empowered": "You may ask your target an additional question, and you may repeat the same question in a different way.  A clever target will still be able to avoid the question.  If you ask more than one question, the time to cast this Spell becomes 30 minutes.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "337163c3",
         "name": "Mina's Minor Magics",
+        "easyname": "Minor Magics",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "[RNG]",
@@ -1187,11 +1326,13 @@
         "empowered": "-",
         "empoweredcost": "-",
         "empoweredduration": "-",
-        "save": "-"
+        "save": "-",
+        "potable": "No"
     },
     {
         "id": "486ed3ba",
         "name": "Messagum",
+        "easyname": "Message",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Strata",
@@ -1204,11 +1345,13 @@
         "empowered": "You may additionally target someone who you have seen but not spoken to, if you beat their Defences.",
         "empoweredcost": 2,
         "empoweredduration": "Long",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "Yes"
     },
     {
         "id": "a078ccf6",
         "name": "Charmative",
+        "easyname": "Charm",
         "level": 1,
         "sources": "30c0e851,478e7171",
         "shape": "SVT",
@@ -1221,11 +1364,13 @@
         "empowered": "The duration of the Status naturally increases with the Overpowered version of the Spell.  Additionally, once the Spell wears off, the target is not aware that they were manipulated, even if they may reverse any actions they took while Charmed.",
         "empoweredcost": 4,
         "empoweredduration": "Long",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "Yes"
     },
     {
         "id": "c248d9a6",
         "name": "Emotional Additive",
+        "easyname": "Emotion Manipulation",
         "level": 2,
         "sources": "478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -1238,11 +1383,13 @@
         "empowered": "The duration of the Status naturally increases with the Overpowered version of the Spell.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "Yes"
     },
     {
         "id": "60b179e6",
         "name": "Confusative",
+        "easyname": "Confuse",
         "level": 3,
         "sources": "478e7171,e86f9780",
         "shape": "SVT",
@@ -1255,11 +1402,13 @@
         "empowered": "You may affect targets up to DC5.  Additionally, if you fail to beat your target's Defences, you still apply the Staggered Status to them.",
         "empoweredcost": 8,
         "empoweredduration": "Short",
-        "save": "Int"
+        "save": "Int",
+        "potable": "Yes"
     },
     {
         "id": "b01b108a",
         "name": "Encouraging Word",
+        "easyname": "Encourage",
         "level": 3,
         "sources": "30c0e851,478e7171",
         "shape": "SVT",
@@ -1272,11 +1421,13 @@
         "empowered": "Your target can choose an additional Mod when resolving 1 Move per turn.",
         "empoweredcost": 3,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "6077334c",
         "name": "Inspire",
+        "easyname": "Inspire",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "SVT",
@@ -1289,11 +1440,13 @@
         "empowered": "The shape of the spell is instead either an Aura or a Volume.",
         "empoweredcost": 3,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "cb614133",
         "name": "Lock/Unlock",
+        "easyname": "Lock/Unlock",
         "level": 1,
         "sources": "30c0e851,e86f9780",
         "shape": "Touch",
@@ -1306,15 +1459,17 @@
         "empowered": "You may now unlock non-magical locks up to DC 4, and magical locks up to DC 3.  Or you apply a lock that is the equivalent of DC 4.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "00c088a6",
         "name": "Conjure Item",
+        "easyname": "Conjure Item",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "Touch",
-        "cantrip": "You solify The Flow into an item that feels real, though it only lasts a short time.  You may create an item that fits in a 10cm cube, and has a value up to DC 1.",
+        "cantrip": "You solidify The Flow into an item that feels real, though it only lasts a short time.  You may create an item that fits in a 10cm cube, and has a value up to DC 1.",
         "cantripcost": 2,
         "cantripduration": "Short",
         "standard": "The size that the item can fit into increases to 20cm, and its value is up to DC 2.",
@@ -1323,11 +1478,13 @@
         "empowered": "The size that the item can fit into increases to 50cm, and its value is up to DC 3.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "223cc4db",
         "name": "Conjurus Mundanis",
+        "easyname": "Conjure Mundane",
         "level": 2,
         "sources": "478e7171,e86f9780",
         "shape": "Touch",
@@ -1340,11 +1497,13 @@
         "empowered": "The maximum DC you may summon is DC 6, but the maximum of an individual creature is only DC 4.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "5d1fd72a",
         "name": "Conjurus Epicus",
+        "easyname": "Conjure Greater",
         "level": 4,
         "sources": "e86f9780",
         "shape": "Touch",
@@ -1357,11 +1516,13 @@
         "empowered": "The maximum DC you may summon is DC 8, but the maximum of an individual creature is only DC 4.",
         "empoweredcost": 12,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "6dcb9208",
         "name": "Conjure Hand",
+        "easyname": "Conjure Hand",
         "level": 2,
         "sources": "b5332003",
         "shape": "Touch",
@@ -1374,11 +1535,13 @@
         "empowered": "The hand's movement is increased to 7sq, and it has the power of a standard DC 3 creature.",
         "empoweredcost": 3,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "b8f9212f",
-        "name": "Create Fog",
+        "name": "Conjurus Mist",
+        "easyname": "Create Fog",
         "level": 1,
         "sources": "30c0e851,b5332003",
         "shape": "Aura",
@@ -1391,11 +1554,13 @@
         "empowered": "The shape becomes a mega-aura, extending to 5x the normal Aura size.",
         "empoweredcost": 4,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "857db59d",
         "name": "Wrathful Naturalist",
+        "easyname": "Nature's Wrath",
         "level": 2,
         "sources": "30c0e851",
         "shape": "Aura",
@@ -1408,11 +1573,13 @@
         "empowered": "You apply effects to a patch of terrain equal to 3 Volumes.  Additionally, difficult terrain includes spikes applying 2 Verve Loss, and Spines doubles the damage to 4 Verve Loss.",
         "empoweredcost": 4,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "f22e6262",
         "name": "Florus Fertlisement",
+        "easyname": "Plant Growth",
         "level": 1,
         "sources": "30c0e851,478e7171",
         "shape": "Touch",
@@ -1425,11 +1592,13 @@
         "empowered": "The growth increases to a month per round spent, and the range increases to SVT.",
         "empoweredcost": 12,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "455117a8",
         "name": "Terra Configurator",
+        "easyname": "Shape Earth",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "Aura",
@@ -1442,11 +1611,13 @@
         "empowered": "You may shift up to 12 squares up to 2 squares, and the weight it can be load bearing increases to 500kg.",
         "empoweredcost": 6,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "8e18686f",
         "name": "Tremor",
+        "easyname": "Tremor",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "Aura",
@@ -1459,11 +1630,13 @@
         "empowered": "You instead apply 25 damage to structures up to DC 4.",
         "empoweredcost": 10,
         "empoweredduration": "Short",
-        "save": "Dex"
+        "save": "Dex",
+        "potable": "No"
     },
     {
         "id": "3f498902",
         "name": "Weather modification",
+        "easyname": "Weather Manupulation",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003",
         "shape": "Aura",
@@ -1476,11 +1649,13 @@
         "empowered": "Your aura spreads as far as 1km, upending the very weather around you.  You can create storms, rain, blizzards and strong winds, though you cannot control them once set.  Casting the Overpowered version of the spell takes 1 hour of ritual casting.",
         "empoweredcost": 12,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "1643c932",
         "name": "Blithering Gale",
+        "easyname": "Windstorm",
         "level": 2,
         "sources": "30c0e851,b5332003,e86f9780",
         "shape": "Cone",
@@ -1493,11 +1668,13 @@
         "empowered": "The Tornedo is now 2x2sq, and moves 4sq in a random direction.  As a Free Action, you may reduce the movement of the Tornedo by up to 3sq.  Creatures up to 2sq away can be pulled into the Tornedo, and the Verve Loss increases to 10.",
         "empoweredcost": 10,
         "empoweredduration": "Short",
-        "save": "Str"
+        "save": "Str",
+        "potable": "No"
     },
     {
         "id": "2af7b23a",
         "name": "Hydroscaping",
+        "easyname": "Water Manipulation",
         "level": 3,
         "sources": "30c0e851,b5332003",
         "shape": "SVT",
@@ -1510,11 +1687,13 @@
         "empowered": "Creating a wave now has an inherent DC of 3.  Alternatively, you may target up to 3 Volumes of water, and move it up to 10sq per turn as a Quick Action.  Trapping creature starves them of oxygen, and forces them to perform the Swim Move to escape the watery doom.  Due to the constrictions of the spell, those trapped inside incur a -2 to Rolls to Swim.",
         "empoweredcost": 14,
         "empoweredduration": "Long",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "4caa0f67",
         "name": "Energistic Control",
+        "easyname": "Control Energy",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Aura",
@@ -1527,11 +1706,13 @@
         "empowered": "When using Increase / Decrease, you increase or decrease the Verve Loss by 12 and the DC by 2.  Alternatively, you have a new option: 3) Quell.  You completely Quell the energy in an aura around you.  If the energy was created by a Spell that has a duration, you need to pierce the Defences of the original caster in order to succeed at this option.",
         "empoweredcost": 8,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "144f30a9",
         "name": "Commandum Florus",
+        "easyname": "Command Plants",
         "level": 2,
         "sources": "30c0e851",
         "shape": "Cone",
@@ -1544,11 +1725,13 @@
         "empowered": "You may target sentient plants up to DC 4, and may change your commands each turn as a Quick Action.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "Yes"
     },
     {
         "id": "32aafe63",
         "name": "Commandum Faunus",
+        "easyname": "Command Beasts",
         "level": 3,
         "sources": "478e7171",
         "shape": "Cone",
@@ -1561,11 +1744,13 @@
         "empowered": "You may Command creatures up to DC 3, and you may issue a new Command each round as a Quick Action.",
         "empoweredcost": 9,
         "empoweredduration": "Short",
-        "save": "Cha"
+        "save": "Cha",
+        "potable": "Yes"
     },
     {
         "id": "6f4c9ac8",
         "name": "Banishmentism",
+        "easyname": "Banish",
         "level": 2,
         "sources": "30c0e851,478e7171",
         "shape": "Touch",
@@ -1578,11 +1763,13 @@
         "empowered": "The creature returns to where it came from immediately.  The creature may instead lose 25 Verve to ignore this effect.",
         "empoweredcost": 8,
         "empoweredduration": "Instant",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "No"
     },
     {
         "id": "42717cb1",
         "name": "Scry",
+        "easyname": "Scry",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Special",
@@ -1595,11 +1782,13 @@
         "empowered": "You no longer incur a penalty if scrying someone you have not met, and the Ritual Casting time is reduced to 15 minutes.",
         "empoweredcost": 16,
         "empoweredduration": "Short",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "No"
     },
     {
         "id": "0006f618",
         "name": "Divinatory",
+        "easyname": "Divination",
         "level": 3,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "Self",
@@ -1612,11 +1801,13 @@
         "empowered": "You may recast the spell about a specific question, goal, or outcome more than once.",
         "empoweredcost": 22,
         "empoweredduration": "Round",
-        "save": "Highest"
+        "save": "Highest",
+        "potable": "No"
     },
     {
         "id": "226bd215",
         "name": "Detectionarium",
+        "easyname": "Detection",
         "level": 1,
         "sources": "30c0e851,478e7171,b5332003,e86f9780",
         "shape": "SVT",
@@ -1629,12 +1820,14 @@
         "empowered": "When detecting an energy or magic, this range at which this works doubles again, for a total of 8 times an Aura size, and you may detect up to DC 6.",
         "empoweredcost": 4,
         "empoweredduration": "Short",
-        "save": "Wis"
+        "save": "Wis",
+        "potable": "Yes"
     },
     {
         "id": "3425eb37",
-        "name": "Mend & refresh",
-        "level": 9,
+        "name": "Refreshing",
+        "easyname": "Mend",
+        "level": 1,
         "sources": "30c0e851,478e7171",
         "shape": "Touch",
         "cantrip": "You create tiny little brushes and needles with your magics, sewing, repairing and mending items.  You mend an item up to DC 1, but cannot mend weapons or armours.",
@@ -1646,11 +1839,13 @@
         "empowered": "You mend an item up to DC 2, or mend a non-magical weapon or piece of armour.",
         "empoweredcost": 3,
         "empoweredduration": "Instant",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "e733fb5a",
         "name": "Temporal Haltum",
+        "easyname": "Time Stop",
         "level": 4,
         "sources": "478e7171,e86f9780",
         "shape": "Self",
@@ -1663,11 +1858,13 @@
         "empowered": "The limitation on the types of spells you can cast and items you can use is lifted.  Spells that you cast will also trap in time and resolve once the spell ends.  However, when casting this spell Overpowered, Roll a d20.  On a Raw Roll of 7- your spell resolves as the Standard Effect, including the Mana cost, instead.",
         "empoweredcost": 24,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "No"
     },
     {
         "id": "9fc57e29",
         "name": "Gravitum",
+        "easyname": "Gravity",
         "level": 3,
         "sources": "478e7171,e86f9780",
         "shape": "Aura",
@@ -1680,7 +1877,8 @@
         "empowered": "The chosen effects are modified:  1) Increase Gravity: Flying creatures and creatures in the air are slammed to the ground, incurring 5 Verve Loss per sq. they fall.  No creature can leave the ground while in the aura.  All creatures who did not get slammed incur 10 Verve Loss per turn, which is reduced by 2 Verve Loss per square they moved this turn.  2) Decrease Gravity: Climbing automatically succeeds.  Jumping distance is increased by 20sq.  No downward gravity is applied to any creature, so upward vertical motion is only slowed by friction.",
         "empoweredcost": 15,
         "empoweredduration": "Short",
-        "save": "None"
+        "save": "None",
+        "potable": "Yes"
     },
     {
         "id": "6d13d937",

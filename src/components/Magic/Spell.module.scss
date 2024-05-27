@@ -2,8 +2,10 @@
 
 // When the list item is in Spell Format
 .spellLayout {
+	--gap: calc(0.5 * var(--padding-standard));
+
 	@extend .gridLayoutStandard;
-	gap: calc(0.5 * var(--padding-standard));
+	gap: var(--gap);
 
 	.name,
 	.cost {
@@ -28,6 +30,13 @@
 		}
 	}
 
+	.easyName {
+		grid-column: 1 / 6;
+		grid-row: 2;
+		margin-top: calc(var(--gap) * -1);
+		font-style: italic;
+	}
+
 	.cost {
 		grid-row: 1;
 		grid-column: 5;
@@ -46,7 +55,7 @@
 	.effects {
 		display: flex;
 		gap: calc(var(--padding-standard) / 2);
-		grid-row: 3;
+		grid-row: 4;
 		grid-column: 1 / 6;
 		flex-direction: column;
 		padding-top: 10px;
@@ -90,12 +99,18 @@
 	}
 
 	.mechanics {
-		grid-row: 2;
+		grid-row: 3;
 		grid-column: 1 / 6;
 
 		display: flex;
 		gap: calc(var(--padding-standard) / 2);
 		font-weight: 600;
+		justify-content: space-between;
+
+		.leftMechanics {
+			display: flex;
+			gap: calc(var(--padding-standard) / 2);
+		}
 
 		.challengeType,
 		.range {
@@ -107,6 +122,11 @@
 				width: 20px;
 				height: 20px;
 			}
+		}
+
+		.potable {
+			width: 20px;
+			opacity: 0.5;
 		}
 	}
 }

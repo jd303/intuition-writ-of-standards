@@ -17,8 +17,8 @@
         "charge": 2,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Physical | A pecking attack while stationary. | 10 | 0.5 | 0.5 --\n\nSwoop | Melee | 1 | Physical | Moves up to 5sq from above and attacks with a swooping attack.  If not dodged, gain an additional Basic Melee Attack. | 12 | 0 | 0.5",
-        "resistances": "Zephyral",
-        "weaknesses": "Electric",
+        "resistances": "ZephRes(3)",
+        "weaknesses": "ElecWeak(3)",
         "properties": "Flight (10sq.)"
     },
     {
@@ -59,8 +59,8 @@
         "charge": 0,
         "stagger": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Pyral | Nips and crunches of its flaming body. | 15 | 0.5 | 0.5 --\n\nBasic Attack | Ranged | 0 | Pyral | A spit of a boiling stinger. | 12 | 0.5 | 0.5",
-        "resistances": "Pyral+",
-        "weaknesses": "Cryonic+",
+        "resistances": "PyRes(10)",
+        "weaknesses": "CryRes(-5)",
         "properties": "Flying",
         "description": "Preferring hot, arid, desert areas, the Flambug and its cousin the Flamebeetle are forces to be reckoned with.  Normally habitating underground, the bugs are lured out when their homes are too wet, or on particularly hot days, when it comes to absorb the heat of the sun before retreating back again."
     },
@@ -82,8 +82,8 @@
         "charge": 2,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Pyral | A goring buck of its strong facial horn. | 20 | 0.5 | 0.5 --\n\nShort Burst | Melee | 0 | Pyral | When faced with a creature who dodges, the Flamebeetle will switch to its pyral burst. | 12 | 0.5 | 0 --\n\nDump and burn | Melee | 2 | Pyral | The Flamebeetle, when flying, will flyover people in a straight line. | 30 | 0 | 0.5 --\n\nBurning Veins | Melee | 2 | Pyral | The Flamebeetle lashes out with 2 hidden burning pincers, injecting a target with liquid fire.  If not resisted, the target gains the Burning Status, which they cannot put out, as well as the Poisoned (DC3) Status.  | 0 | 0 | 0 | Dex",
-        "resistances": "Pyral+,\nPhysical",
-        "weaknesses": "Cryonic+",
+        "resistances": "PyRes(5),\nPRes(3)",
+        "weaknesses": "CryRes(-2)",
         "description": "Preferring hot, arid, desert areas, the Flambug and its cousin the Flamebeetle are forces to be reckoned with.  Normally habitating underground, the bugs are lured out when their homes are too wet, or on particularly hot days, when it comes to absorb the heat of the sun before retreating back again."
     },
     {
@@ -104,8 +104,8 @@
         "charge": 2,
         "stagger": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Cryal, Poison | A snap of its cold-tipped teeth, or a constriction of its freezing body. | 25 | 0.5 | 0.5 --\n\nIceburst | Melee | 2 | Cryal | Emits a powerful icy blast on the ground around it, causing everyone to gain the Chilled Status.  Additionally, walking on the surface requires saves each round or fall prone. | 25 | 0.5 | 0.5 | Con/Dex",
-        "resistances": "Cryonic+, Physical",
-        "weaknesses": "Pyral",
+        "resistances": "CryRes(10), PRes(2)",
+        "weaknesses": "PyRes(-3)",
         "properties": "Climb -- Grapple"
     },
     {
@@ -126,7 +126,7 @@
         "charge": 2,
         "stagger": 1,
         "combatmoves": "Basic Attack | Ranged | 0 | Electric | A short range zap of electricity. | 10 | 0.5 | 0.5 --\n\nChain Shock | Ranged | 2 | Electric | A short range zap of electricity that arcs to 5 additional targets within 3 squares, and can repeat to targets its hit before. | 10 | 0 | 0.5 --\n\nStatic Charge | Special | 1 | Special | 2 Dooks with at least 1 charge rub together, applying +1 charge to all other Dooks. | 0 | 0 | 0",
-        "resistances": "Electric+",
+        "resistances": "ElecRes(3)",
         "properties": "Burrow -- Tiny"
     },
     {
@@ -147,7 +147,7 @@
         "charge": 2,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Electric | The mere touch of this creature applies lightning.  Only avoiding it can help ignore some of the Verve Loss. | 25 | 0 | 0.5 --\n\nSpitshock | Ranged | 0 | Electric | A glob of electrified goo which can hit people in a 2x2 Shape. | 25 | 0.5 | 0.5 --\n\nShocking Contact | Melee | 1 | Electric | The Shaxl twists its body to apply its basic attacks to multiple nearby creatures. | 25 | 0 | 1",
-        "resistances": "Electric+, Physical",
+        "resistances": "ElecRes(3), PRes(2)",
         "properties": "Agile -- Spiderclimb"
     },
     {
@@ -168,8 +168,8 @@
         "charge": 3,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Sonic | A blast of sonic as a cone shape.  Everything within is affected. | 20 | 0.5 | 0 --\n\nBasic Ranged Attack | Ranged | 0 | Sonic | A blast of sonic as a beam shape.  Everything within is affected. | 20 | 0.5 | 0 --\n\nDeafening | Ranged | 1 | Sonic | Emits a sound to all within earshot so high-pitched that it cannot be heard, but applies the Deafened Status. | 20 | 0 | 0 | Con --\n\nWeirding Ray | Ranged | 2 | Sonic | Emits a ray at a single target.  If they do not Resist, they gain the Deafened, Stunned and Confused Status. | 20 | 0 | 0 | Wis",
-        "resistances": "Sonic+",
-        "weaknesses": "Zephyral",
+        "resistances": "SonRes(10)",
+        "weaknesses": "ZephRes(-5)",
         "properties": "Stealth -- Flying (10sq). -- StartCharge (1) -- StepMove -- Sonic Communication",
         "description": "A frighteningly large, but rare, dragonfly bee creature.  Never straying too far from the Hive, the Sonusting Swarm attempts to propogate by biting off the flesh of creatures and amassing it in their tree-bound hives.  The Drone is designated for carrying the flesh, while the warriors take down the preys.  The Matron Sonusting coats the flesh in a honey, making it too acidic to eat."
     },
@@ -254,8 +254,8 @@
         "charge": 2,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Luminal | A cut from its bright claws. | 8 | 0.5 | 0.5 --\n\nCiar Eruption | Ranged | 2 | Luminal | Erupts in an Aura Shape, applying the Ciar Font Status. | 0 | 0 | 0 | None",
-        "resistances": "Luminal",
-        "weaknesses": "Umbral,\nArcanic"
+        "resistances": "LumRes(10)",
+        "weaknesses": "UmRes(-2),\nArcRes(-5)"
     },
     {
         "id": "4106660d",
@@ -275,8 +275,8 @@
         "charge": 2,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Luminal | A cut from its bright claws. | 10 | 0.5 | 0.5 --\n\nFlow Spell | Cast | 1 | Can cast Corpus Hastum, Mirrorising Image, Energistic Cone (Radiant, 2d6) . | 0 | 0.5 | 0.5 --\n\nCiar Eruption | Ranged | 2 | Luminal | Erupts in an Aura Shape, applying the Ciar Font Status. | 0 | 0 | 0 | None",
-        "resistances": "Luminal",
-        "weaknesses": "Umbral,\nArcanic",
+        "resistances": "LumRes(10)",
+        "weaknesses": "UmRes(-2),\nArcRes(-5)",
         "properties": "Flying"
     },
     {
@@ -297,8 +297,8 @@
         "charge": 3,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Physical | A pummel of its iron fists, applying 2 attacks to the same target. | 16 | 0.5 | 0.5 --\n\nBasic Attack | Ranged | 0 | Physical | A slashing whir of shrapnel that hits wildly in a cone shape. | 15 | 0.5 | 0 --\n\nVivid Fear | Ranged | 2 | Psychic | A revelation of splendorous horror relives the greatest fears of all within its sight, applying Verve Loss and the Terrified Status. | 16 | 0 | 0 | Wis --\n\nSelf-repair | Special | 3 | Special | The Alumental completely repairs itself, even from catastrophic damage. | 0 | 0 | 0",
-        "resistances": "Physical, Umbral, Luminal, Cryonic, Zephyral, Pyral",
-        "weaknesses": "Arcanic, Sonic",
+        "resistances": "PRes(10), UmRes(5), LumRes(5), CryRes(5), ZephRes(5), PyRes(5)",
+        "weaknesses": "ArcRes(-5), SonRes(-5)",
         "properties": "Unstoppable -- Unkillable (see desc)",
         "description": "A fierce and terrifying creature.  The Alumental Construct is a living engine, powered by magical energies placed into a cage within it chest cavity.  The Alumental is a thing of both magic and engineering, being sculpted largely of clay and metal, but powered by The Flow.\n\nWhile not expensive to make, they are extremely expensive to power, as they require a source of Divination Magic, and Elemental Magic, and require a name to be placed alongside the magic in its chest, written on the leather of a draconic creature, which does not burn like the other items.  \n\nThe construct will seek and destroy the named target it has written.  While within its detecting range (variable due to the strength of the divination magics it has been provided), it will know where you are, and will expend its magics to power itself.  The magics can last months to years.  \n\nDue to the burning effect of the divination and elemental magics, people who attempt to stop or approach Alumentals experience vivid hallucinations of their past and future, wreathed in the elemental magic that was added.\n\nThe only way to truly destroy the Alumental is to find its Core Instructions in the deepest of its hearts, plunging your hand into the wet, oily, blood-like chambers of machinery and braving the very dangers that lie within.  Attempting to dismantle takes too long, it will reform with Self-Repair."
     },
@@ -320,13 +320,13 @@
         "charge": 3,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Physical | A slam attack with powerful earthen fists. | 6 | 0.5 | 0.5 --\n\nSlam | Melee | 2 | Physical | The Gigan slams its fists into the earth, dealing massive damage in a Volume Shape. | 14 | 0.5 | 0 -- \n\nBoulder Throw | Ranged | 3 | Physical | The Gigan pulls a chunk of itself off for a terrible throw. | 20 | 0 | 0.5 --\n\nChunk | Special | 2 | Physical | The Gigan wreathes itself in tough rock, becoming immune to damage and travelling anywhere through stone. | 0 | 0 | 0 --\n\nCrust | Special | 2 | Physical | The Gigan wreathes itself in tough rock, gaining UDR 5. | 0 | 0 | 0",
-        "resistances": "Physical",
-        "weaknesses": "Arcanic",
+        "resistances": "PRes(5)",
+        "weaknesses": "ArcRes(-2), SonRes(-2)",
         "properties": "Grapple -- EarthWalk -- Unflankable"
     },
     {
         "id": "c811e38d",
-        "name": "Nephir, Lesser",
+        "name": "Nephir, Umbral, Lesser",
         "type": "Arcanic",
         "dc": 1,
         "speed": 4,
@@ -341,10 +341,78 @@
         "verve": 16,
         "charge": 0,
         "stagger": 1,
-        "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applied the Energy Critical Effect. | 6 | 0.5 | 0.5",
-        "resistances": "Varies",
-        "weaknesses": "Varies",
+        "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applies the Umbral Critical Effect. | 6 | 0.5 | 0.5",
+        "resistances": "UmRes(10)",
+        "weaknesses": "LumRes(-5)",
+        "properties": "DarknessAura",
         "description": "The Nephir are created from pure energy to serve their masters.  Lacking a will of thier own, but reasonable intelligence, they make for excellent servants.  Some magical schools are attempting, and have succeeded, to create these impish creatures.  They have begun to live in fairytales of warning."
+    },
+    {
+        "id": "27c82a58",
+        "name": "Nephir, Pyral, Lesser",
+        "type": "Arcanic",
+        "dc": 1,
+        "speed": 4,
+        "size": "Small",
+        "image": "nephir.pyral.webp",
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1,
+        "verve": 16,
+        "charge": 0,
+        "stagger": 1,
+        "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applies the Pyral Critical Effect. | 6 | 0.5 | 0.5",
+        "resistances": "PyRes(10)",
+        "weaknesses": "CryRes(-5)",
+        "properties": "CoolingAura",
+        "description": "The Nephir are created from pure energy to serve their masters.  Lacking a will of thier own, but reasonable intelligence, they make for excellent servants.  Some magical schools are attempting, and have succeeded, to create these impish creatures.  They have begun to live in fairytales of warning."
+    },
+    {
+        "id": "eb451489",
+        "name": "Nephir, Cryonic, Lesser",
+        "type": "Arcanic",
+        "dc": 1,
+        "speed": 4,
+        "size": "Small",
+        "image": "nephir.cryonic.webp",
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1,
+        "verve": 16,
+        "charge": 0,
+        "stagger": 1,
+        "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applies the Cryonic Critical Effect. | 6 | 0.5 | 0.5",
+        "resistances": "CryRes(10)",
+        "weaknesses": "PyRes(-10)",
+        "properties": "WarmingAura",
+        "description": "The Nephir are created from pure energy to serve their masters.  Lacking a will of thier own, but reasonable intelligence, they make for excellent servants.  Some magical schools are attempting, and have succeeded, to create these impish creatures.  They have begun to live in fairytales of warning."
+    },
+    {
+        "id": "9e804cd7",
+        "name": "Spellforme",
+        "type": "Arcanic",
+        "dc": 3,
+        "speed": 5,
+        "size": "Medium",
+        "strength": 1,
+        "dexterity": 4,
+        "constitution": 3,
+        "intelligence": 5,
+        "wisdom": 5,
+        "charisma": 4,
+        "verve": 60,
+        "charge": 4,
+        "stagger": 2,
+        "combatmoves": "Basic Attack | Melee | 0 | Arcanic | 2 Physical attacks ending in a magical streak and burst. | 14 | 0.5 | 0.5 --\n\nOvercharge | Special | 2 | Special | Overcasts the spell it's based on in a spectacular way | 0 | 0 | 0",
+        "resistances": "ArcRes(10)",
+        "properties": "Casts Self Spell Free Action",
+        "description": "A spell taken life, like Roisendahla do, though compressed into a much faster timeline.  Spellformes are embodiments of a spell, and so their abilites vary and are based around the spell that created them.\n\nBeing rapid new life formes, Spellformes are confused and erratic, searching for meaning and understanding.  This makes them aggressive whe threatened, and withdrawn when confused.  They are highly succeptible to a combination of the Charmative and Lingua Comprehensus spells."
     },
     {
         "id": "0e89510e",
@@ -362,9 +430,10 @@
         "charisma": 4,
         "verve": 125,
         "charge": 5,
+        "stagger": 3,
         "combatmoves": "Release Crows | Melee | 0 | Special | Releases 25 Crows from its chest that peck and swoop. | 0 | 0 | 0 --\n\nDirect Crows | Special | 0 | Special | Grants 3 Crows an additional Action. | 0 | 0 | 0 --\n\nStride | Melee | 0 | Physical | Slowly and methodically strides through player squares damaging all in its way. | 10 | 0.5 | 0.5 --\n\nEnhance Crows | Melee | 2 | Buff | Increases the Verve Loss of its Crows by 6, their MoveSq by 2, and their Attributes by 1. | 0 | 0 | 0 --\n\nCorvus Maelstrom | Melee | 2 | Buff | If there are at least 5 Crows, it summons them for a devastating storm of crows in an Aura around it. | 40 | 0.5 | 0",
-        "resistances": "Umbral, Zephyral",
-        "weaknesses": "Luminal, Pyral",
+        "resistances": "UmRes(10), ZephRes(10)",
+        "weaknesses": "LumRes(-5), PyRes(-5)",
         "properties": "Blind -- Immune to Mental -- Immune to Root",
         "description": "A crow-like creature made of sinewy flesh and what looks like a metal birdcage in its chest.  It has no eyes of its own, so it releases creatures resembling crows from its chest.  It eats carrion flesh and bird feathers to make new crows, and it constantly needs to feed as its crow children live but a few lapses.\n\nIt is an avid collector, wishing to find its little pretties - sometimes valuable, sometimes worthless, its whims are indecipherable.  It acts seemingly without reason and certainly without panic; if faced in combat, it will release its crows and, unless those it faces has it's treasure or it needs to feed, it will continue on its way, through people if it needs to.  When particularly threatened, however, it will release its great Corvus Maelstrom."
     },
@@ -386,7 +455,7 @@
         "charge": 0,
         "stagger": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Umbral | A peck, red eyes, black feathers, and flecked with dark energies. | 15 | 0.5 | 0.5",
-        "resistances": "Zephyral",
+        "resistances": "ZephRes(5)",
         "properties": "Flying -- SplitMove"
     },
     {
@@ -407,7 +476,7 @@
         "charge": 3,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Poison | A biting attack.  Also applies a DC2 Poison. | 18 | 0.5 | 0.5 | Con --\n\nWeb | Ranged | 0 | Special | Shoots a web in a Volume Shape which removes the Relocate Movement of those who fail to Save, and halves the movement of those who do. | 0 | 0 | 0 | Str --\n\nSpawn | Special | 2 | Summoning | The Mothergrell's thorax splits with a weeping blue ichor, releasing 5 swarms of Grellspiders. | 0 | 0",
-        "resistances": "Poison, Acidic",
+        "resistances": "PoiRes(5), AcRes(5)",
         "properties": "Jump -- SpiderClimb -- ChargeOnHit (1)"
     },
     {
@@ -428,7 +497,7 @@
         "charge": 0,
         "stagger": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Poison | A biting attack from a swarm of chittering spiders about your person. | 6 | 0.5 | 0",
-        "weaknesses": "Pyral",
+        "weaknesses": "PyRes(-5)",
         "properties": "Jump -- SpiderClimb"
     },
     {
@@ -448,7 +517,7 @@
         "verve": 30,
         "charge": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Physical | Flicks its agile legs out for a scraping attack. | 15 | 0.5 | 0.5 --\n\nGrasped | Melee | 1 | Physical | Grasps onto an opponent, and only killing it will make it let go.  Can climb all over its target, and while attached it gets 2 Basic Attacks. | 15 | 0.5 | 0.5 | Str",
-        "weaknesses": "Zephyral, Sonic",
+        "weaknesses": "ZephRes(-5), SonRes(-2)",
         "properties": "Agile",
         "description": "A horrific creature of clawed legs, which is surprisingly small and light.  It’s signature move is to grasp its prey’s body with one leg, straighten it so that its own body is perpendicular, and to crush with its grasping leg and slash with its others.  It can also climb about its prey body, often also seen climbing up and grasping its prey’s shoulder instead."
     },
@@ -470,8 +539,8 @@
         "charge": 3,
         "stagger": 4,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Umbral | A whip-lash flick of each of its tentacles. | 15 | 0.5 | 0 --\n\nGrowth | Melee | 1 | Special | The Detwrack bursts 2 new tentacles from the ground, or grows 2 out to additional locations. | 0 | 0 | 0 --\n\nNoxious Fumes | Special | 2 | Special | The Detwrack emits a noxious black gas, applying the Sickened Status. | 0 | 0 | 0 | Con --\n\nConsume | Melee | 2 | Special | The Detwrack wraps its tentacles around a creature with the Dying Status, draining it of 10 Verve, causing it to fail its next Stabilise Move, and Restoring 20 Verve to the Detwrack. | 0 | 0 | 0 --",
-        "resistances": "Umbral+, Cryonic, Physical",
-        "weaknesses": "Luminal",
+        "resistances": "UmRes(10), CryRes(10), PRes(3)",
+        "weaknesses": "LumRes(-3)",
         "properties": "Threat3Sq -- Start 3 Tentacles",
         "description": "A force of neither good nor evil, the Detwrack feeds on death, decomposing corpses and death that it finds."
     },
@@ -493,8 +562,8 @@
         "charge": 3,
         "stagger": 4,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Umbral | A whip-lash flick of each of its tentacles. | 28 | 0.5 | 0 --\n\nGrowth | Melee | 1 | Special | The Detwrack bursts 4 new tentacles from the ground, or grows 2 out to additional locations. | 0 | 0 | 0 --\n\nNoxious Fumes | Special | 1 | Special | The Detwrack emits a noxious black gas, applying the Sickened Status. | 0 | 0 | 0 | Con --\n\nConsume | Melee | 2 | Special | The Detwrack wraps its tentacles around a creature with the Dying Status, draining it of 10 Verve, causing it to fail its next Stabilise Move, and Restoring 20 Verve to the Detwrack, plus adding 1 Charge. | 0 | 0 | 0 --",
-        "resistances": "Umbral+, Cryonic, Physical",
-        "weaknesses": "Luminal",
+        "resistances": "UmRes(15), CryRes(10), PRes(5)",
+        "weaknesses": "LumRes(-5)",
         "properties": "Threat3Sq -- Start 6 Tentacles",
         "description": "A force of neither good nor evil, the Detwrack feeds on death, decomposing corpses and death that it finds."
     },
@@ -516,8 +585,8 @@
         "charge": 5,
         "stagger": 2,
         "combatmoves": "Basic Attack | Ranged | 0 | Psychic | Migranic attacks assault your very identity. | 16 | 0 | 0 --\n\nPsychic Link | Ranged | 1 | Psychic | Psychically links 2 enemies.  When one receives Verve Loss due to Psychic, so does the other. | 10 | 0 | 0 | Cha --\n\nIntellect Assault | Ranged | 1 | Special | Applies its choice of the Dazed, Frightened or Confused Status. | 10 | 0 | 0 | Int --\n\nIdswell | Self | 2 | Special | Gains +3 Charge. | 0 | 0 | 0",
-        "resistances": "Psychic, Cryonic",
-        "weaknesses": "Electric, Physical",
+        "resistances": "PsyRes(10), CryRes(5)",
+        "weaknesses": "ElecRes(-3), PRes(-3)",
         "properties": "Psychic Communication",
         "description": "The Nostagian Idbeasts are a creature formed of pure Intellect and Psychic Resonance.  Some say they are the result of nearing the Scintellating Horizon, as they appeared not long after Psionics were propagated.  It is uncertain whether these creatures are of our world.\n\nIdbeasts are attracted to areas of heightened emotion and intellect.  Thankfully the Prescintellate keeps their threat at bay."
     },
@@ -539,8 +608,8 @@
         "charge": 3,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Psychic | A bite from a dog like creature whose eyes penetrate the soul. | 18 | 0 | 0 --\n\nBlink | Ranged | 1 | Psychic | As a Free Action, teleports to anywhere within perception. | 10 | 0 | 0 --\n\nHowl | Ranged | 1 | Special | Lets out a soul-wrenching howl.  Any who perceive gain the Bound Status. | 10 | 0 | 0 | Int --\n\nIdswell | Self | 2 | Special | Gains +3 Charge. | 0 | 0 | 0",
-        "resistances": "Psychic, Cryonic",
-        "weaknesses": "Electric",
+        "resistances": "PsyRes(10), CryRes(5)",
+        "weaknesses": "ElecRes(-3)",
         "properties": "Agile -- StepMove",
         "description": "The Nostagian Idbeasts are a creature formed of pure Intellect and Psychic Resonance.  Some say they are the result of nearing the Scintellating Horizon, as they appeared not long after Psionics were propagated.  It is uncertain whether these creatures are of our world.\n\nIdbeasts are attracted to areas of heightened emotion and intellect.  Thankfully the Prescintellate keeps their threat at bay."
     },
@@ -562,8 +631,8 @@
         "charge": 1,
         "stagger": 1,
         "combatmoves": "Basic Attack | Ranged | 0 | Psychic | Migranic attacks assault your very identity. | 10 | 0 | 0 --\n\nPsychic Link | Ranged | 1 | Psychic | Psychically links 2 enemies.  When one receives Verve Loss due to Psychic, so does the other. | 10 | 0 | 0 | Cha --\n\nCranium Leech | Melee | 1 | Psychic | Latches to an opponent's head and leeches their intellect. | 20 | 0 | 0 | Int --",
-        "resistances": "Psychic, Cryonic",
-        "weaknesses": "Electric",
+        "resistances": "PsyRes(10), CryRes(5)",
+        "weaknesses": "ElecRes(-3)",
         "properties": "Agile -- StepMove",
         "description": "The Nostagian Idbeasts are a creature formed of pure Intellect and Psychic Resonance.  Some say they are the result of nearing the Scintellating Horizon, as they appeared not long after Psionics were propagated.  It is uncertain whether these creatures are of our world.\n\nIdbeasts are attracted to areas of heightened emotion and intellect.  Thankfully the Prescintellate keeps their threat at bay."
     },
@@ -585,8 +654,8 @@
         "charge": 5,
         "stagger": 1,
         "combatmoves": "Basic Attack | Melee | 0 | Psychic | An assault on your id to assail your senses.  Applies the Blind and Deafened Statuses. | 5 | 0 | 0 | Cha --\n\nIllusory Form | Special | 1 | Special | Creates a complex illusion, allowing the Maladite to adopt the shape of any creature or item, and can mask its movements as well. | Na | 0 | 0 | Cha --\n\nDearest | Special | 5 | Special | Bonds to you, and becomes the object of your most intense desire, and you will fight for it with your life if it is threatened. | Na | 0 | 0 | Cha",
-        "resistances": "Psychic, Umbral, Luminal",
-        "weaknesses": "Electric, Arcanic",
+        "resistances": "PsyRes(15), UmRes(10), LumRes(10)",
+        "weaknesses": "ElecRes(-3), ArcRes(-3)",
         "properties": "UnGrappleable -- ShrinkSelf",
         "description": "A creature that mimics the form of something that a humanoid wants, and which will bring it close.  For this reason, it often turns into children and clothing.  Jewellry is too small.  When alone, it transforms parts of itself back to a leeching black oozing mass, and drains the parent of their life force.  The drained can never see the true form, and become fascinated and overprotective of the Maladite, so much that they will protect it with their life.\n\nThe Maladite has extreme physical and magical resistance to those that cannot truly see it.  Magical divinations, detections and illusion dispels are twisted, such that the magic user knows that something is up, but cannot glean real information about it.\n\nThey say the Maladite’s true form can be seen freely by one who truly wants for nothing.  And those who want more find themselves less able to see it."
     },
@@ -608,10 +677,33 @@
         "charge": 4,
         "stagger": 3,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Umbral | 5 Attacks at those within its Threatening Range. | 25 | 0.5 | 0.5 --\n\nSweep Trip | Melee | 0 | Physical, Umbral | A sweeping attack in a semi-circle Aura Shape, dealing damage and tripping those who fail to Resist. | 30 | 0 | 0 | Dex --\n\nCarrion Collect | Melee | 2 | Special | Grasps a combatant in its retracting bone leg and places it within the cage in its chest. | 0 | 0 | 0 | Str --\n\nDocility | Melee | 0 | Psychic | As a Free Action, attempts to dull the minds of those in its cage, who gain the Bound and Stunned Statuses. | 0 | 0 | 0 | Int",
-        "resistances": "Umbral, Cryonic, Physical",
-        "weaknesses": "Luminal",
+        "resistances": "UmRes(5), CryRes(5), PRes(5)",
+        "weaknesses": "LumRes(-3)",
         "properties": "Threat4Sq -- Thorns (Bone, 6 Verve) -- URes5 (Legs + Underbelly)",
         "description": "A product of Ihn’egretcal Flow coalescing and festering, the Carrion Collector is an amalgamation of other bones of creatures forming into a tall, long-legged creature.  It lives in dark spaces, sometimes creating a burrow, and slowly feeds on the bones it has collected.  However when the bone hoard is used up, it needs to hunt.  This is usually as little as once every few years, but the event is horrific.  It clambers and climbs and hides where it can, striking at travellers and smaller villages, and harvests their bodies - alive or dead - storing them in its bone-cage body to take back to its nest."
+    },
+    {
+        "id": "815dacfe",
+        "name": "Remembrance",
+        "type": "Undead",
+        "dc": 3,
+        "speed": 2,
+        "size": "Medium",
+        "image": "remembrance.jpg",
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 5,
+        "intelligence": 4,
+        "wisdom": 1,
+        "charisma": 3,
+        "verve": 50,
+        "charge": 2,
+        "stagger": 2,
+        "combatmoves": "Prepare | Ranged | 0 | Special | Grapples an opponent, using Wisdom for defence. | 0 | 0 | 0 | Wis --\n\nInvisibility | Aura | 0 | Special | Applies to all creatures it is aware of in 50m. If recipients fail their save, the Remembrance becomes invisible and undetectable. | 0 | 0 | 0 | Cha --\n\nMemory Overlay | Melee | 1 | Special | Surfaces a memory of a creature it overlaps with, and inserts itself into a beneficial moment of that memory.  If successful, the recipient gains the Dissuaded and Confused Statuses (when performing actions against the Remembrance), but the Remembrance's PRes reduces by 5 as it solidifies. | 0 | 0 | 0 | Cha --\n\nScream | Ranged | 1 | Psychic | If Memory Overlays stop working, will emit Psychic Screams as an Aura. | 15 | 0 | 0 | Cha",
+        "resistances": "PRes(25)",
+        "weaknesses": "PsyRes(-5)",
+        "properties": "Ethereal",
+        "description": "The Remembrance is the echoing resonance of a Psionic whose life was cut short by violent magics while they manifested Telepathy or Clairvoyance.  The resultant creature is not truly deceased, not truly Undead, but a simalacrum of life with all the same properties.  They cannot remember who they are, and so take the form of someone they see at their death or near after, though there is something off about their look, and they imitate them poorly.\n\nThe Remembrance has a deep urge to remember, and so they use the remants of their psionic abilities to insert memories of their new forme into those around them, in the hopes of building a new existence.  Initially this is done by overlapping their ethereal form with another, and eventually they can do when near, and then afar.  Each time they do so successfully, they grow in power.\n\nParticularly powerful Remembrances - ones that have built themselves memories in the minds of others - have a chaotic, evil persona, and strive for larger and more wide-spread memories.\n\nThe ironic condition of the Remembrance is that the more it successfully uses Memory Overlay - it's preference when threatened into combat - the more it solidifies and becomes succeptible to physical attacks."
     },
     {
         "id": "530157e8",
@@ -631,7 +723,8 @@
         "charge": 0,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Physical | A mighty attack with their weapon. | 15 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | A mighty shot with a crossbow or bow. | 15 | 0.5 | 0.5",
-        "properties": "BattlefieldControl -- Trip -- Grapple -- Pres2"
+        "resistances": "Pres(3)",
+        "properties": "BattlefieldControl -- Trip -- Grapple"
     },
     {
         "id": "98577d74",
@@ -671,7 +764,7 @@
         "charge": 4,
         "stagger": 2,
         "combatmoves": "Basic Attack | Melee | 0 | Physical + Sonic / Physical + Zephyral | 3 Attacks to those with his Keen Blade. | 25 | 0.5 | 0.5 --\n\nDuel | Melee | 1 | Physical + Sonic / Physical + Zephyral | Engages someone in a duel, applying 4 attacks to them.  To disengage, they must Resist, but even if they do he gets a single Basic Attack against them. | 25 | 0.5 | 0.5 | Str/Dex --\n\nDistract | Melee | 1 | Special | Verrithen confuses and distracts his opponent, slipping out and away and gaining 6sq, as well as applying the Confused Status for 1 Round to all within sight. | 0 | 0 | 0 | Wis --\n\nManeuvre | Ranged | 2 | Luminal | The target loses Cautious, and Varrithen slips around behind to gain Flanking and stealth, and may perform a Sneak Attack. | 40 | 0.5 | 0.5 | Str/Dex",
-        "resistances": "Universal",
+        "resistances": "URes(10)",
         "properties": "OpportunityAttack -- Agile -- Stealth"
     }
 ]

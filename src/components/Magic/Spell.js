@@ -7,6 +7,7 @@ import CircledText from "../Components/CircledText/CircledText";
 import st from "./Spell.module.scss";
 import target from "../../assets/images/icons/ico.target.svg";
 import timeIcon from "../../assets/images/icons/ico.clock.svg";
+import potionIcon from "../../assets/images/icons/ico.potion.black.svg";
 import mapPinIcon from "../../assets/images/icons/ico.map_pin.svg";
 
 /**
@@ -20,14 +21,20 @@ function Spell({ spell }) {
 	return (
 		<div className={st.spellLayout}>
 			<div className={st.name}><ListingTitle>{spell.name}</ListingTitle> <div className={st.spellLevel}>{spell.level}</div></div>
+			<div className={st.easyName}>{spell.easyname}</div>
 			<div className={st.mechanics}>
-				<div className={st.range}>
-					<img src={mapPinIcon} />
-					{spell.shape}
+				<div className={st.leftMechanics}>
+					<div className={st.range}>
+						<img src={mapPinIcon} />
+						{spell.shape}
+					</div>
+					{spell.save !== "None" && <div className={st.challengeType}>
+						<img src={target} />
+						{spell.save}
+					</div>}
 				</div>
-				{spell.save !== "None" && <div className={st.challengeType}>
-					<img src={target} />
-					{spell.save}
+				{spell.potable == "Yes" && <div className={st.potable}>
+					<img src={potionIcon} />
 				</div>}
 			</div>
 			<ul className={st.effects}>

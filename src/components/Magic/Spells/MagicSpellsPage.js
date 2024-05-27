@@ -30,8 +30,10 @@ function MagicSpellsPage() {
 	 * */
 	const source_data = useSelector(selectSourcesData);
 	const sourceFilterValues = { all: "All" };
+	const sourcePotableValues = { all: "All", potable: "Potable Only" };
 	source_data.forEach(source => sourceFilterValues[source.id] = source.name);
 	const [sourceFilterValue, setSourceFilterValue] = React.useState("all");
+	const [potableFilterValue, setPotableFilterValue] = React.useState("all");
 	const [titleSearchValue, setTitleSearchValue] = React.useState(localStorage.getItem('magic_spells_search') || '');
 
 	/**
@@ -50,6 +52,9 @@ function MagicSpellsPage() {
 				if (filterName == "source") {
 					setSourceFilterValue(filterValue);
 				}
+				if (filterName == "potability") {
+					setPotableFilterValue(filterValue);
+				}
 			break;
 		}
 	};
@@ -59,7 +64,9 @@ function MagicSpellsPage() {
 	 * */
 	const onFilterClear = () => {
 		setSourceFilterValue("all");
+		setPotableFilterValue("all");
 		setTitleSearchValue('');
+		localStorage.setItem('magic_spells_search', '');
 	};
 
 	/**
@@ -74,9 +81,14 @@ function MagicSpellsPage() {
 		let searchTerms = titleSearchValue.indexOf(',') == -1 ? titleSearchValue.toLowerCase() : titleSearchValue.toLowerCase().split(',');
 		if (searchTerms instanceof Array && searchTerms.length > 1) {
 			searchTerms = searchTerms.filter(term => term !== '');
-			return searchTerms.filter(term => spell.name.toLowerCase().indexOf(term) !== -1).length;
+			return searchTerms.filter(term => (spell.name + spell.easyname).toLowerCase().indexOf(term) !== -1).length;
 		}
-		else return spell.name.toLowerCase().indexOf(titleSearchValue.toLowerCase()) !== -1;
+		else return (spell.name + spell.easyname).toLowerCase().indexOf(titleSearchValue.toLowerCase()) !== -1;
+	}
+
+	const filterByPotable = (spell) => {
+		if (potableFilterValue == "all") return true;
+		else return spell.potable == "Yes";
 	}
 
 	/**
@@ -88,6 +100,10 @@ function MagicSpellsPage() {
 				name: "source",
 				values: sourceFilterValues,
 			},
+			{
+				name: "potability",
+				values: sourcePotableValues
+			}
 		],
 		search: [
 			{
@@ -108,7 +124,7 @@ function MagicSpellsPage() {
 			<PageTitle colour="purple">Spells</PageTitle>
 			<div className="mainContent">
 				<ListingWrapper filter={true} filters={filters}>
-					{spells.filter(filterBySource).filter(filterByTitle).map((spell, index) => (
+					{spells.filter(filterBySource).filter(filterByTitle).filter(filterByPotable).map((spell, index) => (
 						<Listing key={index}>
 							<Spell spell={spell} />
 						</Listing>

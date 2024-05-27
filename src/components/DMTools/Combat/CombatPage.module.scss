@@ -6,7 +6,8 @@
 		gap: var(--padding-standard);
 		justify-content: center;
 
-		button.minimalMode {
+		button.minimalMode,
+		button.quirksMode {
 			color: #fff;
 			background-color: rgb(var(--colour-bronze));
 		}
@@ -17,6 +18,21 @@
 		text-align: center;
 		font-style: italic;
 		margin-top: 5px;
+	}
+
+	.quirks {
+		display: none;
+		gap: var(--padding-standard);
+		justify-content: center;
+		margin-top: var(--padding-standard);
+
+		&.open {
+			display: flex;
+		}
+
+		.block {
+			text-align: left;
+		}
 	}
 
 	.monsters {
