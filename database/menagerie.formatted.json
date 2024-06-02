@@ -354,7 +354,7 @@
         "dc": 1,
         "speed": 4,
         "size": "Small",
-        "image": "nephir.pyral.webp",
+        "image": "nephir.pyral.png",
         "strength": 1,
         "dexterity": 1,
         "constitution": 1,
@@ -377,7 +377,7 @@
         "dc": 1,
         "speed": 4,
         "size": "Small",
-        "image": "nephir.cryonic.webp",
+        "image": "nephir.cryonic.png",
         "strength": 1,
         "dexterity": 1,
         "constitution": 1,
@@ -400,6 +400,7 @@
         "dc": 3,
         "speed": 5,
         "size": "Medium",
+        "image": "spellforme.webp",
         "strength": 1,
         "dexterity": 4,
         "constitution": 3,
@@ -784,9 +785,9 @@
         "verve": 80,
         "charge": 1,
         "stagger": 3,
-        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 10 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives  and shuriken. | 12 | 0.5 | 0.5 --\n\nPoisoning | Melee | 1 | Special | A prick of a DC 3 poison.  Dodging successfully ignores the attack. | 0 | 1 | 0 | Con --",
+        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 10 | 0.5 | 0.5 --\n\nDeath Throes | Melee | 0 | Physical | If the Striker is killed, they get a final round, lashing out with 5 erratic attacks. | 10 | 1 | 1 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives  and shuriken. | 12 | 0.5 | 0.5 --\n\nPoisoning | Melee | 1 | Special | A prick of a DC 3 poison.  Dodging successfully ignores the attack. | 0 | 1 | 0 | Con",
         "weaknesses": "PyRes(-3)",
-        "properties": "Raged Turn on Death -- Thorns3 -- Thorns5 Grapple"
+        "properties": "Thorns3 -- Thorns5 Grapple"
     },
     {
         "id": "610a45a1",
@@ -805,7 +806,7 @@
         "verve": 65,
         "charge": 2,
         "stagger": 2,
-        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 5 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Hand crossbow bolt strikes. | 12 | 0.5 | 0.5 --\n\nCast a Spell | Melee | 0 | Physical | Can cast: Vervatious Restorium, Energistic Cone, Corpus Detractum, Mentus Detractum, Corpus Constrictum, Darkenis. | 0 | 0 | 0 --\n\nEnrage | Melee | 2 | Special | Enrage their allies. | 0 | 0 | 0 | Na --",
+        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 5 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Hand crossbow bolt strikes. | 12 | 0.5 | 0.5 --\n\nCast a Spell | Melee | 0 | Physical | Can cast: Vervatious Restorium, Energistic Cone, Corpus Detractum, Mentus Detractum, Corpus Constrictum, Darkenis. | 0 | 0 | 0 --\n\nEnrage | Melee | 2 | Special | Enrage their allies. | 0 | 0 | 0 | Na",
         "weaknesses": "PyRes(-3)"
     }
 ]
