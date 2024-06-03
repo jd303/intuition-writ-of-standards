@@ -1514,6 +1514,15 @@
     },
     {
         "category": "combat",
+        "name": "Steady Attack (DEPRECATED)",
+        "id": "f0602587",
+        "type": "Mod",
+        "stamina": true,
+        "quick": false,
+        "description": "When resolving the Basic Melee Attack Move, you add your Bonus Damage Dice three times to your total applied Verve Loss.  DEPRECATED DUE TO REPETITION OF FURIOUS ATTACK"
+    },
+    {
+        "category": "combat",
         "name": "Shield Clang",
         "id": "ae4b67a3",
         "type": "Mod",
@@ -1727,15 +1736,6 @@
         "stamina": true,
         "quick": false,
         "description": "When resolving the Basic Melee Attack Move, your attack automatically criticals, and you take the maximum value of all rolls."
-    },
-    {
-        "category": "combat",
-        "name": "Steady Attack",
-        "id": "f0602587",
-        "type": "Mod",
-        "stamina": true,
-        "quick": false,
-        "description": "When resolving the Basic Melee Attack Move, you add your Bonus Damage Dice to all Basic Attacks this turn."
     },
     {
         "category": "combat",
@@ -2512,7 +2512,7 @@
         "type": "Primary",
         "stamina": false,
         "quick": false,
-        "description": "You attempt to recall common knowledge about non-magical health and wellbeing.  If you beat the DC, you may ask the DM one question.  You may only recall knowledge up to DC 2."
+        "description": "You attempt to recall common knowledge about non-magical health and wellbeing, and the methods for treating non-magical health and wellbeing conditions.  If you beat the DC, you may ask the DM one question or recall the knowledge of how to treat the condition.  You may only recall knowledge up to DC 2."
     },
     {
         "category": "knowledge",
@@ -2931,12 +2931,12 @@
     },
     {
         "category": "deception",
-        "name": "Crit Master",
+        "name": "Ghost",
         "id": "2648ce63",
-        "type": "Passive",
+        "type": "Mod",
         "stamina": true,
         "quick": false,
-        "description": "You ignore all Basic Attacks from one target this turn, and immediately resolve a Basic Melee Attack against your attacker."
+        "description": "If you are in a position to hide or disappear from someone's perception, or you have an item which facilitates this, then you Resolve the Stealth Move automatically and prepare yourself.  All basic attacks from enemies miss you until the start of your next turn.  As long as there was at least one attack aimed at you, you remove the Cautious Status from anyone who attacked you and you enter Stealth.  If you needed to use an item to facilitate your hide, you may use this as a Free Action and, unless it is very difficult to operate, it resolves successfully."
     },
     {
         "category": "deception",
@@ -3009,7 +3009,7 @@
         "type": "Primary",
         "stamina": false,
         "quick": false,
-        "description": "You've experienced disarming common traps in your past.  You can disarm traps up to DC 2 as per the Locksmith Engineering Move.  If you have 6 points in Subterfuge, this raises to DC 3, and again to DC4 at 10 points."
+        "description": "You've experienced disarming common traps in your past.  You can find and disarm traps up to DC 2 as per the Locksmith Engineering Move.  If you have 6 points in Subterfuge, this raises to DC 3, and again to DC4 at 10 points."
     },
     {
         "category": "deception",
@@ -3320,6 +3320,15 @@
     },
     {
         "category": "influence",
+        "name": "Flirt",
+        "id": "da2dd404",
+        "type": "Mod",
+        "stamina": false,
+        "quick": false,
+        "description": "You use your charm on someone who might be romantically interested in you, leveraging that interest to improve your Convince Move against them.  If your request could be improved by flirtation, you gain a +1 to your Roll to Resolve Convince."
+    },
+    {
+        "category": "influence",
         "name": "Duel",
         "id": "ceb8090b",
         "type": "Mod",
@@ -3462,7 +3471,7 @@
         "type": "Primary",
         "stamina": false,
         "quick": false,
-        "description": "You can use engineering to create and dismantle non-magical locks.  Creating a lock takes 1 day per DC of the lock.  Unlocking one takes 1 minute per DC."
+        "description": "You can use engineering to create and dismantle non-magical locks.  Creating a lock takes 1 day per DC of the lock.  Unlocking one takes 1 minute per DC.  The maximum DC of Lock you can create or dismantle is based on the number of points in Engineer: DC of 2 at 1 point, DC 3 at 3 points, DC 4 at 5 points, DC 5 at 7 points, and DC 6 at 9 points."
     },
     {
         "category": "engineering",
@@ -3471,7 +3480,7 @@
         "type": "Primary",
         "stamina": false,
         "quick": false,
-        "description": "You can use engineering to create and dismantle non-magical traps.  Creating a mechanical trap takes 1 day per DC of the trap.  Disarming one takes 1 minute per DC.  Creating or disarming a more natural trap takes only a minute to create or disarm."
+        "description": "You can use engineering to find, create and dismantle non-magical traps.  Creating a mechanical trap takes 1 day per DC of the trap.  Disarming one takes 1 minute per DC.  Creating or disarming a more natural trap takes only a minute to create or disarm.  The maximum DC of Trap you can find, create or dismantle is based on the number of points in Engineer: DC of 2 at 1 point, DC 3 at 3 points, DC 4 at 5 points, DC 5 at 7 points, and DC 6 at 9 points."
     },
     {
         "category": "engineering",
