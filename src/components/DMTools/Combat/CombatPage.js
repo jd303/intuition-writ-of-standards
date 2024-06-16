@@ -38,6 +38,7 @@ function CombatPage() {
 		updatedCreatures = updatedCreatures.map(creature => {
 			const newCreature = { ...creature };
 			newCreature.current_charge = Math.min(newCreature.max_charge, newCreature.current_charge + 1);
+			newCreature.turnTaken = false;
 
 			if (newCreature.statuses) {
 				newCreature.statuses = [...newCreature.statuses.map(status => { return { ...status } })];

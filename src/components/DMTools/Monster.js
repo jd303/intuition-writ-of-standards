@@ -113,7 +113,12 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 		const newMonster = { ...monster, statuses: statusesValue };
 		modifyMonster(newMonster);
 	}
-	
+
+	const toggleTurnTaken = () => {
+		const turnTaken = !monster.turnTaken;
+		const newMonster = { ...monster, turnTaken: turnTaken };
+		modifyMonster(newMonster);
+	}
 
 	const [imageLarge, setImageLarge] = useState(false);
 	const toggleImageLarge = () => setImageLarge(!imageLarge);
@@ -122,11 +127,11 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 	const toggleDesc = () => setDescShowing(!descShowing);
 
 	/**
-	 * CJSX
+	 * JSX
 	 * */
 	return (
 		<React.Fragment>
-			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || ''].join(' ')}>
+			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || '', monster.turnTaken && st.turnTaken || ''].join(' ')}>
 				<div className={[st.monsterDesc, descShowing ? st.on : ''].join(' ')} dangerouslySetInnerHTML={{ __html:monster.description?.replace(/\n/g, "<br>") }} onClick={toggleDesc}></div>
 				{statusVisible && <StatusPopup closePopup={() => setStatusVisible(false)} monster={monster} applyStatusOrDuration={applyStatusOrDuration} modifyStatusDuration={modifyStatusDuration} /> || <></>}
 				{addClick && (
@@ -140,6 +145,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 					<div className={st.subtitle}>
 						{monster.type}, DC {monster.dc}, {monster.size}
 						<span className={[st.identifier, st.hideWhenViewMode].join(' ')}><input className={st.subtleInput} value={monster.base} onChange={modifyBase} /></span>
+						<button className={[st.smallButton, st.hideWhenViewMode].join(' ')} onClick={toggleTurnTaken}>Turn Done</button>
 					</div>
 				</div>
 				<div className={st.metaBar}>

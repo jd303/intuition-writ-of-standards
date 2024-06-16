@@ -47,6 +47,10 @@
 		}
 	}
 
+	&.turnTaken {
+		opacity: 0.5;
+	}
+
 	h1,
 	h2,
 	h3,
@@ -367,5 +371,12 @@
 			display: flex;
 			gap: calc(0.5 * var(--padding-standard));
 		}
+	}
+
+	.smallButton {
+		height: 20px;
+		line-height: 20px;
+		padding: 0 8px;
+		font-size: 10px;
 	}
 }
