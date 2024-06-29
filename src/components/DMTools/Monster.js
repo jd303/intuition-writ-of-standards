@@ -126,12 +126,17 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 	const [descShowing, setDescShowing] = useState(false);
 	const toggleDesc = () => setDescShowing(!descShowing);
 
+	const [thisMinimalMode, setThisMinimalMode] = useState(false);
+	const expandMonster = () => {
+		setThisMinimalMode(!thisMinimalMode);
+	}
+
 	/**
 	 * JSX
 	 * */
 	return (
 		<React.Fragment>
-			<div className={[st.monster, viewMode && st.viewModeOnly || '', minimalMode && st.minimalMode || '', monster.turnTaken && st.turnTaken || ''].join(' ')}>
+			<div className={[st.monster, viewMode && st.viewModeOnly || '', (minimalMode && !thisMinimalMode) && st.minimalMode || '', monster.turnTaken && st.turnTaken || ''].join(' ')}>
 				<div className={[st.monsterDesc, descShowing ? st.on : ''].join(' ')} dangerouslySetInnerHTML={{ __html:monster.description?.replace(/\n/g, "<br>") }} onClick={toggleDesc}></div>
 				{statusVisible && <StatusPopup closePopup={() => setStatusVisible(false)} monster={monster} applyStatusOrDuration={applyStatusOrDuration} modifyStatusDuration={modifyStatusDuration} /> || <></>}
 				{addClick && (
@@ -139,6 +144,9 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 				)}
 				{removeClick && (
 					<button className={st.addMonster} onClick={() => removeClick(monster)}>-</button>
+				)}
+				{removeClick && (
+					<button className={[st.expandMonster, (thisMinimalMode && st.activeMinimalMode || '')].join(' ')} onClick={() => expandMonster(monster)}>⇩</button>
 				)}
 				<div className={st.titleBar}>
 					<h1 className={st.title}>{monster.name} {monster.description?.length && <span onClick={toggleDesc}>ⓘ</span>}</h1>

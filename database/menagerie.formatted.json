@@ -769,6 +769,27 @@
         "properties": "OpportunityAttack -- Agile -- Stealth"
     },
     {
+        "id": "c9d15b51",
+        "name": "Galacie",
+        "type": "NPC",
+        "dc": 4,
+        "speed": 5,
+        "size": "Medium",
+        "image": "galacie.webp",
+        "strength": 1,
+        "dexterity": 2,
+        "constitution": 2,
+        "intelligence": 3,
+        "wisdom": 3,
+        "charisma": 2,
+        "verve": 75,
+        "charge": 0,
+        "stagger": 2,
+        "combatmoves": "Ice Spray | Melee | 0 | Cryal | Sends sprays of Ice at her foes. | 25 | 0.5 | 0.25 --\n\nBattlefield Walls | Magic | 0 | Cryal | Can create up to 5 Ice Walls, curved or straight, anywhere on the battlefield. | 0 | 0 | 0 --\n\nCast | Magic | 0 | Various | Casts: Stoneskin (Ice), Energistic Storm (Cryal), Energistic Totem (cryal).  Dispellus.  Corpus Revulsion.  Fly (Ice Creations).  Corpus Delayum.  Conjurus Mist.  Energistic Control. | 0 | 0 | 0 --\n\nPrepared Spell | Magic | 0 | Various | Any one of her spells can be cast as prepared. | 0 | 0 | 0",
+        "weaknesses": "PyRes(-3)",
+        "properties": "PreparedSpell"
+    },
+    {
         "id": "19bf7079",
         "name": "Aurora Impiorium Aspirant",
         "type": "Humanoid",
@@ -785,7 +806,7 @@
         "verve": 30,
         "charge": 0,
         "stagger": 1,
-        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a billy club. | 10 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives and shuriken. | 10 | 0.5 | 0.5",
+        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic whack of a billy club. | 10 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives and shuriken. | 10 | 0.5 | 0.5",
         "weaknesses": "PyRes(-3)"
     },
     {
@@ -805,7 +826,7 @@
         "verve": 80,
         "charge": 1,
         "stagger": 3,
-        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 10 | 0.5 | 0.5 --\n\nDeath Throes | Melee | 0 | Physical | If the Striker is killed, they get a final round, lashing out with 5 erratic attacks. | 10 | 1 | 1 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives  and shuriken. | 12 | 0.5 | 0.5 --\n\nPoisoning | Melee | 1 | Special | A prick of a DC 3 poison.  Dodging successfully ignores the attack. | 0 | 1 | 0 | Con",
+        "combatmoves": "Basic Attack | Melee | 0 | Physical + Poison | An erratic slash of a knife, and a second attack with the spikes of their armour. Applies a DC 1 Poison also. | 10 | 0.5 | 0.5 | Con --\n\nDeath Throes | Melee | 0 | Physical | If the Striker is killed, they get a final round, lashing out with 5 erratic attacks. | 10 | 1 | 1 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Thrown knives  and shuriken. | 12 | 0.5 | 0.5 --\n\nPoisoning | Melee | 1 | Special | A prick of a DC 3 poison.  Dodging successfully ignores the attack. | 0 | 1 | 0 | Con",
         "weaknesses": "PyRes(-3)",
         "properties": "Thorns3 -- Thorns5 Grapple"
     },

@@ -50,7 +50,7 @@ function CombatPage() {
 		setCombats({ ...combats, creatures: updatedCreatures });
 	}
 
-	const [isMinimal, setIsMinimal] = useState(false);
+	const [isMinimal, setIsMinimal] = useState(true);
 	const minimalMode = () => {
 		setIsMinimal(!isMinimal);
 	}

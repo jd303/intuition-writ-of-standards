@@ -48,7 +48,7 @@
 	}
 
 	&.turnTaken {
-		opacity: 0.5;
+		opacity: 0.35;
 	}
 
 	h1,
@@ -79,7 +79,7 @@
 	}
 
 	.paddedInnerSection {
-		padding: calc(0.5 * var(--padding-standard));
+		padding: calc(0.3 * var(--padding-standard));
 		border-radius: var(--border-radius-standard);
 		background-color: rgba(var(--colour-cream), 0.7);
 
@@ -100,6 +100,20 @@
 		z-index: 10;
 		top: 0;
 		right: 0;
+		width: 32px;
+	}
+
+	.expandMonster {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		right: 38px;
+		height: 31px;
+		width: 35px;
+
+		&.activeMinimalMode {
+			background-color: rgb(var(--colour-bronze));
+		}
 	}
 
 	.monsterDesc {
