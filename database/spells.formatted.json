@@ -183,7 +183,7 @@
         "standard": "The UDR improves to 5.",
         "standardcost": 2,
         "standardduration": "Short",
-        "empowered": "Instead of UDR, the target gains the Fortified (10) Status.",
+        "empowered": "Instead of UDR, the target gains the Fortified (3) Status.",
         "empoweredcost": 5,
         "empoweredduration": "Short",
         "save": "None",

@@ -638,6 +638,27 @@
         "description": "The Nostagian Idbeasts are a creature formed of pure Intellect and Psychic Resonance.  Some say they are the result of nearing the Scintellating Horizon, as they appeared not long after Psionics were propagated.  It is uncertain whether these creatures are of our world.\n\nIdbeasts are attracted to areas of heightened emotion and intellect.  Thankfully the Prescintellate keeps their threat at bay."
     },
     {
+        "id": "2b4266de",
+        "name": "Zeriist, Serpent",
+        "type": "Monstrous",
+        "dc": 5,
+        "speed": 20,
+        "size": "Huge",
+        "image": "zeriist.webp",
+        "strength": 5,
+        "dexterity": 3,
+        "constitution": 5,
+        "intelligence": 2,
+        "wisdom": 2,
+        "charisma": 1,
+        "verve": 130,
+        "charge": 2,
+        "stagger": 4,
+        "combatmoves": "Basic Attack | Melee | 0 | Physical, Luminal | A grand strike with its eyes and teeth and mouth. | 20 | 0.5 | 0.5 --\n\nIllusion | Special | 0 | Luminal | Creates an illusion of broken ground, imaginary fighters.  Once this is discovered, if you fail your Defence you gain the equialent of the Sickened Status. | 20 | 0.5 | 0.5 | Cha --\n\nShift | Melee | 0 | Physical | Shifts it's entire body, throwing anyone on it or near it on the ground. | 10 | 0 | 0.5 --\n\nBliss | Volume | 0 | Psychic | A yellow sparkling cloud.  Those affected gain the Statuses: Fortified (2) and Dissuaded (Offensive, 2). | 10 | 0 | 0 | Wis",
+        "resistances": "LumRes(10)",
+        "weaknesses": "PsyRes(-5), UmRes(-5)"
+    },
+    {
         "id": "7cd51c56",
         "name": "Mother's Maladite",
         "type": "Undead",
