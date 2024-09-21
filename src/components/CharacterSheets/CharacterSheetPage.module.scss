@@ -446,10 +446,29 @@ section {
 				min-width: auto;
 			}
 
-			@media (max-width: 649px) {
-
+			@media (max-width: 800px) {
 				.headingMedium {
 					grid-column: 1/3;
+				}
+			}
+		}
+
+		.itemBelt {
+			grid-column: 1 / 3;
+
+			@media (max-width: 950px) {
+				grid-column: 1;
+			}
+
+			.itemBeltGrid {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+				align-items: center;
+				gap: calc(var(--padding-standard) / 2);
+				margin-top: 10px;
+
+				@media (max-width: 650px) {
+					grid-template-columns: 1fr 1fr;
 				}
 			}
 		}

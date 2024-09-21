@@ -42,10 +42,10 @@ function Spell({ spell }) {
 					<CircledText text={spell.cantripcost?.toString()} colour="bronze" /> <div className={st.desc}>{spell.cantrip} <div className={st.duration}>{spell.cantripduration}</div></div>
 				</li>
 				<li className={st.effect}>
-					<CircledText text={spell.standardcost?.toString()} colour="silver" /> <div className={st.desc}>{spell.standard} <div className={st.duration}>{spell.cantripduration}</div></div>
+					<CircledText text={spell.standardcost?.toString()} colour="silver" /> <div className={st.desc}>{spell.standard} <div className={st.duration}>{spell.standardduration}</div></div>
 				</li>
 				<li className={st.effect}>
-					<CircledText text={spell.empoweredcost?.toString()} colour="gold" /> <div className={st.desc}>{spell.empowered} <div className={st.duration}>{spell.cantripduration}</div></div>
+					<CircledText text={spell.empoweredcost?.toString()} colour="gold" /> <div className={st.desc}>{spell.empowered} <div className={st.duration}>{spell.empoweredduration}</div></div>
 				</li>
 			</ul>
 		</div>

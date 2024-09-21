@@ -1642,7 +1642,7 @@
         "shape": "Aura",
         "cantrip": "You spread your magics wide, in order to change the shape of the very land around you.  You shift a square of earth or stone one square per round, even compressing it into another square of similar material.  The material you shift must not be a load bearer for anything weighing more than 50kg.",
         "cantripcost": 2,
-        "cantripduration": "Round",
+        "cantripduration": "Short",
         "standard": "You may shift up to 6 squares up to 1 square, and the weight it can be load bearing increases to 120kg.",
         "standardcost": 3,
         "standardduration": "Short",

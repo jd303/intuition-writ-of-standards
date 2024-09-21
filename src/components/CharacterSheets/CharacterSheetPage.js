@@ -546,7 +546,7 @@ function CharacterSheetPage() {
 								</div>
 							</div>
 							<div className={st.sectionMetaInner}>
-							<div className={st.status}>
+								<div className={st.status}>
 									<div className={st.headingMedium}>Neg Statuses</div>
 									{
 										status_data.filter((status) => status.negative).map((status, index) => (
@@ -561,6 +561,19 @@ function CharacterSheetPage() {
 											<StatusEffect key={index} status={status} circleStatusClickCallback={adjustCircleStatus} />
 										))
 									}
+								</div>
+							</div>
+							<div className={[st.sectionMetaInner, st.itemBelt].join(' ')}>
+								<div className={st.headingMedium}>Item Belt</div>
+								<div className={st.itemBeltGrid}>
+									<div className={st.headingSmall}>Usable Total</div>
+									<InputBox val={2 + theCharacter.getMovePurchase('99d6763b').points} disabled={true} />
+									<div className={st.headingSmall}>Usable Current</div>
+									<InputBox val="2" />
+									<div className={st.headingSmall}>Weapon Total</div>
+									<InputBox val={3 + theCharacter.getMovePurchase('99d6763b').points} disabled={true} />
+									<div className={st.headingSmall}>Weapon Current</div>
+									<InputBox val="2" />
 								</div>
 							</div>
 						</div>

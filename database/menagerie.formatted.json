@@ -367,7 +367,7 @@
         "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applies the Pyral Critical Effect. | 6 | 0.5 | 0.5",
         "resistances": "PyRes(10)",
         "weaknesses": "CryRes(-5)",
-        "properties": "CoolingAura",
+        "properties": "WarmingAura",
         "description": "The Nephir are created from pure energy to serve their masters.  Lacking a will of thier own, but reasonable intelligence, they make for excellent servants.  Some magical schools are attempting, and have succeeded, to create these impish creatures.  They have begun to live in fairytales of warning."
     },
     {
@@ -390,7 +390,7 @@
         "combatmoves": "Basic Attack | Melee | 0 | Varies | Furious tiny pricks which apply Verve Loss according to their energy.  Failing to Defend also applies the Cryonic Critical Effect. | 6 | 0.5 | 0.5",
         "resistances": "CryRes(10)",
         "weaknesses": "PyRes(-10)",
-        "properties": "WarmingAura",
+        "properties": "CoolingAura",
         "description": "The Nephir are created from pure energy to serve their masters.  Lacking a will of thier own, but reasonable intelligence, they make for excellent servants.  Some magical schools are attempting, and have succeeded, to create these impish creatures.  They have begun to live in fairytales of warning."
     },
     {
@@ -651,12 +651,14 @@
         "intelligence": 2,
         "wisdom": 2,
         "charisma": 1,
-        "verve": 130,
+        "verve": 150,
         "charge": 2,
         "stagger": 4,
         "combatmoves": "Basic Attack | Melee | 0 | Physical, Luminal | A grand strike with its eyes and teeth and mouth. | 20 | 0.5 | 0.5 --\n\nIllusion | Special | 0 | Luminal | Creates an illusion of broken ground, imaginary fighters.  Once this is discovered, if you fail your Defence you gain the equialent of the Sickened Status. | 20 | 0.5 | 0.5 | Cha --\n\nShift | Melee | 0 | Physical | Shifts it's entire body, throwing anyone on it or near it on the ground. | 10 | 0 | 0.5 --\n\nBliss | Volume | 0 | Psychic | A yellow sparkling cloud.  Those affected gain the Statuses: Fortified (2) and Dissuaded (Offensive, 2). | 10 | 0 | 0 | Wis",
         "resistances": "LumRes(10)",
-        "weaknesses": "PsyRes(-5), UmRes(-5)"
+        "weaknesses": "PsyRes(-5), UmRes(-5)",
+        "properties": "WeakpointTop -- AttackMakesJiggleEnvironment -- CaveInWallAndCeiling",
+        "description": "A serpent made of the collective dreams of the Zerriolites"
     },
     {
         "id": "7cd51c56",
@@ -868,7 +870,7 @@
         "verve": 65,
         "charge": 2,
         "stagger": 2,
-        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 5 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Hand crossbow bolt strikes. | 12 | 0.5 | 0.5 --\n\nCast a Spell | Melee | 0 | Physical | Can cast: Vervatious Restorium, Energistic Cone, Corpus Detractum, Mentus Detractum, Corpus Constrictum, Darkenis. | 0 | 0 | 0 --\n\nEnrage | Melee | 2 | Special | Enrage their allies. | 0 | 0 | 0 | Na",
+        "combatmoves": "Basic Attack | Melee | 0 | Physical | An erratic slash of a knife, and a second attack with the spikes of their armour. | 5 | 0.5 | 0.5 --\n\nBasic Ranged Attack | Ranged | 0 | Physical | Hand crossbow bolt strikes. | 12 | 0.5 | 0.5 --\n\nCast a Spell | Melee | 0 | Physical | Can cast: Fly, Energistic Wall, Vervatious Restorium, Energistic Cone, Corpus Detractum, Mentus Detractum, Corpus Constrictum, Darkenis. | 0 | 0 | 0 --\n\nEnrage | Melee | 2 | Special | Enrage their allies. | 0 | 0 | 0 | Na",
         "weaknesses": "PyRes(-3)"
     }
 ]
