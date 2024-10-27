@@ -676,10 +676,6 @@ function CharacterSheetPage() {
 								))}
 							</div>
 							<div className={st.sectionMetaInner + ' ' + st.weaponSpecialisations}>
-								<div className={st.headingMedium}>Bonus Dice</div>
-								<div className={st.standardFlex}>
-									<Dropdown source={bonusDice} noDefault={true} val={theCharacter.characterData.bonus_damage} onChange={(value) => updateValueFromInput('bonus_damage', value, true)} />
-								</div>
 								<div className={st.weaponsHeader}>
 									<div className={st.headingMedium + ' ' + st.headName}>Specialisations <PurchaseablePointGroup count={3} purchased={theCharacter.characterData.purchases.weapon_specialisations} purchaseKey='weapon_specialisations' clickCallback={adjustPoints}  /></div>
 								</div>
@@ -854,7 +850,7 @@ function CharacterSheetPage() {
 						</div>
 						<div className={st.sectionMeta + ' forPrint'}>
 							<div className={st.sectionMetaInner}>
-								<div className={st.damageType}><div className={st.headingMedium}>Spells</div></div>
+								<div className={st.damageType}><div className={st.headingMedium}>Spells and Rituals</div></div>
 								{Array.from(Array(14)).map((i, index) => (
 									<div key={`printspell-${index}`}><InputBox val="" /></div>
 								))}

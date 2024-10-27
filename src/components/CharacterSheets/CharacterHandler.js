@@ -62,7 +62,6 @@ export class CharacterObject {
 			"slot2": '',
 			"slot3": '',
 		},
-		"bonus_damage": "d4",
 		"weapon_specialisations": [],
 		"armours": [ { "name": "Clothes", "block": 0, "dodge": 6 } ],
 		"armour_totals": { "block": '', "dodge": '' },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import StatusPopup from "./Combat/StatusPopup";
 
@@ -80,7 +80,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 	}
 
 	const applyStatusOrDuration = (status) => {
-		const statusesValue = monster.statuses || [];
+		const statusesValue = [...monster.statuses] || [];
 		
 		const existingStatus = statusesValue.find(comparedStatus => comparedStatus.id == status.id);
 		if (existingStatus) {
@@ -106,7 +106,7 @@ function Monster( { monster, viewMode = true, minimalMode = false, addClick, rem
 
 	const [statusVisible, setStatusVisible] = useState(false);
 	const modifyStatusDuration = (status, adjustment) => {
-		let statusesValue = monster.statuses || [];
+		let statusesValue = monster.statuses && JSON.parse(JSON.stringify(monster.statuses)) || [];
 		const existingStatus = statusesValue.find(comparedStatus => comparedStatus.id == status.id);
 		if (existingStatus && existingStatus.duration > 0) existingStatus.duration += adjustment;
 		if (existingStatus && existingStatus.duration === 0) statusesValue = statusesValue.filter(comparedStatus => comparedStatus.id !== status.id);
