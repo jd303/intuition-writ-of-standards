@@ -510,7 +510,7 @@ function CharacterSheetPage() {
 							</div>
 							<div className={st.buffs + ' ' + st.sectionMetaInner}>
 								<div className={st.standardFlex}><div className={st.headingMedium}>Buffs</div><span className={st.littleNote}>Effect + Source</span></div>
-								{Array.from(Array(Math.max(6, theCharacter.characterData.buffs.filter(buff => buff !== "").length + 1))).map((i, index) => (
+								{Array.from(Array(6)).map((i, index) => (
 									<div className={st.buffDetails} key={index}><InputBox placeholder="Effect & Source" val={theCharacter.characterData.buffs[index]} onUpdate={(value) => updateValueFromInput(`buffs[${index}]`, value)} /></div>
 								))}
 							</div>
