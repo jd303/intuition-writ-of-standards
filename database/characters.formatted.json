@@ -366,9 +366,9 @@
             "bonus_damage": "d6",
             "bonus_mana": 0,
             "bonus_verve": "5",
-            "current_mana": "12",
+            "current_mana": "15",
             "current_psi": 3,
-            "current_verve": "25",
+            "current_verve": "13",
             "enchant_mana_cost": 0,
             "id": "6fec15fa-b381-4593-923a-3ab6893a204c",
             "inventory": [
@@ -439,7 +439,7 @@
                     "slot2": 0,
                     "slot3": 0
                 },
-                "mana": 3,
+                "mana": 4,
                 "moves": {
                     "3d117be9": {
                         "points": 2
@@ -449,7 +449,8 @@
                             "322aca85",
                             "8b4b46f1",
                             "b740bb57",
-                            "56f5725d"
+                            "56f5725d",
+                            "617f9943"
                         ],
                         "points": 7
                     },
@@ -506,7 +507,7 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 50,
+                "spentPoints": 52,
                 "stamina": 0,
                 "verve": 2,
                 "weapon_specialisations": 0
@@ -531,7 +532,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 27,
+            "sessions": 28,
             "source": "30c0e851",
             "spells": [
                 "ed3488f7",
@@ -555,13 +556,13 @@
                 "statuses-beb7d604": 0,
                 "statuses-ecdb6cee": 0
             },
-            "updated": 1732793056511,
+            "updated": 1733223050477,
             "weapon_specialisations": [
                 "da256890"
             ],
             "weapons": [
                 {
-                    "damage": "d10",
+                    "damage": "d12",
                     "name": "Rifle",
                     "notes": "Range 30"
                 },
@@ -608,11 +609,11 @@
             "bonus_verve": "5",
             "current_mana": 3,
             "current_psi": 3,
-            "current_verve": "50",
+            "current_verve": "44",
             "enchant_mana_cost": 0,
             "id": "d66a0155-0c13-4506-a291-6cd9e819fc3b",
             "inventory": [
-                "60 standards",
+                "110 standards",
                 "1 sample size ultra hold hair wax",
                 "1x tremaxite, purple rock worth 50 standards",
                 "golden feather dagger",
@@ -752,7 +753,7 @@
                 "universal": "0",
                 "zephyr": 0
             },
-            "sessions": 27,
+            "sessions": 28,
             "source": "30c0e851",
             "statuses": {
                 "stamina": 0,
@@ -767,7 +768,7 @@
                 "statuses-ecdb6cee": 0,
                 "statuses-f813c6a6": 0
             },
-            "updated": 1732791191095,
+            "updated": 1733225190861,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -973,7 +974,7 @@
             },
             "updated": 1731716675491
         },
-		{
+        {
             "armour_totals": {
                 "block": "",
                 "dodge": ""
@@ -998,6 +999,9 @@
             "bonus_damage": "d4",
             "bonus_mana": 0,
             "bonus_verve": 0,
+            "buffs": {
+                "3": "L"
+            },
             "current_mana": 3,
             "current_psi": 3,
             "current_verve": "21",
@@ -1277,6 +1281,7 @@
             },
             "attributeslocked": true,
             "bonusPoints": 0,
+            "bonus_damage": "d4",
             "bonus_mana": 0,
             "bonus_verve": 0,
             "current_mana": "13",
@@ -1389,7 +1394,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 27,
+            "sessions": 28,
             "source": "478e7171",
             "spells": [
                 "33e3935d",
@@ -1400,7 +1405,7 @@
                 "925fb9e1",
                 "d2261221"
             ],
-            "updated": 1732786032687
+            "updated": 1733214108695
         }
     ],
     "Xa9B0QRaATPl2X9KoPjxBnFy3U02": [
@@ -2028,9 +2033,9 @@
                 "2a_social": true,
                 "2b_stealth": true,
                 "2c_engineering": false,
-                "2d_craft": true,
+                "2d_craft": false,
                 "2e_inner_power": false,
-                "2f_magic": true,
+                "2f_magic": false,
                 "2g_psionics": false,
                 "2h_inventory": false,
                 "2i_notes": false,
@@ -2134,12 +2139,12 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 25,
+            "sessions": 28,
             "source": "478e7171",
             "statuses": {
                 "statuses-78f6a36a": 0
             },
-            "updated": 1732780050475,
+            "updated": 1733221672293,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -2237,7 +2242,8 @@
                     "160be273": {
                         "mods": [
                             "cc01ddec",
-                            "1f5c0f2f"
+                            "1f5c0f2f",
+                            "304e1507"
                         ],
                         "points": 3
                     },
@@ -2283,7 +2289,7 @@
                         "points": 4
                     }
                 },
-                "spentPoints": 51,
+                "spentPoints": 52,
                 "stamina": 0,
                 "verve": 4,
                 "weapon_specialisations": 0
@@ -2308,7 +2314,7 @@
                 "universal": "0",
                 "zephyr": 0
             },
-            "sessions": 27,
+            "sessions": 28,
             "source": "b5332003",
             "statuses": {
                 "stamina": 0,
@@ -2319,7 +2325,7 @@
                 "statuses-c0793f77": 0,
                 "statuses-ecdb6cee": 0
             },
-            "updated": 1732788347462,
+            "updated": 1733224267453,
             "weapons": [
                 {
                     "damage": "d6",
@@ -2435,7 +2441,7 @@
             },
             "sessions": 1,
             "source": "30c0e851",
-            "updated": 1732781762456
+            "updated": 1733223759726
         },
         {
             "armour_totals": {
