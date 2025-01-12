@@ -146,6 +146,15 @@
                     "name": "None"
                 }
             ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
             "bonusPoints": "0",
             "bonus_damage": "d4",
             "bonus_mana": 0,
@@ -153,6 +162,7 @@
             "current_mana": 3,
             "current_psi": 3,
             "current_verve": "",
+            "enchant_mana_cost": 0,
             "id": "caed9281-2d96-409c-94d3-9a9c8b8e2322",
             "known_languages": [
                 "2d0b7484"
@@ -225,7 +235,339 @@
             "statuses": {
                 "statuses-f488df8f": 0
             },
-            "updated": 1705639314916
+            "updated": 1735255729041
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                },
+                {
+                    "name": "Medium Armour"
+                },
+                {
+                    "block": 2,
+                    "name": "Shield"
+                }
+            ],
+            "attributes": {
+                "CHA": 1,
+                "CON": 1,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 3,
+                "WIS": 1
+            },
+            "attributeslocked": true,
+            "bonusPoints": 0,
+            "bonus_mana": 0,
+            "bonus_verve": "5",
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "55",
+            "enchant_mana_cost": 0,
+            "id": "c1a6fa4f-533f-4426-9eec-d3b861a37d3a",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "Pyral (fire, Burning)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Aldia Gant",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "3d117be9": {
+                        "points": 2
+                    },
+                    "7ff9fecf": {
+                        "points": 2
+                    },
+                    "8cf4f202": {
+                        "points": 2
+                    },
+                    "99d6763b": {
+                        "mods": [
+                            "05ad69e8",
+                            "d81eb037"
+                        ],
+                        "points": 2
+                    },
+                    "9c77681c": {
+                        "points": 2
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "edfd10de",
+                            "622c9ebd",
+                            "68492c90",
+                            "478fd974"
+                        ],
+                        "points": 5
+                    },
+                    "d4e2f861": {
+                        "points": 2
+                    },
+                    "e21ee114": {
+                        "mods": [
+                            "eb8d4c21"
+                        ],
+                        "points": 5
+                    }
+                },
+                "spentPoints": 36,
+                "stamina": 1,
+                "verve": 6,
+                "weapon_specialisations": 0
+            },
+            "race": "Half-Orc",
+            "racial_modifiers": {
+                "primary": "e134883b",
+                "secondary": "3c6a0be0",
+                "stature": "76377c99"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": "0",
+                "zephyr": 0
+            },
+            "sessions": 25,
+            "source": "478e7171",
+            "statuses": {
+                "stamina": 0,
+                "statuses-bce09fa5": 0
+            },
+            "updated": 1735266603517,
+            "weapons": [
+                {
+                    "damage": "d8",
+                    "name": "Greatsword",
+                    "notes": ""
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 7,
+                    "name": "Clothes (Fine)"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 0,
+                "DEX": 3,
+                "INT": 1,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_mana": "2",
+            "bonus_verve": 0,
+            "current_mana": "12",
+            "current_psi": 3,
+            "current_verve": "37",
+            "enchant_mana_cost": 0,
+            "id": "b0fd1cb1-8687-40d8-9efe-1b442c9c1411",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "Pyral (fire, Burning)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Quelas",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 4,
+                "moves": {
+                    "797d1feb": {
+                        "points": 2
+                    },
+                    "7ff9fecf": {
+                        "points": 1
+                    },
+                    "872601df": {
+                        "points": 4
+                    },
+                    "8cf4f202": {
+                        "points": 1
+                    },
+                    "99d6763b": {
+                        "points": 0
+                    },
+                    "9aa1d2f7": {
+                        "mods": [
+                            "56380f1c",
+                            "3163b28a"
+                        ],
+                        "points": 4
+                    },
+                    "9c77681c": {
+                        "mods": [
+                            "4fc7cf4d"
+                        ],
+                        "points": 2
+                    },
+                    "a39eb68b": {
+                        "points": 1
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "a793a931",
+                            "622c9ebd",
+                            "2c3ef9dc"
+                        ],
+                        "points": 4
+                    },
+                    "d4e2f861": {
+                        "points": 1
+                    },
+                    "e43ece8d": {
+                        "points": 3
+                    },
+                    "f1ddbecf": {
+                        "mods": [
+                            "72e11b82",
+                            "d1151cbe"
+                        ],
+                        "points": 2
+                    },
+                    "f6bd2b52": {
+                        "points": 1
+                    },
+                    "fb25bccb": {
+                        "points": 5
+                    }
+                },
+                "spentPoints": 48,
+                "stamina": 0,
+                "verve": 5,
+                "weapon_specialisations": 0
+            },
+            "race": "Tiefling",
+            "racial_modifiers": {
+                "primary": "e134883b",
+                "secondary": "1f5f0f44",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 25,
+            "source": "478e7171",
+            "spells": [
+                "9eb6d787",
+                "883b5b52",
+                "a078ccf6",
+                "c8c58507"
+            ],
+            "statuses": {
+                "statuses-84286d9f": 1
+            },
+            "updated": 1735387875098,
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Throwing Knives",
+                    "notes": "Ranged, Ranged-only, Concealable, Backstab, Single-Target"
+                },
+                {
+                    "damage": "d8",
+                    "name": "Paired Daggers",
+                    "notes": "Bladed, 1-Handed, Throwable, Concealable, Backstab"
+                }
+            ]
         }
     ],
     "KX2DsnA4IeQeH4LZOmJ8nqnxCak1": [
@@ -332,7 +674,7 @@
             "statuses": {
                 "stamina": 0
             },
-            "updated": 1729592105506,
+            "updated": 1735366198450,
             "weapons": [
                 {
                     "damage": "d10",
@@ -348,8 +690,8 @@
             },
             "armours": [
                 {
-                    "block": 1,
-                    "dodge": 3,
+                    "block": 2,
+                    "dodge": 4,
                     "name": "Light armour"
                 }
             ],
@@ -366,7 +708,7 @@
             "bonus_damage": "d6",
             "bonus_mana": 0,
             "bonus_verve": "5",
-            "current_mana": "15",
+            "current_mana": "11",
             "current_psi": 3,
             "current_verve": "13",
             "enchant_mana_cost": 0,
@@ -390,12 +732,13 @@
                 "Flint and steel",
                 "Iron",
                 "Mysterious sword hilt",
-                "",
+                "42 standards",
                 "Large Cloak with pocket for Ilaydria to hide in",
                 "Oversized Cowboy Hat",
                 "2 daggers",
                 "Map of the dungeon diamonds",
-                "Protect or destroy en8r"
+                "Protect or destroy en8r",
+                "Seeds - Gripvine"
             ],
             "known_languages": [
                 "2d0b7484",
@@ -442,7 +785,7 @@
                 "mana": 4,
                 "moves": {
                     "3d117be9": {
-                        "points": 2
+                        "points": 3
                     },
                     "4bf8b06a": {
                         "mods": [
@@ -507,7 +850,7 @@
                         "points": 1
                     }
                 },
-                "spentPoints": 52,
+                "spentPoints": 53,
                 "stamina": 0,
                 "verve": 2,
                 "weapon_specialisations": 0
@@ -532,7 +875,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 28,
+            "sessions": 30,
             "source": "30c0e851",
             "spells": [
                 "ed3488f7",
@@ -546,17 +889,18 @@
             ],
             "statuses": {
                 "statuses-12ee8d87": 0,
+                "statuses-2bec14ca": 1,
                 "statuses-4088abfe": 0,
                 "statuses-50195e5a": 0,
                 "statuses-5d995f6a": 0,
                 "statuses-8762b1e7": 0,
                 "statuses-9fcd506b": 0,
-                "statuses-a57c4bf0": 1,
+                "statuses-a57c4bf0": 0,
                 "statuses-bce09fa5": 0,
                 "statuses-beb7d604": 0,
                 "statuses-ecdb6cee": 0
             },
-            "updated": 1733223050477,
+            "updated": 1734430571217,
             "weapon_specialisations": [
                 "da256890"
             ],
@@ -567,7 +911,7 @@
                     "notes": "Range 30"
                 },
                 {
-                    "damage": "d6",
+                    "damage": "d8",
                     "name": "Dagger"
                 }
             ]
@@ -639,7 +983,7 @@
                 "1_on": true,
                 "2a_social": true,
                 "2b_stealth": true,
-                "2c_engineering": false,
+                "2c_engineering": true,
                 "2d_craft": false,
                 "2e_inner_power": false,
                 "2f_magic": false,
@@ -671,7 +1015,7 @@
                         "mods": [
                             "1ef46b21"
                         ],
-                        "points": 3
+                        "points": 4
                     },
                     "6ef9ecae": {
                         "mods": [
@@ -697,7 +1041,7 @@
                             "da2dd404",
                             "67c8b0c2"
                         ],
-                        "points": 4
+                        "points": 5
                     },
                     "a72c2adb": {
                         "mods": [
@@ -725,10 +1069,10 @@
                             "cb65d94e",
                             "53ed2314"
                         ],
-                        "points": 5
+                        "points": 6
                     }
                 },
-                "spentPoints": 51,
+                "spentPoints": 54,
                 "stamina": 0,
                 "verve": 4,
                 "weapon_specialisations": 1
@@ -753,7 +1097,7 @@
                 "universal": "0",
                 "zephyr": 0
             },
-            "sessions": 28,
+            "sessions": 30,
             "source": "30c0e851",
             "statuses": {
                 "stamina": 0,
@@ -768,7 +1112,7 @@
                 "statuses-ecdb6cee": 0,
                 "statuses-f813c6a6": 0
             },
-            "updated": 1733225190861,
+            "updated": 1734426708161,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -780,6 +1124,342 @@
                 {
                     "damage": "d6",
                     "name": "Throwing dagger"
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 7,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 3,
+                "DEX": 3,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": "4",
+            "current_psi": 3,
+            "current_verve": "56",
+            "enchant_mana_cost": 0,
+            "id": "f68aee86-3e22-4e23-a0c3-75da6d24e253",
+            "inventory": [
+                "2 fine katana",
+                "5x vigour tonics",
+                "Item belt",
+                "Pot helmet",
+                "",
+                "White martial arts gi ",
+                "Cold coating"
+            ],
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "Cryonic (cold, Chilled)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Klein Tsuboi",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 2,
+                "moves": {
+                    "160be273": {
+                        "points": 0
+                    },
+                    "3d117be9": {
+                        "mods": [
+                            "4ef00e63",
+                            "7a7a95c3",
+                            "cd98a90d"
+                        ],
+                        "points": 7
+                    },
+                    "797d1feb": {
+                        "points": 1
+                    },
+                    "8cf4f202": {
+                        "points": 1
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "154cf776",
+                            "7d0350d3",
+                            "3cf2f746",
+                            "622c9ebd"
+                        ],
+                        "points": 7
+                    },
+                    "e21ee114": {
+                        "points": 0
+                    },
+                    "f1ddbecf": {
+                        "mods": [
+                            "72e11b82",
+                            "5a84e71a",
+                            "d1151cbe"
+                        ],
+                        "points": 0
+                    },
+                    "fb25bccb": {
+                        "mods": [
+                            "7d9117d5",
+                            "3e52c4b9",
+                            "df6378f7"
+                        ],
+                        "points": 7
+                    }
+                },
+                "spentPoints": 49,
+                "stamina": 3,
+                "verve": 8,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "251861ef",
+                "secondary": "32eaf856",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 25,
+            "source": "30c0e851",
+            "spells": [
+                "f43cd3a7",
+                "91a6ef91"
+            ],
+            "updated": 1735388416336,
+            "weapon_specialisations": [
+                "bc5a5c74"
+            ],
+            "weapons": [
+                {
+                    "damage": "d10",
+                    "name": "Long Blade",
+                    "notes": "D6 cryonic"
+                },
+                {
+                    "damage": "d10",
+                    "name": "Long Blade",
+                    "notes": "+3 ice damage"
+                }
+            ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 2,
+                "CON": 1,
+                "DEX": 1,
+                "INT": 0,
+                "STR": 2,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "companion": {
+                "desc": "",
+                "moves": [
+                    "98be0347",
+                    "d3c1fb37",
+                    "a744cdaf",
+                    "e78cb915",
+                    "7d112f8f"
+                ],
+                "name": "Cat glaring"
+            },
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "35",
+            "enchant_mana_cost": 0,
+            "id": "75c2f311-713b-403b-a278-4d7de3186667",
+            "inventory": [
+                "2x vigor tonics",
+                "Cat nip",
+                "Silk rope",
+                "Lantern"
+            ],
+            "known_languages": [
+                "2d0b7484",
+                "7749123f"
+            ],
+            "magical_synergy": {
+                "slot1": "Zephyral (Wind, Gusted)",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Tabbytha ",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "3d117be9": {
+                        "mods": [
+                            "3e3f2e57",
+                            "09d65b31",
+                            "3a12ef15"
+                        ],
+                        "points": 5
+                    },
+                    "4bf8b06a": {
+                        "points": 0
+                    },
+                    "872601df": {
+                        "mods": [
+                            "f222343f"
+                        ],
+                        "points": 5
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "622c9ebd",
+                            "072e7679",
+                            "3cf2f746",
+                            "2c3ef9dc"
+                        ],
+                        "points": 6
+                    },
+                    "ca587f10": {
+                        "mods": [
+                            "44f79ceb"
+                        ],
+                        "points": 6
+                    },
+                    "d4e2f861": {
+                        "points": 1
+                    },
+                    "f73a1fd2": {
+                        "points": 5
+                    },
+                    "fb25bccb": {
+                        "points": 5
+                    }
+                },
+                "spentPoints": 49,
+                "stamina": 3,
+                "verve": 4,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "251861ef",
+                "secondary": "e7f9a023",
+                "stature": "6b51a528"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 25,
+            "source": "478e7171",
+            "updated": 1735387916387,
+            "weapons": [
+                {
+                    "damage": "d6",
+                    "name": "Claws"
                 }
             ]
         }
@@ -972,7 +1652,7 @@
                 "statuses-a4b68644": 0,
                 "statuses-cfa1809a": 0
             },
-            "updated": 1731716675491
+            "updated": 1735386150755
         },
         {
             "armour_totals": {
@@ -1183,7 +1863,7 @@
                 "statuses-023c6625": 0,
                 "statuses-8762b1e7": 0
             },
-            "updated": 1731323474113,
+            "updated": 1733527833512,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -1198,6 +1878,103 @@
                     "notes": "Sonic Dam"
                 }
             ]
+        },
+        {
+            "armour_totals": {
+                "block": "",
+                "dodge": ""
+            },
+            "armours": [
+                {
+                    "block": 0,
+                    "dodge": 6,
+                    "name": "Clothes"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 0,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 0,
+                "WIS": 0
+            },
+            "attributeslocked": false,
+            "bonusPoints": 0,
+            "bonus_mana": 0,
+            "bonus_verve": 0,
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "",
+            "enchant_mana_cost": 0,
+            "id": "fce6db77-d1ef-4e8c-b2fd-6e6a7f02a299",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": false,
+                "2a_social": true,
+                "2b_stealth": true,
+                "2c_engineering": true,
+                "2d_craft": true,
+                "2e_inner_power": true,
+                "2f_magic": true,
+                "2g_psionics": true,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": true,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Jormmp",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "spentPoints": 0,
+                "stamina": 0,
+                "verve": 0,
+                "weapon_specialisations": 0
+            },
+            "race": "Human",
+            "racial_modifiers": {
+                "primary": "",
+                "secondary": "",
+                "stature": ""
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 20,
+            "source": "30c0e851",
+            "updated": 1734834010035
         }
     ],
     "QRHBfhf8vZOQwJNnLbotu1xVmFL2": [
@@ -1284,7 +2061,7 @@
             "bonus_damage": "d4",
             "bonus_mana": 0,
             "bonus_verve": 0,
-            "current_mana": "13",
+            "current_mana": "48",
             "current_psi": 3,
             "current_verve": "",
             "enchant_mana_cost": 0,
@@ -1328,7 +2105,7 @@
                     "slot2": 1,
                     "slot3": 0
                 },
-                "mana": 14,
+                "mana": 15,
                 "moves": {
                     "6ef9ecae": {
                         "mods": [
@@ -1337,7 +2114,7 @@
                             "f1f2a396",
                             "501dbefa",
                             "8d803ac2",
-                            "f2e850de"
+                            "f23b4f01"
                         ],
                         "points": 6
                     },
@@ -1369,7 +2146,7 @@
                         "points": 0
                     }
                 },
-                "spentPoints": 51,
+                "spentPoints": 52,
                 "stamina": 0,
                 "verve": 1,
                 "weapon_specialisations": 0
@@ -1394,7 +2171,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 28,
+            "sessions": 30,
             "source": "478e7171",
             "spells": [
                 "33e3935d",
@@ -1403,9 +2180,150 @@
                 "b7cf597f",
                 "7d384f89",
                 "925fb9e1",
-                "d2261221"
+                "d2261221",
+                "c3b57a81",
+                "23506ca4",
+                "c416b3f6",
+                "8133f3c1",
+                "c8c58507"
             ],
-            "updated": 1733214108695
+            "updated": 1734430034661
+        },
+        {
+            "armour_totals": {
+                "block": 8,
+                "dodge": 4
+            },
+            "armours": [
+                {
+                    "block": 6,
+                    "dodge": 2,
+                    "name": "Heavy Armour"
+                }
+            ],
+            "attributes": {
+                "CHA": 0,
+                "CON": 3,
+                "DEX": 0,
+                "INT": 0,
+                "STR": 3,
+                "WIS": 0
+            },
+            "attributeslocked": true,
+            "bonusPoints": 5,
+            "bonus_mana": 0,
+            "bonus_verve": "25",
+            "current_mana": 3,
+            "current_psi": 3,
+            "current_verve": "106",
+            "enchant_mana_cost": 0,
+            "id": "c2e76a48-acc6-4a69-bdc0-21d4b3cc542e",
+            "known_languages": [
+                "2d0b7484"
+            ],
+            "magical_synergy": {
+                "slot1": "",
+                "slot2": "",
+                "slot3": ""
+            },
+            "minimal_mode": {
+                "1_on": true,
+                "2a_social": true,
+                "2b_stealth": false,
+                "2c_engineering": false,
+                "2d_craft": false,
+                "2e_inner_power": true,
+                "2f_magic": false,
+                "2g_psionics": false,
+                "2h_inventory": true,
+                "2i_notes": true,
+                "2j_beast_mastery": false,
+                "3_minimal_print_mod_rows": false
+            },
+            "movesq": 5,
+            "name": "Gronthack, destroyer of worlds",
+            "purchases": {
+                "attributes": {
+                    "cha": 0,
+                    "con": 0,
+                    "dex": 0,
+                    "int": 0,
+                    "str": 0,
+                    "wis": 0
+                },
+                "known_languages": 0,
+                "magical_synergy": {
+                    "slot2": 0,
+                    "slot3": 0
+                },
+                "mana": 0,
+                "moves": {
+                    "971c8657": {
+                        "mods": [
+                            "45c373c3",
+                            "f17a4fcf",
+                            "50666830",
+                            "a2104402",
+                            "20c8f973",
+                            "dfc693d3",
+                            "85376f2d",
+                            "802304d4",
+                            "73afc4d8",
+                            "9658dd25",
+                            "776c4402"
+                        ],
+                        "points": 7
+                    },
+                    "a72c2adb": {
+                        "mods": [
+                            "440d92cd",
+                            "ae4b67a3",
+                            "622c9ebd",
+                            "3cf2f746"
+                        ],
+                        "points": 7
+                    },
+                    "e21ee114": {
+                        "mods": [
+                            "4dc8fe1d"
+                        ],
+                        "points": 7
+                    }
+                },
+                "spentPoints": 54,
+                "stamina": 3,
+                "verve": 14,
+                "weapon_specialisations": 0
+            },
+            "race": "Orc",
+            "racial_modifiers": {
+                "primary": "c5558e07",
+                "secondary": "8983ad97",
+                "stature": "68d8fce7"
+            },
+            "resistances": {
+                "acids": 0,
+                "cryo": 0,
+                "electric": 0,
+                "luminal": 0,
+                "magic": 0,
+                "physical": 0,
+                "poisons": 0,
+                "pyral": 0,
+                "sonic": 0,
+                "umbral": 0,
+                "universal": 0,
+                "zephyr": 0
+            },
+            "sessions": 25,
+            "source": "30c0e851",
+            "updated": 1735388258248,
+            "weapons": [
+                {
+                    "damage": "d10",
+                    "name": "Tower Shield"
+                }
+            ]
         }
     ],
     "Xa9B0QRaATPl2X9KoPjxBnFy3U02": [
@@ -2035,11 +2953,11 @@
                 "2c_engineering": false,
                 "2d_craft": false,
                 "2e_inner_power": false,
-                "2f_magic": false,
+                "2f_magic": true,
                 "2g_psionics": false,
                 "2h_inventory": false,
                 "2i_notes": false,
-                "2j_beast_mastery": false,
+                "2j_beast_mastery": true,
                 "3_minimal_print_mod_rows": false
             },
             "movesq": 5,
@@ -2064,16 +2982,17 @@
                         "mods": [
                             "4ef00e63",
                             "54f6882d",
-                            "dbf5fa74"
+                            "dbf5fa74",
+                            "6468c1af"
                         ],
-                        "points": 3
+                        "points": 4
                     },
                     "6ef9ecae": {
                         "mods": [
                             "84418b9d",
                             "6d5bf26a"
                         ],
-                        "points": 1
+                        "points": 2
                     },
                     "99d6763b": {
                         "points": 1
@@ -2114,7 +3033,7 @@
                         "points": 5
                     }
                 },
-                "spentPoints": 47,
+                "spentPoints": 50,
                 "stamina": 3,
                 "verve": 6,
                 "weapon_specialisations": 1
@@ -2144,7 +3063,7 @@
             "statuses": {
                 "statuses-78f6a36a": 0
             },
-            "updated": 1733221672293,
+            "updated": 1734429308673,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
@@ -2200,7 +3119,7 @@
             },
             "known_languages": [
                 "2d0b7484",
-                "e8972c07"
+                "7749123f"
             ],
             "magical_synergy": {
                 "slot1": "",
@@ -2243,9 +3162,10 @@
                         "mods": [
                             "cc01ddec",
                             "1f5c0f2f",
-                            "304e1507"
+                            "304e1507",
+                            "e7d0f60d"
                         ],
-                        "points": 3
+                        "points": 4
                     },
                     "3d117be9": {
                         "mods": [
@@ -2289,7 +3209,7 @@
                         "points": 4
                     }
                 },
-                "spentPoints": 52,
+                "spentPoints": 54,
                 "stamina": 0,
                 "verve": 4,
                 "weapon_specialisations": 0
@@ -2314,7 +3234,7 @@
                 "universal": "0",
                 "zephyr": 0
             },
-            "sessions": 28,
+            "sessions": 30,
             "source": "b5332003",
             "statuses": {
                 "stamina": 0,
@@ -2325,7 +3245,7 @@
                 "statuses-c0793f77": 0,
                 "statuses-ecdb6cee": 0
             },
-            "updated": 1733224267453,
+            "updated": 1734432459935,
             "weapons": [
                 {
                     "damage": "d6",
@@ -2477,26 +3397,27 @@
             "enchant_mana_cost": 0,
             "id": "476ed84f-3509-45d5-a6ca-d03f556406cb",
             "inventory": {
-                "0": "1x anti-toxin, 1x Peptinne",
-                "1": "1 Bubble Tip, 2xPure Water, Pure Alcohol, 2x Western Silverbarb, ",
+                "0": "1x anti-toxin",
+                "1": "5x Oilslick 3x bright coating,1x torchburn",
                 "10": "Extensive Makeup Kit, Colour Dyes, 2x Fragrances, 1 Wig",
                 "11": "",
-                "2": "2x Stark Nettle, 3xHethweed, 2x Lunestalk, East. Silverbarb",
-                "3": "2x Voltarian Feathers, Hethweed to burn summon Delmons dog",
+                "2": "10xVerole, 2xsour leaf,",
+                "3": "Stark Nettle, 3xHethweed, 2xlunestalk",
+                "33": "Spice dispenser Fancy belt ",
                 "34": "Eltisma Axe (magical deepstone) ",
                 "35": "Sherapiers",
                 "36": "Travel Alchemy Kit",
                 "37": "Purple Flower Pinned to Hat",
-                "4": "",
+                "4": "1 Bubble Tip, 4xPure Water,12xPure Alcohol 2xWestern Silverbarb, 1xconf, 1x cor, 1xsoo, 2x exc",
                 "5": "weatherblossom, ethereal flame",
-                "6": "",
+                "6": "2x Voltarian Feathers, Hethweed to burn summon Delmons dog, DC1 Soulless Scent,2xJyanja Root",
                 "7": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
-                "8": "3 rations, 4 standards, 15 days",
-                "9": "Small Diary paper filled and well worn, Spice dispenser"
+                "8": "3 rations, 49 standards, 18 days",
+                "9": "Small Diary paper filled and well worn,"
             },
             "known_languages": [
                 "2d0b7484",
-                "77a2da4a"
+                "e8972c07"
             ],
             "magical_synergy": {
                 "slot1": "Zephyral (Wind, Gusted)",
@@ -2549,10 +3470,13 @@
                             "6a81c9b9",
                             "1e3d896d"
                         ],
-                        "points": 2
+                        "points": 3
                     },
                     "3461da9d": {
                         "points": 0
+                    },
+                    "3d117be9": {
+                        "points": 1
                     },
                     "4bf8b06a": {
                         "points": 0
@@ -2586,7 +3510,7 @@
                         "points": 3
                     },
                     "e21ee114": {
-                        "points": 2
+                        "points": 3
                     },
                     "e43ece8d": {
                         "points": 3
@@ -2600,7 +3524,7 @@
                             "add1ed3b",
                             "f120cfa7"
                         ],
-                        "points": 5
+                        "points": 6
                     },
                     "f1ddbecf": {
                         "mods": [
@@ -2617,7 +3541,7 @@
                         "points": 2
                     }
                 },
-                "spentPoints": 49,
+                "spentPoints": 53,
                 "stamina": 2,
                 "verve": 2,
                 "weapon_specialisations": 0
@@ -2642,7 +3566,7 @@
                 "universal": 0,
                 "zephyr": 0
             },
-            "sessions": 26,
+            "sessions": 30,
             "source": "478e7171",
             "spells": [
                 "337163c3"
@@ -2650,9 +3574,10 @@
             "statuses": {
                 "stamina": 2,
                 "statuses-023c6625": 0,
-                "statuses-8762b1e7": 0
+                "statuses-8762b1e7": 0,
+                "statuses-ecdb6cee": 1
             },
-            "updated": 1731323474113,
+            "updated": 1734431004546,
             "weapon_specialisations": [
                 "bc5a5c74"
             ],
