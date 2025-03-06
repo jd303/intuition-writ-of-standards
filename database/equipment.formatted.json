@@ -109,19 +109,19 @@
     },
     {
         "cost": 20,
-        "description": "Damage: d6.  Range: 20sq.  Tags: Ranged, Ranged-only, Concealable, Backstab.",
+        "description": "Damage: d6.  Range: 20sq.  Tags: Ranged, Ranged-only.",
         "name": "Short Bows",
         "type": "ranged"
     },
     {
         "cost": 60,
-        "description": "Damage: d8.  Range: 20sq.  Tags: Ranged, Ranged-only, Concealable, Backstab.",
+        "description": "Damage: d8.  Range: 20sq.  Tags: Ranged, Ranged-only.",
         "name": "Short Bows (Fine)",
         "type": "ranged"
     },
     {
         "cost": 120,
-        "description": "Damage: d8+2.  Range: 20sq.  Tags: Ranged, Ranged-only, Concealable, Backstab.",
+        "description": "Damage: d8+2.  Range: 20sq.  Tags: Ranged, Ranged-only.",
         "name": "Short Bows (Masterwork)",
         "type": "ranged"
     },
@@ -216,6 +216,12 @@
         "type": "ranged"
     },
     {
+        "cost": 10,
+        "description": "Tags: Ranged, Ranged-only, Trip, Single-Target.",
+        "name": "Bolas",
+        "type": "ranged"
+    },
+    {
         "cost": 4,
         "description": "A bundle of 10 arrows.",
         "name": "Basic",
@@ -289,55 +295,55 @@
     },
     {
         "cost": 30,
-        "description": "Max Block: +1.  Max Dodge: +3.  PDR: 1.",
+        "description": "Max Block: +1.  Max Dodge: +3.  AR: 1.",
         "name": "Light Armour",
         "type": "armour"
     },
     {
         "cost": 70,
-        "description": "Max Block: +1.  Max Dodge: +4.  PDR: 1.",
+        "description": "Max Block: +1.  Max Dodge: +4.  AR: 1.",
         "name": "Light Armour (Fine)",
         "type": "armour"
     },
     {
         "cost": 140,
-        "description": "Max Block: +1.  Max Dodge: +4.  PDR: 2.",
+        "description": "Max Block: +1.  Max Dodge: +4.  AR: 2.",
         "name": "Light Armour (Masterwork)",
         "type": "armour"
     },
     {
         "cost": 60,
-        "description": "Max Block: +2.  Max Dodge: +2.  PDR: 2.",
+        "description": "Max Block: +2.  Max Dodge: +2.  AR: 2.",
         "name": "Medium Armour",
         "type": "armour"
     },
     {
         "cost": 100,
-        "description": "Max Block: +2.  Max Dodge: +2.  PDR: 3.",
+        "description": "Max Block: +2.  Max Dodge: +2.  AR: 3.",
         "name": "Medium Armour (Fine)",
         "type": "armour"
     },
     {
         "cost": 200,
-        "description": "Max Block: +2.  Max Dodge: +2.  PDR: 3.  Free Mod: Hunker Down",
+        "description": "Max Block: +2.  Max Dodge: +2.  AR: 3.  Free Mod: Hunker Down",
         "name": "Medium Armour (Masterwork)",
         "type": "armour"
     },
     {
         "cost": 140,
-        "description": "Max Block: +3.  Max Dodge: +1.  PDR: 3.  Status: Encumbered.",
+        "description": "Max Block: +3.  Max Dodge: +1.  AR: 3.  Status: Encumbered.",
         "name": "Heavy Armour",
         "type": "armour"
     },
     {
         "cost": 180,
-        "description": "Max Block: +4.  Max Dodge: +2.  PDR: 3.  Status: Encumbered.",
+        "description": "Max Block: +4.  Max Dodge: +2.  AR: 3.  Status: Encumbered.",
         "name": "Heavy Armour (Fine)",
         "type": "armour"
     },
     {
         "cost": 360,
-        "description": "Max Block: +4.  Max Dodge: +2.  UDR: 3.  Status: Encumbered.",
+        "description": "Max Block: +4.  Max Dodge: +2.  AR: 3.  Status: Encumbered.",
         "name": "Heavy Armour (Masterwork)",
         "type": "armour"
     },
@@ -355,7 +361,7 @@
     },
     {
         "cost": 100,
-        "description": "Max Block: +1.  Max Dodge +1.  1-Handed.  PDR: 1.",
+        "description": "Max Block: +1.  Max Dodge +1.  1-Handed.  AR: 1.",
         "name": "Shield (Masterwork)",
         "type": "armour"
     },
@@ -408,7 +414,7 @@
         "type": "accommodation"
     },
     {
-        "cost": 3,
+        "cost": 2,
         "description": "Long-life travel rations that substitute all meals for a day.",
         "name": "Rations",
         "type": "food"
@@ -636,154 +642,16 @@
         "type": "magic"
     },
     {
-        "cost": 50,
-        "description": "Extremely hardy and strong stone for construction.  Rare.",
-        "name": "Harriden Hardstone",
-        "type": "materials"
+        "cost": 250,
+        "description": "Enchanted stones aligned with an energy type or with the Physical property.  When embedded in a slotted, fine, non-magical weapon, results in the weapon dealing an additional 2 Damage, and attacks are considered being of the Stone's Augment type.  When embedded in fine, slotted, armour, grants Res 2.",
+        "name": "Augere Stones",
+        "type": "magic"
     },
     {
-        "cost": 10,
-        "description": "A particularly sturdy greystone mined in Emeka.  Isleklip is famed for it\u2019s temperature resistance, keeping warm in winter and cool in summer.  Common.",
-        "name": "Isleklip",
-        "type": "materials"
-    },
-    {
-        "cost": 10,
-        "description": "Useful stone, usually shipped as small rocks but fashioned into grainy stones, artificial whetstones and other handy honing rocks.  Common.",
-        "name": "Grindstone",
-        "type": "materials"
-    },
-    {
-        "cost": 90,
-        "description": "An alloy of [x] and [y], Lanuanite is known to disrupt teleportation magics that occur within 50m.  Very rare.",
-        "name": "Lanuanite",
-        "type": "materials"
-    },
-    {
-        "cost": 30,
-        "description": "A marbled, clear-pink stone.  Prized by Alchemists and Gadgeteers for its absorbance and sensitivity to Sonic energy.  Uncommon.",
-        "name": "Orraquartz",
-        "type": "materials"
-    },
-    {
-        "cost": 40,
-        "description": "A soft metal used in jewelry and art, and commonly mined around Sim\u2019s Edge.",
-        "name": "Kethlite",
-        "type": "materials"
-    },
-    {
-        "cost": 70,
-        "description": "An extremely hard semi-transparent stone that shards and breaks into razor-sharp edges.  It is believed that waving this around illusory magics can make the magic waver.  Very Rare.",
-        "name": "Kendas Crystal",
-        "type": "materials"
-    },
-    {
-        "cost": 120,
-        "description": "An extremely rare soft, purple, transparent stone.  It is found at extreme depths, forming where Flow-infused waters seep deep into the bedrock and coalesce into tiny pockets.  No miner has ever found a vein or source of it larger than a few pea-sized pockets, and they theorise that it cannot form in larger quantities.  Even a pea-sized amount has the powerful property of being able to detect the fine movements of The Flow and magic.  Due to its soft nature, it can be worked into metals and even timbers, though the craftsmanship to do so and not grind it into a sand is so delicate that much has been lost.",
-        "name": "Heliolite",
-        "type": "materials"
-    },
-    {
-        "cost": 30,
-        "description": "An alloy of [x] and [y] that results in a dull black metal that reflects a dark orange colour.  Famed for being resistant to Pyral energy.  Rare.",
-        "name": "Orrathium",
-        "type": "materials"
-    },
-    {
-        "cost": 24,
-        "description": "A strange light rock that, when powered or sandy burns easily.  The act of creating a powder from the rock is very difficult, as the friction can cause it to combust.  Uncommon.",
-        "name": "Firestone",
-        "type": "materials"
-    },
-    {
-        "cost": 20,
-        "description": "A powdery substance which, when mixed correctly with other reagents (including heat) produces a substance with a mild sheen half as shiny as metal, with a resin-like durability.  The final result is mostly Bronsilica, the other reagents are necessary to unlock it\u2019s malleable and shapeable form, otherwise it remains too crystalline.  Due to the rarity of the substance, it is quite expensive and prized.  It is found most commonly in desert climates, and is often found near Callashar.  Rare.",
-        "name": "Bronsilica",
-        "type": "materials"
-    },
-    {
-        "cost": 10,
-        "description": "Like Bronsilica, Basilica is a rock which can be broken down into a powdery substance with the right procedures.  It is used in metal alloys and as an alchemical reagent to disrupt other materials - such as reducing the melting point of metals and stones.  Common.",
-        "name": "Basilica",
-        "type": "materials"
-    },
-    {
-        "cost": 10,
-        "description": "A blue and green flecked granular salt that when used in alchemical recipes can enhance or reduce effects.  Not very palatable, but in its base form is not poisonous.  When mixed with an alcohol can make an excellent light solvent, for cleaning and repairing machinery, armour and weaponry, or lamps and lanterns.  It can also be used as a primer before applying oils.  Common.",
-        "name": "Saltine",
-        "type": "materials"
-    },
-    {
-        "cost": 50,
-        "description": "A deep purple, rocky material that can be burned for energy, and acts as an enhancer for many alloys.  Very Rare.",
-        "name": "Tremaxite",
-        "type": "materials"
-    },
-    {
-        "cost": 60,
-        "description": "A form of tempered volcanic glass much like Obsidian, thought less prone to shattering and which melts at lower temperatures.  It is a man-made construct, being the product of Basilica powder and igneous rock.  Has a curious resistance to Cryonic Energy.  Rare.",
-        "name": "Altsidian",
-        "type": "materials"
-    },
-    {
-        "cost": 80,
-        "description": "Saphirium is light durable and maintains its form for very long periods.  It excels as a material for making weapons, and most Fine Weapons are made from Saphirium.  When worked, it gains a reflective sheen then when viewed close looks like glitter that reflects white, blue, pink, yellow, and green.  Very Rare.",
-        "name": "Saphirium",
-        "type": "materials"
-    },
-    {
-        "cost": 10,
-        "description": "These are cheap metals that initially resemble gold and silver, but which tarnish to a duller colour within a few years.  Common.",
-        "name": "Bronzegold, Polienium",
-        "type": "materials"
-    },
-    {
-        "cost": 40,
-        "description": "An amber-like glass, fairly waxen and softer than regular glass, created by the unusual combination of sand and minerals and then struck by lightning. Researchers believe this is what makes it resistant to Electric Energy. Some specimens are blue and green, when combined with other mineralis, such as cobaltite (blue) and copper veins (green). Very Rare.",
-        "name": "Thunderglass",
-        "type": "materials"
-    },
-    {
-        "cost": 30,
-        "description": "An alchemical, pink soft crystal that is highly absorbent of liquids like water and non-oily runoff.  It is commonly used in alchemical laboratories to absorb water and other oil-free liquids, for cleaning and safety.  Recently, vast quantities has been found to disrupt mental magics and psionics.  Uncommon.",
-        "name": "Abstrate",
-        "type": "materials"
-    },
-    {
-        "cost": 24,
-        "description": "A gritty, brown, sandy material used to enhance energies such as flames, which allows for energy levels beyond normal levels.  It is flecked with pinkish-white grains, which act as an easy combustible.  It is difficult, but possible, to work into metals and items.  Uncommon.",
-        "name": "Endelsand",
-        "type": "materials"
-    },
-    {
-        "cost": 36,
-        "description": "A dark volcanic rock made from lava cooling with sand and rock.  Certain specimens have been known to affect Divination Magics and Psionics.  Uncommon.",
-        "name": "Scoria",
-        "type": "materials"
-    },
-    {
-        "cost": 30,
-        "description": "A dark, volcanic rock that has cooled over vegetation, creating a uniquely carvable scoria.  While not as hard as metal, it is considered one of the hardest timbers - though whether it is truly a timber or a rock is up for debate.  Rare.",
-        "name": "Ebon Scoria",
-        "type": "materials"
-    },
-    {
-        "cost": 24,
-        "description": "An powdery chalky mineral with a blue tinge.  When exposed to different energies, changes its colour, and so is prized for art craft and unique works.  The colour it takes tends to the opposite of the energy applied.  Uncommon.",
-        "name": "Peribeltica",
-        "type": "materials"
-    },
-    {
-        "cost": 100,
-        "description": "A golden metal that is very rare and very valuable.  Thought to be metals that are infused with magics during the height of a Flow.  Can be used to create items of wondrous magic, as the metal propagates enchantments better than any other.  Very Rare.",
-        "name": "Xirium",
-        "type": "materials"
-    },
-    {
-        "cost": 100,
-        "description": "A highly reflective copper gold metal that has a mild anti-magic property.  While also disrupting magics generally, it cannot be enchanted, and makes shaping magics more difficult when held to the skin of a magic user.",
-        "name": "Ludmelic Copper",
-        "type": "materials"
+        "cost": 500,
+        "description": "Enchanted stones aligned with an energy type or with the Physical property.  When embedded in a slotted, fine, non-magical weapon, results in the weapon dealing an additional 5 Damage, and attacks are considered being the Stone's Augment type.  When embedded in fine, slotted, armour, grants Res 5.",
+        "name": "Greater Augere Stones",
+        "type": "magic"
     },
     {
         "cost": 10,
@@ -798,32 +666,188 @@
         "type": "materials"
     },
     {
+        "cost": 50,
+        "description": "Extremely hardy and strong stone for construction.  It is only produced in Harriden's great Mountain.\nMineral -- Rare.",
+        "name": "Harriden Hardstone",
+        "type": "materials"
+    },
+    {
+        "cost": 10,
+        "description": "A particularly sturdy greystone mined in Emeka.  Isleklip is famed for it\u2019s temperature resistance, keeping warm in winter and cool in summer.\nMineral -- Common.",
+        "name": "Isleklip",
+        "type": "materials"
+    },
+    {
+        "cost": 10,
+        "description": "Useful stone, usually shipped as small rocks but fashioned into grainy stones, artificial whetstones and other handy honing rocks.\nMineral -- Common.",
+        "name": "Grindstone",
+        "type": "materials"
+    },
+    {
         "cost": 40,
-        "description": "An alloy of iron and Tremaxite, Pendlesteel is quite durable and enchanters have noted that enhancement magics tend to bond well with it.  Is often used to fashion armours, though due to it being fairly heavy, it is often ringmail, chainmail or fashioned with leathers to reduce the load.  Rare.",
-        "name": "Pendlesteel",
+        "description": "A soft metal used in jewelry and art, and commonly mined around Sim\u2019s Edge.\nMetal -- Common.",
+        "name": "Kethlite",
+        "type": "materials"
+    },
+    {
+        "cost": 20,
+        "description": "A powdery substance which, when mixed correctly with other reagents (including heat) produces a substance with a mild sheen half as shiny as metal, with a resin-like durability.  The final result is mostly Bronsilica, the other reagents are necessary to unlock it\u2019s malleable and shapeable form, otherwise it remains too crystalline.  Due to the rarity of the substance, it is quite expensive and prized.  It is found most commonly in desert climates, and is often found near Callashar.  \nMineral -- Rare.",
+        "name": "Bronsilica",
+        "type": "materials"
+    },
+    {
+        "cost": 10,
+        "description": "Like Bronsilica, Basilica is a rock which can be broken down into a powdery substance with the right procedures.  It is used in metal alloys and as an alchemical reagent to disrupt other materials - such as reducing the melting point of metals and stones.  \nMineral -- Common.",
+        "name": "Basilica",
+        "type": "materials"
+    },
+    {
+        "cost": 10,
+        "description": "A blue and green flecked granular salt that when used in alchemical recipes can enhance or reduce effects.  Not very palatable, but in its base form is not poisonous.  When mixed with an alcohol can make an excellent light solvent, for cleaning and repairing machinery, armour and weaponry, or lamps and lanterns.  It can also be used as a primer before applying oils.  \nMineral -- Common.",
+        "name": "Saltine",
+        "type": "materials"
+    },
+    {
+        "cost": 24,
+        "description": "A strange light rock that, when powered or sandy burns easily.  The act of creating a powder from the rock is very difficult, as the friction can cause it to combust.  \nMineral -- Uncommon.",
+        "name": "Firestone",
+        "type": "materials"
+    },
+    {
+        "cost": 10,
+        "description": "These are cheap metals that initially resemble gold and silver, but which tarnish to a duller colour within a few years.  \nMetal -- Common.",
+        "name": "Bronzegold, Polienium",
+        "type": "materials"
+    },
+    {
+        "cost": 80,
+        "description": "Saphirium is light durable and maintains its form for very long periods.  It excels as a material for making weapons, and most Fine Equipments are made from Saphirium.  When worked, it gains a reflective sheen then when viewed close looks like glitter that reflects white, blue, pink, yellow, and green.  \nMetal -- Rare.",
+        "name": "Saphirium",
+        "type": "materials"
+    },
+    {
+        "cost": 24,
+        "description": "An powdery chalky mineral with a blue tinge.  When exposed to different energies, changes its colour, and so is prized for art craft and unique works.  The colour it takes tends to the opposite of the energy applied.  \nMineral -- Uncommon.",
+        "name": "Peribeltica",
+        "type": "materials"
+    },
+    {
+        "cost": 50,
+        "description": "A deep purple, rocky material that can be burned for energy, and even tiny portions of it can be used to create alloys.  \nMineral -- Very Rare.",
+        "name": "Tremaxite",
+        "type": "materials"
+    },
+    {
+        "cost": 36,
+        "description": "A dark volcanic rock made from lava cooling with sand and rock.\nMineral -- Uncommon.",
+        "name": "Scoria",
         "type": "materials"
     },
     {
         "cost": 30,
-        "description": "An iron smelting technique unique to the Erudite Foundation (using a process of heating and super cooling), Cold Iron is cheap to make, extremely durable, but very hard to work with and so the process take a long while - and complex shapes and forms even longer.  For that reason it is used in simple items like boxes and safes, or in simple construction forms like beams and girders.  Uncommon.",
-        "name": "Cold Iron",
+        "description": "A dark, volcanic rock that has cooled over vegetation, creating a uniquely carvable scoria.  While not as hard as metal, it is considered one of the hardest timbers - though whether it is truly a timber or a rock is up for debate.  Luminal enegies tend to be absorbed and reduced by the material.  \nMineral -- Rare -- Resist Luminal.",
+        "name": "Ebon Scoria",
         "type": "materials"
     },
     {
-        "cost": 100,
-        "description": "Made by smelting a small amount of Ludmellic Copper with multiple metals.  Prized for its ability to subvert mind controlling magics.  Very Rare.",
-        "name": "Leadthought",
+        "cost": 30,
+        "description": "A marbled, clear-pink stone.  Prized by Alchemists and Gadgeteers for its absorbance and sensitivity to Sonic energy.  Due to this it can be used both to react to Sonic energies, or if attuned correctly to dampen them.  \nMineral -- Uncommon -- Resist Sonic.",
+        "name": "Orraquartz",
+        "type": "materials"
+    },
+    {
+        "cost": 30,
+        "description": "A black semi-metallic rock that reflects a dark orange colour.  Famed for being resistant to Pyral energy.  \nMineral -- Uncommon -- Resist Pyral.",
+        "name": "Orrathium",
+        "type": "materials"
+    },
+    {
+        "cost": 30,
+        "description": "A form of tempered volcanic glass much like Obsidian, thought less prone to shattering and which melts at lower temperatures.  It is a man-made construct, being the product of Basilica powder and igneous rock.  Has a curious resistance to Cryonic Energy.  \nMineral -- Uncommon -- Resist Cryonic.",
+        "name": "Altsidian",
+        "type": "materials"
+    },
+    {
+        "cost": 35,
+        "description": "An amber-like glass, fairly waxen and softer than regular glass, created by the unusual combination of sand and minerals and then struck by lightning. Researchers believe this is what makes it resistant to Electric Energy. Some specimens are blue and green, when combined with other mineralis, such as cobaltite (blue) and copper veins (green).  \nMineral -- Rare -- Resist Electric.",
+        "name": "Thunderglass",
+        "type": "materials"
+    },
+    {
+        "cost": 45,
+        "description": "An opalescent gemstone which refracts and reflects light in a beautiful way.  Originally created by Simmin, it is a material created by superheating and melting pearl and Ludmelic Copper, then super cooling and hammering into miniscule but serrated and jagged form, with many surface edges.  When created in such a way, absorbs and reduced the effectiveness of Umbral energies.  \nMineral -- Rare -- Resist Umbral.",
+        "name": "Speckled Simlite",
+        "type": "materials"
+    },
+    {
+        "cost": 30,
+        "description": "An alchemical, pink soft crystal that is highly absorbent of liquids like water and non-oily runoff.  It is commonly used in alchemical laboratories to absorb water and other oil-free liquids, for cleaning and safety.  When fashioned into a lattice formation, has the curious ability to provide Zephyral resistance.  \nMineral -- Uncommon -- Resist Zephyral.",
+        "name": "Abstrate",
         "type": "materials"
     },
     {
         "cost": 85,
-        "description": "A highly sought after alloy, due to its intense strength, resilience, and resistance to shock.  The secret to creating the alloy is with the Dwarves.  Armours made from the metal are unyielding and harder to wear and even block with, but offer a high Physical Resistance.  Has an unusually orange colour.",
+        "description": "A highly sought after alloy, due to its intense strength, resilience, and resistance to shock.  The secret to creating the alloy is with the Dwarves.  Armours made from the metal are unyielding and harder to wear and even block with, but offer a high Physical Resistance.  Has an unusually orange colour.\nAlloy -- Rare -- Resist Physical.",
         "name": "Bismuth Bronze",
         "type": "materials"
     },
     {
+        "cost": 100,
+        "description": "A highly reflective copper gold metal that has a mild anti-magic property.  While also disrupting magics generally, it cannot be enchanted, and makes shaping magics more difficult when held to the skin of a magic user.\nMetal -- Very Rare -- Resist Magic.",
+        "name": "Ludmelic Copper",
+        "type": "materials"
+    },
+    {
+        "cost": 90,
+        "description": "An alloy of Orraquartz and Heliolite, Lanuanite is known to disrupt teleportation magics that occur within 50m.  \nAlloy -- Very Rare -- Resist Teleportation.",
+        "name": "Lanuanite",
+        "type": "materials"
+    },
+    {
+        "cost": 70,
+        "description": "An extremely hard semi-transparent stone that shards and breaks into razor-sharp edges.  It is believed that waving this around illusory magics can make the magic waver.  \nMineral -- Very Rare -- Resist Illusion.",
+        "name": "Kendas Crystal",
+        "type": "materials"
+    },
+    {
+        "cost": 100,
+        "description": "Made by smelting a small amount of Ludmellic Copper with multiple metals.  Prized for its ability to subvert mind controlling magics.  \nMetal -- Very Rare -- Resist Mental.",
+        "name": "Leadthought",
+        "type": "materials"
+    },
+    {
+        "cost": 30,
+        "description": "An iron smelting technique unique to the Erudite Foundation (using a process of heating and super cooling), Cold Iron is cheap to make, extremely durable, but very hard to work with and so the process take a long while - and complex shapes and forms even longer.  For that reason it is used in simple items like boxes and safes, or in simple construction forms like beams and girders.  When worked into a lattice, it can reduce the effectiveness of Scrying magics.  \nAlloy -- Uncommon -- Resist Divination.",
+        "name": "Cold Iron",
+        "type": "materials"
+    },
+    {
+        "cost": 24,
+        "description": "A gritty, brown, sandy material used to enhance energies, which allows for energy levels beyond normal levels.  It is flecked with pinkish-white grains, which act as an easy combustible.  It is difficult, but possible, to work into metals and items.  \nMineral -- Uncommon -- Enhance Energy.",
+        "name": "Endelsand",
+        "type": "materials"
+    },
+    {
+        "cost": 100,
+        "description": "A golden metal that is very rare and very valuable.  Thought to be metals that are infused with magics during the height of a Flow.  Can be used to create items of wondrous magic, as the metal propagates enchantments better than any other.  \nMetal -- Very Rare -- Enhance Magic.",
+        "name": "Xirium",
+        "type": "materials"
+    },
+    {
+        "cost": 40,
+        "description": "An alloy of iron and Tremaxite, Pendlesteel is quite durable and enchanters have noted that enhancement magics tend to bond well with it.  Is often used to fashion armours, though due to it being fairly heavy, it is often ringmail, chainmail or fashioned with leathers to reduce the load.  \nAlley -- Rare -- Enhance Magic.",
+        "name": "Pendlesteel",
+        "type": "materials"
+    },
+    {
+        "cost": 120,
+        "description": "An extremely rare soft, purple, transparent stone.  It is found at extreme depths, forming where Flow-infused waters seep deep into the bedrock and coalesce into tiny pockets.  No miner has ever found a vein or source of it larger than a few pea-sized pockets, and they theorise that it cannot form in larger quantities.  Even a pea-sized amount has the powerful property of being able to detect the fine movements of The Flow and magic.  Due to its soft nature, it can be worked into metals and even timbers, though the craftsmanship to do so and not grind it into a sand is so delicate that much has been lost.\nMineral -- Extremely Rare -- Enhance Magic.",
+        "name": "Heliolite",
+        "type": "materials"
+    },
+    {
         "cost": 150,
-        "description": "A formation of steel that is lighter by almost half.  Many have tried to replicate the steel, but the secret is guarded by the Theocratic Confederacy of Sanctuary.  Rumours say that such excellent metalwork can only be under the hands of the dwarves or the elves, but they would need to be particularly pious to align with the confed.",
+        "description": "A formation of steel that is lighter by almost half.  Many have tried to replicate the steel, but the secret is guarded by the Theocratic Confederacy of Sanctuary.  Rumours say that such excellent metalwork can only be under the hands of the dwarves or the elves, but they would need to be particularly pious to align with the confed.\nAlloy -- Exremely Rare -- Enhance All.",
         "name": "Ethersteel",
         "type": "materials"
     }
